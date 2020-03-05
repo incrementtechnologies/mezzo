@@ -2,6 +2,7 @@
   <div>
     <Header></Header>
     <Body></Body>
+    <Restaurant></Restaurant>
     <Footer></Footer>
   </div>
 </template>
@@ -10,6 +11,7 @@
 import Header from 'src/components/frame/header.vue'
 import Body from 'src/components/frame/body.vue'
 import Footer from 'src/components/frame/footer.vue'
+import Restaurant from 'src/components/pages/restaurant.vue'
 export default {
   name: 'HelloWorld',
   props: {
@@ -18,7 +20,8 @@ export default {
   components: {
     Header,
     Body,
-    Footer
+    Footer,
+    Restaurant
   }
 }
 </script>
