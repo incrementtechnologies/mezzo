@@ -12,6 +12,7 @@ import Header from 'src/components/frame/header.vue'
 import Body from 'src/components/frame/body.vue'
 import Footer from 'src/components/frame/footer.vue'
 import Restaurant from 'src/components/pages/restaurant.vue'
+import Rooms from 'src/components/pages/rooms.vue'
 export default {
   name: 'HelloWorld',
   props: {
@@ -21,7 +22,8 @@ export default {
     Header,
     Body,
     Footer,
-    Restaurant
+    Restaurant,
+    Rooms
   }
 }
 </script>

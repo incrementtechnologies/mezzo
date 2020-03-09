@@ -15,6 +15,7 @@
           <li class="nav-item" v-on:click="scrollTo('#home')"><a class="nav-link">Home</a></li>
           <li class="nav-item" v-on:click="scrollTo('#body')"><a class="nav-link">Body</a></li>
           <li class="nav-item" v-on:click="scrollTo('#restaurant')"><a class="nav-link">Restaurant</a></li>
+          <li class="nav-item" v-on:click="scrollTo('#rooms')"><a class="nav-link">Rooms</a></li>
         </ul>
       </span>
     </div>
