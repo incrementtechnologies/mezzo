@@ -1,6 +1,7 @@
 <template>
   <div>
     <Header></Header>
+    <booking></booking>
     <Body></Body>
     <Rooms></Rooms>
     <Restaurant></Restaurant>
@@ -14,6 +15,7 @@ import Body from 'src/components/frame/body.vue'
 import Footer from 'src/components/frame/footer.vue'
 import Restaurant from 'src/components/pages/restaurant.vue'
 import Rooms from 'src/components/pages/rooms.vue'
+import Booking from 'src/components/pages/booking.vue'
 export default {
   name: 'HelloWorld',
   props: {
@@ -24,7 +26,8 @@ export default {
     Body,
     Footer,
     Restaurant,
-    Rooms
+    Rooms,
+    Booking
   }
 }
 </script>
