@@ -1,7 +1,7 @@
 <template>
-  <div class="body" id="rooms">
+  <div class="body" id="packages">
     <div class="jumbotron text-center">
-      <h1 class="display-4">Rooms</h1>
+      <h1 class="display-4">Packages</h1>
       <p>Welcome to Mezzo Hotel</p>
     </div>
   </div>
