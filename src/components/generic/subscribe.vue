@@ -10,6 +10,9 @@
 </template>
 <style scoped lang="scss">
 @import "~assets/style/colors.scss";
+.text-primary{
+  color: $primary !important;
+}
 
 .form-container{
   width: 40%;
