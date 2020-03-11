@@ -2,6 +2,7 @@
   <div>
     <Header></Header>
     <Body></Body>
+    <Rooms></Rooms>
     <Restaurant></Restaurant>
     <Footer></Footer>
   </div>
