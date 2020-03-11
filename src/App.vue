@@ -46,6 +46,7 @@ export default {
 
 .form-control{
   border-radius: 1px !important;
+  border: 0px !important;
 }
 .mx-input-wrapper, .mx-input-wrapper input{
   height: 10vh !important;
@@ -53,6 +54,7 @@ export default {
   margin-bottom: 1vh !important;
   width: 100% !important;
   float: left !important;
+  border: 0px !important;
 }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
