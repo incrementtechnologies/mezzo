@@ -7,4 +7,5 @@ api/composer.lock
 src/components/increment
 node_modules/
 src/config.js
+mezzobuild/
 dist/

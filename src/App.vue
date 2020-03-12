@@ -14,7 +14,6 @@ export default {
   }
 }
 </script>
-
 <style lang="scss">
 @import "~assets/style/colors.scss";
 .mx-datepicker{
@@ -38,6 +37,7 @@ export default {
 .btn-warning{
   border: solid 1px $warning !important;
   background: $warning !important;
+  color: white !important;
 }
 
 .btn{
@@ -60,5 +60,11 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+ul{
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 </style>
