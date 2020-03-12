@@ -4,6 +4,7 @@
     <booking></booking>
     <Body></Body>
     <Rooms></Rooms>
+    <Packages></Packages>
     <Restaurant></Restaurant>
     <Footer></Footer>
   </div>
@@ -15,6 +16,7 @@ import Body from 'src/components/frame/body.vue'
 import Footer from 'src/components/frame/footer.vue'
 import Restaurant from 'src/components/pages/restaurant.vue'
 import Rooms from 'src/components/pages/rooms.vue'
+import Packages from 'src/components/pages/packages.vue'
 import Booking from 'src/components/pages/booking.vue'
 export default {
   name: 'HelloWorld',
@@ -27,6 +29,7 @@ export default {
     Footer,
     Restaurant,
     Rooms,
+    Packages
     Booking
   }
 }

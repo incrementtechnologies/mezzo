@@ -3,8 +3,9 @@
     <div class="header-section">
       <span class="logo">
         <a class="navbar-brand" v-on:click="scrollTo('#home')">
-          <!-- <img src="../../../assets/img/logo_white.png" style="margin-bottom: 5px;"> -->
-          <label>{{common.APP_NAME}}</label>
+          <img class="header-logo" src="@/assets/logomofficial.png" />
+          <label class="header-appname">{{common.APP_NAME}}</label>
+          <label class="header-slogan">LUXURY HOTEL</label>
         </a>
       </span>
       <span class="menu">
@@ -12,11 +13,14 @@
           <i class="fa fa-bars" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" onclick="void(0)"></i>
         </span>
         <ul class="header-primary-menu">
-          <li class="nav-item" v-on:click="scrollTo('#home')"><a class="nav-link">Home</a></li>
-          <li class="nav-item" v-on:click="scrollTo('#body')"><a class="nav-link">Body</a></li>
-          <li class="nav-item" v-on:click="scrollTo('#restaurant')"><a class="nav-link">Restaurant</a></li>
-          <li class="nav-item" v-on:click="scrollTo('#rooms')"><a class="nav-link">Rooms</a></li>
+          <li class="nav-item" v-on:click="scrollTo('#home')"><a class="nav-link">HOME</a></li>
+          <li class="nav-item" v-on:click="scrollTo('#rooms')"><a class="nav-link">ROOMS</a></li>
+          <li class="nav-item" v-on:click="scrollTo('#packages')"><a class="nav-link">PACKAGES</a></li>
+          <li class="nav-item" v-on:click="scrollTo('#restaurant')"><a class="nav-link">RESTAURANT</a></li>
         </ul>
+      <span>
+        <label class="header-book">Book Your Room Now!</label>
+      </span>
       </span>
     </div>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -31,44 +35,47 @@
 @import "~assets/style/colors.scss";
 .header{
   width: 100%;
+  height: 280px;
   float: left;
-  min-height: 70px;
+  min-height: 100px;
   overflow-y: hidden;
-  background: $primary;
+  background: #000033;
 }
 .header-section{
-  min-height: 50px;
   overflow-y: hidden;
   width: 90%;
   font-size: 12px;
   color: #fff;
   margin: 5px auto 5px auto;
-}
-.header-section .logo{
-  width: 20%;
-  float: left;
   height: 100%;
 }
-.header-section .menu{
-  width: 80%;
-  float: left;
-  height: 100%;
-  margin-top: 10px;
+.header-book{
+  float: right;
+  height: 28px;
+  font-size: 24px;
+  line-height: 28px;
+  text-align: center;
+  letter-spacing: 0.1em;
+  color: #FFFFFF;
+  left: 0;
+  right: 0;
+  margin-top: 150px;
 }
-
+.header-label{
+  float: right;
+  font-size: 25px;
+}
 .navbar-menu-toggler-md{
   width: 100%;
   text-align: right;
   float: left;
   display: none;
 }
-
 .menu .header-primary-menu{
-  width: 100%;
+  width: 45%;
   float: left;
   min-height: 30px;
   list-style: none;
-  overflow-y: hidden;
   padding: 0px;
   margin-bottom: 0px !important;
 }
@@ -86,24 +93,58 @@
 .fa-bars:hover{
   cursor: pointer;
 }
-
+.header-slogan{
+  position: absolute;
+  height: 28px;
+  font-size: 24px;
+  line-height: 28px;
+  text-align: center;
+  letter-spacing: 0.1em;
+  color: #FFFFFF;
+  left: 0;
+  right: 0;
+  margin-top: 40px;
+}
+.header-appname{
+  position: absolute;
+  height: 42px;
+  font-size: 36px;
+  line-height: 42px;
+  text-align: center;
+  letter-spacing: 0.1em;
+  color: #FFFFFF;
+  left: 0;
+  right: 0;
+}
+.nav-item{
+  height: 28px;
+  font-size: 24px;
+  line-height: 28px;
+  text-align: center;
+  letter-spacing: 0.1em;
+  color: #FFFFFF;
+  left: 0;
+  right: 0;
+}
 .menu .header-primary-menu .nav-item{
-  float: right;
-  font-size: 15px;
+  float: left;
+  margin-top: 150px;
 }
 
 .header-primary-menu .nav-item .nav-link{
   padding: .5rem;
 }
 .header-primary-menu .nav-item a{
-  color: #fff;
-  font-family: MuseoRounded700, sans-serif;
+  /*color: #fff;
+  font-family: MuseoRounded700, sans-serif;*/
+}
+.header-logo{
+  width: 15%;
 }
 .header-primary-menu .nav-item .nav-link:hover{
   cursor: pointer;
   text-decoration: underline;
 }
-
 .navbar-toggler{
   background: inherit !important;
   border-radius: 0px !important;
@@ -121,20 +162,12 @@
   display: none !important;
 }
 
-.header-section .logo a img{
-  width: 50px;
-}
-.header-section .logo a label{
-  font-size: 24px;
-  margin-bottom: 0px;
-}
-
 @media screen and (max-width: 992px){
   .header-section{
     width: 90% !important;
     margin: 0 5% 0 5% !important;
   }
-  .header-section .logo{
+  .header-section{
     width: 80%;
     margin-top: 10px;
   }
