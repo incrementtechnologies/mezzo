@@ -32,7 +32,7 @@ footer {
   float: left;
   overflow-y: hidden;
   background: $primary;
-  border-top: solid 10px $warning;
+  border-top: solid 5px $warning;
   position: relative;
 }
 .footer{

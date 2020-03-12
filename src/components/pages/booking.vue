@@ -37,7 +37,7 @@
 <style scoped lang="scss">
 @import "~assets/style/colors.scss";
   .incre-container{
-    height: 80vh;
+    height: 60vh;
     float: left;
     width: 100%;
     position: relative;
