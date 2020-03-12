@@ -1,114 +1,65 @@
 <template>
   <footer>
     <div class="footer">
-      <ul class="footer-widget contact-us">
-        <li class="title"><b>{{common.APP_NAME}}</b></li>
-        <li class="link"><a v-on:click="redirect('/')">Home</a></li>
-       <!--  <li class="link"><a v-on:click="redirect('/')">About Us</a></li>
-        <li class="link"><a v-on:click="redirect('/')">Contact Us</a></li> -->
-      </ul>
-      <ul class="footer-widget">
-        <li class="link"><a @click="redirect('/faq')">FAQ</a></li>
+      <logo style="width: 100%; float: left; margin-bottom: 50px;"></logo>
+      <ul>
+        <li>
+          <span>Phone</span>
+          <span>{{common.APP_PHONE_NUMBER}}</span>
+        </li>
 
+        <li>
+          <span>Address</span>
+          <span>{{common.address}}</span>
+        </li>
+
+        <li>
+          <span>Email</span>
+          <span>{{common.APP_EMAIL}}</span>
+        </li>
       </ul>
-      <span class="footer-widget community">
-        <span class="title"><b>Community</b></span>
-        <span class="link">
-          <a target="_BLANK" class="text-gray" :href="'https://www.facebook.com/' + common.socialMedia.facebook" ><i class="fab fa-facebook"></i></a>
-        </span>
-      </span>
-      
       <span class="copyright">
-        <label>Copyright @{{common.COPYRIGHT}}. All rights reserved.</label>
+        <label>Copyright @{{common.COPYRIGHT}}. All rights reserved. This site was made by <b @click="openExternal(common.APP_DEVELOPER_URL)">{{common.APP_DEVELOPER}}</b></label>
       </span>
     </div>
   </footer>
 </template>
-<style scoped>
+<style scoped lang="scss">
+@import "~assets/style/colors.scss";
 footer {
   width:100%;
-  min-height: 200px;
+  height: 75vh;
   float: left;
   overflow-y: hidden;
-  background: #e9e9e9;
+  background: $primary;
+  border-top: solid 10px $warning;
+  position: relative;
 }
 .footer{
-  width: 80%;
+  width: 100%;
   float: left;
   min-height: 50px;
-  margin-left: 10%; 
-  margin-right: 10%;
   overflow-y: hidden;
 }
 
-.footer-widget{
-  width: 25%;
-  float: left;
-  margin-top: 50px;
+ul{
   list-style: none;
+  width: 100%;
+  float: left;
+  color: white;
+  margin: 0px;
   padding: 0px;
-  margin-bottom: 0px;
 }
 
-
-.footer-widget li{
-  list-style: none;
-  padding: 5px 10px 5px 10px;
+ul li{
+  width: 33%;
   float: left;
-  width: 100%;
-  color: #6f6f6f !important;
+  text-align: center;
 }
 
-.footer-widget, .footer-widget li a{
-  color: #6f6f6f !important;
-}
-.footer-widget .title{
-  color: #4c4c4c;
-}
-
-.footer-widget li a:hover{
-  cursor: pointer;
-  text-decoration: underline;
-}
-footer-widget .title:hover{
-  cursor: default;
-}
-
-.community .title{
+ul li span{
   width: 100%;
   float: left;
-  height: 40px;
-  text-align: left;
-  padding-top: 5px;
-} 
-.community .links{
-  width: 100%;
-  float: left;
-}
-.community .link i{
-  font-size: 24px;
-  padding: 0 10px 0 10px;
-  float: left;
-  width: 20%;
-}
-.community .link i:hover{
-  color: #1caceb;
-  cursor: pointer;
-}
-.text-gray{
-  color: #212529;
-}
-
-.contact-us li i{
-  padding-right: 10px;
-}
-
-.contact-us li .fa-phone{
-  padding-right: 9px;
-}
-
-.contact-us li .fa-mobile-alt{
-  padding-right: 12px;
 }
 
 .copyright{
@@ -116,10 +67,12 @@ footer-widget .title:hover{
   float: left;
   padding-top: 5px;
   padding-bottom: 5px;
-  font-size: 12px;
   text-align: center;
   margin-top: 45px;
   color: #6f6f6f !important;
+  bottom: 25px;
+  left: 0;
+  position: absolute;
 }
 @media screen and (max-width: 992px){
   .footer-widget{
@@ -128,18 +81,19 @@ footer-widget .title:hover{
     margin-right: 0%;
     padding: 0px;
   }
-
-  .community .title{
-    text-align: center;
+  ul{
+    width: 96%;
+    margin-right: 2%;
+    margin-left: 2%;
   }
-
-  .community i{
-    width: 20%;
+  ul li {
+    width: 100%;
   }
 }
 </style>
 <script>
 import COMMON from 'src/common.js'
+import Logo from 'src/components/generic/logo.vue'
 export default {
   mounted(){
   },
@@ -148,7 +102,13 @@ export default {
       common: COMMON
     }
   },
+  components: {
+    Logo
+  },
   methods: {
+    openExternal(url){
+      window.open(url, '_BLANK')
+    }
   }
 }
 </script>
