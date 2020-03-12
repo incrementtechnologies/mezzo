@@ -4,7 +4,7 @@
       <h2 class="text-primary">Want to more promos?</h2>
       <p class="text-primary">Subscribe Now!</p>
       <input type="email" class="form-control" placeholder="Enter your email">
-      <button class="btn btn-primary">BOOK NOW</button>
+      <button class="btn btn-primary">SUBSCRIBE NOW</button>
     </div>
   </div>
 </template>
