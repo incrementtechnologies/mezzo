@@ -2,32 +2,39 @@
   <div>
     <div class="holder">
       <img :src="require('assets/img/logo.png')">
-      <label class="title"><b>{{common.APP_NAME}}</b></label>
-      <label class="tagline">{{common.APP_TAGLINE}}</label>
+      <span class="details">
+        <label class="title"><b>{{common.APP_NAME}}</b></label> 
+      </span>
+      <span class="details">
+        <label class="tagline">{{common.APP_TAGLINE}}</label> 
+      </span>
     </div>
   </div>
 </template>
 <style scoped lang="scss">
 @import "~assets/style/colors.scss";
 .holder{
-  width: 20%;
+  width: 100%;
   float: left;
-  margin-left: 40%;
   text-align: center;
 }
 
 img{
-  width: 80%;
+  width: 250px;
   height: auto;
-  margin-left: 10%;
   margin-top: 25px;
   margin-bottom: 10px;
 }
 
-label{
-  color: white;
+.details{
   width: 100%;
   float: left;
+  text-align: center;
+}
+
+label{
+  color: white;
+  width: 250px;
   font-size: 24px;
 }
 
@@ -39,9 +46,13 @@ label{
 }
 
 @media screen and (max-width: 992px){
-  .holder{
-    width: 60%;
-    margin-left: 20%;
+  img{
+    width: 30%;
+  }
+
+  label{
+    width: 30%;
+    font-size: 12px;
   }
 }
 </style>

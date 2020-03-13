@@ -1,6 +1,6 @@
 <template>
   <div class="incre-container">
-    <subscribe></subscribe>
+    <subscribe class="subscribe"></subscribe>
     <div class="form-container">
       <date-picker
         type="date"
@@ -37,7 +37,7 @@
 <style scoped lang="scss">
 @import "~assets/style/colors.scss";
   .incre-container{
-    height: 60vh;
+    min-height: 60vh;
     float: left;
     width: 100%;
     position: relative;
@@ -56,7 +56,7 @@
     width: 80%;
     float: left;
     margin-left: 10%;
-    height: 14vh;
+    min-height: 14vh;
     background: rgba(255, 255, 255, 0.5);
     z-index: 1000;
     position: absolute;
@@ -80,10 +80,24 @@
   }
 
 @media screen and (max-width: 992px){
+  .subscribe{
+    display: none;
+  }
+
   img{
     width: auto;
     height: 100%;
   }
+
+  .form-control{
+    width: 48% !important;
+  }
+
+  .btn{
+    width: 98% !important;
+    margin-bottom: 25px !important;
+  }
+
 }
 </style>
 <script>

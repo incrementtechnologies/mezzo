@@ -23,7 +23,7 @@ export default{
   }],
   menus: [{
     title: 'Home',
-    redirect: '#header'
+    redirect: '#home'
   }, {
     title: 'Rooms',
     redirect: '#rooms'

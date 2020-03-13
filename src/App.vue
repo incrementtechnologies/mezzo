@@ -16,11 +16,6 @@ export default {
 </script>
 <style lang="scss">
 @import "~assets/style/colors.scss";
-.mx-datepicker{
-  float: left !important;
-  width: 16% !important;
-  margin-left: 1% !important;
-}
 
 .text-primary{
   color: $primary !important;
@@ -48,6 +43,13 @@ export default {
   border-radius: 1px !important;
   border: 0px !important;
 }
+
+.mx-datepicker{
+  float: left !important;
+  width: 16% !important;
+  margin-left: 1% !important;
+}
+
 .mx-input-wrapper, .mx-input-wrapper input{
   height: 10vh !important;
   margin-top: 1vh !important;
@@ -66,5 +68,11 @@ ul{
   margin: 0;
   padding: 0;
   list-style: none;
+}
+
+@media screen and (max-width: 992px){
+  .mx-datepicker{
+    width: 48% !important;
+  }
 }
 </style>

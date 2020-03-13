@@ -51,6 +51,7 @@ h2, p{
   .form-container{
     width: 96%;
     margin-left: 2%;
+    margin-right: 2%;
   }
 
   .btn{
