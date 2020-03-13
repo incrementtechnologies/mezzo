@@ -1,6 +1,12 @@
 <template>
   <div class="header" id="home">
     <logo></logo>
+    <font-awesome-icon :icon="flag === false ? faBars : faTimes" class="mobile-menu-icon" @click="toggle()"></font-awesome-icon>
+    <ul class="mobile-menu">
+      <li v-for="(item, index) in common.menus" :key="index">
+        <a @click="scrollTo(item.redirect)" data-toggle="collapse" data-target="#myNavbar">{{item.title}}</a>
+      </li>
+    </ul>
     <div class="menu">
       <ul>
         <li>
@@ -17,11 +23,30 @@
 .header{
   width: 100%;
   float: left;
-  height: 40vh;
-  overflow-y: hidden;
+  min-height: 40vh;
   background: $primary;
   border-bottom: solid 5px $warning;
   position: relative;
+}
+
+.mobile-menu-icon{
+  display: none;
+}
+
+.mobile-menu{
+  position: absolute;
+  height: 100vh;
+  z-index: 9000;
+  top: 0;
+  left: 0;
+  display: none;
+  background: rgba(0, 0, 51, 0.6);
+  width: 100%;
+}
+
+.mobile-menu li{
+  width: 100%;
+  float: left;
 }
 
 .menu{
@@ -74,17 +99,49 @@ ul li{
   background: $warning;
   float: right;
 }
+
+@media screen and (max-width: 992px){
+  .header{
+    min-height: 10vh;
+  }
+  .navbar-header{
+    display: block;
+  }
+  .menu{
+    display: none;
+  }
+
+  .btn{
+    width: 90% !important;
+    margin-left: 5%;
+    display: none;
+  }
+
+  .mobile-menu-icon{
+    display: block;
+    color: white;
+    font-size: 32px;
+    position: absolute;
+    right: 25px;
+    top: 25px;
+    z-index: 10000;
+  }
+}
 </style>
 <script>
 import COMMON from 'src/common.js'
 import Jquery from 'jquery'
 import Logo from 'src/components/generic/logo.vue'
+import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons'
 export default {
   mounted(){
   },
   data(){
     return {
-      common: COMMON
+      common: COMMON,
+      faBars: faBars,
+      faTimes: faTimes,
+      flag: false
     }
   },
   components: {
@@ -98,6 +155,15 @@ export default {
     },
     openExternal(url){
       window.open(url, '_BLANK')
+    },
+    toggle(){
+      if(this.flag === false){
+        this.flag = true
+        Jquery('.mobile-menu').css({display: 'block'})
+      }else{
+        this.flag = false
+        Jquery('.mobile-menu').css({display: 'none'})
+      }
     }
   }
 }

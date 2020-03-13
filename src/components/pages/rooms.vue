@@ -7,7 +7,9 @@
             <img :src="imageItem.url"  v-if="imageIndex === activeImage">
           </span>
           <span class="circle-icon">
-            <font-awesome-icon :icon="faCircle" v-for="(iconItem, iconIndex) in activeItem.images.length" :key="iconIndex" class="circle-item" :class="{'text-warning': activeImage === iconIndex}" @click="activeImage = iconIndex"></font-awesome-icon>
+            <span v-for="(imageItem, imageIndex) in activeItem.images" :key="imageIndex" class="image-menu-holder" @click="activeImage = imageIndex">
+              <img :src="imageItem.url" :class="{'active-image': activeImage === imageIndex}">
+            </span>
           </span>
         </div>
         <div class="details">
@@ -48,10 +50,9 @@
 }
 
 .item-menu{
-  position: absolute;
-  bottom: 50px;
-  left: 50px;
-  z-index: 1000;
+  width: 100%;
+  float: left;
+  margin-top: 25px;
 }
 
 .item-menu label:hover{
@@ -130,6 +131,28 @@ h5{
   color: white;
 }
 
+.image-menu-holder{
+  width: 100px;
+  height: 75px;
+  overflow: hidden;
+  margin-right: 10px;
+}
+
+.image-menu-holder img{
+  max-height: 75px;
+  max-width: 100px;
+  opacity: 0.5;
+}
+
+.image-menu-holder img:hover{
+  cursor: pointer;
+  opacity: 1;
+}
+
+.image-menu-holder .active-image{
+  opacity: 1;
+}
+
 .circle-item{
   margin-right: 5px;
 }
@@ -163,8 +186,8 @@ export default {
       window.open(url, '_BLANK')
     },
     setActive(index){
-      console.log(index)
       this.active = index
+      this.activeImage = 0
     }
   }
 }
