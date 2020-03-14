@@ -50,6 +50,10 @@ export default{
     title: 'Conference',
     image: require('assets/img/mezzolobby.jpg'),
     action: 'inquire_now'
+  }, {
+    title: 'Business Meetings',
+    image: require('assets/img/mezzolobby.jpg'),
+    action: 'inquire_now'
   }],
   testimonials: [{
     message: 'Increment has been a great help in optimizing my company\'s business processes. The team is very responsive and dynamic. Kudos!',
