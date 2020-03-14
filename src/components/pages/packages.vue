@@ -65,6 +65,12 @@ img{
   height: 10vh !important;
 }
 
+@media (max-width: 992px) {
+  .item{
+    width: 90%;
+  }
+}
+
 </style>
 <script>
 import COMMON from 'src/common.js'
