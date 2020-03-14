@@ -1,11 +1,29 @@
 <template>
   <div class="holder" id="packages">
-    <div class="item" v-for="(item, index) in common.packages" :key="index">
+    <div class="previous" v-if="previous !== null" @click="previousMethod()" :style="{
+      width: next !== null ? '11%' : '10%'
+    }">
       <span class="details">
-        <label class="title">{{item.title}}</label>
-        <button class="btn btn-warning" v-if="item.action === 'inquire_now'">INQUIRE NOW</button>
+        <button class="btn btn-warning" v-if="previous.action === 'inquire_now'" style="margin-top: 37vh;">PREVIOS</button>
       </span>
-      <img :src="item.image">
+      <img :src="previous.image">
+    </div>
+    <div class="item" v-for="(item, index) in 3" :key="index" :style="{
+      width: previous == null || next === null ? '30%' : '26%'
+    }">
+      <span class="details">
+        <label class="title">{{common.packages[activeStep + index].title}}</label>
+        <button class="btn btn-warning" v-if="common.packages[activeStep + index].action === 'inquire_now'">INQUIRE NOW</button>
+      </span>
+      <img :src="common.packages[activeStep + index].image">
+    </div>
+    <div class="next" v-if="next !== null" @click="nextMethod()" :style="{
+      width: previous !== null ? '11%' : '10%'
+    }">
+      <span class="details">
+        <button class="btn btn-warning" v-if="next.action === 'inquire_now'" style="margin-top: 37vh;">NEXT</button>
+      </span>
+      <img :src="next.image">
     </div>
   </div>
 </template>
@@ -21,10 +39,19 @@
 }
 
 .item{
-  width: 25%;
+  width: 26%;
   float: left;
-  height: 70vh;
+  min-height: 70vh;
   position: relative;
+  overflow: hidden;
+}
+
+.previous, .next{
+  float: left;
+  min-height: 70vh;
+  position: relative;
+  overflow: hidden;
+  width: 10%;
 }
 
 .details{
@@ -34,6 +61,7 @@
   height: 100%;
   z-index: 1000;
   text-align: center;
+  overflow: hidden;
 }
 
 .details .title{
@@ -76,15 +104,43 @@ img{
 import COMMON from 'src/common.js'
 export default {
   mounted(){
+    this.next = this.size > this.numberOfViews ? COMMON.packages[this.numberOfViews] : null
   },
   data(){
     return {
-      common: COMMON
+      common: COMMON,
+      activeStep: 0,
+      numberOfViews: 3,
+      size: COMMON.packages.length,
+      previous: null,
+      next: null
     }
   },
   methods: {
     openExternal(url){
       window.open(url, '_BLANK')
+    },
+    nextMethod(){
+      let total = this.activeStep + this.numberOfViews
+      if(total < this.size){
+        this.activeStep++
+        this.previous = COMMON.packages[this.activeStep - 1]
+        this.next = (this.activeStep + this.numberOfViews) < this.size ? COMMON.packages[this.activeStep + this.numberOfViews] : null
+      }else{
+        this.next = null
+      }
+    },
+    previousMethod(){
+      if(this.activeStep > 0){
+        this.activeStep--
+      }
+      if(this.activeStep === 0){
+        this.next = this.size > this.numberOfViews ? COMMON.packages[this.numberOfViews] : null
+        this.previous = null
+      }else{
+        this.previous = COMMON.packages[this.activeStep - 1]
+        this.next = (this.activeStep + this.numberOfViews) < this.size ? COMMON.packages[this.activeStep + this.numberOfViews] : null
+      }
     }
   }
 }
