@@ -152,6 +152,8 @@ export default {
       Jquery('html, body').animate({
         scrollTop: Jquery(div).offset().top
       }, 500)
+      this.flag = false
+      Jquery('.mobile-menu').css({display: 'none'})
     },
     openExternal(url){
       window.open(url, '_BLANK')

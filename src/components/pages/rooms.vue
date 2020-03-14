@@ -13,7 +13,12 @@
           </span>
         </div>
         <div class="details">
-          <h3 class="text-primary">{{activeItem.title}}</h3>
+          <span class="item-menu">
+            <label v-for="(counter, counterIndex) in common.rooms.length" :key="counterIndex" :class="{'bg-primary': active === counterIndex}" @click="setActive(counterIndex)">{{counter}}</label>
+          </span>
+          <h3 class="text-primary">
+            {{activeItem.title}}
+          </h3>
           <h5 class="text-primary">{{activeItem.description}}</h5>
           <ul v-if="activeItem.inclusions !== null">
             <li v-for="(iItem, iIndex) in activeItem.inclusions" :key="iIndex">
@@ -24,9 +29,6 @@
           <h3><b class="text-warning price">{{activeItem.price}}</b> / Night</h3>
           <p>{{activeItem.priceInclusions}}</p>
           <button class="btn btn-warning">BOOK NOW</button>
-          <span class="item-menu">
-            <label v-for="(counter, counterIndex) in common.rooms.length" :key="counterIndex" :class="{'bg-primary': active === counterIndex}" @click="setActive(counterIndex)">{{counter}}</label>
-          </span>
         </div>
       </div>
     </div>
@@ -52,7 +54,6 @@
 .item-menu{
   width: 100%;
   float: left;
-  margin-top: 25px;
 }
 
 .item-menu label:hover{
@@ -72,7 +73,7 @@
 }
 
 .holder{
-  height: 100vh;
+  min-height: 100vh;
   width: 100%;
   float: left;
   background: white;
@@ -98,7 +99,7 @@
 
 img{
   width: auto;
-  height: 100%;
+  height: 100vh;
 }
 
 .btn{
@@ -159,6 +160,30 @@ h5{
 
 .circle-item:hover{
   cursor: pointer;
+}
+@media (max-width: 992px) {
+  .image-holder{
+    height: 30vh;
+    width: 100%;
+  }
+  .circle-icon{
+    left: 10px;
+    bottom: 10px;
+  }
+  .image-menu-holder{
+    width: 75px;
+    height: 50px;
+  }
+
+  .image-menu-holder img{
+    max-width: 75px;
+    max-height: 50px;
+  }
+  .details{
+    min-height: 70vh;
+    width: 100%;
+    margin-top: 0px;
+  }
 }
 </style>
 <script>
