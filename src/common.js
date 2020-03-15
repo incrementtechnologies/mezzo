@@ -58,9 +58,44 @@ export default{
     position: 'President and CEO, Apple'
   }, {
     message: 'They are amazing.',
-    name: 'Hellow World!',
+    name: 'Steve Beda',
     country: 'Australia',
-    position: 'Microsoft'
+    position: 'Vice President in Technology, Microsoft'
+  }, {
+    message: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    name: 'John Cruz',
+    country: 'Singapore',
+    position: 'Chief Finance Officer, Hewlett-Packard Inc.'
+  },{
+    message: 'They are amazing.',
+    name: 'Steve Beda',
+    country: 'Australia',
+    position: 'Vice President in Technology, Microsoft'
+  }, {
+    message: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    name: 'John Cruz',
+    country: 'Singapore',
+    position: 'Chief Finance Officer, Hewlett-Packard Inc.'
+  },{
+    message: 'Increment has been a great help in optimizing my company\'s business processes. The team is very responsive and dynamic. Kudos!',
+    name: 'Apple Seed',
+    country: 'Philippines',
+    position: 'President and CEO, Apple'
+  }, {
+    message: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    name: 'John Cruz',
+    country: 'Singapore',
+    position: 'Chief Finance Officer, Hewlett-Packard Inc.'
+  },{
+    message: 'Increment has been a great help in optimizing my company\'s business processes. The team is very responsive and dynamic. Kudos!',
+    name: 'Apple Seed',
+    country: 'Philippines',
+    position: 'President and CEO, Apple'
+  },{
+    message: 'They are amazing.',
+    name: 'Steve Beda',
+    country: 'Australia',
+    position: 'Vice President in Technology, Microsoft'
   }],
   rooms: [{
     title: 'Deluxe Room',
