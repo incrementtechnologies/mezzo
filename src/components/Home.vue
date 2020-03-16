@@ -6,6 +6,7 @@
     <Packages></Packages>
     <Restaurant></Restaurant>
     <testimonials></testimonials>
+    <faq></faq>
     <Footer></Footer>
     <span class="return-to-top" @click="scrollTo()">
       <font-awesome-icon :icon="faChevronUp" style="font-size: 24px;" class="icon"></font-awesome-icon>
@@ -46,6 +47,7 @@ import Rooms from 'src/components/pages/rooms.vue'
 import Packages from 'src/components/pages/packages.vue'
 import Booking from 'src/components/pages/booking.vue'
 import Testimonials from 'src/components/pages/testimonials.vue'
+import Faq from 'src/components/pages/faq.vue'
 import { faChevronUp } from '@fortawesome/free-solid-svg-icons'
 import Jquery from 'jquery'
 export default {
@@ -65,13 +67,14 @@ export default {
     Rooms,
     Packages,
     Booking,
-    Testimonials
+    Testimonials,
+    Faq
   },
   methods: {
     scrollTo () {
       Jquery('html, body').animate({
         scrollTop: Jquery('#home').offset().top
-      }, 1000)
+      }, 500)
     }
   }
 }
