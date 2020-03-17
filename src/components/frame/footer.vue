@@ -19,7 +19,7 @@
         </li>
       </ul>
       <span class="copyright">
-        <label>Copyright @{{common.COPYRIGHT}}. All rights reserved. This site was made by <b @click="openExternal(common.APP_DEVELOPER_URL)">{{common.APP_DEVELOPER}}</b></label>
+        <label>Copyright {{common.APP_COPYRIGHT}}. All rights reserved. This site was made by <b @click="openExternal(common.APP_DEVELOPER_URL)">{{common.APP_DEVELOPER}}</b></label>
       </span>
     </div>
   </footer>
