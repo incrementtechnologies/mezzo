@@ -203,7 +203,7 @@ export default {
   },
   computed: {
     activeItem: function (){
-      return COMMON.rooms[this.active]
+      return COMMON.rooms.length > 0 ? COMMON.rooms[this.active] : null
     }
   },
   methods: {

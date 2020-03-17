@@ -20,8 +20,8 @@
 }
 
 img{
-  width: 250px;
-  height: auto;
+  width: auto;
+  height: 10vh;
   margin-top: 25px;
   margin-bottom: 10px;
 }
@@ -34,7 +34,6 @@ img{
 
 label{
   color: white;
-  width: 250px;
   font-size: 24px;
 }
 
@@ -43,6 +42,10 @@ label{
   padding-bottom: 5px;
   border-top: solid 1px white;
   border-bottom: solid 1px white;
+}
+
+.tagline{
+  font-size: 18px;
 }
 
 @media screen and (max-width: 992px){

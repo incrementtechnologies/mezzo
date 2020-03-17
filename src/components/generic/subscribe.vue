@@ -32,7 +32,7 @@ h2, p{
 
 .form-control{
   height: 50px !important;
-  width: 64% !important;
+  width: 54% !important;
   float: left !important;
   margin-right: 2%;
   margin-left: 2%;
@@ -40,7 +40,7 @@ h2, p{
 }
 
 .btn{
-  width: 30% !important;
+  width: 40% !important;
   float: left !important;
   height: 50px !important;
   margin-right: 2% !important;
