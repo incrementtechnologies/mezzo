@@ -105,6 +105,30 @@ export default {
           }
         }
       })
+      Jquery.get('https://spreadsheets.google.com/feeds/cells/1luFOWuvQh7PlT5Jy6xY0181qdWsJhhoQt_kQ9YnpKKk/3/public/values?alt=json', response => {
+        let entries = response.feed.entry
+        for (var i = 0; i < entries.length; i += 2) {
+          if(i > 1){
+            switch(entries[i].content.$t){
+              case 'app_name':
+                COMMON.APP_NAME = entries[i + 1].content.$t
+                break
+              case 'app_tagline':
+                COMMON.APP_TAGLINE = entries[i + 1].content.$t
+                break
+              case 'app_email':
+                COMMON.APP_EMAIL = entries[i + 1].content.$t
+                break
+              case 'app_phone_number':
+                COMMON.APP_PHONE_NUMBER = entries[i + 1].content.$t
+                break
+              case 'address':
+                COMMON.address = entries[i + 1].content.$t
+                break
+            }
+          }
+        }
+      })
       Jquery.get('https://spreadsheets.google.com/feeds/cells/1luFOWuvQh7PlT5Jy6xY0181qdWsJhhoQt_kQ9YnpKKk/4/public/values?alt=json', response => {
         let entries = response.feed.entry
         for (var i = 0; i < entries.length; i += 3) {
