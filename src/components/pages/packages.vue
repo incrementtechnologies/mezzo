@@ -1,5 +1,5 @@
 <template>
-  <div class="holder" id="packages">
+  <div class="holder" id="packages" v-if="common.packages.length > 1">
     <div class="previous" v-if="previous !== null" @click="previousMethod()" :style="{
       width: next !== null ? '11%' : '10%'
     }">

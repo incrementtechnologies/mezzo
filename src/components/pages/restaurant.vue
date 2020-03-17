@@ -237,7 +237,7 @@ export default {
   },
   computed: {
     activeItem: function (){
-      return COMMON.restaurants[this.active]
+      return COMMON.restaurants.length > 0 ? COMMON.restaurants[this.active] : null
     }
   },
   methods: {

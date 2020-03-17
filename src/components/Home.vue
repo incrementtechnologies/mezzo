@@ -50,8 +50,12 @@ import Testimonials from 'src/components/pages/testimonials.vue'
 import Faq from 'src/components/pages/faq.vue'
 import { faChevronUp } from '@fortawesome/free-solid-svg-icons'
 import Jquery from 'jquery'
+import COMMON from 'src/common.js'
 export default {
   name: 'HelloWorld',
+  mounted(){
+    this.retrieve()
+  },
   data(){
     return {
       faChevronUp: faChevronUp
@@ -75,6 +79,117 @@ export default {
       Jquery('html, body').animate({
         scrollTop: Jquery('#home').offset().top
       }, 500)
+    },
+    retrieve(){
+      Jquery.get('https://spreadsheets.google.com/feeds/cells/1luFOWuvQh7PlT5Jy6xY0181qdWsJhhoQt_kQ9YnpKKk/1/public/values?alt=json', response => {
+        let entries = response.feed.entry
+        for (var i = 0; i < entries.length; i += 2) {
+          if(i > 1){
+            let object = {
+              question: entries[i].content.$t,
+              answer: entries[i + 1].content.$t
+            }
+            COMMON.faq.push(object)
+          }
+        }
+      })
+      Jquery.get('https://spreadsheets.google.com/feeds/cells/1luFOWuvQh7PlT5Jy6xY0181qdWsJhhoQt_kQ9YnpKKk/2/public/values?alt=json', response => {
+        let entries = response.feed.entry
+        for (var i = 0; i < entries.length; i += 2) {
+          if(i > 1){
+            let object = {
+              title: entries[i].content.$t,
+              redirect: entries[i + 1].content.$t
+            }
+            COMMON.menus.push(object)
+          }
+        }
+      })
+      Jquery.get('https://spreadsheets.google.com/feeds/cells/1luFOWuvQh7PlT5Jy6xY0181qdWsJhhoQt_kQ9YnpKKk/4/public/values?alt=json', response => {
+        let entries = response.feed.entry
+        for (var i = 0; i < entries.length; i += 3) {
+          if(i > 2){
+            let object = {
+              title: entries[i].content.$t,
+              image: require('assets/img/' + entries[i + 1].content.$t),
+              action: entries[i + 2].content.$t
+            }
+            COMMON.packages.push(object)
+          }
+        }
+      })
+      Jquery.get('https://spreadsheets.google.com/feeds/cells/1luFOWuvQh7PlT5Jy6xY0181qdWsJhhoQt_kQ9YnpKKk/8/public/values?alt=json', response => {
+        let entries = response.feed.entry
+        for (var i = 0; i < entries.length; i += 4) {
+          if(i > 3){
+            let object = {
+              message: entries[i].content.$t,
+              name: entries[i + 1].content.$t,
+              country: entries[i + 2].content.$t,
+              position: entries[i + 3].content.$t
+            }
+            COMMON.testimonials.push(object)
+          }
+        }
+      })
+      Jquery.get('https://spreadsheets.google.com/feeds/cells/1luFOWuvQh7PlT5Jy6xY0181qdWsJhhoQt_kQ9YnpKKk/5/public/values?alt=json', response => {
+        let entries = response.feed.entry
+        for (var i = 0; i < entries.length; i += 6) {
+          if(i > 5){
+            let inclusions = entries[i + 2].content.$t
+            let tempInclusions = inclusions !== null ? inclusions.split(',') : null
+            let image = entries[i + 5].content.$t
+            let tempImages = image !== null ? image.split(',') : null
+            let imagesArray = tempImages.map((item) => {
+              return {
+                url: require('assets/img/' + item)
+              }
+            })
+            let inclusionsArray = tempInclusions.map(item => {
+              return {
+                title: item
+              }
+            })
+            let object = {
+              title: entries[i].content.$t,
+              description: entries[i + 1].content.$t,
+              inclusions: inclusionsArray,
+              price: entries[i + 3].content.$t,
+              priceInclusions: entries[i + 4].content.$t,
+              images: imagesArray
+            }
+            COMMON.rooms.push(object)
+          }
+        }
+      })
+      Jquery.get('https://spreadsheets.google.com/feeds/cells/1luFOWuvQh7PlT5Jy6xY0181qdWsJhhoQt_kQ9YnpKKk/6/public/values?alt=json', response => {
+        let entries = response.feed.entry
+        for (var i = 0; i < entries.length; i += 4) {
+          if(i > 3){
+            let inclusions = entries[i + 2].content.$t
+            let tempInclusions = inclusions !== null ? inclusions.split(',') : null
+            let image = entries[i + 3].content.$t
+            let tempImages = image !== null ? image.split(',') : null
+            let imagesArray = tempImages.map((item) => {
+              return {
+                url: require('assets/img/' + item)
+              }
+            })
+            let inclusionsArray = tempInclusions.map(item => {
+              return {
+                title: item
+              }
+            })
+            let object = {
+              title: entries[i].content.$t,
+              description: entries[i + 1].content.$t,
+              inclusions: inclusionsArray,
+              images: imagesArray
+            }
+            COMMON.restaurants.push(object)
+          }
+        }
+      })
     }
   }
 }
