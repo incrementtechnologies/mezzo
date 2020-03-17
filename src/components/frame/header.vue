@@ -116,7 +116,9 @@ ul li{
     margin-left: 5%;
     display: none;
   }
-
+  ul{
+    padding-top: 60px;
+  }
   .mobile-menu-icon{
     display: block;
     color: white;
