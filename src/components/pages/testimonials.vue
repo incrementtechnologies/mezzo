@@ -29,7 +29,8 @@
 <style lang="scss" scoped>
 @import "~assets/style/colors.scss";
 .holder{
-  height: 100vh;
+  min-height: 100vh;
+  overflow: hidden;
   width: 100%;
   float: left;
 }
@@ -40,6 +41,7 @@
 .platform-container{
   width: 100%;
   float: left;
+  margin-top: 30px;
 }
 .increment-title{
   margin-top: 50px;
@@ -73,7 +75,7 @@
   background-color: $primary;
 } 
 .message-holder{
-  margin-top: 250px;
+  margin-top: 230px;
 }
 .message-holder h1,.message-holder1 h1{
   color: $warning;
@@ -100,8 +102,18 @@
   .platform-container{
     margin-top: 50px;
   }
-  .message-holder{
+  .message-holder1, .message-holder{
     width: 90%;
+    min-height: 20vh;
+    margin-bottom: 10px;
+  }
+  .message-holder1{
+    position: relative;
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+  .message-holder{
+    margin-top: 10px;
   }
   .increment-title{
     margin-top: 50px;
