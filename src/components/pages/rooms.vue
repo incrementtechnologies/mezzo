@@ -5,6 +5,7 @@
         <div class="image-holder" v-if="activeItem.images !== null">
           <span v-for="(imageItem, imageIndex) in activeItem.images" :key="imageIndex">
             <img :src="imageItem.url"  v-if="imageIndex === activeImage">
+            <!-- <img :src="'http://localhost/php/mezzo_api/img/DSC_0365.jpg'"  v-if="imageIndex === activeImage"> -->
           </span>
           <span class="circle-icon">
             <span v-for="(imageItem, imageIndex) in activeItem.images" :key="imageIndex" class="image-menu-holder" @click="activeImage = imageIndex">
