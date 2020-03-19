@@ -31,7 +31,7 @@
 
         <button class="btn btn-warning">BOOK NOW</button>
     </div>
-    <img :src="require('assets/img/mezzolobby.jpg')" align="right">
+    <img :src="common.APP_HEADER_BACKGROUND" align="right">
   </div>
 </template>
 <style scoped lang="scss">

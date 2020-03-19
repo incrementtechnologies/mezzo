@@ -125,6 +125,9 @@ export default {
               case 'address':
                 COMMON.address = entries[i + 1].content.$t
                 break
+              case 'app_hearder_background':
+                COMMON.APP_HEADER_BACKGROUND = entries[i + 1].content.$t
+                break
             }
           }
         }
@@ -135,7 +138,7 @@ export default {
           if(i > 2){
             let object = {
               title: entries[i].content.$t,
-              image: require('assets/img/' + entries[i + 1].content.$t),
+              image: entries[i + 1].content.$t,
               action: entries[i + 2].content.$t
             }
             COMMON.packages.push(object)
@@ -166,7 +169,7 @@ export default {
             let tempImages = image !== null ? image.split(',') : null
             let imagesArray = tempImages.map((item) => {
               return {
-                url: require('assets/img/' + item)
+                url: item
               }
             })
             let inclusionsArray = tempInclusions.map(item => {
@@ -196,7 +199,7 @@ export default {
             let tempImages = image !== null ? image.split(',') : null
             let imagesArray = tempImages.map((item) => {
               return {
-                url: require('assets/img/' + item)
+                url: item
               }
             })
             let inclusionsArray = tempInclusions.map(item => {
