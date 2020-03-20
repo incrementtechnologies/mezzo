@@ -2,18 +2,19 @@
   <div class="holder" id="faq">
     <h1 class="text-center text-primary"><i>Frequently asked questions</i></h1>
     <input type="text" class="form-control"  v-model="searchValue" placeholder="Search question" />
-    <ul>
-      <li v-for="(item, index) in common.faq" :key="index">
+
+    <ul v-for="(item, index) in common.faq" :key="index">
+      <li v-if="item.question.indexOf(searchValue) != -1 || searchValue == null">
         <label class="title" @click="setSelectedIndex(index)">
           {{item.question}}
-
           <font-awesome-icon :icon="selectedIndex === index ? faChevronUp : faChevronDown" class="text-primary icon"></font-awesome-icon>
         </label>
         <p v-if="selectedIndex === index">
           {{item.answer}}
         </p>
-      </li>
+      </li>  
     </ul>
+
   </div>
 </template>
 <style lang="scss" scoped>
