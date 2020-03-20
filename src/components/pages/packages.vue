@@ -83,8 +83,8 @@
 img{
   position: absolute;
   top: 0;
-  height: 100%;
-  width: auto;
+  height: auto;
+  width: 100%;
   z-index: 0;
 }
 
