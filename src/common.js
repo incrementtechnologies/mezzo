@@ -9,6 +9,8 @@ export default{
   APP_PHONE_NUMBER: '0912345678',
   APP_HEADER_BACKGROUND: require('assets/img/mezzolobby.jpg'),
   address: 'F. Cabahug, Pres. Quezon St, Cebu City, 6000 Cebu',
+  api: 'http://revamp.mezzohotel.com/img/',
+  host: 'http://revamp.mezzohotel.com/',
   socialMedia: {
     facebook: 'https://www.facebook.com/mezzohotelcebu'
   },

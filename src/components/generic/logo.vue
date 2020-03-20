@@ -1,13 +1,13 @@
 <template>
   <div>
     <div class="holder">
-      <img :src="require('assets/img/logo.png')">
-      <span class="details">
+      <img :src="common.api + 'logo.png'">
+      <!-- <span class="details">
         <label class="title"><b>{{common.APP_NAME}}</b></label> 
       </span>
       <span class="details">
         <label class="tagline">{{common.APP_TAGLINE}}</label> 
-      </span>
+      </span> -->
     </div>
   </div>
 </template>
@@ -21,7 +21,7 @@
 
 img{
   width: auto;
-  height: 10vh;
+  height: 20vh;
   margin-top: 25px;
   margin-bottom: 10px;
 }

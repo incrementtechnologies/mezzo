@@ -118,7 +118,7 @@ ul{
   margin-top: 25px;
 }
 ul li{
-  margin-bottom: 25px;
+  margin-bottom: 5px;
 }
 
 h5{
