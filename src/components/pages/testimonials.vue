@@ -8,15 +8,15 @@
             <h1><font-awesome-icon :icon="faQuoteLeft" class="text-warning qoute-left-icon"></font-awesome-icon></h1>
             <p><i>{{item.message}}</i></p>
             <label class="gray"><b>{{item.name}}</b></label>
-            <label class="gray">{{item.position}}</label>
-            <label class="gray">{{item.country}}</label>
+            <label v-show = "item.position != quote" class="gray">{{item.position}}</label>
+            <label v-show = "item.country != quote" class="gray">{{item.country}}</label>
           </span>
           <span v-else class="text-center message-holder">
             <h1><font-awesome-icon :icon="faQuoteLeft" class="text-warning qoute-left-icon"></font-awesome-icon></h1>
             <p><i>{{item.message}}</i></p>
             <label class="text-primary"><b>{{item.name}}</b></label>
-            <label class="gray">{{item.position}}</label>
-            <label class="gray">{{item.country}}</label>
+            <label v-show = "item.position != quote" class="gray">{{item.position}}</label>
+            <label v-show = "item.country != quote" class="gray">{{item.country}}</label>
           </span>
         </span>
       </div>
@@ -132,7 +132,8 @@ export default {
       faCircle: faCircle,
       activeIcon: 0,
       reviewsBatchFrom: 0,
-      reviewsBatchThru: 2
+      reviewsBatchThru: 2,
+      quote: '\''
     }
   },
   methods: {
