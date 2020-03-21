@@ -4,25 +4,18 @@
     <div class="platform-container">
       <div v-for="(item, index) in common.testimonials" :key="index">
         <span v-if="index >= reviewsBatchFrom && index <= reviewsBatchThru && activeIcon == activeIcon">
-          <span v-if="(index + 1) % 3 == 1" class="text-center message-holder1">
+          <span v-bind:class="{'text-center message-holder':((index + 1) % 3 != 1), 'text-center message-holder1':((index + 1) % 3 == 1)}">
             <h1><font-awesome-icon :icon="faQuoteLeft" class="text-warning qoute-left-icon"></font-awesome-icon></h1>
             <p><i>{{item.message}}</i></p>
             <label class="gray"><b>{{item.name}}</b></label>
             <label v-show = "item.position != quote" class="gray">{{item.position}}</label>
             <label v-show = "item.country != quote" class="gray">{{item.country}}</label>
           </span>
-          <span v-else class="text-center message-holder">
-            <h1><font-awesome-icon :icon="faQuoteLeft" class="text-warning qoute-left-icon"></font-awesome-icon></h1>
-            <p><i>{{item.message}}</i></p>
-            <label class="text-primary"><b>{{item.name}}</b></label>
-            <label v-show = "item.position != quote" class="gray">{{item.position}}</label>
-            <label v-show = "item.country != quote" class="gray">{{item.country}}</label>
-          </span>
         </span>
       </div>
     </div>
-    <div class="text-center next-review">
-      <font-awesome-icon :icon="faCircle" v-for="(item, iconIndex) in 3" :key="iconIndex" :class="{'circle-icon-active': activeIcon===iconIndex}" @click="setActive(iconIndex)" class="circle-icon-inActive"></font-awesome-icon>
+    <div class="text-center dot-circle">
+      <font-awesome-icon :icon="faCircle" v-for="(item, iconIndex) in dotCirleCount" :key="iconIndex" :class="{'circle-icon-active': activeIcon===iconIndex}" @click="setActive(iconIndex)" class="circle-icon-inActive"></font-awesome-icon>
     </div>
   </div>
 </template>
@@ -67,6 +60,9 @@
   margin-right: 5%;
   margin-bottom: 50px;
 }
+.message-holder{
+  margin-top: 230px;
+}
 .message-holder1{
   left: 0;
   right: 0;
@@ -74,9 +70,6 @@
   position: absolute;
   background-color: $primary;
 } 
-.message-holder{
-  margin-top: 230px;
-}
 .message-holder h1,.message-holder1 h1{
   color: $warning;
   margin-top: 25px;
@@ -95,6 +88,10 @@
   margin-bottom: 0px;
   font-size: 12px;
 }
+.dot-circle{
+  margin-top: 600px;
+}
+
 .gray{
   color: $warning;
 }
@@ -136,12 +133,28 @@ export default {
       quote: '\''
     }
   },
+  computed: {
+    dotCirleCount: function (){
+      console.log("roundup"+Math.ceil(COMMON.testimonials.length/3));
+      return Math.ceil(COMMON.testimonials.length/3)
+    }
+  },
   methods: {
     openExternal(url){
       window.open(url, '_BLANK')
     },
     setActive(index){
       this.activeIcon = index
+      var i = 0
+      for (var x = -1; x < index; x++) {
+        console.log(i);
+        this.reviewsBatchFrom = i
+        this.reviewsBatchThru = this.reviewsBatchFrom + 2
+        i+=3
+      }
+/*
+this.reviewsBatchFrom = i
+        this.reviewsBatchFrom = this.reviewsBatchFrom + 2
       switch(this.activeIcon){
         case 0:
         this.reviewsBatchFrom = 0
@@ -159,32 +172,7 @@ export default {
         this.reviewsBatchFrom = 0
         this.reviewsBatchThru = 2
         break
-      }
-
-     /* if (this.activeIcon == 0){
-        this.reviewsBatchFrom = 0
-        this.reviewsBatchThru = 2
-      }else if (this.activeIcon == 1){
-        this.reviewsBatchFrom = 3
-        this.reviewsBatchThru = 5
-      }else if (this.activeIcon == 2){
-        this.reviewsBatchFrom = 6
-        this.reviewsBatchThru = 8
       }*/
-    //    setInterval(() => {
-    //   if(this.active < COMMON.restaurants.length){
-    //     this.active++
-    //     this.activeImage = 0
-    //     if(this.activeImage < this.activeItem.images.length){
-    //       this.activeImage++
-    //     }else{
-    //       this.activeImage = 0
-    //     }
-    //   }else{
-    //     this.active = 0
-    //     this.activeImage = 0
-    //   }
-    // }, 5000)
     }
   }
 }
