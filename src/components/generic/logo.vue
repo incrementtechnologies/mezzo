@@ -51,6 +51,7 @@ label{
 @media screen and (max-width: 992px){
   img{
     width: 30%;
+    height: auto;
   }
 
   label{

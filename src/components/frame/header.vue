@@ -7,6 +7,11 @@
         <a @click="scrollTo(item.redirect)" data-toggle="collapse" data-target="#myNavbar">{{item.title}}</a>
       </li>
     </ul>
+    <ul class="mobile-social-icon">
+      <li v-for="(item, index) in common.socialIcons" :key="index" @click="openExternal(item.url)">
+        <font-awesome-icon :icon="item.icon" class="social-icons"></font-awesome-icon>
+      </li>
+    </ul>
     <div class="menu">
       <ul>
         <li>
@@ -100,6 +105,29 @@ ul li{
   float: right;
 }
 
+.mobile-social-icon{
+  display: none;
+  width: 50px;
+  min-height: 50px;
+  position: fixed;
+  left: 10px;
+  top: 30vh;
+  z-index: 8000;
+  overflow-y: hidden;
+  padding-top: 0px;
+  background: white;
+}
+
+.mobile-social-icon li{
+  width: 100%;
+  float: left;
+  height: 50px;
+  color: $primary;
+  padding-left: 0px;
+  margin-left: 0px;
+  text-align: center;
+}
+
 @media screen and (max-width: 992px){
   .header{
     min-height: 10vh;
@@ -127,6 +155,16 @@ ul li{
     right: 25px;
     top: 25px;
     z-index: 10000;
+  }
+
+  .social-icons{
+    margin: 0px;
+    margin-left: 10px;
+    margin-top: 10px;
+  }
+
+  .mobile-social-icon{
+    display: block;
   }
 }
 </style>
