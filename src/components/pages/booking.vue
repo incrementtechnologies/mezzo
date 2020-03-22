@@ -29,7 +29,7 @@
           <option v-for="(item, index) in 20" :key="index" :value="item">{{item}}</option>
         </select>
 
-        <button class="btn btn-warning">BOOK NOW</button>
+        <button class="btn btn-warning" @click="openExternal(common.booking_link)">BOOK NOW</button>
     </div>
     <img :src="common.APP_HEADER_BACKGROUND" align="right">
   </div>
@@ -124,6 +124,9 @@ export default {
   methods: {
     beforeToday(date){
       return date < new Date()
+    },
+    openExternal(url){
+      window.open(url, '_BLANK')
     }
   }
 }

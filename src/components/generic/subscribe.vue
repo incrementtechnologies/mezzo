@@ -1,10 +1,14 @@
 <template>
   <div>
-    <div class="form-container">
+    <div class="form-container" v-if="successFlag === false">
       <h2 class="text-primary">Want to more promos?</h2>
       <p class="text-primary">Subscribe Now!</p>
-      <input type="email" class="form-control" placeholder="Enter your email">
-      <button class="btn btn-primary">SUBSCRIBE NOW</button>
+      <label class="text-danger" style="width: 100%; padding-left: 10px;" v-if="errorMessage !== null"><b>Opps! {{errorMessage}}</b></label>
+      <input type="email" class="form-control" placeholder="Enter your email" v-model="email">
+      <button class="btn btn-primary" @click="subscribe()">SUBSCRIBE NOW</button>
+    </div>
+    <div class="form-container" v-else>
+      <h2 class="text-primary" style="margin-bottom: 25px;">Thank you for subscribing!</h2>
     </div>
   </div>
 </template>
@@ -66,21 +70,53 @@ h2, p{
 </style>
 <script>
 import COMMON from 'src/common.js'
+import Jquery from 'jquery'
 export default {
   mounted(){
   },
   data(){
     return{
       common: COMMON,
-      checkInDate: null,
-      checkOutDate: null,
-      adult: '',
-      children: ''
+      email: null,
+      errorMessage: null,
+      successFlag: false
     }
   },
   components: {
   },
   methods: {
+    validateEmail(email){
+      let reg = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+.[a-zA-Z0-9]*$/
+      let reqWhiteSpace = /\s/
+      if(reqWhiteSpace.test(email)){
+        return false
+      }
+      if(reg.test(email) === false){
+        return false
+      }else{
+        return true
+      }
+    },
+    subscribe(){
+      if(this.email === null || this.email === ''){
+        this.errorMessage = 'Email address is required.'
+        return
+      }
+      if(this.validateEmail(this.email) === false){
+        this.errorMessage = 'Invalid email address'
+        return
+      }
+      Jquery.ajaxSetup({
+        headers: {
+          'Access-Control-Allow-Origin': '*'
+        }
+      })
+      Jquery.get(this.common.host + 'php/mailchimp.php?email=' + this.email, () => {
+        this.email = null
+        this.errorMessage = null
+        this.successFlag = true
+      });
+    }
   }
 }
 </script>

@@ -1,6 +1,6 @@
 <template>
   <div class="holder" id="faq">
-    <h1 class="text-center text-primary"><i>Frequently asked questions</i></h1>
+    <h1 class="text-center text-primary" style="margin-bottom: 25px;"><i>Frequently asked questions</i></h1>
     <input type="text" class="form-control"  v-model="searchValue" placeholder="Search question" />
     <ul>
       <li v-for="(item, index) in filteredQuestions" :key="index">
