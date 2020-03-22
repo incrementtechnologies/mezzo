@@ -2,9 +2,8 @@
   <div class="holder" id="faq">
     <h1 class="text-center text-primary"><i>Frequently asked questions</i></h1>
     <input type="text" class="form-control"  v-model="searchValue" placeholder="Search question" />
-
-    <ul v-for="(item, index) in common.faq" :key="index">
-      <li v-if="item.question.indexOf(searchValue) != -1 || searchValue == null">
+    <ul>
+      <li v-for="(item, index) in filteredQuestions" :key="index">
         <label class="title" @click="setSelectedIndex(index)">
           {{item.question}}
           <font-awesome-icon :icon="selectedIndex === index ? faChevronUp : faChevronDown" class="text-primary icon"></font-awesome-icon>
@@ -14,7 +13,6 @@
         </p>
       </li>  
     </ul>
-
   </div>
 </template>
 <style lang="scss" scoped>
@@ -98,6 +96,17 @@ export default {
       faChevronUp: faChevronUp,
       faChevronDown: faChevronDown,
       selectedIndex: null
+    }
+  },
+  computed: {
+    filteredQuestions() {
+      var filtered = COMMON.faq
+      if(this.searchValue){
+        filtered = filtered.filter(item => 
+          item.question.toLowerCase().includes(this.searchValue.toLowerCase())
+        )
+      }
+      return filtered
     }
   },
   methods: {
