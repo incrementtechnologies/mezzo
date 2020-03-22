@@ -14,7 +14,7 @@
         </li>
         <li v-for="(item, index) in common.menus" :key="index" class="basic-menu" @click="scrollTo(item.redirect)">{{item.title}}</li>
       </ul>
-      <button class="btn btn-warning">Book Your Room Now</button>
+      <button class="btn btn-warning" @click="openExternal(common.booking_link)">Book Your Room Now</button>
     </div>
   </div>
 </template>

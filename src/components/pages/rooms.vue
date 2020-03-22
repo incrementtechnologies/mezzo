@@ -29,7 +29,7 @@
           </ul>
           <h3><b class="text-warning price">{{activeItem.price}}</b> / Night</h3>
           <p>{{activeItem.priceInclusions}}</p>
-          <button class="btn btn-warning">BOOK NOW</button>
+          <button class="btn btn-warning" @click="openExternal(common.booking_link)">BOOK NOW</button>
         </div>
       </div>
     </div>

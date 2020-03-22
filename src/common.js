@@ -11,6 +11,7 @@ export default{
   address: 'F. Cabahug, Pres. Quezon St, Cebu City, 6000 Cebu',
   api: 'http://revamp.mezzohotel.com/img/',
   host: 'http://revamp.mezzohotel.com/',
+  booking_link: 'https://mezzohotel.com/managebooking.php',
   socialMedia: {
     facebook: 'https://www.facebook.com/mezzohotelcebu'
   },
