@@ -1,15 +1,26 @@
 <template>
   <div class="holder" id="packages" v-if="common.packages.length > 1">
-    <div class="previous" v-if="previous !== null" @click="previousMethod()" :style="{
+    
+    <!--<div class="previous" v-if="previous !== null" @click="previousMethod()" :style="{
       width: next !== null ? '11%' : '10%'
     }">
       <span class="details">
         <button class="btn btn-warning" v-if="previous.action === 'inquire_now'" style="margin-top: 37vh;">PREVIOS</button>
       </span>
       <img :src="previous.image">
+    </div>-->
+
+    <div class="previous" v-if="previousPackBtn" @click="previousMethod()" :style="{
+      width: nextPackBtn ? '11%' : '10%'
+    }">
+      <span class="details">
+        <button class="btn btn-warning" v-if="currentPrevPackBtn.action === 'inquire_now'" style="margin-top: 37vh;">PREV</button>
+      </span>
+      <img :src="currentPrevPackBtn.image">
     </div>
+    
     <div class="item" v-for="(item, index) in 3" :key="index" :style="{
-      width: previous == null || next === null ? '30%' : '26%'
+      width: !nextPackBtn || !previousPackBtn ? '30%' : '26%'
     }">
       <span class="details">
         <label class="title">{{common.packages[activeStep + index].title}}</label>
@@ -17,14 +28,25 @@
       </span>
       <img :src="common.packages[activeStep + index].image">
     </div>
-    <div class="next" v-if="next !== null" @click="nextMethod()" :style="{
+
+    <div class="next" v-if="nextPackBtn" @click="nextMethod()" :style="{
+      width: previousPackBtn ? '11%' : '10%'
+    }">
+      <span class="details">
+        <button class="btn btn-warning" v-if="currentNextPackBtn.action === 'inquire_now'" style="margin-top: 37vh;">NEXT</button>
+      </span>
+      <img :src="currentNextPackBtn.image">
+    </div>  
+    
+    <!--<div class="next" v-if="next !== null" @click="nextMethod()" :style="{
       width: previous !== null ? '11%' : '10%'
     }">
       <span class="details">
         <button class="btn btn-warning" v-if="next.action === 'inquire_now'" style="margin-top: 37vh;">NEXT</button>
       </span>
       <img :src="next.image">
-    </div>
+    </div>-->  
+
   </div>
 </template>
 <style scoped lang="scss">
@@ -113,24 +135,55 @@ export default {
       numberOfViews: 3,
       size: COMMON.packages.length,
       previous: null,
-      next: null
+      next: null,
+    }
+  },
+  computed: {
+    nextPackBtn: function (){
+      if(this.activeStep + 3 < COMMON.packages.length){
+        return true
+      }
+      else
+        return false
+    },
+    previousPackBtn: function (){
+      if(this.activeStep > 0){
+        return true
+      }
+      else
+        return false
+    },
+    currentPrevPackBtn: function (){
+      return COMMON.packages[this.activeStep - 1]
+    },
+    currentNextPackBtn: function (){
+      return COMMON.packages[this.activeStep + 3]
     }
   },
   methods: {
     openExternal(url){
       window.open(url, '_BLANK')
     },
-    nextMethod(){
+    /*nextMethod(){
       let total = this.activeStep + this.numberOfViews
       if(total < this.size){
         this.activeStep++
         this.previous = COMMON.packages[this.activeStep - 1]
         this.next = (this.activeStep + this.numberOfViews) < this.size ? COMMON.packages[this.activeStep + this.numberOfViews] : null
+        console.log(this.activeStep)
       }else{
         this.next = null
       }
+    }*/
+    nextMethod(){
+      this.activeStep++
+      console.log(this.activeStep)
     },
     previousMethod(){
+      this.activeStep--
+      console.log(this.activeStep)
+    }
+    /*previousMethod(){
       if(this.activeStep > 0){
         this.activeStep--
       }
@@ -141,7 +194,7 @@ export default {
         this.previous = COMMON.packages[this.activeStep - 1]
         this.next = (this.activeStep + this.numberOfViews) < this.size ? COMMON.packages[this.activeStep + this.numberOfViews] : null
       }
-    }
+    }*/
   }
 }
 </script>
