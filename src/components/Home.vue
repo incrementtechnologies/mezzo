@@ -169,7 +169,7 @@ export default {
             let tempImages = image !== null ? image.split(',') : null
             let imagesArray = tempImages.map((item) => {
               return {
-                url: item
+                url: COMMON.host + 'img/' + item
               }
             })
             let inclusionsArray = tempInclusions.map(item => {
@@ -199,7 +199,7 @@ export default {
             let tempImages = image !== null ? image.split(',') : null
             let imagesArray = tempImages.map((item) => {
               return {
-                url: item
+                url: COMMON.host + 'img/' + item
               }
             })
             let inclusionsArray = tempInclusions.map(item => {
