@@ -20,7 +20,7 @@
           <h3 class="text-primary">
             {{activeItem.title}}
           </h3>
-          <h5 class="text-primary">{{activeItem.description}}</h5>
+          <h5>{{activeItem.description}}</h5>
           <ul v-if="activeItem.inclusions !== null">
             <li v-for="(iItem, iIndex) in activeItem.inclusions" :key="iIndex">
               <font-awesome-icon :icon="faCheck" class="text-warning check-icon"></font-awesome-icon>
@@ -82,7 +82,7 @@
 }
 
 .details{
-  width: 40%;
+  width: 50%;
   float: left;
   height: 100%;
   text-align: justify;
@@ -93,13 +93,13 @@
 .image-holder{
   float: left;
   height: 100%;
-  width: 60%;
+  width: 50%;
   overflow: hidden;
   position: relative;
 }
 
 img{
-  width: auto;
+  width: 100%;
   height: 100vh;
 }
 
@@ -135,13 +135,13 @@ h5{
 
 .image-menu-holder{
   width: 100px;
-  height: 75px;
+  height: 100px;
   overflow: hidden;
   margin-right: 10px;
 }
 
 .image-menu-holder img{
-  max-height: 75px;
+  max-height: 100px;
   max-width: 100px;
   opacity: 0.5;
 }
@@ -164,21 +164,28 @@ h5{
 }
 @media (max-width: 992px) {
   .image-holder{
-    height: 30vh;
+    min-height: 30vh;
+    overflow-y: hidden;
     width: 100%;
   }
+
+  img{
+    width: 100%;
+    height: auto;
+  }
+
   .circle-icon{
     left: 10px;
     bottom: 10px;
   }
   .image-menu-holder{
     width: 75px;
-    height: 50px;
+    height: 75px;
   }
 
   .image-menu-holder img{
     max-width: 75px;
-    max-height: 50px;
+    max-height: 75px;
   }
   .details{
     min-height: 70vh;

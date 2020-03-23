@@ -83,7 +83,7 @@
 }
 
 .details{
-  width: 40%;
+  width: 50%;
   float: left;
   height: 100%;
   text-align: justify;
@@ -95,13 +95,13 @@
 .image-holder{
   float: left;
   height: 100%;
-  width: 60%;
+  width: 50%;
   overflow: hidden;
   position: relative;
 }
 
 img{
-  width: auto;
+  width: 100%;
   height: 100vh;
 }
 
@@ -137,7 +137,7 @@ h5{
 
 .image-menu-holder{
   width: 100px;
-  height: 75px;
+  height: 100px;
   overflow: hidden;
   margin-right: 10px;
 }
@@ -151,7 +151,7 @@ h5{
 }
 
 .image-menu-holder img{
-  max-height: 75px;
+  max-height: 100px;
   max-width: 100px;
   opacity: 0.5;
 }
@@ -175,8 +175,14 @@ h5{
 
 @media (max-width: 992px) {
   .image-holder{
-    height: 30vh;
+    min-height: 30vh;
+    overflow-y:hidden;
     width: 100%;
+  }
+
+  img{
+    width: 100%;
+    height: auto;
   }
   .circle-icon{
     left: 10px;
@@ -184,7 +190,7 @@ h5{
   }
   .image-menu-holder{
     width: 75px;
-    height: 50px;
+    height: 75px;
   }
 
   .image-holder-lg{
@@ -197,7 +203,7 @@ h5{
 
   .image-menu-holder img{
     max-width: 75px;
-    max-height: 50px;
+    max-height: 75px;
   }
   .details{
     min-height: 70vh;
