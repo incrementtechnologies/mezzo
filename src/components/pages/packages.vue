@@ -14,7 +14,7 @@
       width: nextPackBtn ? '11%' : '10%'
     }">
       <span class="details">
-        <button class="btn btn-warning" v-if="currentPrevPackBtn.action === 'inquire_now'" style="margin-top: 37vh;">PREV</button>
+        <button class="btn btn-warning" v-if="currentPrevPackBtn.action === 'inquire_now'">PREV</button>
       </span>
       <img :src="currentPrevPackBtn.image">
     </div>
@@ -33,7 +33,7 @@
       width: previousPackBtn ? '11%' : '10%'
     }">
       <span class="details">
-        <button class="btn btn-warning" v-if="currentNextPackBtn.action === 'inquire_now'" style="margin-top: 37vh;">NEXT</button>
+        <button class="btn btn-warning" v-if="currentNextPackBtn.action === 'inquire_now'">NEXT</button>
       </span>
       <img :src="currentNextPackBtn.image">
     </div>  
@@ -67,7 +67,6 @@
   position: relative;
   overflow: hidden;
 }
-
 .previous, .next{
   float: left;
   min-height: 70vh;
@@ -115,19 +114,46 @@ img{
   height: 10vh !important;
 }
 
+.next button, .previous button{
+  margin-top: 37vh;
+}
+
 @media (max-width: 992px) {
-  .item{
-    width: 90%;
+  .holder{
+    height: 70vh;
   }
+  img{
+    position: absolute;
+    height: 100%;
+    width: auto;
+  }
+  .item span label{
+    padding-top: 8vh;
+  }
+  .btn{
+    position: relative;
+    width: 75% !important;
+    height: 10vh !important;
+    font-size: 12px;
+    padding: 10px;
+  }
+  .next button, .previous button{
+    font-size: 10px !important;
+    margin-top: 30vh;
+    width: 90% !important;
+    padding: 0 !important;
+    height: 7vh !important;
+  }
+  
 }
 
 </style>
 <script>
 import COMMON from 'src/common.js'
 export default {
-  mounted(){
+  /*mounted(){
     this.next = this.size > this.numberOfViews ? COMMON.packages[this.numberOfViews] : null
-  },
+  },*/
   data(){
     return {
       common: COMMON,
@@ -140,7 +166,7 @@ export default {
   },
   computed: {
     nextPackBtn: function (){
-      if(this.activeStep + 3 < COMMON.packages.length){
+      if(this.activeStep + this.numberOfViews < COMMON.packages.length){
         return true
       }
       else
@@ -157,7 +183,7 @@ export default {
       return COMMON.packages[this.activeStep - 1]
     },
     currentNextPackBtn: function (){
-      return COMMON.packages[this.activeStep + 3]
+      return COMMON.packages[this.activeStep + this.numberOfViews]
     }
   },
   methods: {
@@ -177,11 +203,11 @@ export default {
     }*/
     nextMethod(){
       this.activeStep++
-      console.log(this.activeStep)
+      //console.log(this.activeStep)
     },
     previousMethod(){
       this.activeStep--
-      console.log(this.activeStep)
+      //console.log(this.activeStep)
     }
     /*previousMethod(){
       if(this.activeStep > 0){
