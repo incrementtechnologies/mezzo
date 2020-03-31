@@ -87,7 +87,8 @@ export default {
           if(i > 1){
             let object = {
               question: entries[i].content.$t,
-              answer: entries[i + 1].content.$t
+              answer: entries[i + 1].content.$t,
+              flag: false
             }
             COMMON.faq.push(object)
           }
