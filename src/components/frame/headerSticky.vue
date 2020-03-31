@@ -1,6 +1,6 @@
 <template>
   <div class="header" id="home">
-    <logo></logo>
+    <img :src="common.api + 'logo.png'" style="height: 6vh; width: auto; left: 10px; top: 2vh" class="mobile-menu-icon">
     <font-awesome-icon :icon="flag === false ? faBars : faTimes" class="mobile-menu-icon" @click="toggle()"></font-awesome-icon>
     <ul class="mobile-menu">
       <li v-for="(item, index) in common.menus" :key="index">
@@ -14,6 +14,9 @@
     </ul>
     <div class="menu">
       <ul>
+        <li>
+          <img :src="common.api + 'logo.png'" style="height: 6vh; width: auto;">
+        </li>
         <!-- <li>
           <font-awesome-icon v-for="(item, index) in common.socialIcons" :key="index" :icon="item.icon" @click="openExternal(item.url)" class="social-icons"></font-awesome-icon>
         </li> -->
@@ -28,10 +31,13 @@
 .header{
   width: 100%;
   float: left;
-  min-height: 40vh;
+  height: 10vh;
   background: $primary;
   border-bottom: solid 5px $warning;
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100000;
 }
 
 .mobile-menu-icon{
@@ -170,7 +176,6 @@ ul li{
 <script>
 import COMMON from 'src/common.js'
 import Jquery from 'jquery'
-import Logo from 'src/components/generic/logo.vue'
 import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons'
 export default {
   mounted(){
@@ -184,7 +189,6 @@ export default {
     }
   },
   components: {
-    Logo
   },
   methods: {
     scrollTo (div) {
