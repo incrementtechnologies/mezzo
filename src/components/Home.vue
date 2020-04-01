@@ -39,6 +39,12 @@
     padding-top: 0px;
   }
 }
+#header-menu{
+  display: block;
+}
+#sticky-header-menu{
+  display: none;
+}
 </style>
 <script>
 import Header from 'src/components/frame/header.vue'
@@ -58,7 +64,6 @@ export default {
   mounted(){
     this.retrieve()
     window.document.body.onscroll = function() {
-      console.log(Jquery(window).scrollTop())
       if(Jquery(window).scrollTop() > 50){
         Jquery('#header-menu').css({display: 'none'})
         Jquery('#sticky-header-menu').css({display: 'block'})
