@@ -1,15 +1,5 @@
 <template>
   <div class="holder" id="packages" v-if="common.packages.length > 1">
-    
-    <!--<div class="previous" v-if="previous !== null" @click="previousMethod()" :style="{
-      width: next !== null ? '11%' : '10%'
-    }">
-      <span class="details">
-        <button class="btn btn-warning" v-if="previous.action === 'inquire_now'" style="margin-top: 37vh;">PREVIOS</button>
-      </span>
-      <img :src="previous.image">
-    </div>-->
-
     <div class="previous" v-if="previousPackBtn" @click="previousMethod()" :style="{
       width: nextPackBtn ? '11%' : '10%'
     }">
@@ -24,7 +14,7 @@
     }">
       <span class="details">
         <label class="title">{{common.packages[activeStep + index].title}}</label>
-        <button class="btn btn-warning" v-if="common.packages[activeStep + index].action === 'inquire_now'">INQUIRE NOW</button>
+        <button class="btn btn-warning" v-if="common.packages[activeStep + index].action === 'inquire_now'" @click="inquireNow(activeStep + index)">INQUIRE NOW</button>
       </span>
       <img :src="common.packages[activeStep + index].image">
     </div>
@@ -37,16 +27,6 @@
       </span>
       <img :src="currentNextPackBtn.image">
     </div>  
-    
-    <!--<div class="next" v-if="next !== null" @click="nextMethod()" :style="{
-      width: previous !== null ? '11%' : '10%'
-    }">
-      <span class="details">
-        <button class="btn btn-warning" v-if="next.action === 'inquire_now'" style="margin-top: 37vh;">NEXT</button>
-      </span>
-      <img :src="next.image">
-    </div>-->  
-
   </div>
 </template>
 <style scoped lang="scss">
@@ -135,7 +115,7 @@ img{
     width: 75% !important;
     height: 10vh !important;
     font-size: 12px;
-    padding: 10px;
+    padding: 2.5px;
   }
   .next button, .previous button{
     font-size: 10px !important;
@@ -151,17 +131,14 @@ img{
 <script>
 import COMMON from 'src/common.js'
 export default {
-  /*mounted(){
-    this.next = this.size > this.numberOfViews ? COMMON.packages[this.numberOfViews] : null
-  },*/
-  data(){
+ data(){
     return {
       common: COMMON,
       activeStep: 0,
       numberOfViews: 3,
       size: COMMON.packages.length,
       previous: null,
-      next: null,
+      next: null
     }
   },
   computed: {
@@ -190,37 +167,15 @@ export default {
     openExternal(url){
       window.open(url, '_BLANK')
     },
-    /*nextMethod(){
-      let total = this.activeStep + this.numberOfViews
-      if(total < this.size){
-        this.activeStep++
-        this.previous = COMMON.packages[this.activeStep - 1]
-        this.next = (this.activeStep + this.numberOfViews) < this.size ? COMMON.packages[this.activeStep + this.numberOfViews] : null
-        console.log(this.activeStep)
-      }else{
-        this.next = null
-      }
-    }*/
     nextMethod(){
       this.activeStep++
-      //console.log(this.activeStep)
     },
     previousMethod(){
       this.activeStep--
-      //console.log(this.activeStep)
+    },
+    inquireNow(index){  
+      console.log('Inquire on '+COMMON.packages[index].title)
     }
-    /*previousMethod(){
-      if(this.activeStep > 0){
-        this.activeStep--
-      }
-      if(this.activeStep === 0){
-        this.next = this.size > this.numberOfViews ? COMMON.packages[this.numberOfViews] : null
-        this.previous = null
-      }else{
-        this.previous = COMMON.packages[this.activeStep - 1]
-        this.next = (this.activeStep + this.numberOfViews) < this.size ? COMMON.packages[this.activeStep + this.numberOfViews] : null
-      }
-    }*/
   }
 }
 </script>
