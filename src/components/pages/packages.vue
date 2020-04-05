@@ -14,7 +14,7 @@
     }">
       <span class="details">
         <label class="title">{{common.packages[activeStep + index].title}}</label>
-        <button class="btn btn-warning" v-if="common.packages[activeStep + index].action === 'inquire_now'" @click="inquireNow(activeStep + index)">INQUIRE NOW</button>
+        <button class="btn btn-warning" v-if="common.packages[activeStep + index].action === 'inquire_now'">INQUIRE NOW</button>
       </span>
       <img :src="common.packages[activeStep + index].image">
     </div>
@@ -172,9 +172,6 @@ export default {
     },
     previousMethod(){
       this.activeStep--
-    },
-    inquireNow(index){  
-      console.log('Inquire on '+COMMON.packages[index].title)
     }
   }
 }
