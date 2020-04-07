@@ -36,7 +36,6 @@
 }
 .increment-title{
   margin-top: 50px;
-  font-family: Romanesco;
 }
 .circle-icon-inActive{
   margin-left: 5px;
