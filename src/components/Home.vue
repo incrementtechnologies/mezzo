@@ -67,7 +67,7 @@ export default {
       if(Jquery(window).scrollTop() > 50){
         Jquery('#header-menu').css({display: 'none'})
         Jquery('#sticky-header-menu').css({display: 'block'})
-      }else{
+      }else if(Jquery(window).scrollTop() === 0){
         Jquery('#header-menu').css({display: 'block'})
         Jquery('#sticky-header-menu').css({display: 'none'})
       }
@@ -96,7 +96,7 @@ export default {
   methods: {
     scrollTo () {
       Jquery('html, body').animate({
-        scrollTop: Jquery('#home').offset().top
+        scrollTop: Jquery('#top-view').offset().top
       }, 500)
     },
     retrieve(){

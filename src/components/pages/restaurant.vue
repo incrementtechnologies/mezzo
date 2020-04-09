@@ -59,6 +59,11 @@
   margin-top: 25px;
 }
 
+.bg-warning{
+  background: $warning !important;
+  color: $white !important;
+}
+
 .item-menu label:hover{
   cursor: pointer;
 }

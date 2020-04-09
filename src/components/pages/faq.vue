@@ -39,6 +39,11 @@
   color: $primary !important;
 }
 
+.bg-warning{
+  background: $warning !important;
+  color: $white !important;
+}
+
 .form-control{
   height: 10vh !important;
   border: 0px !important;

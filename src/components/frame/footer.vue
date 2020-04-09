@@ -19,7 +19,10 @@
         </li>
       </ul>
       <span class="copyright">
-        <label>Copyright {{common.APP_COPYRIGHT}}. All rights reserved. This site was made by <b @click="openExternal(common.APP_DEVELOPER_URL)">{{common.APP_DEVELOPER}}</b></label>
+        <label>
+          <font-awesome-icon :icon="faCopyright" class="social-icons"></font-awesome-icon>
+          {{common.APP_COPYRIGHT}}. All rights reserved. This site was made by <b @click="openExternal(common.APP_DEVELOPER_URL)">{{common.APP_DEVELOPER}}</b>
+        </label>
       </span>
     </div>
   </footer>
@@ -94,12 +97,14 @@ ul li span{
 <script>
 import COMMON from 'src/common.js'
 import Logo from 'src/components/generic/logo.vue'
+import { faCopyright } from '@fortawesome/free-solid-svg-icons'
 export default {
   mounted(){
   },
   data(){
     return{
-      common: COMMON
+      common: COMMON,
+      faCopyright: faCopyright
     }
   },
   components: {
