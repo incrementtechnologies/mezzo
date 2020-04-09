@@ -1,6 +1,7 @@
 <template>
-  <div>
-    <Header></Header>
+  <div id="top-view">
+    <Header id="header-menu"></Header>
+    <HeaderSticky id="sticky-header-menu"></HeaderSticky>
     <booking></booking>
     <Rooms></Rooms>
     <Packages></Packages>
@@ -38,9 +39,16 @@
     padding-top: 0px;
   }
 }
+#header-menu{
+  display: block;
+}
+#sticky-header-menu{
+  display: none;
+}
 </style>
 <script>
 import Header from 'src/components/frame/header.vue'
+import HeaderSticky from 'src/components/frame/headerSticky.vue'
 import Footer from 'src/components/frame/footer.vue'
 import Restaurant from 'src/components/pages/restaurant.vue'
 import Rooms from 'src/components/pages/rooms.vue'
@@ -55,10 +63,20 @@ export default {
   name: 'HelloWorld',
   mounted(){
     this.retrieve()
+    window.document.body.onscroll = function() {
+      if(Jquery(window).scrollTop() > 50){
+        Jquery('#header-menu').css({display: 'none'})
+        Jquery('#sticky-header-menu').css({display: 'block'})
+      }else{
+        Jquery('#header-menu').css({display: 'block'})
+        Jquery('#sticky-header-menu').css({display: 'none'})
+      }
+    }
   },
   data(){
     return {
-      faChevronUp: faChevronUp
+      faChevronUp: faChevronUp,
+      scrollValue: 0
     }
   },
   props: {
@@ -72,7 +90,8 @@ export default {
     Packages,
     Booking,
     Testimonials,
-    Faq
+    Faq,
+    HeaderSticky
   },
   methods: {
     scrollTo () {
@@ -81,13 +100,20 @@ export default {
       }, 500)
     },
     retrieve(){
+      COMMON.faq = []
+      COMMON.menus = []
+      COMMON.packages = []
+      COMMON.testimonials = []
+      COMMON.rooms = []
+      COMMON.restaurants = []
       Jquery.get('https://spreadsheets.google.com/feeds/cells/1luFOWuvQh7PlT5Jy6xY0181qdWsJhhoQt_kQ9YnpKKk/1/public/values?alt=json', response => {
         let entries = response.feed.entry
         for (var i = 0; i < entries.length; i += 2) {
           if(i > 1){
             let object = {
               question: entries[i].content.$t,
-              answer: entries[i + 1].content.$t
+              answer: entries[i + 1].content.$t,
+              flag: false
             }
             COMMON.faq.push(object)
           }

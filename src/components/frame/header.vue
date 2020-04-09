@@ -14,9 +14,9 @@
     </ul>
     <div class="menu">
       <ul>
-        <li>
+        <!-- <li>
           <font-awesome-icon v-for="(item, index) in common.socialIcons" :key="index" :icon="item.icon" @click="openExternal(item.url)" class="social-icons"></font-awesome-icon>
-        </li>
+        </li> -->
         <li v-for="(item, index) in common.menus" :key="index" class="basic-menu" @click="scrollTo(item.redirect)">{{item.title}}</li>
       </ul>
       <button class="btn btn-warning" @click="openExternal(common.booking_link)">Book Your Room Now</button>
@@ -75,7 +75,7 @@ ul li{
   text-transform: UPPERCASE;
   padding-left: 20px;
   padding-right: 20px;
-  line-height: 50px;
+  line-height: 10vh;
 }
 
 .basic-menu:hover{
@@ -86,7 +86,7 @@ ul li{
 
 .btn{
   width: 20% !important;
-  height: 60px !important;
+  height: 10vh !important;
   color: white !important;
 }
 
@@ -106,12 +106,11 @@ ul li{
 }
 
 .mobile-social-icon{
-  display: none;
   width: 50px;
   min-height: 50px;
   position: fixed;
   left: 10px;
-  top: 30vh;
+  top: 40vh;
   z-index: 8000;
   overflow-y: hidden;
   padding-top: 0px;

@@ -1,18 +1,27 @@
 <template>
   <div class="holder" id="faq">
     <h1 class="text-center text-primary" style="margin-bottom: 25px;"><i>Frequently asked questions</i></h1>
-    <input type="text" class="form-control"  v-model="searchValue" placeholder="Search question" />
+    <input type="text" class="form-control bg-warning text-white" style="font-size: 24px;" v-model="searchValue" placeholder="Search question" />
     <ul>
       <li v-for="(item, index) in filteredQuestions" :key="index">
         <label class="title" @click="setSelectedIndex(index)">
+          <b>{{item.question}}</b>
+          <font-awesome-icon :icon="item.flag === true ? faChevronUp : faChevronDown" class="text-primary icon"></font-awesome-icon>
+    <!-- <h1 class="text-center text-primary"><i>Frequently asked questions</i></h1>
+    <input type="text" class="form-control"  v-model="searchValue" placeholder="Search question" />
+
+    <ul v-for="(item, index) in common.faq" :key="index">
+      <li v-if="item.question.indexOf(searchValue) != -1 || searchValue == null">
+        <label class="title" @click="setSelectedIndex(index)">
           {{item.question}}
-          <font-awesome-icon :icon="selectedIndex === index ? faChevronUp : faChevronDown" class="text-primary icon"></font-awesome-icon>
+          <font-awesome-icon :icon="selectedIndex === index ? faChevronUp : faChevronDown" class="text-primary icon"></font-awesome-icon> -->
         </label>
-        <p v-if="selectedIndex === index">
+        <p v-if="item.flag === true">
           {{item.answer}}
         </p>
       </li>  
     </ul>
+
   </div>
 </template>
 <style lang="scss" scoped>
@@ -32,7 +41,7 @@
 
 .form-control{
   height: 10vh !important;
-  border: solid 1px #eee !important;
+  border: 0px !important;
   width: 90% !important;
   margin-left: 5%;
   margin-right: 5%;
@@ -56,6 +65,12 @@ ul li{
   margin-top: 10px;
 }
 
+ul li:hover{
+  background: $warning !important;
+  color: white !important;
+  border: solid 1px $warning;
+  cursor: pointer;
+}
 .title{
   line-height: 50px;
   width: 100%;
@@ -68,11 +83,6 @@ ul li{
   float: right;
   font-size: 32px;
   margin-top: 10px;
-}
-
-.icon:hover{
-  cursor: pointer;
-  color: $warning !important;
 }
 
 p{
@@ -111,11 +121,7 @@ export default {
   },
   methods: {
     setSelectedIndex(index){
-      if(this.selectedIndex === index){
-        this.selectedIndex = null
-      }else{
-        this.selectedIndex = index
-      }
+      this.filteredQuestions[index].flag = !this.filteredQuestions[index].flag
     }
   }
 }
