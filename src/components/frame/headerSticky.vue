@@ -51,7 +51,7 @@
   top: 0;
   left: 0;
   display: none;
-  background: rgba(0, 0, 51, 0.6);
+  background: rgba(0, 0, 51, 0.9);
   width: 100%;
 }
 
