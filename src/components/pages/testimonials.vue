@@ -3,13 +3,20 @@
     <h1 class="text-center increment-title text-primary"><i>Reviews</i></h1>
     <div class="platform-container">
       <div v-for="(item, index) in common.testimonials" :key="index">
-          <span v-if="index >= reviewsBatchFrom && index <= reviewsBatchThru && activeIcon == activeIcon" v-bind:class="{'text-center message-holder':((index + 1) % 3 != 1), 'text-center message-holder1':((index + 1) % 3 == 1)}">
-            <h1><font-awesome-icon :icon="faQuoteLeft" class="text-warning qoute-left-icon"></font-awesome-icon></h1>
-            <p><i>{{item.message}}</i></p>
-            <label class="gray"><b>{{item.name}}</b></label>
-            <label v-show = "item.position != quote" class="gray">{{item.position}}</label>
-            <label v-show = "item.country != quote" class="gray">{{item.country}}</label>
-          </span>
+        <span v-if="index >= reviewsBatchFrom && index <= reviewsBatchThru && activeIcon == activeIcon" v-bind:class="{'text-center message-holder':((index + 1) % 3 != 1), 'text-center message-holder1':((index + 1) % 3 == 1)}">
+          <h1><font-awesome-icon :icon="faQuoteLeft" class="text-warning qoute-left-icon"></font-awesome-icon></h1>
+          <p><i>{{item.message}}</i></p>
+          <label class="gray"><b>{{item.name}}</b></label>
+          <label v-show = "item.position != quote" class="gray">{{item.position}}</label>
+          <label v-show = "item.country != quote" class="gray">{{item.country}}</label>
+        </span>
+        <span v-else class="text-center message-holder">
+          <h1><font-awesome-icon :icon="faQuoteLeft" class="text-warning qoute-left-icon"></font-awesome-icon></h1>
+          <p><i>{{item.message}}</i></p>
+          <label class="text-primary"><b>{{item.name}}</b></label>
+          <label v-show = "item.position != quote" class="gray">{{item.position}}</label>
+          <label v-show = "item.country != quote" class="gray">{{item.country}}</label>
+        </span>
       </div>
     </div>
     <div class="text-center dot-circle">

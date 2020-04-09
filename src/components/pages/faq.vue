@@ -7,12 +7,21 @@
         <label class="title" @click="setSelectedIndex(index)">
           <b>{{item.question}}</b>
           <font-awesome-icon :icon="item.flag === true ? faChevronUp : faChevronDown" class="text-primary icon"></font-awesome-icon>
+    <!-- <h1 class="text-center text-primary"><i>Frequently asked questions</i></h1>
+    <input type="text" class="form-control"  v-model="searchValue" placeholder="Search question" />
+
+    <ul v-for="(item, index) in common.faq" :key="index">
+      <li v-if="item.question.indexOf(searchValue) != -1 || searchValue == null">
+        <label class="title" @click="setSelectedIndex(index)">
+          {{item.question}}
+          <font-awesome-icon :icon="selectedIndex === index ? faChevronUp : faChevronDown" class="text-primary icon"></font-awesome-icon> -->
         </label>
         <p v-if="item.flag === true">
           {{item.answer}}
         </p>
       </li>  
     </ul>
+
   </div>
 </template>
 <style lang="scss" scoped>
@@ -59,7 +68,7 @@ ul li{
 ul li:hover{
   background: $warning !important;
   color: white !important;
-  border: 0px !important;
+  border: solid 1px $warning;
   cursor: pointer;
 }
 .title{
