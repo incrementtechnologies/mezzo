@@ -1,8 +1,8 @@
 <template>
   <div>
     <div class="form-container" v-if="successFlag === false">
-      <h2 class="text-primary">Do you want to get more promos?</h2>
-      <p class="text-primary">Subscribe Now!</p>
+      <h2 class="text-primary">Want to know more about our latest offers?</h2>
+      <p class="text-primary">Subscribe</p>
       <label class="text-danger" style="width: 100%; padding-left: 10px;" v-if="errorMessage !== null"><b>Opps! {{errorMessage}}</b></label>
       <input type="email" class="form-control" placeholder="Enter your email" v-model="email">
       <button class="btn btn-primary" @click="subscribe()">SUBSCRIBE NOW</button>
