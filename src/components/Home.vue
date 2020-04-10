@@ -67,7 +67,6 @@ export default {
       var height = Jquery(window).height()
       var scrollTop = Jquery(window).scrollTop()
       var vScroll = parseInt((scrollTop / height) * 100)
-      console.log(height + '/' + scrollTop + '/' + vScroll)
       if(vScroll > 40){
         Jquery('#sticky-header-menu').css({display: 'block'})
       }else if(Jquery(window).scrollTop() <= 40){
