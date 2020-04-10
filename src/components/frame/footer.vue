@@ -37,7 +37,7 @@
         </label>
       </span>
     </div>
-    <GoogleMapModal ref="mapModal" :place_data="places"></GoogleMapModal>
+    <GoogleMapModal ref="mapModal" :place_data="places" :style="style"></GoogleMapModal>
   </footer>
 </template>
 <style scoped lang="scss">
@@ -127,7 +127,10 @@ export default {
         route: 'Mezzo Hotel',
         locality: 'F. Cabahug, Pres. Quezon St, Cebu City, 6000 Cebu',
         country: 'Philippines'
-      }]
+      }],
+      style: {
+        'margin-top': '10vh !important;'
+      }
     }
   },
   components: {
