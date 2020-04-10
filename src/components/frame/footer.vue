@@ -5,24 +5,28 @@
       <ul>
         <li>
           <span>Phone</span>
-          <a :href="'tel:' + common.APP_PHONE_NUMBER" style="color: #fff;">{{common.APP_PHONE_NUMBER}}</a>
+          <b><a :href="'tel:' + common.APP_PHONE_NUMBER" style="color: #fff;">{{common.APP_PHONE_NUMBER}}</a></b>
         </li>
 
         <li>
           <span>Address</span>
           <span @click="$refs.mapModal.showModal()">
-            <font-awesome-icon :icon="faMapMarker" class="social-icons"></font-awesome-icon>
-            {{common.address}}
+            <b>
+              <font-awesome-icon :icon="faMapMarker" class="social-icons"></font-awesome-icon>
+              {{common.address}}
+            </b>
           </span>
         </li>
 
         <li>
           <span>E-mail</span>
           <span>
-            <a :href="'mailto:' + common.APP_EMAIL + '?Subject=INQUIRE'" target="_top" style="color: #fff;">
-              <font-awesome-icon :icon="faEnvelope" class="social-icons"></font-awesome-icon>
-              {{common.APP_EMAIL}}
-            </a>
+            <b>
+              <a :href="'mailto:' + common.APP_EMAIL + '?Subject=INQUIRE'" target="_top" style="color: #fff;">
+                <font-awesome-icon :icon="faEnvelope" class="social-icons"></font-awesome-icon>
+                {{common.APP_EMAIL}}
+              </a>
+            </b>
           </span>
         </li>
       </ul>

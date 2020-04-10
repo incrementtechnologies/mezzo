@@ -188,8 +188,9 @@ export default {
   },
   methods: {
     scrollTo (div) {
+      var height = Jquery(window).height()
       Jquery('html, body').animate({
-        scrollTop: Jquery(div).offset().top
+        scrollTop: Jquery(div).offset().top - parseInt(height * 0.1)
       }, 500)
       this.flag = false
       Jquery('.mobile-menu').css({display: 'none'})

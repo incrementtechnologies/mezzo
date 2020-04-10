@@ -64,11 +64,13 @@ export default {
   mounted(){
     this.retrieve()
     window.document.body.onscroll = function() {
-      if(Jquery(window).scrollTop() > 50){
-        Jquery('#header-menu').css({display: 'none'})
+      var height = Jquery(window).height()
+      var scrollTop = Jquery(window).scrollTop()
+      var vScroll = parseInt((scrollTop / height) * 100)
+      console.log(height + '/' + scrollTop + '/' + vScroll)
+      if(vScroll > 40){
         Jquery('#sticky-header-menu').css({display: 'block'})
-      }else if(Jquery(window).scrollTop() === 0){
-        Jquery('#header-menu').css({display: 'block'})
+      }else if(Jquery(window).scrollTop() <= 40){
         Jquery('#sticky-header-menu').css({display: 'none'})
       }
     }
