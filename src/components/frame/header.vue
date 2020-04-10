@@ -59,9 +59,10 @@
 
 .menu{
   position: absolute;
-  bottom: 0;
-  left: 0;
   width: 100%;
+  left: 0%;
+  background: $primary;
+  height: 10vh;
 }
 
 ul{
@@ -188,6 +189,16 @@ import Logo from 'src/components/generic/logo.vue'
 import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons'
 export default {
   mounted(){
+    // window.document.body.onscroll = function() {
+    //   var height = Jquery(window).height()
+    //   var scrollTop = Jquery(window).scrollTop()
+    //   var vScroll = parseInt((scrollTop / height) * 100)
+    //   if(vScroll > 40){
+    //     Jquery('.menu').css({position: 'absolute', 'z-index': 0})
+    //   }else{
+    //     Jquery('.menu').css({position: 'fixed', 'z-index': 10000})
+    //   }
+    // }
   },
   data(){
     return {

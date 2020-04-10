@@ -5,7 +5,12 @@
       <ul>
         <li>
           <span>Phone</span>
-          <b><a :href="'tel:' + common.APP_PHONE_NUMBER" style="color: #fff;">{{common.APP_PHONE_NUMBER}}</a></b>
+          <b>
+            <a :href="'tel:' + common.APP_PHONE_NUMBER" style="color: #fff;">
+              <font-awesome-icon :icon="faPhoneAlt" class="social-icons"></font-awesome-icon>
+              {{common.APP_PHONE_NUMBER}}
+            </a>
+          </b>
         </li>
 
         <li>
@@ -110,7 +115,7 @@ ul li span{
 <script>
 import COMMON from 'src/common.js'
 import Logo from 'src/components/generic/logo.vue'
-import { faCopyright, faEnvelope, faMapMarker } from '@fortawesome/free-solid-svg-icons'
+import { faCopyright, faEnvelope, faMapMarker, faPhoneAlt } from '@fortawesome/free-solid-svg-icons'
 import GoogleMapModal from 'src/components/increment/generic/map/ModalGeneric.vue'
 export default {
   mounted(){
@@ -121,6 +126,7 @@ export default {
       faCopyright: faCopyright,
       faEnvelope: faEnvelope,
       faMapMarker: faMapMarker,
+      faPhoneAlt: faPhoneAlt,
       places: [{
         longitude: 123.913968,
         latitude: 10.321886,

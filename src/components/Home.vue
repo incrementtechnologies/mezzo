@@ -1,7 +1,7 @@
 <template>
   <div id="top-view">
     <Header id="header-menu"></Header>
-    <HeaderSticky id="sticky-header-menu"></HeaderSticky>
+    <!-- <HeaderSticky id="sticky-header-menu"></HeaderSticky> -->
     <booking></booking>
     <Rooms></Rooms>
     <Packages></Packages>
@@ -48,7 +48,7 @@
 </style>
 <script>
 import Header from 'src/components/frame/header.vue'
-import HeaderSticky from 'src/components/frame/headerSticky.vue'
+// import HeaderSticky from 'src/components/frame/headerSticky.vue'
 import Footer from 'src/components/frame/footer.vue'
 import Restaurant from 'src/components/pages/restaurant.vue'
 import Rooms from 'src/components/pages/rooms.vue'
@@ -67,10 +67,20 @@ export default {
       var height = Jquery(window).height()
       var scrollTop = Jquery(window).scrollTop()
       var vScroll = parseInt((scrollTop / height) * 100)
-      if(vScroll > 40){
-        Jquery('#sticky-header-menu').css({display: 'block'})
-      }else if(Jquery(window).scrollTop() <= 40){
-        Jquery('#sticky-header-menu').css({display: 'none'})
+      if(vScroll >= 30){
+        Jquery('.menu').css({
+          position: 'fixed',
+          'z-index': 10000,
+          top: '0%',
+          bottom: 'auto'
+        })
+      }else{
+        Jquery('.menu').css({
+          position: 'absolute',
+          'z-index': 0,
+          bottom: '0%',
+          top: 'auto'
+        })
       }
     }
   },
@@ -91,8 +101,8 @@ export default {
     Packages,
     Booking,
     Testimonials,
-    Faq,
-    HeaderSticky
+    Faq
+    // HeaderSticky
   },
   methods: {
     scrollTo () {
