@@ -1,6 +1,7 @@
 <template>
   <div class="header" id="home">
-    <logo></logo>
+    <img :src="common.api + 'logo.png'" style="height: 6vh; width: auto; left: 10px; top: 2vh" class="mobile-menu-icon">
+    <logo class="hide-on-mobile"></logo>
     <font-awesome-icon :icon="flag === false ? faBars : faTimes" class="mobile-menu-icon" @click="toggle()"></font-awesome-icon>
     <ul class="mobile-menu">
       <li v-for="(item, index) in common.menus" :key="index">
@@ -138,9 +139,17 @@ ul li{
   padding-right: 0px;
 }
 
+.hide-on-mobile{
+  display: block;
+}
+
 @media screen and (max-width: 992px){
   .header{
     min-height: 10vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10000;
   }
   .navbar-header{
     display: block;
@@ -160,10 +169,10 @@ ul li{
   .mobile-menu-icon{
     display: block;
     color: white;
-    font-size: 32px;
+    font-size: 5vh;
     position: absolute;
     right: 25px;
-    top: 25px;
+    top: 2vh;
     z-index: 10000;
   }
 
@@ -176,6 +185,10 @@ ul li{
 
   .mobile-social-icon{
     display: block;
+  }
+
+  .hide-on-mobile{
+    display: none;
   }
 }
 </style>
