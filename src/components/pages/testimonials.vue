@@ -1,6 +1,6 @@
 <template>
   <div class="holder" id="testimonials">
-    <h1 class="text-center increment-title text-primary"><i>Reviews</i></h1>
+    <!--<h1 class="text-center increment-title text-primary">Reviews</h1>-->
     <div class="platform-container">
       <div v-for="(item, index) in common.testimonials" :key="index">
         <span v-if="index >= reviewsBatchFrom && index <= reviewsBatchThru && activeIcon == activeIcon" v-bind:class="{'text-center message-holder':((index + 1) % 3 != 1), 'text-center message-holder1':((index + 1) % 3 == 1)}">
@@ -32,7 +32,7 @@
 .platform-container{
   width: 100%;
   float: left;
-  margin-top: 30px;
+  margin-top: 80px;
 }
 .increment-title{
   margin-top: 50px;
@@ -58,7 +58,7 @@
   margin-bottom: 50px;
 }
 .message-holder{
-  margin-top: 230px;
+  margin-top: 280px;
 }
 .message-holder1{
   left: 0;

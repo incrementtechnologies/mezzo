@@ -1,20 +1,15 @@
 <template>
   <div class="holder" id="faq">
-    <h1 class="text-center text-primary" style="margin-bottom: 25px;"><i>Frequently asked questions</i></h1>
-    <input type="text" class="form-control bg-warning text-white" style="font-size: 24px;" v-model="searchValue" placeholder="Search question" />
+    <!--<h1 class="text-center text-primary" style="margin-bottom: 25px;">Frequently asked questions</h1>-->
+      <div class="search">  
+        <span><font-awesome-icon :icon="faSearch" class="searchIcon"></font-awesome-icon></span>
+        <input type="text" class="form-control bg-warning text-white" style="font-size: 24px;" v-model="searchValue" placeholder="Type your question" results="0"/>
+      </div>
     <ul>
       <li v-for="(item, index) in filteredQuestions" :key="index">
         <label class="title" @click="setSelectedIndex(index)">
           <b>{{item.question}}</b>
           <font-awesome-icon :icon="item.flag === true ? faChevronUp : faChevronDown" class="text-primary icon"></font-awesome-icon>
-    <!-- <h1 class="text-center text-primary"><i>Frequently asked questions</i></h1>
-    <input type="text" class="form-control"  v-model="searchValue" placeholder="Search question" />
-
-    <ul v-for="(item, index) in common.faq" :key="index">
-      <li v-if="item.question.indexOf(searchValue) != -1 || searchValue == null">
-        <label class="title" @click="setSelectedIndex(index)">
-          {{item.question}}
-          <font-awesome-icon :icon="selectedIndex === index ? faChevronUp : faChevronDown" class="text-primary icon"></font-awesome-icon> -->
         </label>
         <p v-if="item.flag === true">
           {{item.answer}}
@@ -32,6 +27,7 @@
   float: left;
   overflow: hidden;
   position: relative;
+  margin-top: 10px;
   margin-bottom: 50px;
 }
 
@@ -54,19 +50,18 @@
 }
 ul{
   width: 90%;
-  margin-right: 5%;
-  margin-left: 5%;
+  margin-right: 23%;
+  margin-left: 23%;
   margin-top: 25px;
 }
 ul li{
-  width: 49%;
-  margin-right: 1%;
+  width: 60% !important;
   float: left;
   padding-left: 25px;
   padding-right: 25px;
   min-height: 50px;
-  border-radius: 5px;
-  border: solid 1px $primary;
+  /*border-radius: 5px;*/
+  border-bottom: solid 1.5px #D3D3D3;
   margin-top: 10px;
 }
 
@@ -93,6 +88,7 @@ ul li:hover{
 p{
   text-align: justify;
 }
+
 @media (max-width: 992px) {
   ul li{
     width: 100%;
@@ -102,7 +98,7 @@ p{
 </style>
 <script>
 import COMMON from 'src/common.js'
-import { faChevronUp, faChevronDown } from '@fortawesome/free-solid-svg-icons'
+import { faChevronUp, faChevronDown, faSearch } from '@fortawesome/free-solid-svg-icons'
 export default {
   data () {
     return {
@@ -110,6 +106,7 @@ export default {
       searchValue: null,
       faChevronUp: faChevronUp,
       faChevronDown: faChevronDown,
+      faSearch: faSearch,
       selectedIndex: null
     }
   },
