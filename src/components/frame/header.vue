@@ -14,9 +14,6 @@
     </ul>
     <div class="menu">
       <ul>
-        <!-- <li>
-          <font-awesome-icon v-for="(item, index) in common.socialIcons" :key="index" :icon="item.icon" @click="openExternal(item.url)" class="social-icons"></font-awesome-icon>
-        </li> -->
         <li v-for="(item, index) in common.menus" :key="index" class="basic-menu" @click="scrollTo(item.redirect)">{{item.title}}</li>
       </ul>
       <span class="social-icons-holder">
