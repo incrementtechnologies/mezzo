@@ -7,11 +7,11 @@
         <a @click="scrollTo(item.redirect)" data-toggle="collapse" data-target="#myNavbar">{{item.title}}</a>
       </li>
     </ul>
-    <ul class="mobile-social-icon">
+    <!-- <ul class="mobile-social-icon">
       <li v-for="(item, index) in common.socialIcons" :key="index" @click="openExternal(item.url)">
         <font-awesome-icon :icon="item.icon" class="social-icons"></font-awesome-icon>
       </li>
-    </ul>
+    </ul> -->
     <div class="menu">
       <ul>
         <!-- <li>
@@ -19,6 +19,9 @@
         </li> -->
         <li v-for="(item, index) in common.menus" :key="index" class="basic-menu" @click="scrollTo(item.redirect)">{{item.title}}</li>
       </ul>
+      <span class="social-icons-holder">
+        <font-awesome-icon :icon="item.icon" class="social-icons" v-for="(item, index) in common.socialIcons" :key="index" @click="openExternal(item.url)"></font-awesome-icon>
+      </span>
       <button class="btn btn-warning" @click="openExternal(common.booking_link)">BOOK A ROOM</button>
     </div>
   </div>
@@ -67,7 +70,7 @@ ul{
   color: white;
   list-style: none;
   float: left;
-  width: 80%;
+  width: 70%;
 }
 
 ul li{
@@ -90,9 +93,17 @@ ul li{
   color: white !important;
 }
 
+.social-icons-holder{
+  width: 10%;
+  float: left;
+  margin-top: 2vh;
+}
+
 .social-icons{
   margin: 5px;
-  font-size: 200%;
+  font-size: 5vh;
+  color: #fff;
+  float: right;
 }
 
 .social-icons:hover{
