@@ -5,17 +5,25 @@
       <ul>
         <li>
           <span>Phone</span>
-          <span>{{common.APP_PHONE_NUMBER}}</span>
+          <a :href="'tel:' + common.APP_PHONE_NUMBER" style="color: #fff;">{{common.APP_PHONE_NUMBER}}</a>
         </li>
 
         <li>
           <span>Address</span>
-          <span>{{common.address}}</span>
+          <span @click="$refs.mapModal.showModal()">
+            <font-awesome-icon :icon="faMapMarker" class="social-icons"></font-awesome-icon>
+            {{common.address}}
+          </span>
         </li>
 
         <li>
-          <span>Email</span>
-          <span>{{common.APP_EMAIL}}</span>
+          <span>E-mail</span>
+          <span>
+            <a :href="'mailto:' + common.APP_EMAIL + '?Subject=INQUIRE'" target="_top" style="color: #fff;">
+              <font-awesome-icon :icon="faEnvelope" class="social-icons"></font-awesome-icon>
+              {{common.APP_EMAIL}}
+            </a>
+          </span>
         </li>
       </ul>
       <span class="copyright">
@@ -25,6 +33,7 @@
         </label>
       </span>
     </div>
+    <GoogleMapModal ref="mapModal" :place_data="places"></GoogleMapModal>
   </footer>
 </template>
 <style scoped lang="scss">
@@ -97,18 +106,29 @@ ul li span{
 <script>
 import COMMON from 'src/common.js'
 import Logo from 'src/components/generic/logo.vue'
-import { faCopyright } from '@fortawesome/free-solid-svg-icons'
+import { faCopyright, faEnvelope, faMapMarker } from '@fortawesome/free-solid-svg-icons'
+import GoogleMapModal from 'src/components/increment/generic/map/ModalGeneric.vue'
 export default {
   mounted(){
   },
   data(){
     return{
       common: COMMON,
-      faCopyright: faCopyright
+      faCopyright: faCopyright,
+      faEnvelope: faEnvelope,
+      faMapMarker: faMapMarker,
+      places: [{
+        longitude: 123.913968,
+        latitude: 10.321886,
+        route: 'Mezzo Hotel',
+        locality: 'F. Cabahug, Pres. Quezon St, Cebu City, 6000 Cebu',
+        country: 'Philippines'
+      }]
     }
   },
   components: {
-    Logo
+    Logo,
+    GoogleMapModal
   },
   methods: {
     openExternal(url){

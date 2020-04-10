@@ -20,7 +20,7 @@
   position: fixed;
   bottom: 10px;
   left: 10px;
-  background: $primary;
+  background: $warning;
   color: white;
   height: 50px;
   width: 50px;
@@ -34,7 +34,7 @@
 }
 .return-to-top:hover{
   cursor: pointer;
-  color: $warning;
+  color: $primary;
   .icon{
     padding-top: 0px;
   }

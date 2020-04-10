@@ -29,7 +29,7 @@
           <option v-for="(item, index) in 20" :key="index" :value="item">{{item}}</option>
         </select>
 
-        <button class="btn btn-warning" @click="openExternal(common.booking_link)">BOOK NOW</button>
+        <button class="btn btn-warning" @click="openExternal(common.booking_link)">BOOK A ROOM</button>
     </div>
     <img :src="common.APP_HEADER_BACKGROUND" align="right">
   </div>
