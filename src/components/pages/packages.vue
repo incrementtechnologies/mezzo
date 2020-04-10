@@ -4,7 +4,7 @@
       width: nextPackBtn ? '11%' : '10%'
     }">
       <span class="details">
-        <button class="btn btn-warning" v-if="currentPrevPackBtn.action === 'inquire_now'">PREV</button>
+        <button class="btn btn-warning" v-if="currentPrevPackBtn.action === 'inquire_now'"><font-awesome-icon :icon="faAngleLeft"></font-awesome-icon></button>
       </span>
       <img :src="currentPrevPackBtn.image">
     </div>
@@ -14,7 +14,7 @@
     }">
       <span class="details">
         <label class="title">{{common.packages[activeStep + index].title}}</label>
-        <button class="btn btn-warning" v-if="common.packages[activeStep + index].action === 'inquire_now'">INQUIRE NOW</button>
+        <button class="btn btn-warning" v-if="common.packages[activeStep + index].action === 'inquire_now'">MAKE AN INQUIRY</button>
       </span>
       <img :src="common.packages[activeStep + index].image">
     </div>
@@ -23,7 +23,7 @@
       width: previousPackBtn ? '11%' : '10%'
     }">
       <span class="details">
-        <button class="btn btn-warning" v-if="currentNextPackBtn.action === 'inquire_now'">NEXT</button>
+        <button class="btn btn-warning" v-if="currentNextPackBtn.action === 'inquire_now'"><font-awesome-icon :icon="faAngleRight"></font-awesome-icon></button>
       </span>
       <img :src="currentNextPackBtn.image">
     </div>  
@@ -68,17 +68,14 @@
 .details .title{
   margin-top: 50%;
   font-size: 42px;
-  font-style: italic;
+  width: 100%;
+  color: white;
+  /*font-style: italic;*/
 }
 
 .details:hover{
   cursor: pointer;
   background: rgba(0, 0, 51, 0.5);
-}
-
-.details .title{
-  width: 100%;
-  color: white;
 }
 
 img{
@@ -96,7 +93,9 @@ img{
 
 .next button, .previous button{
   margin-top: 37vh;
+  font-size: 30px;
 }
+
 
 @media (max-width: 992px) {
   .holder{
@@ -130,6 +129,7 @@ img{
 </style>
 <script>
 import COMMON from 'src/common.js'
+import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons'
 export default {
  data(){
     return {
@@ -138,7 +138,9 @@ export default {
       numberOfViews: 3,
       size: COMMON.packages.length,
       previous: null,
-      next: null
+      next: null,
+      faAngleLeft: faAngleLeft,
+      faAngleRight: faAngleRight
     }
   },
   computed: {
