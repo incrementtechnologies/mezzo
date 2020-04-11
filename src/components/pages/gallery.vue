@@ -1,7 +1,7 @@
 <template>
   <div v-if="common.gallery.length > 1" class="custom-container">
     <div class="holder" id="gallery">
-      <span v-for="(item, index) in common.gallery" :key="index" class="item" @click="showImage(item.url)">
+      <span v-for="(item, index) in common.gallery" :key="index" class="item" @click="showImage(index)">
         <img :src="item.url">
         <div class="hover-holder">
           <font-awesome-icon :icon="faPlusCircle" class="plus-icon"></font-awesome-icon>
@@ -88,8 +88,8 @@ export default {
   components: {
   },
   methods: {
-    showImage(url){
-      this.$parent.showImage(url)
+    showImage(index){
+      this.$parent.showImage(index)
     }
   }
 }

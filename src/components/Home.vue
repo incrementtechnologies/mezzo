@@ -13,7 +13,7 @@
     <span class="return-to-top" @click="scrollTo()">
       <font-awesome-icon :icon="faChevronUp" style="font-size: 24px;" class="icon"></font-awesome-icon>
     </span>
-    <image-view ref="imageView" :propStyle="{width: '800px'}"></image-view>
+    <image-view ref="imageView" :propStyle="{width: '800px'}" :data="common.gallery"></image-view>
   </div>
 </template>
 <style lang="scss" scoped>
@@ -94,7 +94,8 @@ export default {
   data(){
     return {
       faChevronUp: faChevronUp,
-      scrollValue: 0
+      scrollValue: 0,
+      common: COMMON
     }
   },
   props: {
@@ -119,8 +120,8 @@ export default {
         scrollTop: Jquery('#top-view').offset().top
       }, 500)
     },
-    showImage(url){
-      this.$refs.imageView.setImage(url)
+    showImage(index){
+      this.$refs.imageView.setImage(index)
     },
     retrieve(){
       COMMON.faq = []
