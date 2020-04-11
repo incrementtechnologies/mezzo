@@ -4,7 +4,7 @@
     <logo class="hide-on-mobile"></logo>
     <font-awesome-icon :icon="flag === false ? faBars : faTimes" class="mobile-menu-icon" @click="toggle()"></font-awesome-icon>
     <ul class="mobile-menu">
-      <li v-for="(item, index) in common.menus" :key="index">
+      <li v-for="(item, index) in common.menus" :key="index" :class="{'active-menu': active === item.redirect}">
         <a @click="scrollTo(item.redirect)" data-toggle="collapse" data-target="#myNavbar">{{item.title}}</a>
       </li>
     </ul>
