@@ -30,5 +30,6 @@ export default{
   testimonials: [],
   rooms: [],
   restaurants: [],
-  faq: []
+  faq: [],
+  gallery: []
 }

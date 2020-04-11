@@ -42,7 +42,7 @@
         </label>
       </span>
     </div>
-    <GoogleMapModal ref="mapModal" :place_data="places" :style="style"></GoogleMapModal>
+    <GoogleMapModal ref="mapModal" :place_data="places" :propStyle="propStyle"></GoogleMapModal>
   </footer>
 </template>
 <style scoped lang="scss">
@@ -134,7 +134,7 @@ export default {
         locality: 'F. Cabahug, Pres. Quezon St, Cebu City, 6000 Cebu',
         country: 'Philippines'
       }],
-      style: {
+      propStyle: {
         'margin-top': '10vh !important;'
       }
     }

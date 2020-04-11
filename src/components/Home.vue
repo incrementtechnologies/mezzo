@@ -7,15 +7,20 @@
     <Packages></Packages>
     <Restaurant></Restaurant>
     <testimonials></testimonials>
+    <gallery></gallery>
     <faq></faq>
     <Footer></Footer>
     <span class="return-to-top" @click="scrollTo()">
       <font-awesome-icon :icon="faChevronUp" style="font-size: 24px;" class="icon"></font-awesome-icon>
     </span>
+    <image-view ref="imageView" :propStyle="{width: '800px'}"></image-view>
   </div>
 </template>
 <style lang="scss" scoped>
 @import "~assets/style/colors.scss";
+#top-view{
+  position: relative;
+}
 .return-to-top{
   position: fixed;
   bottom: 10px;
@@ -56,9 +61,11 @@ import Packages from 'src/components/pages/packages.vue'
 import Booking from 'src/components/pages/booking.vue'
 import Testimonials from 'src/components/pages/testimonials.vue'
 import Faq from 'src/components/pages/faq.vue'
+import Gallery from 'src/components/pages/gallery.vue'
 import { faChevronUp } from '@fortawesome/free-solid-svg-icons'
 import Jquery from 'jquery'
 import COMMON from 'src/common.js'
+import ImageView from 'src/components/increment/generic/modal/ImageCarousel.vue'
 export default {
   name: 'HelloWorld',
   mounted(){
@@ -101,7 +108,9 @@ export default {
     Packages,
     Booking,
     Testimonials,
-    Faq
+    Faq,
+    Gallery,
+    ImageView
     // HeaderSticky
   },
   methods: {
@@ -110,6 +119,9 @@ export default {
         scrollTop: Jquery('#top-view').offset().top
       }, 500)
     },
+    showImage(url){
+      this.$refs.imageView.setImage(url)
+    },
     retrieve(){
       COMMON.faq = []
       COMMON.menus = []
@@ -117,6 +129,7 @@ export default {
       COMMON.testimonials = []
       COMMON.rooms = []
       COMMON.restaurants = []
+      COMMON.gallery = []
       Jquery.get('https://spreadsheets.google.com/feeds/cells/1luFOWuvQh7PlT5Jy6xY0181qdWsJhhoQt_kQ9YnpKKk/1/public/values?alt=json', response => {
         let entries = response.feed.entry
         for (var i = 0; i < entries.length; i += 2) {
@@ -251,6 +264,18 @@ export default {
               images: imagesArray
             }
             COMMON.restaurants.push(object)
+          }
+        }
+      })
+      Jquery.get('https://spreadsheets.google.com/feeds/cells/1luFOWuvQh7PlT5Jy6xY0181qdWsJhhoQt_kQ9YnpKKk/7/public/values?alt=json', response => {
+        let entries = response.feed.entry
+        for (var i = 0; i < entries.length; i++) {
+          if(i > 1){
+            let image = entries[i].content.$t
+            let object = {
+              url: COMMON.host + 'img/' + image
+            }
+            COMMON.gallery.push(object)
           }
         }
       })

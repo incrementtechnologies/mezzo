@@ -90,9 +90,17 @@ p{
 }
 
 @media (max-width: 992px) {
+
+  ul{
+    width: 96% !important;
+    margin-left: 2%;
+    margin-right: 2%;
+  }
+
   ul li{
-    width: 100%;
+    width: 100% !important;
     margin-right: 0%;
+    margin-left: 0%;
   }
 }
 </style>

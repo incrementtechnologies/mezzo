@@ -117,7 +117,7 @@ img{
 }
 
 .check-icon{
-  font-size: 32px;
+  font-size: 20px;
   margin-right: 20px;
 }
 
@@ -125,7 +125,7 @@ ul{
   margin-top: 25px;
 }
 ul li{
-  margin-bottom: 5px;
+  margin-bottom: 2px;
 }
 
 h5{
