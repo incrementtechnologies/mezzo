@@ -2,7 +2,7 @@
   <div class="holder" id="faq">
     <!--<h1 class="text-center text-primary" style="margin-bottom: 25px;">Frequently asked questions</h1>-->
       <div class="search">  
-        <span><font-awesome-icon :icon="faSearch" class="searchIcon"></font-awesome-icon></span>
+        <font-awesome-icon :icon="faSearch" class="searchIcon"></font-awesome-icon>
         <input type="text" class="form-control bg-warning text-white" style="font-size: 24px;" v-model="searchValue" placeholder="Type your question" results="0"/>
       </div>
     <ul>
@@ -31,6 +31,25 @@
   margin-bottom: 50px;
 }
 
+.search{
+  position: relative;
+  width: 90%;
+  margin-right: 5%;
+  margin-left: 5%;
+}
+
+.searchIcon{
+  position: absolute;
+  right: 10px;
+  top: 3vh;
+  font-size: 4vh;
+  color: $white;
+}
+
+.searchIcon:hover{
+  cursor: pointer;
+}
+
 .text-primary{
   color: $primary !important;
 }
@@ -43,19 +62,17 @@
 .form-control{
   height: 10vh !important;
   border: 0px !important;
-  width: 90% !important;
-  margin-left: 5%;
-  margin-right: 5%;
+  width: 100% !important;
   border-radius: 5px !important;
 }
 ul{
   width: 90%;
-  margin-right: 23%;
-  margin-left: 23%;
+  margin-right: 5%;
+  margin-left: 5%;
   margin-top: 25px;
 }
 ul li{
-  width: 60% !important;
+  width: 100% !important;
   float: left;
   padding-left: 25px;
   padding-right: 25px;

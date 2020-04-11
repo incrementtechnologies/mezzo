@@ -15,7 +15,7 @@
     </ul>
     <div class="menu">
       <ul>
-        <li v-for="(item, index) in common.menus" :key="index" class="basic-menu" @click="scrollTo(item.redirect)">{{item.title}}</li>
+        <li v-for="(item, index) in common.menus" :key="index" class="basic-menu" @click="scrollTo(item.redirect)" :class="{'active-menu': active === item.redirect}">{{item.title}}</li>
       </ul>
       <span class="social-icons-holder">
         <font-awesome-icon :icon="item.icon" class="social-icons" v-for="(item, index) in common.socialIcons" :key="index" @click="openExternal(item.url)"></font-awesome-icon>
@@ -82,8 +82,13 @@ ul li{
 
 .basic-menu:hover{
   cursor: pointer;
-  text-decoration: underline;
-  color: $warning;
+  background: $warning;
+  color: $white;
+}
+
+.active-menu{
+  background: $warning;
+  color: $white; 
 }
 
 .btn{
@@ -215,7 +220,8 @@ export default {
       common: COMMON,
       faBars: faBars,
       faTimes: faTimes,
-      flag: false
+      flag: false,
+      active: '#top-view'
     }
   },
   components: {
@@ -223,6 +229,7 @@ export default {
   },
   methods: {
     scrollTo (div) {
+      this.active = div
       var height = Jquery(window).height()
       Jquery('html, body').animate({
         scrollTop: Jquery(div).offset().top - parseInt(height * 0.1)

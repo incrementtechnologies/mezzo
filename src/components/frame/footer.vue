@@ -95,6 +95,10 @@ ul li span{
   left: 0;
   position: absolute;
 }
+
+b:hover, a:hover{
+  color: $warning !important;
+}
 @media screen and (max-width: 992px){
   .footer-widget{
     width: 100%;
