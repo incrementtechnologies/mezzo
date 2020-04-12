@@ -31,5 +31,6 @@ export default{
   rooms: [],
   restaurants: [],
   faq: [],
-  gallery: []
+  gallery: [],
+  activeMenu: '#top-view'
 }

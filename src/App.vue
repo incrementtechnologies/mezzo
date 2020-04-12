@@ -46,7 +46,7 @@ export default {
 
 .mx-datepicker{
   float: left !important;
-  width: 16% !important;
+  width: 14% !important;
   margin-left: 1% !important;
 }
 

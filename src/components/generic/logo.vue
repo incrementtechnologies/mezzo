@@ -22,8 +22,8 @@
 img{
   width: auto;
   height: 20vh;
-  margin-top: 25px;
-  margin-bottom: 10px;
+  margin-top: 5vh;
+  margin-bottom: 5vh;
 }
 
 .details{

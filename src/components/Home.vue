@@ -70,26 +70,9 @@ export default {
   name: 'HelloWorld',
   mounted(){
     this.retrieve()
-    window.document.body.onscroll = function() {
-      var height = Jquery(window).height()
-      var scrollTop = Jquery(window).scrollTop()
-      var vScroll = parseInt((scrollTop / height) * 100)
-      if(vScroll >= 30){
-        Jquery('.menu').css({
-          position: 'fixed',
-          'z-index': 10000,
-          top: '0%',
-          bottom: 'auto'
-        })
-      }else{
-        Jquery('.menu').css({
-          position: 'absolute',
-          'z-index': 0,
-          bottom: '0%',
-          top: 'auto'
-        })
-      }
-    }
+    // window.document.body.onscroll = function() {
+    // }
+    window.addEventListener('scroll', this.onScroll)
   },
   data(){
     return {
@@ -119,6 +102,43 @@ export default {
       Jquery('html, body').animate({
         scrollTop: Jquery('#top-view').offset().top
       }, 500)
+    },
+    onScroll(){
+      var height = Jquery(window).height()
+      var scrollTop = Jquery(window).scrollTop()
+      var vScroll = parseInt((scrollTop / height) * 100)
+      if(vScroll >= 30){
+        Jquery('.menu').css({
+          position: 'fixed',
+          'z-index': 10000,
+          top: '0%',
+          bottom: 'auto'
+        })
+      }else{
+        Jquery('.menu').css({
+          position: 'absolute',
+          'z-index': 0,
+          bottom: '0%',
+          top: 'auto'
+        })
+      }
+      this.setActiveOnScroll()
+    },
+    setActiveOnScroll(){
+      if(this.common.menus.length > 0){
+        this.common.menus.map((item) => {
+          var elementTop = Jquery(item.redirect).offset().top
+          var elementBottom = elementTop + Jquery(item.redirect).outerHeight()
+          var scrollTop = Jquery(window).scrollTop()
+          var height = Jquery(window).height()
+          var margin = parseInt(height * 0.1)
+          if(scrollTop >= (elementTop - margin) && scrollTop <= (elementBottom - margin)){
+            this.common.activeMenu = item.redirect
+          }else if(scrollTop <= 0){
+            this.common.activeMenu = '#top-view'
+          }
+        })
+      }
     },
     showImage(index){
       this.$refs.imageView.setImage(index)

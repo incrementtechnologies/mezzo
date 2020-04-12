@@ -2,6 +2,8 @@
   <div class="incre-container">
     <subscribe class="subscribe"></subscribe>
     <div class="form-container">
+      <span class="margin-div">
+      </span>
       <date-picker
         type="date"
         v-model="checkInDate"
@@ -53,9 +55,8 @@
     width: 100%;
   }
   .form-container{
-    width: 80%;
+    width: 100%;
     float: left;
-    margin-left: 10%;
     min-height: 14vh;
     background: rgba(255, 255, 255, 0.5);
     z-index: 1000;
@@ -67,16 +68,22 @@
     height: 10vh !important;
     margin-top: 2vh !important;
     margin-bottom: 1vh !important;
-    width: 16% !important;
-    margin-left: 1% !important;
+    width: 14% !important;
     float: left !important;
+    margin-left: 1% !important;
   }
 
   .btn{
-    width: 30% !important;
+    width: 20% !important;
     height: 10vh !important;
     margin-top: 2vh !important;
-    margin-left: 1%;
+    margin-left: 1% !important;
+  }
+
+  .margin-div{
+    width: 9%;
+    float: left;
+    height: 10vh;
   }
 
 @media screen and (max-width: 992px){
@@ -98,6 +105,9 @@
     margin-bottom: 25px !important;
   }
 
+  .margin-div{
+    width: 0px;
+  }
 }
 </style>
 <script>

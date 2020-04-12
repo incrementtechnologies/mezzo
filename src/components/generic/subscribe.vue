@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="form-container" v-if="successFlag === false">
-      <h2 class="text-primary">Want to know more about our latest offers?</h2>
+      <h4 class="text-primary">Want to know more about our latest offers?</h4>
       <label class="text-danger" style="width: 100%; padding-left: 10px;" v-if="errorMessage !== null"><b>Opps! {{errorMessage}}</b></label>
       <input type="email" class="form-control" placeholder="Enter your email" v-model="email">
       <button class="btn btn-primary" @click="subscribe()">SUBSCRIBE</button>
@@ -26,10 +26,10 @@
   margin-left: 30%;
 }
 
-h2{
+h4{
   margin-top: 25px;
 }
-h2, p{
+h4, p{
   margin-left: 2%;
 }
 

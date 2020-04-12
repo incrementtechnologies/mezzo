@@ -76,10 +76,9 @@ ul li{
   float: left;
   padding-left: 25px;
   padding-right: 25px;
-  min-height: 50px;
+  min-height: 40px;
   /*border-radius: 5px;*/
   border-bottom: solid 1.5px #D3D3D3;
-  margin-top: 10px;
 }
 
 ul li:hover{
@@ -89,7 +88,7 @@ ul li:hover{
   cursor: pointer;
 }
 .title{
-  line-height: 50px;
+  line-height: 40px;
   width: 100%;
   float: left;
   color: $primary;

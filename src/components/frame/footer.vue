@@ -15,7 +15,7 @@
 
         <li>
           <span>Address</span>
-          <span @click="$refs.mapModal.showModal()">
+          <span @click="$refs.mapModal.showModal()" class="action-link">
             <b>
               <font-awesome-icon :icon="faMapMarker" class="social-icons"></font-awesome-icon>
               {{common.address}}
@@ -98,6 +98,12 @@ ul li span{
 
 b:hover, a:hover{
   color: $warning !important;
+}
+
+.action-link:hover{
+  cursor: pointer;
+  text-decoration: underline;
+  color: $warning;
 }
 @media screen and (max-width: 992px){
   .footer-widget{

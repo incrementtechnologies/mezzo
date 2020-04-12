@@ -4,7 +4,7 @@
     <logo class="hide-on-mobile"></logo>
     <font-awesome-icon :icon="flag === false ? faBars : faTimes" class="mobile-menu-icon" @click="toggle()"></font-awesome-icon>
     <ul class="mobile-menu">
-      <li v-for="(item, index) in common.menus" :key="index" :class="{'active-menu': active === item.redirect}">
+      <li v-for="(item, index) in common.menus" :key="index" :class="{'active-menu': common.activeMenu === item.redirect}">
         <a @click="scrollTo(item.redirect)" data-toggle="collapse" data-target="#myNavbar">{{item.title}}</a>
       </li>
     </ul>
@@ -15,7 +15,7 @@
     </ul>
     <div class="menu">
       <ul>
-        <li v-for="(item, index) in common.menus" :key="index" class="basic-menu" @click="scrollTo(item.redirect)" :class="{'active-menu': active === item.redirect}">{{item.title}}</li>
+        <li v-for="(item, index) in common.menus" :key="index" class="basic-menu" @click="scrollTo(item.redirect)" :class="{'active-menu': common.activeMenu === item.redirect}">{{item.title}}</li>
       </ul>
       <span class="social-icons-holder">
         <font-awesome-icon :icon="item.icon" class="social-icons" v-for="(item, index) in common.socialIcons" :key="index" @click="openExternal(item.url)"></font-awesome-icon>
@@ -222,8 +222,7 @@ export default {
       common: COMMON,
       faBars: faBars,
       faTimes: faTimes,
-      flag: false,
-      active: '#top-view'
+      flag: false
     }
   },
   components: {
@@ -231,7 +230,7 @@ export default {
   },
   methods: {
     scrollTo (div) {
-      this.active = div
+      this.common.activeMenu = div
       var height = Jquery(window).height()
       Jquery('html, body').animate({
         scrollTop: Jquery(div).offset().top - parseInt(height * 0.1)
