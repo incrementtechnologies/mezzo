@@ -149,6 +149,6 @@ export default {
   }
 }
 Jquery(document).ready(function(){
-  Jquery("#testimonialsCarousel").carousel({interval: 2000});
+  Jquery("#testimonialsCarousel").carousel({interval: 6000});
 });
 </script>
