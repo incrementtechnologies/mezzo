@@ -61,6 +61,8 @@
   left: 0%;
   background: $primary;
   height: 10vh;
+  top: auto;
+  bottom: 0%;
 }
 
 ul{
