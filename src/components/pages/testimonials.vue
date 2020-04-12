@@ -1,19 +1,27 @@
 <template>
   <div class="holder" id="testimonials">
     <!--<h1 class="text-center increment-title text-primary">Reviews</h1>-->
-    <div class="platform-container">
-      <div v-for="(item, index) in common.testimonials" :key="index">
-        <span v-if="index >= reviewsBatchFrom && index <= reviewsBatchThru && activeIcon == activeIcon" v-bind:class="{'text-center message-holder':((index + 1) % 3 != 1), 'text-center message-holder1':((index + 1) % 3 == 1)}">
-          <h1><font-awesome-icon :icon="faQuoteLeft" class="text-warning qoute-left-icon"></font-awesome-icon></h1>
-          <p><i>{{item.message}}</i></p>
-          <label class="gray"><b>{{item.name}}</b></label>
-          <label v-show = "item.position != quote" class="gray">{{item.position}}</label>
-          <label v-show = "item.country != quote" class="gray">{{item.country}}</label>
-        </span>
+    <div class="platform-container">      
+      <div id="testimonialsCarousel" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item" v-for="(item, carouselIndex) in dotCirleCount" :key="carouselIndex" :class="{'active': carouselIndex===0}">
+            <div v-for="(item, index) in common.testimonials" :key="index">
+              <span v-if="index >= carouselIndex * 3 && index <= (carouselIndex * 3) + 2" v-bind:class="{'text-center message-holder':((index + 1) % 3 != 1), 'text-center message-holder1':((index + 1) % 3 == 1)}">
+                <h1><font-awesome-icon :icon="faQuoteLeft" class="text-warning qoute-left-icon"></font-awesome-icon></h1>
+                <p><i>{{item.message}}</i></p>
+                <label class="gray"><b>{{item.name}}</b></label>
+                <label v-show = "item.position != quote" class="gray">{{item.position}}</label>
+                <label v-show = "item.country != quote" class="gray">{{item.country}}</label>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center carousel-indicators">
+          <font-awesome-icon :icon="faCircle" v-for="(item, iconIndex) in dotCirleCount" :key="iconIndex" :class="{'active': iconIndex===0}" @click="setActive(iconIndex)" class="circle-icon-inActive"></font-awesome-icon>
+        </div>
       </div>
-    </div>
-    <div class="text-center dot-circle">
-      <font-awesome-icon :icon="faCircle" v-for="(item, iconIndex) in dotCirleCount" :key="iconIndex" :class="{'circle-icon-active': activeIcon===iconIndex}" @click="setActive(iconIndex)" class="circle-icon-inActive"></font-awesome-icon>
+    
     </div>
   </div>
 </template>
@@ -32,16 +40,14 @@
 .platform-container{
   width: 100%;
   float: left;
-  margin-top: 80px;
-}
-.increment-title{
   margin-top: 50px;
 }
+
 .circle-icon-inActive{
   margin-left: 5px;
   margin-right: 5px;
 }
-.circle-icon-active{
+.carousel-indicators .active{
   color: $warning;
 }
 .circle-icon-inActive:hover{
@@ -85,9 +91,6 @@
   margin-bottom: 0px;
   font-size: 12px;
 }
-.dot-circle{
-  margin-top: 600px;
-}
 
 .gray{
   color: $warning;
@@ -117,6 +120,7 @@
 <script>
 import COMMON from 'src/common.js'
 import { faQuoteLeft, faCircle } from '@fortawesome/free-solid-svg-icons'
+import Jquery from 'jquery'
 
 export default {
   data () {
@@ -132,7 +136,6 @@ export default {
   },
   computed: {
     dotCirleCount: function (){
-      //console.log("roundup"+Math.ceil(COMMON.testimonials.length/3));
       return Math.ceil(COMMON.testimonials.length/3)
     }
   },
@@ -141,15 +144,11 @@ export default {
       window.open(url, '_BLANK')
     },
     setActive(index){
-      this.activeIcon = index
-      var i = 0
-      for (var x = -1; x < index; x++) {
-        //console.log(i);
-        this.reviewsBatchFrom = i
-        this.reviewsBatchThru = this.reviewsBatchFrom + 2
-        i+=3
-      }
+      Jquery("#testimonialsCarousel").carousel(index);
     }
   }
 }
+Jquery(document).ready(function(){
+  Jquery("#testimonialsCarousel").carousel({interval: 2000});
+});
 </script>
