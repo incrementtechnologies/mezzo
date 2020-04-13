@@ -57,9 +57,11 @@
   .form-container{
     width: 100%;
     float: left;
-    min-height: calc($height + 4vh);
+    min-height: $height;
     background: rgba(255, 255, 255, 0.5);
     z-index: 1000;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
     position: absolute;
     bottom: 0;
   }

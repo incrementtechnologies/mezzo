@@ -41,8 +41,8 @@
 .searchIcon{
   position: absolute;
   left: 10px;
-  top: 2vh;
-  font-size: calc($height / 2);
+  top: 2.5vh;
+  font-size: 3vh;
   color: $white;
 }
 
@@ -77,7 +77,7 @@ ul li{
   float: left;
   padding-left: 25px;
   padding-right: 25px;
-  min-height: 40px;
+  min-height: $height;
   /*border-radius: 5px;*/
   border-bottom: solid 1px #D3D3D3;
 }
@@ -89,7 +89,7 @@ ul li:hover{
   cursor: pointer;
 }
 .title{
-  line-height: 40px;
+  line-height: $height;
   width: 100%;
   float: left;
   color: $primary;
@@ -98,7 +98,7 @@ ul li:hover{
 
 .icon{
   float: right;
-  margin-top: 12px;
+  margin-top: 3vh;
 }
 
 .title:hover{
