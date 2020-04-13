@@ -115,6 +115,11 @@
   .increment-title{
     margin-top: 50px;
   }
+
+  .carousel-indicators{
+    margin-top: 25px;
+    margin-bottom: 25px;
+  }
 }
 </style>
 <script>

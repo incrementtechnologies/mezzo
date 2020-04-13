@@ -14,10 +14,10 @@
         </div>
         <div class="details">
           <span class="item-menu">
-            <label v-for="(counter, counterIndex) in common.restaurants.length" :key="counterIndex" :class="{'bg-warning': active === counterIndex}" @click="setActive(counterIndex)">{{counter}}</label>
+            <label v-for="(counter, counterIndex) in common.restaurants" :key="counterIndex" :class="{'bg-warning': active === counterIndex}" @click="setActive(counterIndex)">{{counter.abbreviation}}</label>
           </span>
-          <h3>{{activeItem.title}}</h3>
-          <h5>{{activeItem.description}}</h5>
+          <h5 style="margin-bottom: 25px;">{{activeItem.title}}</h5>
+          <p>{{activeItem.description}}</p>
           <ul v-if="activeItem.inclusions !== null">
             <li v-for="(iItem, iIndex) in activeItem.inclusions" :key="iIndex">
               <font-awesome-icon :icon="faCheck" class="text-warning check-icon"></font-awesome-icon>
@@ -77,7 +77,7 @@
   color: $primary;
   line-height: 50px;
   font-weight: 600;
-  margin-right: 10px;
+  margin-right: 2px;
 }
 .holder{
   min-height: 100vh;
@@ -111,9 +111,8 @@ img{
 }
 
 .btn{
-  height: 10vh !important;
   width: 60%;
-  margin-top: 25px;
+  margin-top: 0px;
 }
 
 .check-icon{
@@ -122,14 +121,14 @@ img{
 }
 
 ul{
-  margin-top: 25px;
+  margin-top: 0px;
 }
 ul li{
-  margin-bottom: 2px;
+  margin-bottom: 0px;
 }
 
 h5{
-  margin-top: 25px;
+  margin-top: 0px;
 }
 
 .circle-icon{
@@ -222,20 +221,13 @@ import COMMON from 'src/common.js'
 import { faCheck, faCircle } from '@fortawesome/free-solid-svg-icons'
 export default {
   mounted(){
-    // setInterval(() => {
-    //   if(this.active < COMMON.restaurants.length){
-    //     this.active++
-    //     this.activeImage = 0
-    //     if(this.activeImage < this.activeItem.images.length){
-    //       this.activeImage++
-    //     }else{
-    //       this.activeImage = 0
-    //     }
-    //   }else{
-    //     this.active = 0
-    //     this.activeImage = 0
-    //   }
-    // }, 5000)
+    setInterval(() => {
+      if(this.active < COMMON.rooms.length){
+        this.active++
+      }else{
+        this.active = 0
+      }
+    }, 6000)
   },
   data(){
     return {

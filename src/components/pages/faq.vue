@@ -40,9 +40,9 @@
 
 .searchIcon{
   position: absolute;
-  right: 10px;
-  top: 3vh;
-  font-size: 4vh;
+  left: 10px;
+  top: 2vh;
+  font-size: calc($height / 2);
   color: $white;
 }
 
@@ -60,10 +60,11 @@
 }
 
 .form-control{
-  height: 10vh !important;
   border: 0px !important;
   width: 100% !important;
   border-radius: 5px !important;
+  font-size: 100% !important;
+  padding-left: 30px !important;
 }
 ul{
   width: 90%;
@@ -78,7 +79,7 @@ ul li{
   padding-right: 25px;
   min-height: 40px;
   /*border-radius: 5px;*/
-  border-bottom: solid 1.5px #D3D3D3;
+  border-bottom: solid 1px #D3D3D3;
 }
 
 ul li:hover{
@@ -92,15 +93,17 @@ ul li:hover{
   width: 100%;
   float: left;
   color: $primary;
-  padding-top: 10px;
+  margin-bottom: 0px;
 }
 
 .icon{
   float: right;
-  font-size: 32px;
-  margin-top: 10px;
+  margin-top: 12px;
 }
 
+.title:hover{
+  cursor: pointer;
+}
 p{
   text-align: justify;
 }

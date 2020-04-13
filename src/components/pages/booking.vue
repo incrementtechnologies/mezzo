@@ -39,7 +39,7 @@
 <style scoped lang="scss">
 @import "~assets/style/colors.scss";
   .incre-container{
-    min-height: 60vh;
+    min-height: 73vh;
     float: left;
     width: 100%;
     position: relative;
@@ -57,7 +57,7 @@
   .form-container{
     width: 100%;
     float: left;
-    min-height: 14vh;
+    min-height: calc($height + 4vh);
     background: rgba(255, 255, 255, 0.5);
     z-index: 1000;
     position: absolute;
@@ -65,7 +65,6 @@
   }
 
   .form-control{
-    height: 10vh !important;
     margin-top: 2vh !important;
     margin-bottom: 1vh !important;
     width: 14% !important;
@@ -75,7 +74,6 @@
 
   .btn{
     width: 20% !important;
-    height: 10vh !important;
     margin-top: 2vh !important;
     margin-left: 1% !important;
   }

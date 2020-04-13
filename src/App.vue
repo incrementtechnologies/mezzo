@@ -37,11 +37,13 @@ export default {
 
 .btn{
   border-radius: 1px !important;
+  height: $height !important;
 }
 
 .form-control{
   border-radius: 1px !important;
   border: 0px !important;
+  height: $height !important;
 }
 
 .mx-datepicker{
@@ -51,7 +53,7 @@ export default {
 }
 
 .mx-input-wrapper, .mx-input-wrapper input{
-  height: 10vh !important;
+  height: $height !important;
   margin-top: 1vh !important;
   margin-bottom: 1vh !important;
   width: 100% !important;

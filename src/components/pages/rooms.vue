@@ -15,19 +15,19 @@
         </div>
         <div class="details">
           <span class="item-menu">
-            <label v-for="(counter, counterIndex) in common.rooms.length" :key="counterIndex" :class="{'bg-primary': active === counterIndex}" @click="setActive(counterIndex)">{{counter}}</label>
+            <label v-for="(counter, counterIndex) in common.rooms" :key="counterIndex" :class="{'bg-primary': active === counterIndex}" @click="setActive(counterIndex)">{{counter.abbreviation}}</label>
           </span>
-          <h3 class="text-primary">
+          <h5 class="text-primary" style="margin-bottom: 25px;">
             {{activeItem.title}}
-          </h3>
-          <h5>{{activeItem.description}}</h5>
+          </h5>
+          <p>{{activeItem.description}}</p>
           <ul v-if="activeItem.inclusions !== null">
             <li v-for="(iItem, iIndex) in activeItem.inclusions" :key="iIndex">
               <font-awesome-icon :icon="faCheck" class="text-warning check-icon"></font-awesome-icon>
               <label>{{iItem.title}}</label>
             </li>
           </ul>
-          <h3><b class="text-warning price">{{activeItem.price}}</b> / Night</h3>
+          <h5><b class="text-warning price">{{activeItem.price}}</b> / Night</h5>
           <p>{{activeItem.priceInclusions}}</p>
           <button class="btn btn-warning" @click="openExternal(common.booking_link)">BOOK NOW</button>
         </div>
@@ -62,15 +62,14 @@
 }
 
 .item-menu label{
-  border-radius: 50%;
-  height: 50px;
   width: 50px;
+  height: 50px;
+  border-radius: 50%;
   text-align: center;
   background: $warning;
   color: white;
   line-height: 50px;
-  font-weight: 600;
-  margin-right: 10px;
+  margin-right: 2px;
 }
 
 .holder{
@@ -104,9 +103,8 @@ img{
 }
 
 .btn{
-  height: 10vh !important;
   width: 60%;
-  margin-top: 25px;
+  margin-top: 0px;
 }
 
 .check-icon{
@@ -115,14 +113,14 @@ img{
 }
 
 ul{
-  margin-top: 25px;
+  margin-top: 0px;
 }
 ul li{
-  margin-bottom: 2px;
+  margin-bottom: 0px;
 }
 
 h5{
-  margin-top: 25px;
+  margin-top: 0px;
 }
 
 .circle-icon{
@@ -199,6 +197,13 @@ import COMMON from 'src/common.js'
 import { faCheck, faCircle } from '@fortawesome/free-solid-svg-icons'
 export default {
   mounted(){
+    setInterval(() => {
+      if(this.active < COMMON.rooms.length){
+        this.active++
+      }else{
+        this.active = 0
+      }
+    }, 6000)
   },
   data(){
     return {

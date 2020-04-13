@@ -29,7 +29,7 @@
 .header{
   width: 100%;
   float: left;
-  min-height: 40vh;
+  min-height: 27vh;
   background: $primary;
   border-bottom: solid 5px $warning;
   position: relative;
@@ -60,7 +60,7 @@
   width: 100%;
   left: 0%;
   background: $primary;
-  height: 10vh;
+  height: 7vh;
   top: auto;
   bottom: 0%;
 }
@@ -79,7 +79,7 @@ ul li{
   text-transform: UPPERCASE;
   padding-left: 20px;
   padding-right: 20px;
-  line-height: 10vh;
+  line-height: 7vh;
 }
 
 .basic-menu:hover{
@@ -95,19 +95,18 @@ ul li{
 
 .btn{
   width: 20% !important;
-  height: 10vh !important;
   color: white !important;
 }
 
 .social-icons-holder{
   width: 10%;
   float: left;
-  margin-top: 2vh;
+  margin-top: 0vh;
 }
 
 .social-icons{
   margin: 5px;
-  font-size: 5vh;
+  font-size: 4vh;
   color: #fff;
   float: right;
 }
@@ -233,7 +232,7 @@ export default {
       this.common.activeMenu = div
       var height = Jquery(window).height()
       Jquery('html, body').animate({
-        scrollTop: Jquery(div).offset().top - parseInt(height * 0.1)
+        scrollTop: Jquery(div).offset().top - parseInt(height * 0.07)
       }, 500)
       this.flag = false
       Jquery('.mobile-menu').css({display: 'none'})

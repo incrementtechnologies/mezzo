@@ -3,7 +3,7 @@
     <div class="form-container" v-if="successFlag === false">
       <h4 class="text-primary">Want to know more about our latest offers?</h4>
       <label class="text-danger" style="width: 100%; padding-left: 10px;" v-if="errorMessage !== null"><b>Opps! {{errorMessage}}</b></label>
-      <input type="email" class="form-control" placeholder="Enter your email" v-model="email">
+      <input type="email" class="form-control" placeholder="Enter your e-mail" v-model="email">
       <button class="btn btn-primary" @click="subscribe()">SUBSCRIBE</button>
     </div>
     <div class="form-container" v-else>
@@ -34,7 +34,6 @@ h4, p{
 }
 
 .form-control{
-  height: 50px !important;
   width: 54% !important;
   float: left !important;
   margin-right: 2%;
@@ -45,7 +44,6 @@ h4, p{
 .btn{
   width: 40% !important;
   float: left !important;
-  height: 50px !important;
   margin-right: 2% !important;
   margin-bottom: 25px;
 }
@@ -98,11 +96,11 @@ export default {
     },
     subscribe(){
       if(this.email === null || this.email === ''){
-        this.errorMessage = 'Email address is required.'
+        this.errorMessage = 'Please enter your e-mail address.'
         return
       }
       if(this.validateEmail(this.email) === false){
-        this.errorMessage = 'Invalid email address'
+        this.errorMessage = 'Invalid e-mail address'
         return
       }
       Jquery.ajaxSetup({

@@ -65,7 +65,7 @@ import Gallery from 'src/components/pages/gallery.vue'
 import { faChevronUp } from '@fortawesome/free-solid-svg-icons'
 import Jquery from 'jquery'
 import COMMON from 'src/common.js'
-//import ImageView from 'src/components/increment/generic/modal/ImageCarousel.vue'
+import ImageView from 'src/components/increment/generic/modal/ImageCarousel.vue'
 export default {
   name: 'HelloWorld',
   mounted(){
@@ -94,7 +94,7 @@ export default {
     Testimonials,
     Faq,
     Gallery,
-    //ImageView
+    ImageView
     // HeaderSticky
   },
   methods: {
@@ -107,7 +107,7 @@ export default {
       var height = Jquery(window).height()
       var scrollTop = Jquery(window).scrollTop()
       var vScroll = parseInt((scrollTop / height) * 100)
-      if(vScroll >= 30){
+      if(vScroll >= 20){
         Jquery('.menu').css({
           position: 'fixed',
           'z-index': 10000,
@@ -232,11 +232,11 @@ export default {
       })
       Jquery.get('https://spreadsheets.google.com/feeds/cells/1luFOWuvQh7PlT5Jy6xY0181qdWsJhhoQt_kQ9YnpKKk/5/public/values?alt=json', response => {
         let entries = response.feed.entry
-        for (var i = 0; i < entries.length; i += 6) {
-          if(i > 5){
-            let inclusions = entries[i + 2].content.$t
+        for (var i = 0; i < entries.length; i += 7) {
+          if(i > 6){
+            let inclusions = entries[i + 3].content.$t
             let tempInclusions = inclusions !== null ? inclusions.split(',') : null
-            let image = entries[i + 5].content.$t
+            let image = entries[i + 6].content.$t
             let tempImages = image !== null ? image.split(',') : null
             let imagesArray = tempImages.map((item) => {
               return {
@@ -249,11 +249,12 @@ export default {
               }
             })
             let object = {
-              title: entries[i].content.$t,
-              description: entries[i + 1].content.$t,
+              abbreviation: entries[i].content.$t,
+              title: entries[i + 1].content.$t,
+              description: entries[i + 2].content.$t,
               inclusions: inclusionsArray,
-              price: entries[i + 3].content.$t,
-              priceInclusions: entries[i + 4].content.$t,
+              price: entries[i + 4].content.$t,
+              priceInclusions: entries[i + 5].content.$t,
               images: imagesArray
             }
             COMMON.rooms.push(object)
@@ -262,11 +263,11 @@ export default {
       })
       Jquery.get('https://spreadsheets.google.com/feeds/cells/1luFOWuvQh7PlT5Jy6xY0181qdWsJhhoQt_kQ9YnpKKk/6/public/values?alt=json', response => {
         let entries = response.feed.entry
-        for (var i = 0; i < entries.length; i += 4) {
-          if(i > 3){
-            let inclusions = entries[i + 2].content.$t
+        for (var i = 0; i < entries.length; i += 5) {
+          if(i > 4){
+            let inclusions = entries[i + 3].content.$t
             let tempInclusions = inclusions !== null ? inclusions.split(',') : null
-            let image = entries[i + 3].content.$t
+            let image = entries[i + 4].content.$t
             let tempImages = image !== null ? image.split(',') : null
             let imagesArray = tempImages.map((item) => {
               return {
@@ -279,8 +280,9 @@ export default {
               }
             })
             let object = {
-              title: entries[i].content.$t,
-              description: entries[i + 1].content.$t,
+              abbreviation: entries[i].content.$t,
+              title: entries[i + 1].content.$t,
+              description: entries[i + 2].content.$t,
               inclusions: inclusionsArray,
               images: imagesArray
             }

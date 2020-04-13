@@ -21,9 +21,9 @@
 
 img{
   width: auto;
-  height: 20vh;
-  margin-top: 5vh;
-  margin-bottom: 5vh;
+  height: 16vh;
+  margin-top: 2vh;
+  margin-bottom: 2vh;
 }
 
 .details{
