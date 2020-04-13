@@ -60,7 +60,7 @@
   width: 100%;
   left: 0%;
   background: $primary;
-  height: 7vh;
+  height: $height;
   top: auto;
   bottom: 0%;
 }
@@ -79,7 +79,7 @@ ul li{
   text-transform: UPPERCASE;
   padding-left: 20px;
   padding-right: 20px;
-  line-height: 7vh;
+  line-height: $height;
 }
 
 .basic-menu:hover{
@@ -101,12 +101,12 @@ ul li{
 .social-icons-holder{
   width: 10%;
   float: left;
-  margin-top: 0vh;
+  margin-top: 1vh;
 }
 
 .social-icons{
   margin: 5px;
-  font-size: 4vh;
+  font-size: 3.5vh;
   color: #fff;
   float: right;
 }

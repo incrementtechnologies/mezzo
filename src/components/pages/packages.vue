@@ -88,7 +88,6 @@ img{
 
 .btn{
   width: 60% !important;
-  height: 10vh !important;
 }
 
 .next button, .previous button{
@@ -112,7 +111,6 @@ img{
   .btn{
     position: relative;
     width: 75% !important;
-    height: 10vh !important;
     font-size: 12px;
     padding: 2.5px;
   }
