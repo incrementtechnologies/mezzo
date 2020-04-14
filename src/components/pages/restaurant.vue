@@ -16,7 +16,9 @@
           <span class="item-menu">
             <label v-for="(counter, counterIndex) in common.restaurants" :key="counterIndex" :class="{'bg-warning': active === counterIndex}" @click="setActive(counterIndex)">{{counter.abbreviation}}</label>
           </span>
-          <h5 style="margin-bottom: 25px;">{{activeItem.title}}</h5>
+          <h3 style="margin-bottom: 10px;">
+            {{activeItem.title}}
+          </h3>
           <p>{{activeItem.description}}</p>
           <ul v-if="activeItem.inclusions !== null">
             <li v-for="(iItem, iIndex) in activeItem.inclusions" :key="iIndex">
@@ -125,6 +127,12 @@ ul{
 }
 ul li{
   margin-bottom: 0px;
+}
+
+h3{
+  margin-top: 10px;
+  float: left;
+  width: 100%;
 }
 
 h5{
