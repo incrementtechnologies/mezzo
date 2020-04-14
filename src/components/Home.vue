@@ -65,7 +65,7 @@ import Gallery from 'src/components/pages/gallery.vue'
 import { faChevronUp } from '@fortawesome/free-solid-svg-icons'
 import Jquery from 'jquery'
 import COMMON from 'src/common.js'
-import ImageView from 'src/components/increment/generic/modal/ImageCarousel.vue'
+//import ImageView from 'src/components/increment/generic/modal/ImageCarousel.vue'
 export default {
   name: 'HelloWorld',
   mounted(){
@@ -93,8 +93,8 @@ export default {
     Booking,
     Testimonials,
     Faq,
-    Gallery,
-    ImageView
+    Gallery
+    //ImageView
     // HeaderSticky
   },
   methods: {

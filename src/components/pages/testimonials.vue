@@ -40,16 +40,18 @@
 .platform-container{
   width: 100%;
   float: left;
-  margin-top: 50px;
+  margin-top: 7.5vh;
 }
 
 .circle-icon-inActive{
   margin-left: 5px;
   margin-right: 5px;
+  top: 10px;
 }
 .carousel-indicators .active{
   color: $warning;
 }
+
 .circle-icon-inActive:hover{
   cursor: pointer;
 }
