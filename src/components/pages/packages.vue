@@ -1,6 +1,25 @@
 <template>
   <div class="holder" id="packages" v-if="common.packages.length > 1">
-    <div class="previous" v-if="previousPackBtn" @click="previousMethod()" :style="{
+    
+    <span class="previous" @click="previousMethod()">
+      <font-awesome-icon :icon="faAngleLeft" class="prevIcon"></font-awesome-icon>
+    </span>
+    <span class="next" @click="nextMethod()">  
+      <font-awesome-icon :icon="faAngleRight" class="nextIcon"></font-awesome-icon>
+    </span>
+
+    <div class="item" v-for="(item, index) in 4" :key="index">
+      <span class="details">
+        <label class="title">{{common.packages[activeStep + index].title}}</label>
+        <button class="btn btn-warning" v-if="common.packages[activeStep + index].action === 'inquire_now'">MAKE AN INQUIRY</button>
+      </span>
+      <img :src="common.packages[activeStep + index].image">
+    </div>
+
+    
+    
+
+    <!--<div class="previous" v-if="previousPackBtn" @click="previousMethod()" :style="{
       width: nextPackBtn ? '11%' : '10%'
     }">
       <span class="details">
@@ -26,7 +45,7 @@
         <button class="btn btn-warning" v-if="currentNextPackBtn.action === 'inquire_now'"><font-awesome-icon :icon="faAngleRight"></font-awesome-icon></button>
       </span>
       <img :src="currentNextPackBtn.image">
-    </div>  
+    </div>-->  
   </div>
 </template>
 <style scoped lang="scss">
@@ -41,18 +60,39 @@
 }
 
 .item{
-  width: 26%;
+  /*width: 26%;*/
+  width: 25%;
   float: left;
   min-height: 70vh;
   position: relative;
   overflow: hidden;
 }
+
 .previous, .next{
-  float: left;
-  min-height: 70vh;
+  position: absolute;
+  z-index: 2000;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  text-align: center;
+  background-color: rgba(0,0,0,0);
+  border: solid 2px white;
+  top: 8.5vh;
+}
+
+.previous{
+  left: 25px;
+}
+
+.next{
+  right: 25px;
+}
+
+.prevIcon, .nextIcon{
   position: relative;
-  overflow: hidden;
-  width: 10%;
+  color: white;
+  top: 2.2vh;
+  font-size: 3vh;
 }
 
 .details{
@@ -77,6 +117,12 @@
   cursor: pointer;
   background: rgba(0, 0, 51, 0.5);
 }
+
+.next:hover, .previous:hover{
+  cursor: pointer;
+  background: $warning;
+}
+
 
 img{
   position: absolute;
