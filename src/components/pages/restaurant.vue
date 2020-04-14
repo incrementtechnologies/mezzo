@@ -14,7 +14,11 @@
         </div>
         <div class="details">
           <span class="item-menu">
-            <label v-for="(counter, counterIndex) in common.restaurants" :key="counterIndex" :class="{'bg-warning': active === counterIndex}" @click="setActive(counterIndex)">{{counter.abbreviation}}</label>
+            <label v-for="(counter, counterIndex) in common.restaurants" :key="counterIndex" :class="{'bg-warning': active === counterIndex}" @click="setActive(counterIndex)">
+              <font-awesome-icon :icon="faCocktail" v-if="counter.abbreviation === 'cocktail'"></font-awesome-icon>
+              <font-awesome-icon :icon="faUtensils" v-if="counter.abbreviation === 'utensils'"></font-awesome-icon>
+              <font-awesome-icon :icon="faConciergeBell" v-if="counter.abbreviation === 'concierge-bell'"></font-awesome-icon>
+            </label>
           </span>
           <h3 style="margin-bottom: 10px;">
             {{activeItem.title}}
@@ -226,7 +230,7 @@ h5{
 </style>
 <script>
 import COMMON from 'src/common.js'
-import { faCheck, faCircle } from '@fortawesome/free-solid-svg-icons'
+import { faCheck, faCircle, faUtensils, faCocktail, faConciergeBell } from '@fortawesome/free-solid-svg-icons'
 export default {
   mounted(){
     setInterval(() => {
@@ -242,6 +246,9 @@ export default {
       common: COMMON,
       faCheck: faCheck,
       faCircle: faCircle,
+      faUtensils: faUtensils,
+      faCocktail: faCocktail,
+      faConciergeBell: faConciergeBell,
       active: 0,
       activeImage: 0
     }
