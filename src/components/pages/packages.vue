@@ -1,6 +1,5 @@
 <template>
   <div class="holder" id="packages" v-if="common.packages.length > 1">
-    
     <span class="previous" @click="previousMethod()">
       <font-awesome-icon :icon="faAngleLeft" class="prevIcon"></font-awesome-icon>
     </span>
@@ -8,44 +7,34 @@
       <font-awesome-icon :icon="faAngleRight" class="nextIcon"></font-awesome-icon>
     </span>
 
-    <div class="item" v-for="(item, index) in 4" :key="index">
+    <!--<div class="item" v-for="(item, index) in 4" :key="index">
       <span class="details">
         <label class="title">{{common.packages[activeStep + index].title}}</label>
         <button class="btn btn-warning" v-if="common.packages[activeStep + index].action === 'inquire_now'">MAKE AN INQUIRY</button>
       </span>
       <img :src="common.packages[activeStep + index].image">
+    </div>-->
+
+    <div v-if="mobileView">
+      <div class="item" v-for="(item, index) in 1" :key="index">
+        <span class="details">
+          <label class="title">{{common.packages[activeStep + index].title}}</label>
+          <button class="btn btn-warning" v-if="common.packages[activeStep + index].action === 'inquire_now'">MAKE AN INQUIRY</button>
+        </span>
+        <img :src="common.packages[activeStep + index].image">
+      </div>
     </div>
 
-    
-    
-
-    <!--<div class="previous" v-if="previousPackBtn" @click="previousMethod()" :style="{
-      width: nextPackBtn ? '11%' : '10%'
-    }">
-      <span class="details">
-        <button class="btn btn-warning" v-if="currentPrevPackBtn.action === 'inquire_now'"><font-awesome-icon :icon="faAngleLeft"></font-awesome-icon></button>
-      </span>
-      <img :src="currentPrevPackBtn.image">
+    <div v-else>
+      <div class="item" v-for="(item, index) in 4" :key="index">
+        <span class="details">
+          <label class="title">{{common.packages[activeStep + index].title}}</label>
+          <button class="btn btn-warning" v-if="common.packages[activeStep + index].action === 'inquire_now'">MAKE AN INQUIRY</button>
+        </span>
+        <img :src="common.packages[activeStep + index].image">
     </div>
-    
-    <div class="item" v-for="(item, index) in 3" :key="index" :style="{
-      width: !nextPackBtn || !previousPackBtn ? '30%' : '26%'
-    }">
-      <span class="details">
-        <label class="title">{{common.packages[activeStep + index].title}}</label>
-        <button class="btn btn-warning" v-if="common.packages[activeStep + index].action === 'inquire_now'">MAKE AN INQUIRY</button>
-      </span>
-      <img :src="common.packages[activeStep + index].image">
-    </div>
+    </div>    
 
-    <div class="next" v-if="nextPackBtn" @click="nextMethod()" :style="{
-      width: previousPackBtn ? '11%' : '10%'
-    }">
-      <span class="details">
-        <button class="btn btn-warning" v-if="currentNextPackBtn.action === 'inquire_now'"><font-awesome-icon :icon="faAngleRight"></font-awesome-icon></button>
-      </span>
-      <img :src="currentNextPackBtn.image">
-    </div>-->  
   </div>
 </template>
 <style scoped lang="scss">
@@ -145,28 +134,35 @@ img{
 @media (max-width: 992px) {
   .holder{
     height: 70vh;
+    width: 100%;
   }
+
   img{
     position: absolute;
     height: 100%;
-    width: auto;
+    width: 100%;
   }
+
+  .item{
+    width: 100%;
+  }
+
   .item span label{
     padding-top: 8vh;
   }
   .btn{
     position: relative;
-    width: 75% !important;
+    width: 50% !important;
     font-size: 12px;
     padding: 2.5px;
   }
-  .next button, .previous button{
+  /*.next button, .previous button{
     font-size: 10px !important;
     margin-top: 30vh;
     width: 90% !important;
     padding: 0 !important;
     height: 7vh !important;
-  }
+  }*/
   
 }
 
@@ -175,38 +171,23 @@ img{
 import COMMON from 'src/common.js'
 import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons'
 export default {
- data(){
+  mounted(){
+    this.initMobileView()
+    setInterval(() => {
+        this.activeStep++
+        if (this.activeStep + this.numberOfViews > COMMON.packages.length){
+        this.activeStep = 0
+      }
+    }, 6000)
+  },
+  data(){
     return {
       common: COMMON,
       activeStep: 0,
-      numberOfViews: 3,
-      size: COMMON.packages.length,
-      previous: null,
-      next: null,
+      numberOfViews: 4,
+      mobileView: false,
       faAngleLeft: faAngleLeft,
       faAngleRight: faAngleRight
-    }
-  },
-  computed: {
-    nextPackBtn: function (){
-      if(this.activeStep + this.numberOfViews < COMMON.packages.length){
-        return true
-      }
-      else
-        return false
-    },
-    previousPackBtn: function (){
-      if(this.activeStep > 0){
-        return true
-      }
-      else
-        return false
-    },
-    currentPrevPackBtn: function (){
-      return COMMON.packages[this.activeStep - 1]
-    },
-    currentNextPackBtn: function (){
-      return COMMON.packages[this.activeStep + this.numberOfViews]
     }
   },
   methods: {
@@ -215,9 +196,21 @@ export default {
     },
     nextMethod(){
       this.activeStep++
+      if (this.activeStep + this.numberOfViews > COMMON.packages.length){
+        this.activeStep = 0
+      }
     },
     previousMethod(){
       this.activeStep--
+      if (this.activeStep < 0){
+        this.activeStep = COMMON.packages.length - this.numberOfViews
+      }
+    },
+    initMobileView(){
+      if(window.innerWidth <= 992){
+        this.numberOfViews = 1
+        this.mobileView = true
+      }
     }
   }
 }

@@ -130,6 +130,9 @@ import { faQuoteLeft, faCircle } from '@fortawesome/free-solid-svg-icons'
 import Jquery from 'jquery'
 
 export default {
+  mounted(){
+    Jquery("#testimonialsCarousel").carousel({interval: 6000});
+  },
   data () {
     return {
       common: COMMON,
@@ -155,7 +158,4 @@ export default {
     }
   }
 }
-Jquery(document).ready(function(){
-  Jquery("#testimonialsCarousel").carousel({interval: 6000});
-});
 </script>
