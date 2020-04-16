@@ -7,19 +7,11 @@
       <font-awesome-icon :icon="faAngleRight" class="nextIcon"></font-awesome-icon>
     </span>
 
-    <!--<div class="item" v-for="(item, index) in 4" :key="index">
-      <span class="details">
-        <label class="title">{{common.packages[activeStep + index].title}}</label>
-        <button class="btn btn-warning" v-if="common.packages[activeStep + index].action === 'inquire_now'">MAKE AN INQUIRY</button>
-      </span>
-      <img :src="common.packages[activeStep + index].image">
-    </div>-->
-
     <div v-if="mobileView">
       <div class="item" v-for="(item, index) in 1" :key="index">
         <span class="details">
           <label class="title">{{common.packages[activeStep + index].title}}</label>
-          <button class="btn btn-warning" v-if="common.packages[activeStep + index].action === 'inquire_now'">MAKE AN INQUIRY</button>
+          <button class="btn btn-warning" v-if="common.packages[activeStep + index].action === 'inquire_now'" @click="selected = common.packages[activeStep + index]">MAKE AN INQUIRY</button>
         </span>
         <img :src="common.packages[activeStep + index].image">
       </div>
@@ -29,12 +21,12 @@
       <div class="item" v-for="(item, index) in 4" :key="index">
         <span class="details">
           <label class="title">{{common.packages[activeStep + index].title}}</label>
-          <button class="btn btn-warning" v-if="common.packages[activeStep + index].action === 'inquire_now'">MAKE AN INQUIRY</button>
+          <button class="btn btn-warning" v-if="common.packages[activeStep + index].action === 'inquire_now'" @click="selected = common.packages[activeStep + index]">MAKE AN INQUIRY</button>
         </span>
         <img :src="common.packages[activeStep + index].image">
     </div>
     </div>    
-
+    <inquire :data="selected"></inquire>
   </div>
 </template>
 <style scoped lang="scss">
@@ -170,6 +162,7 @@ img{
 <script>
 import COMMON from 'src/common.js'
 import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons'
+import Inquire from 'src/components/pages/inquire.vue'
 export default {
   mounted(){
     this.initMobileView()
@@ -187,8 +180,12 @@ export default {
       numberOfViews: 4,
       mobileView: false,
       faAngleLeft: faAngleLeft,
-      faAngleRight: faAngleRight
+      faAngleRight: faAngleRight,
+      selected: null
     }
+  },
+  components: {
+    Inquire
   },
   methods: {
     openExternal(url){

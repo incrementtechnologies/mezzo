@@ -78,7 +78,7 @@ export default {
     return {
       faChevronUp: faChevronUp,
       scrollValue: 0,
-      common: COMMON
+      common: COMMON,
     }
   },
   props: {
@@ -151,6 +151,7 @@ export default {
       COMMON.rooms = []
       COMMON.restaurants = []
       COMMON.gallery = []
+      COMMON.addOns = []
       Jquery.get('https://spreadsheets.google.com/feeds/cells/1luFOWuvQh7PlT5Jy6xY0181qdWsJhhoQt_kQ9YnpKKk/1/public/values?alt=json', response => {
         let entries = response.feed.entry
         for (var i = 0; i < entries.length; i += 2) {
@@ -299,6 +300,22 @@ export default {
               url: COMMON.host + 'img/' + image
             }
             COMMON.gallery.push(object)
+          }
+        }
+      })
+      Jquery.get('https://spreadsheets.google.com/feeds/cells/1luFOWuvQh7PlT5Jy6xY0181qdWsJhhoQt_kQ9YnpKKk/9/public/values?alt=json', response => {
+        let entries = response.feed.entry
+        let j = 0;
+        for (var i = 0; i < entries.length; i += 3) {
+          if(i > 2){
+            let object = {
+              type: entries[i].content.$t,
+              title: entries[i + 1].content.$t,
+              description: entries[i + 2].content.$t,
+              id: j++,
+              flag: false
+            }
+            COMMON.addOns.push(object)
           }
         }
       })

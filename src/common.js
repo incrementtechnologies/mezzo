@@ -32,5 +32,6 @@ export default{
   restaurants: [],
   faq: [],
   gallery: [],
+  addOns: [],
   activeMenu: '#top-view'
 }
