@@ -30,28 +30,29 @@
       </span>
       <span v-if="activeStep === 1">
         <h3 class="text-primary">Please type necessary information</h3>
+        <p v-if="errorMessage" class="text-danger">{{errorMessage}}</p>
         <span class="form-group form-control-half">
           <label style="width: 100%; float: left;">E-mail <b class="text-danger">*</b></label>
-          <input type="text" class="form-control" placeholder="Type e-mail address">
+          <input type="text" class="form-control" placeholder="Type e-mail address" v-model="email">
         </span>
         <span class="form-group form-control-half">
           <label style="width: 100%; float: left;">Complete name <b class="text-danger">*</b></label>
-          <input type="text" class="form-control" placeholder="Type full name">
+          <input type="text" class="form-control" placeholder="Type full name" v-model="completeName">
         </span>
 
         <span class="form-group form-control-half">
           <label style="width: 100%; float: left;">Organization / Business Name <b class="text-danger">*</b></label>
-          <input type="text" class="form-control" placeholder="Type busness name">
+          <input type="text" class="form-control" placeholder="Type busness name" v-model="businessName">
         </span>
 
        <span class="form-group form-control-half">
           <label style="width: 100%; float: left;">Organization / Business Address <b class="text-danger">*</b></label>
-          <input type="text" class="form-control" placeholder="Type address">
+          <input type="text" class="form-control" placeholder="Type address" v-model="address">
         </span>
 
         <span class="form-group form-control-half">
           <label style="width: 100%; float: left;">Contact number <b class="text-danger">*</b></label>
-          <input type="text" class="form-control" placeholder="Type contact number">
+          <input type="text" class="form-control" placeholder="Type contact number" v-model="contactNumber">
         </span>
         <span class="form-group form-control-half">
           <label style="width: 100%; float: left;">Date <b class="text-danger">*</b></label>
@@ -69,12 +70,12 @@
             :disabled-date="beforeToday"
             placeholder="End Date"
             value-type="format"
-            v-model="start"
+            v-model="end"
             :default-value="new Date()"></date-picker>
         </span>
         <span class="form-group">
           <label>Additional information</label>
-          <textarea rows="5" style="width: 100%; float: left; padding: 10px;" placeholder="Enter additional information">
+          <textarea rows="5" style="width: 100%; float: left; padding: 10px;" placeholder="Enter additional information" v-model="additionalInformation">
             
           </textarea>
         </span>
@@ -112,7 +113,7 @@
 .holder{
   width: 100%;
   min-height: 100vh;
-  overflow: auto;
+  margin-bottom: 100px;
   padding: 25px;
 }
 
@@ -183,6 +184,7 @@ import COMMON from 'src/common.js'
 import { faChevronLeft, faSquare } from '@fortawesome/free-solid-svg-icons'
 import DatePicker from 'vue2-datepicker'
 import 'vue2-datepicker/index.css'
+import Jquery from 'jquery'
 export default {
  data(){
     return {
@@ -193,8 +195,15 @@ export default {
       title: null,
       description: null,
       errorMessage: null,
+      email: null,
+      completeName: null,
+      businessName: null,
+      address: null,
+      additionalInformation: null,
       start: null,
       end: null,
+      attendees: 1,
+      rooms: 1,
       activeStep: 0
     }
   },
@@ -235,8 +244,71 @@ export default {
       this.title = null
       this.description = null
     },
+    validateEmail () {
+      let reg = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+.[a-zA-Z0-9]*$/
+      if (reg.test(this.email) === false) {
+        return false
+      } else {
+        return true
+      }
+    },
+    validate(){
+      this.errorMessage = null
+      if (this.email !== null && this.validateEmail() === false) {
+        this.errorMessage = 'Invalid e-mail address.'
+        return false
+      }else if(this.contactNumber === null || this.contactNumber === '' || isNaN(this.contactNumber) || this.contactNumber.length < 11){
+        this.errorMessage = 'Invalid contact number.'
+        return false
+      }else if(this.completeName === null || this.completeName === ''){
+        this.errorMessage = 'Complete Name is required.'
+        return false
+      }else if(this.businessName === null || this.businessName === ''){
+        this.errorMessage = 'Business name is required.'
+        return false
+      }else if(this.start === null || this.start === ''){
+        this.errorMessage = 'Start date is required.'
+        return false
+      }else if(this.end === null || this.end === ''){
+        this.errorMessage = 'End date is required.'
+        return false
+      }
+      return true
+    },
     submit(){
-      //
+      if(this.validate()){
+        this.create()
+      }
+    },
+    create () {
+      // send to email
+      let addons = ''
+      for (var i = 0; i < this.filteredData.length; i++) {
+        let item = this.filteredData[i]
+        if(item.flag === true){
+          addons += item.title + ', ' + item.description + '\n'
+        }
+      }
+      let data = 'email=' + this.email +
+      '&complete_name=' + this.completeName +
+      '&contact_number=' + this.contactNumber +
+      '&business=' + this.businessName +
+      '&type=' + this.data.title +
+      '&start=' + this.start +
+      '&end=' + this.end +
+      '&contact_number=' + this.contactNumber +
+      '&attendees=' + this.attendees +
+      '&rooms=' + this.rooms +
+      '&additional_information=' + this.additionalInformation +
+      '&addons=' + addons
+      Jquery.ajaxSetup({
+        headers: {
+          'Access-Control-Allow-Origin': '*'
+        }
+      })
+      Jquery.get(this.common.host + 'php/gsheet.php?' + data, () => {
+
+      })
     }
   }
 }
