@@ -8,22 +8,22 @@
         </span>
         <span class="step1-action">
           <label class="text-white" style="background: rgba(0,0,0,.5)">
-            Do you have upcoming events?
+            Are you planning an event?
           </label>
           <br>
-          <button class="btn btn-warning" @click="activeStep = 1">MAKE AN INQUIRY NOW</button>
+          <button class="btn btn-warning" @click="activeStep = 1">MAKE AN INQUIRY</button>
         </span>
       </span>
       <div class="main-step" v-if="activeStep > 0">
-        <span v-if="activeStep === 1">
+        <span v-if="activeStep === 2">
           <h3 class="text-primary">Choose addon services</h3>
           <span class="form-group custom-form-control">
-            <label>Choose the type of package</label>
+            <label>Package Type</label>
             <select class="form-control" @change="setPackage()" v-model="selectedIndex">
               <option v-for="(item, index) in common.packages" :key="index" :value="index">{{item.title}}</option>
             </select>
           </span>
-          <p>Choose addons to yout package:</p>
+          <p>Package Add-ons</p>
           <ul>
             <li v-for="(item, index) in filteredData" :key="index" @click="item.flag = !item.flag">
               <h5>
@@ -48,32 +48,45 @@
             </span>
           </span>
         </span>
-        <span v-if="activeStep === 2">
-          <h3 class="text-primary">Please type necessary information</h3>
+        <span v-if="activeStep === 1">
+          <h3 class="text-primary">Please fill in the necessary information</h3>
           <p v-if="errorMessage" class="text-danger">{{errorMessage}}</p>
+
           <span class="form-group form-control-half">
-            <label style="width: 100%; float: left;">E-mail <b class="text-danger">*</b></label>
-            <input type="text" class="form-control" placeholder="Type e-mail address" v-model="email">
-          </span>
-          <span class="form-group form-control-half">
-            <label style="width: 100%; float: left;">Complete name <b class="text-danger">*</b></label>
+            <label style="width: 100%; float: left;">Complete Name <b class="text-danger">*</b></label>
             <input type="text" class="form-control" placeholder="Type full name" v-model="completeName">
           </span>
 
           <span class="form-group form-control-half">
-            <label style="width: 100%; float: left;">Organization / Business Name <b class="text-danger">*</b></label>
-            <input type="text" class="form-control" placeholder="Type busness name" v-model="businessName">
-          </span>
-
-         <span class="form-group form-control-half">
-            <label style="width: 100%; float: left;">Organization / Business Address <b class="text-danger">*</b></label>
-            <input type="text" class="form-control" placeholder="Type address" v-model="address">
+            <label style="width: 100%; float: left;">E-mail <b class="text-danger">*</b></label>
+            <input type="text" class="form-control" placeholder="Type e-mail address" v-model="email">
           </span>
 
           <span class="form-group form-control-half">
-            <label style="width: 100%; float: left;">Contact number <b class="text-danger">*</b></label>
+            <label style="width: 100%; float: left;">Contact Number <b class="text-danger">*</b></label>
             <input type="text" class="form-control" placeholder="Type contact number" v-model="contactNumber">
           </span>
+
+          <span class="form-group form-control-half">
+            <label style="width: 100%; float: left;">Organization / Business Name</label>
+            <input type="text" class="form-control" placeholder="Optional" v-model="businessName">
+          </span>
+
+          <span class="form-group form-control-half">
+            <label style="width: 100%; float: left;">Organization / Business Address</label>
+            <input type="text" class="form-control" placeholder="Optional" v-model="address">
+          </span>
+
+          <span class="form-group form-control-half">
+            <label style="width: 100%; float: left;">Number of Attendees <b class="text-danger">*</b></label>
+            <input type="number" class="form-control" placeholder="Type total number of attendees" v-model="attendees">
+          </span>
+
+          <span class="form-group form-control-half">
+            <label style="width: 100%; float: left;">Number of Rooms</label>
+            <input type="number" class="form-control" placeholder="Type number of rooms needed and kindly add more details below" v-model="rooms">
+          </span>
+
           <span class="form-group form-control-half">
             <label style="width: 100%; float: left;">Date <b class="text-danger">*</b></label>
 
@@ -93,7 +106,8 @@
               v-model="end"
               :default-value="new Date()"></date-picker>
           </span>
-          <span class="form-group">
+
+          <span class="form-group" style="width: 100%; float: left;">
             <label>Additional information</label>
             <textarea rows="5" style="width: 100%; float: left; padding: 10px;" placeholder="Enter additional information" v-model="additionalInformation">
               
@@ -105,7 +119,7 @@
             Back
           </button>
 
-          <button class="btn btn-primary pull-right" style="float: right;" @click="activeStep++" v-if="activeStep === 1">
+          <button class="btn btn-primary pull-right" style="float: right;" @click="next()" v-if="activeStep === 1">
             Next
           </button>
 
@@ -220,7 +234,7 @@ ul li:hover{
 
 .form-control-half{
   float: left;
-  width: 49% !important;
+  width: 32% !important;
   margin-right: 1% !important;
 }
 
@@ -228,7 +242,7 @@ ul li:hover{
   width: 49% !important;
   margin-right: 1% !important;
   margin-left: 0% !important;
-  margin-top: -12px !important;
+  margin-top: -16px !important;
 }
 
 .mx-input-wrapper, .mx-input-wrapper input{
@@ -259,6 +273,12 @@ ul li:hover{
   ul li{
     width: 100%;
     margin-right: 0%;
+  }
+
+
+  .form-control-half{
+    width: 100% !important;
+    margin-right: 0% !important;
   }
 }
 
@@ -340,17 +360,23 @@ export default {
     },
     validate(){
       this.errorMessage = null
-      if (this.email !== null && this.validateEmail() === false) {
+      if(this.email === null){
+        this.errorMessage = 'Please fill in the required information.'
+        return false
+      }else if (this.email !== null && this.validateEmail() === false) {
         this.errorMessage = 'Invalid e-mail address.'
         return false
-      }else if(this.contactNumber === null || this.contactNumber === '' || isNaN(this.contactNumber) || this.contactNumber.length < 11){
+      }else if(this.contactNumber === null || this.contactNumber === '' || this.contactNumber.length < 8){
         this.errorMessage = 'Invalid contact number.'
         return false
       }else if(this.completeName === null || this.completeName === ''){
         this.errorMessage = 'Complete Name is required.'
         return false
-      }else if(this.businessName === null || this.businessName === ''){
-        this.errorMessage = 'Business name is required.'
+      }else if(this.attendees < 1){
+        this.errorMessage = 'Attendees must be greater than 0'
+        return false
+      }else if(this.rooms < 1){
+        this.errorMessage = 'Rooms must be greater than 0'
         return false
       }else if(this.start === null || this.start === ''){
         this.errorMessage = 'Start date is required.'
@@ -361,9 +387,13 @@ export default {
       }
       return true
     },
+    next(){
+      if(this.validate()){
+        this.activeStep++
+      }
+    },
     submit(){
       if(this.validate()){
-        console.log('hi')
         this.create()
       }
     },
