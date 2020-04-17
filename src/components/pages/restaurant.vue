@@ -234,7 +234,7 @@ import { faCheck, faCircle, faUtensils, faCocktail, faConciergeBell } from '@for
 export default {
   mounted(){
     setInterval(() => {
-      if(this.active < COMMON.rooms.length){
+      if(this.active < COMMON.restaurants.length - 1){
         this.active++
       }else{
         this.active = 0

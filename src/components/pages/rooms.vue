@@ -203,7 +203,7 @@ import { faCheck, faCircle } from '@fortawesome/free-solid-svg-icons'
 export default {
   mounted(){
     setInterval(() => {
-      if(this.active < COMMON.rooms.length){
+      if(this.active < COMMON.rooms.length - 1){
         this.active++
       }else{
         this.active = 0

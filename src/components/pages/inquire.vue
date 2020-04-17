@@ -1,98 +1,119 @@
 <template>
-  <div class="custom-container" v-if="data !== null">
+  <div class="custom-container" id="packages">
     <div class="holder">
       <!-- Add ons -->
-      <span v-if="activeStep === 0">
-        <h3 class="text-primary">Choose addon services</h3>
-        <ul>
-          <li v-for="(item, index) in filteredData" :key="index" @click="item.flag = !item.flag">
-            <h5>
-              <font-awesome-icon
-                :icon="faSquare"
-                :class="{'text-primary': item.flag === true, 'text-warning': item.flag === false}"
-              ></font-awesome-icon>
-              <label style="padding-left: 10px;">{{item.title}}</label>
-            </h5>
-            <p>{{item.description}}</p>
-          </li>
-        </ul>
-        <span class="form-group">
-          <label style="width: 100%; float: left;">Add other addons</label>
-          <label class="text-danger" style="width: 100%; float: left;" v-if="errorMessage !== null"><b>{{errorMessage}}</b></label>
-          <span class="">
-            <input type="tex" class="form-control" style="width: 20%;" placeholder="Title" v-model="title">
-            <input type="tex" class="form-control" style="width: 40%" placeholder="Description" v-model="description">
-            <button class="btn btn-primary" @click="newAddOn()">
-              Add
-            </button>
+      <span v-if="activeStep === 0" class="step1">
+        <span class="image-holder">
+          <img :src="item.image" v-for="(item, index) in common.packages" :key="index">
+        </span>
+        <span class="step1-action">
+          <label class="text-white" style="background: rgba(0,0,0,.5)">
+            Do you have upcoming events?
+          </label>
+          <br>
+          <button class="btn btn-warning" @click="activeStep = 1">MAKE AN INQUIRY NOW</button>
+        </span>
+      </span>
+      <div class="main-step" v-if="activeStep > 0">
+        <span v-if="activeStep === 1">
+          <h3 class="text-primary">Choose addon services</h3>
+          <span class="form-group custom-form-control">
+            <label>Choose the type of package</label>
+            <select class="form-control" @change="setPackage()" v-model="selectedIndex">
+              <option v-for="(item, index) in common.packages" :key="index" :value="index">{{item.title}}</option>
+            </select>
+          </span>
+          <p>Choose addons to yout package:</p>
+          <ul>
+            <li v-for="(item, index) in filteredData" :key="index" @click="item.flag = !item.flag">
+              <h5>
+                <font-awesome-icon
+                  :icon="faSquare"
+                  :class="{'text-primary': item.flag === true, 'text-warning': item.flag === false}"
+                ></font-awesome-icon>
+                <label style="padding-left: 10px;">{{item.title}}</label>
+              </h5>
+              <p>{{item.description}}</p>
+            </li>
+          </ul>
+          <span class="form-group" style="width: 100%; float: left;">
+            <label style="width: 100%; float: left;">Add other addons</label>
+            <label class="text-danger" style="width: 100%; float: left;" v-if="errorMessage !== null"><b>{{errorMessage}}</b></label>
+            <span class="width: 100%; float: left;">
+              <input type="tex" class="form-control" style="width: 40%;" placeholder="Title" v-model="title">
+              <input type="tex" class="form-control" style="width: 40%" placeholder="Description" v-model="description">
+              <button class="btn btn-primary" @click="newAddOn()">
+                Add
+              </button>
+            </span>
           </span>
         </span>
-      </span>
-      <span v-if="activeStep === 1">
-        <h3 class="text-primary">Please type necessary information</h3>
-        <p v-if="errorMessage" class="text-danger">{{errorMessage}}</p>
-        <span class="form-group form-control-half">
-          <label style="width: 100%; float: left;">E-mail <b class="text-danger">*</b></label>
-          <input type="text" class="form-control" placeholder="Type e-mail address" v-model="email">
-        </span>
-        <span class="form-group form-control-half">
-          <label style="width: 100%; float: left;">Complete name <b class="text-danger">*</b></label>
-          <input type="text" class="form-control" placeholder="Type full name" v-model="completeName">
-        </span>
+        <span v-if="activeStep === 2">
+          <h3 class="text-primary">Please type necessary information</h3>
+          <p v-if="errorMessage" class="text-danger">{{errorMessage}}</p>
+          <span class="form-group form-control-half">
+            <label style="width: 100%; float: left;">E-mail <b class="text-danger">*</b></label>
+            <input type="text" class="form-control" placeholder="Type e-mail address" v-model="email">
+          </span>
+          <span class="form-group form-control-half">
+            <label style="width: 100%; float: left;">Complete name <b class="text-danger">*</b></label>
+            <input type="text" class="form-control" placeholder="Type full name" v-model="completeName">
+          </span>
 
-        <span class="form-group form-control-half">
-          <label style="width: 100%; float: left;">Organization / Business Name <b class="text-danger">*</b></label>
-          <input type="text" class="form-control" placeholder="Type busness name" v-model="businessName">
+          <span class="form-group form-control-half">
+            <label style="width: 100%; float: left;">Organization / Business Name <b class="text-danger">*</b></label>
+            <input type="text" class="form-control" placeholder="Type busness name" v-model="businessName">
+          </span>
+
+         <span class="form-group form-control-half">
+            <label style="width: 100%; float: left;">Organization / Business Address <b class="text-danger">*</b></label>
+            <input type="text" class="form-control" placeholder="Type address" v-model="address">
+          </span>
+
+          <span class="form-group form-control-half">
+            <label style="width: 100%; float: left;">Contact number <b class="text-danger">*</b></label>
+            <input type="text" class="form-control" placeholder="Type contact number" v-model="contactNumber">
+          </span>
+          <span class="form-group form-control-half">
+            <label style="width: 100%; float: left;">Date <b class="text-danger">*</b></label>
+
+            <date-picker
+              type="date"
+              :disabled-date="beforeToday"
+              placeholder="Start Date"
+              value-type="format"
+              v-model="start"
+              :default-value="new Date()"></date-picker>
+
+            <date-picker
+              type="date"
+              :disabled-date="beforeToday"
+              placeholder="End Date"
+              value-type="format"
+              v-model="end"
+              :default-value="new Date()"></date-picker>
+          </span>
+          <span class="form-group">
+            <label>Additional information</label>
+            <textarea rows="5" style="width: 100%; float: left; padding: 10px;" placeholder="Enter additional information" v-model="additionalInformation">
+              
+            </textarea>
+          </span>
         </span>
+        <span class="action">
+          <button class="btn btn-primary" v-if="activeStep > 0" @click="activeStep--">
+            Back
+          </button>
 
-       <span class="form-group form-control-half">
-          <label style="width: 100%; float: left;">Organization / Business Address <b class="text-danger">*</b></label>
-          <input type="text" class="form-control" placeholder="Type address" v-model="address">
+          <button class="btn btn-primary pull-right" style="float: right;" @click="activeStep++" v-if="activeStep === 1">
+            Next
+          </button>
+
+          <button class="btn btn-primary pull-right" style="float: right;" @click="submit()" v-if="activeStep === 2">
+            Submit
+          </button>
         </span>
-
-        <span class="form-group form-control-half">
-          <label style="width: 100%; float: left;">Contact number <b class="text-danger">*</b></label>
-          <input type="text" class="form-control" placeholder="Type contact number" v-model="contactNumber">
-        </span>
-        <span class="form-group form-control-half">
-          <label style="width: 100%; float: left;">Date <b class="text-danger">*</b></label>
-
-          <date-picker
-            type="date"
-            :disabled-date="beforeToday"
-            placeholder="Start Date"
-            value-type="format"
-            v-model="start"
-            :default-value="new Date()"></date-picker>
-
-          <date-picker
-            type="date"
-            :disabled-date="beforeToday"
-            placeholder="End Date"
-            value-type="format"
-            v-model="end"
-            :default-value="new Date()"></date-picker>
-        </span>
-        <span class="form-group">
-          <label>Additional information</label>
-          <textarea rows="5" style="width: 100%; float: left; padding: 10px;" placeholder="Enter additional information" v-model="additionalInformation">
-            
-          </textarea>
-        </span>
-      </span>
-      <span class="action">
-        <button class="btn btn-primary" v-if="activeStep > 0" @click="activeStep--">
-          Back
-        </button>
-
-        <button class="btn btn-primary pull-right" style="float: right;" @click="activeStep++" v-if="activeStep === 0">
-          Next
-        </button>
-
-        <button class="btn btn-primary pull-right" style="float: right;" @click="submit()" v-if="activeStep === 1">
-          Submit
-        </button>
-      </span>
+      </div>
     </div>
   </div>
 </template>
@@ -100,21 +121,63 @@
 @import "~assets/style/colors.scss";
 .custom-container{
   width: 100%;
-  min-height: 100vh;
+  min-height: 10vh;
   float: left;
-  position: fixed;
-  top: 0;
-  left: 20%;
-  width: 80%;
-  z-index: 1000;
-  overflow: auto;
+  overflow: hidden;
   background: $white;
+  position: relative;
 }
 .holder{
   width: 100%;
-  min-height: 100vh;
-  margin-bottom: 100px;
-  padding: 25px;
+}
+
+.step1{
+  position: relative;
+  width: 100%;
+  float: left;
+}
+
+.step1 label{
+  font-size: 42px;
+  padding: 10px;
+}
+
+.custom-form-control{
+  width: 20% !important;
+  margin-right: 80% !important;
+  float: left;
+}
+.image-holder{
+  float: left;
+  width: 100%;
+  position: relative;
+}
+
+.image-holder img{
+  height: auto;
+  width: 20%;
+  float: left;
+}
+
+.step1-action{
+  position: absolute;
+  top: 50%;
+  text-align: center;
+  left: 0;
+  width: 100%;
+}
+
+.step1-action .btn{
+  width: 20% !important;
+}
+
+.main-step{
+  margin-top: 50px;
+  width: 100%;
+  float: left;
+  margin-bottom: 50px;
+  padding-left: 25px;
+  padding-right: 25px;
 }
 
 ul{
@@ -176,6 +239,27 @@ ul li:hover{
     left: 0%;
     width: 100%;
   }
+
+  .image-holder img{
+    height: auto;
+    width: 50%;
+    float: left;
+  }
+
+  .step1-action .btn{
+    width: 90% !important;
+    margin-left: 5%;
+  }
+
+
+  .custom-form-control{
+    width: 100% !important;
+  }
+
+  ul li{
+    width: 100%;
+    margin-right: 0%;
+  }
 }
 
 </style>
@@ -196,6 +280,7 @@ export default {
       description: null,
       errorMessage: null,
       email: null,
+      contactNumber: null,
       completeName: null,
       businessName: null,
       address: null,
@@ -204,24 +289,14 @@ export default {
       end: null,
       attendees: 1,
       rooms: 1,
-      activeStep: 0
+      activeStep: 0,
+      selectedIndex: null,
+      filteredData: []
     }
   },
   props: ['data'],
   components: {
     DatePicker
-  },
-  computed: {
-    filteredData: function(){
-      let addOns = COMMON.addOns
-      if(this.data !== null){
-        return addOns.filter(item => 
-          item.type.toLowerCase().includes(this.data.title.toLowerCase())
-        )
-      }else{
-        return []
-      }
-    }
   },
   methods: {
     newAddOn(){
@@ -243,6 +318,17 @@ export default {
       this.filteredData.push(object)
       this.title = null
       this.description = null
+    },
+    setPackage(){
+      if(this.selectedIndex === null){
+        this.filteredData = []
+        return
+      }else{
+        let selectedPackage = COMMON.packages[this.selectedIndex]
+        this.filteredData = COMMON.addOns.filter((item) => {
+          return item.type.includes(selectedPackage.title)
+        })
+      }
     },
     validateEmail () {
       let reg = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+.[a-zA-Z0-9]*$/
@@ -277,23 +363,44 @@ export default {
     },
     submit(){
       if(this.validate()){
+        console.log('hi')
         this.create()
       }
+    },
+    beforeToday(date){
+      return date < new Date()
+    },
+    initInput(){
+      this.email = null
+      this.completeName = null
+      this.businessName = null
+      this.address = null
+      this.additionalInformation = null
+      this.start = null
+      this.end = null
+      this.attendees = 1
+      this.rooms = 1
+      this.activeStep = 0
+      this.selectedIndex = null
+      this.filteredData = []
     },
     create () {
       // send to email
       let addons = ''
+      let type = ''
       for (var i = 0; i < this.filteredData.length; i++) {
         let item = this.filteredData[i]
         if(item.flag === true){
+          type = item.type
           addons += item.title + ', ' + item.description + '\n'
         }
       }
+      console.log('hello')
       let data = 'email=' + this.email +
       '&complete_name=' + this.completeName +
       '&contact_number=' + this.contactNumber +
       '&business=' + this.businessName +
-      '&type=' + this.data.title +
+      '&type=' + type +
       '&start=' + this.start +
       '&end=' + this.end +
       '&contact_number=' + this.contactNumber +
@@ -307,8 +414,10 @@ export default {
         }
       })
       Jquery.get(this.common.host + 'php/gsheet.php?' + data, () => {
-
       })
+      setTimeout(() => {
+        this.initInput()
+      }, 1000)
     }
   }
 }
