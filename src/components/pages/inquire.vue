@@ -72,7 +72,7 @@
             <input type="text" class="form-control" placeholder="Optional" v-model="businessName">
           </span>
 
-          <span class="form-group form-control-half">
+          <span class="form-group form-control-half" id="address">
             <label style="width: 100%; float: left;">Organization / Business Address</label>
             <input type="text" class="form-control" placeholder="Optional" v-model="address">
           </span>
@@ -248,6 +248,9 @@ ul li:hover{
 .mx-input-wrapper, .mx-input-wrapper input{
   border: 1px solid $gray !important;
 }
+#address{
+  margin-right: 33% !important;
+}
 @media (max-width: 992px) {
   .custom-container{
     left: 0%;
@@ -278,6 +281,10 @@ ul li:hover{
 
   .form-control-half{
     width: 100% !important;
+    margin-right: 0% !important;
+  }
+
+  #address{
     margin-right: 0% !important;
   }
 }

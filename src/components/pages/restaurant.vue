@@ -86,7 +86,7 @@
   margin-right: 2px;
 }
 .holder{
-  min-height: 100vh;
+  min-height: 93vh;
   width: 100%;
   float: left;
   background: $primary;
@@ -113,7 +113,7 @@
 
 img{
   width: 100%;
-  height: 100vh;
+  height: 93vh;
 }
 
 .btn{

@@ -73,7 +73,7 @@
 }
 
 .holder{
-  min-height: 100vh;
+  min-height: 93vh;
   width: 100%;
   float: left;
   background: white;
@@ -85,7 +85,10 @@
   float: left;
   height: 100%;
   text-align: justify;
-  padding: 50px;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-top: 25px;
+  padding-bottom: 25px;
   position: relative;
 }
 
@@ -99,7 +102,7 @@
 
 img{
   width: 100%;
-  height: 100vh;
+  height: 93vh;
 }
 
 .btn{
