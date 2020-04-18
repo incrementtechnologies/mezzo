@@ -26,7 +26,7 @@ export default{
     url: 'https://www.instagram.com/mezzohotelcebu'
   }],
   menus: [],
-  packages: [],
+  packages: null,
   testimonials: [],
   rooms: [],
   restaurants: [],

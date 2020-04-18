@@ -4,15 +4,15 @@
     <logo class="hide-on-mobile"></logo>
     <font-awesome-icon :icon="flag === false ? faBars : faTimes" class="mobile-menu-icon" @click="toggle()"></font-awesome-icon>
     <ul class="mobile-menu">
-      <li v-for="(item, index) in common.menus" :key="index" :class="{'active-menu': common.activeMenu === item.redirect}">
-        <a @click="scrollTo(item.redirect)" data-toggle="collapse" data-target="#myNavbar">{{item.title}}</a>
+      <li v-for="(item, index) in common.menus" :key="index" :class="{'active-menu': common.activeMenu === item.redirect}" @click="scrollTo(item.redirect)" data-toggle="collapse" data-target="#myNavbar">
+        <a data-toggle="collapse" data-target="#myNavbar">{{item.title}}</a>
       </li>
     </ul>
-    <ul class="mobile-social-icon">
+    <!-- <ul class="mobile-social-icon">
       <li v-for="(item, index) in common.socialIcons" :key="index" @click="openExternal(item.url)">
         <font-awesome-icon :icon="item.icon" class="social-icons"></font-awesome-icon>
       </li>
-    </ul>
+    </ul> -->
     <div class="menu">
       <ul>
         <li v-for="(item, index) in common.menus" :key="index" class="basic-menu" @click="scrollTo(item.redirect)" :class="{'active-menu': common.activeMenu === item.redirect}">{{item.title}}</li>

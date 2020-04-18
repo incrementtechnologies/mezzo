@@ -30,7 +30,12 @@
               <label>{{iItem.title}}</label>
             </li>
           </ul>
-          <button class="btn btn-warning">INQUIRE NOW</button>
+          <p v-if="active < 2">
+            For inquiries, please contact us through <a :href="'tel:' + common.APP_PHONE_NUMBER" style="color: #fff;">{{common.APP_PHONE_NUMBER}}</a> or <a :href="'mailto:' + common.APP_EMAIL + '?Subject=INQUIRE'" target="_top" style="color: #fff;">{{common.APP_EMAIL}}</a>
+          </p>
+          <p v-if="active === 2">
+            For inquiries, please dial <b>"0"</b> from your hotel room.
+          </p>
         </div>
         <div class="image-holder image-holder-lg" v-if="activeItem.images !== null">
           <span v-for="(imageItem, imageIndex) in activeItem.images" :key="imageIndex">

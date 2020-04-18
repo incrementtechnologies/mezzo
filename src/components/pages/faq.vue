@@ -11,8 +11,7 @@
           <b>{{item.question}}</b>
           <font-awesome-icon :icon="item.flag === true ? faChevronUp : faChevronDown" class="text-primary icon"></font-awesome-icon>
         </label>
-        <p v-if="item.flag === true">
-          {{item.answer}}
+        <p v-if="item.flag === true" v-html="item.answer">
         </p>
       </li>  
     </ul>
@@ -89,16 +88,16 @@ ul li:hover{
   cursor: pointer;
 }
 .title{
-  line-height: $height;
   width: 100%;
   float: left;
   color: $primary;
   margin-bottom: 0px;
+  padding-top: 15px;
+  padding-bottom: 7px;
 }
 
 .icon{
   float: right;
-  margin-top: 3vh;
 }
 
 .title:hover{

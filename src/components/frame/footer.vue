@@ -1,10 +1,10 @@
 <template>
   <footer>
     <div class="footer">
-      <logo style="width: 100%; float: left; margin-bottom: 50px;"></logo>
+      <logo class="logo"></logo>
       <ul>
         <li>
-          <span>Phone</span>
+          <!-- <span>Phone</span> -->
           <b>
             <a :href="'tel:' + common.APP_PHONE_NUMBER" style="color: #fff;">
               <font-awesome-icon :icon="faPhoneAlt" class="social-icons"></font-awesome-icon>
@@ -14,7 +14,7 @@
         </li>
 
         <li>
-          <span>Address</span>
+          <!-- <span>Address</span> -->
           <span @click="$refs.mapModal.showModal()" class="action-link">
             <b>
               <font-awesome-icon :icon="faMapMarker" class="social-icons"></font-awesome-icon>
@@ -24,7 +24,7 @@
         </li>
 
         <li>
-          <span>E-mail</span>
+          <!-- <span>E-mail</span> -->
           <span>
             <b>
               <a :href="'mailto:' + common.APP_EMAIL + '?Subject=INQUIRE'" target="_top" style="color: #fff;">
@@ -105,6 +105,12 @@ b:hover, a:hover{
   text-decoration: underline;
   color: $warning;
 }
+
+.logo{
+  width: 100%;
+  float: left;
+  margin-bottom: 50px;
+}
 @media screen and (max-width: 992px){
   .footer-widget{
     width: 100%;
@@ -119,6 +125,11 @@ b:hover, a:hover{
   }
   ul li {
     width: 100%;
+    margin-top: 25px;
+  }
+
+  .logo{
+    margin-bottom: 0px;
   }
 }
 </style>

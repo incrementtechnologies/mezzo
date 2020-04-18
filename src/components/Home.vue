@@ -146,7 +146,7 @@ export default {
     retrieve(){
       COMMON.faq = []
       COMMON.menus = []
-      COMMON.packages = []
+      COMMON.packages = null
       COMMON.testimonials = []
       COMMON.rooms = []
       COMMON.restaurants = []
@@ -206,14 +206,27 @@ export default {
       })
       Jquery.get('https://spreadsheets.google.com/feeds/cells/1luFOWuvQh7PlT5Jy6xY0181qdWsJhhoQt_kQ9YnpKKk/4/public/values?alt=json', response => {
         let entries = response.feed.entry
-        for (var i = 0; i < entries.length; i += 3) {
-          if(i > 2){
+        for (var i = 0; i < entries.length; i += 2) {
+          if(i > 1){
+            let types = entries[i].content.$t
+            let tempTypes = types !== null ? types.split(',') : null
+            let image = entries[i + 1].content.$t
+            let tempImages = image !== null ? image.split(',') : null
+            let imagesArray = tempImages.map((item) => {
+              return {
+                url: COMMON.host + 'img/' + item
+              }
+            })
+            let typesArray = tempTypes.map(item => {
+              return {
+                title: item
+              }
+            })
             let object = {
-              title: entries[i].content.$t,
-              image: entries[i + 1].content.$t,
-              action: entries[i + 2].content.$t
+              types: typesArray,
+              images: imagesArray
             }
-            COMMON.packages.push(object)
+            COMMON.packages = object
           }
         }
       })

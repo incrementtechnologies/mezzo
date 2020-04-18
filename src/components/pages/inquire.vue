@@ -1,10 +1,10 @@
 <template>
-  <div class="custom-container" id="packages">
+  <div class="custom-container" id="packages" v-if="common.packages !== null">
     <div class="holder">
       <!-- Add ons -->
       <span v-if="activeStep === 0" class="step1">
         <span class="image-holder">
-          <img :src="item.image" v-for="(item, index) in common.packages" :key="index">
+          <img :src="item.url" v-for="(item, index) in common.packages.images" :key="index">
         </span>
         <span class="step1-action">
           <label class="text-white" style="background: rgba(0,0,0,.5)">
@@ -20,7 +20,7 @@
           <span class="form-group custom-form-control">
             <label>Package Type</label>
             <select class="form-control" @change="setPackage()" v-model="selectedIndex">
-              <option v-for="(item, index) in common.packages" :key="index" :value="index">{{item.title}}</option>
+              <option v-for="(item, index) in common.packages.types" :key="index" :value="index">{{item.title}}</option>
             </select>
           </span>
           <p>Package Add-ons</p>
@@ -169,7 +169,7 @@
 
 .image-holder img{
   height: auto;
-  width: 20%;
+  width: 25%;
   float: left;
 }
 
@@ -269,6 +269,10 @@ ul li:hover{
   }
 
 
+  .step1-action{
+    top: 30%;    
+  }
+
   .custom-form-control{
     width: 100% !important;
   }
@@ -351,7 +355,7 @@ export default {
         this.filteredData = []
         return
       }else{
-        let selectedPackage = COMMON.packages[this.selectedIndex]
+        let selectedPackage = COMMON.packages.types[this.selectedIndex]
         this.filteredData = COMMON.addOns.filter((item) => {
           return item.type.includes(selectedPackage.title)
         })
