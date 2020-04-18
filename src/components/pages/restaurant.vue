@@ -62,7 +62,6 @@
 .item-menu{
   width: 100%;
   float: left;
-  margin-top: 25px;
 }
 
 .bg-warning{
@@ -98,7 +97,10 @@
   float: left;
   height: 100%;
   text-align: justify;
-  padding: 50px;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-top: 25px;
+  padding-bottom: 25px;
   color: white;
   position: relative;
 }
