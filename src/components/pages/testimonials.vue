@@ -46,10 +46,15 @@
 .circle-icon-inActive{
   margin-left: 5px;
   margin-right: 5px;
-  top: 10px;
 }
 .carousel-indicators .active{
   color: $warning;
+}
+
+.carousel-indicators{
+  margin-top: 5px;
+  margin-bottom: 20px;
+  position: relative;
 }
 
 .circle-icon-inActive:hover{
@@ -94,6 +99,7 @@
   font-size: 12px;
 }
 
+
 .gray{
   color: $warning;
 }
@@ -118,10 +124,6 @@
     margin-top: 50px;
   }
 
-  .carousel-indicators{
-    margin-top: 25px;
-    margin-bottom: 25px;
-  }
 }
 </style>
 <script>

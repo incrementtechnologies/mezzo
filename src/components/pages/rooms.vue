@@ -101,7 +101,7 @@
 }
 
 img{
-  width: 100%;
+  width: 100% auto;
   height: 93vh;
 }
 
