@@ -4,34 +4,39 @@
     <div class="form-container">
       <span class="margin-div">
       </span>
-      <date-picker
-        type="date"
-        v-model="checkInDate"
-        :disabled-date="beforeToday"
-        placeholder="Check in"
-        value-type="format"
-        :default-value="new Date()"></date-picker>
-
+      <form 
+        @submit="checkForm"
+        :action="common.booking_link"
+        method="post">
         <date-picker
-        type="date"
-        :disabled-date="beforeToday"
-        placeholder="Check out"
-        value-type="format"
-        v-model="checkOutDate"
-        :default-value="new Date()"></date-picker>
+          type="date"
+          v-model="checkInDate"
+          :disabled-date="beforeToday"
+          placeholder="Check in"
+          value-type="format"
+          :default-value="new Date()"></date-picker>
 
-        <select class="form-control" placeholder="Select Adult" v-model="adult">
-          <option value="" selected="selected">Select Adult</option>
-          <option v-for="(item, index) in 20" :key="index" :value="item">{{item}}</option>
-        </select>
+          <date-picker
+          type="date"
+          :disabled-date="beforeToday"
+          placeholder="Check out"
+          value-type="format"
+          v-model="checkOutDate"
+          :default-value="new Date()"></date-picker>
+
+          <select class="form-control" placeholder="Select Adult" v-model="adult">
+            <option value="" selected="selected">Select Adult</option>
+            <option v-for="(item, index) in 20" :key="index" :value="item">{{item}}</option>
+          </select>
 
 
-        <select class="form-control" placeholder="Select Adult" v-model="children">
-          <option value="" selected="selected">Select Children</option>
-          <option v-for="(item, index) in 20" :key="index" :value="item">{{item}}</option>
-        </select>
+          <select class="form-control" placeholder="Select Adult" v-model="children">
+            <option value="" selected="selected">Select Children</option>
+            <option v-for="(item, index) in 20" :key="index" :value="item">{{item}}</option>
+          </select>
 
-        <button class="btn btn-warning" @click="openExternal(common.booking_link)">BOOK A ROOM</button>
+          <button type="submit" class="btn btn-warning" @click="openExternal(common.booking_link)">BOOK A ROOM</button>
+      </form>
     </div>
     <img :src="common.APP_HEADER_BACKGROUND" align="right">
   </div>
