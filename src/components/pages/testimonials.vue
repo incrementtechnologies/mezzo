@@ -40,7 +40,7 @@
 .platform-container{
   width: 100%;
   float: left;
-  margin-top: 7.5vh;
+  margin-top: 6vh;
 }
 
 .circle-icon-inActive{
@@ -53,7 +53,7 @@
 
 .carousel-indicators{
   margin-top: 5px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   position: relative;
 }
 
@@ -68,16 +68,12 @@
   width: 40%;
   margin-left: 5%;
   margin-right: 5%;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
 }
-.message-holder{
-  margin-top: 280px;
-}
+
 .message-holder1{
-  left: 0;
-  right: 0;
-  margin: 0 auto;
-  position: absolute;
+  margin-left: 30%;
+  margin-right: 30%;
   background-color: $primary;
 } 
 .message-holder h1,.message-holder1 h1{
