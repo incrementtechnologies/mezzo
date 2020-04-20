@@ -119,8 +119,12 @@
             Back
           </button>
 
-          <button class="btn btn-primary pull-right" style="float: right;" @click="next()" v-if="activeStep === 1">
+          <button class="btn btn-primary pull-right" style="float: right;" @click="next()" v-if="activeStep === 1 && mode !== 'group'">
             Next
+          </button>
+
+          <button class="btn btn-primary pull-right" style="float: right;" @click="submit()" v-if="activeStep === 1 && mode === 'group'">
+            Submit
           </button>
 
           <button class="btn btn-primary pull-right" style="float: right;" @click="submit()" v-if="activeStep === 2">
@@ -325,7 +329,7 @@ export default {
       filteredData: []
     }
   },
-  props: ['data'],
+  props: ['data', 'mode'],
   components: {
     DatePicker
   },
@@ -441,7 +445,7 @@ export default {
       '&complete_name=' + this.completeName +
       '&contact_number=' + this.contactNumber +
       '&business=' + this.businessName +
-      '&type=' + type +
+      '&type=' + (this.mode !== 'group' ? type : 'Group Bookings') +
       '&start=' + this.start +
       '&end=' + this.end +
       '&contact_number=' + this.contactNumber +

@@ -112,7 +112,8 @@ img{
 
 .check-icon{
   font-size: 20px;
-  margin-right: 20px;
+  float: left;
+  width: 5%;
 }
 
 ul{
@@ -120,6 +121,15 @@ ul{
 }
 ul li{
   margin-bottom: 0px;
+  width: 100%;
+  float: left;
+}
+
+
+ul li label{
+  float: left;
+  width: 93%;
+  margin-left: 2%;
 }
 
 h3{
@@ -197,6 +207,8 @@ h5{
     min-height: 70vh;
     width: 100%;
     margin-top: 0px;
+    padding-left: 25px;
+    padding-right: 25px;
   }
 }
 </style>

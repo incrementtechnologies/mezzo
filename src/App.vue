@@ -38,18 +38,21 @@ export default {
 .btn{
   border-radius: 1px !important;
   height: $height !important;
+  min-height: 50px !important;
 }
 
 .form-control{
   border-radius: 1px !important;
   border: 0px !important;
   height: $height !important;
+  min-height: 50px !important;
 }
 
 .mx-datepicker{
   float: left !important;
   width: 14% !important;
   margin-left: 1% !important;
+  min-height: 50px !important;
 }
 
 .mx-input-wrapper, .mx-input-wrapper input{
@@ -59,6 +62,7 @@ export default {
   width: 100% !important;
   float: left !important;
   border: 0px !important;
+  min-height: 50px !important;
 }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;

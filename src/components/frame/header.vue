@@ -48,6 +48,7 @@
   display: none;
   background: rgba(0, 0, 51, 0.9);
   width: 100%;
+  min-height: 50px;
 }
 
 .mobile-menu li{

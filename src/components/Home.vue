@@ -1,10 +1,10 @@
 <template>
   <div id="top-view">
-    <Header id="header-menu"></Header>
+    <Header id="header-menu" ref="header"></Header>
     <!-- <HeaderSticky id="sticky-header-menu"></HeaderSticky> -->
     <booking></booking>
     <Rooms></Rooms>
-    <Packages></Packages>
+    <Packages :mode="mode" ref="inquire"></Packages>
     <Restaurant></Restaurant>
     <testimonials></testimonials>
     <gallery></gallery>
@@ -79,6 +79,7 @@ export default {
       faChevronUp: faChevronUp,
       scrollValue: 0,
       common: COMMON,
+      mode: 'package'
     }
   },
   props: {
@@ -139,6 +140,11 @@ export default {
           }
         })
       }
+    },
+    onGroupBooking(){
+      this.mode = 'group'
+      this.$refs.inquire.activeStep = 1
+      this.$refs.header.scrollTo('#packages')
     },
     showImage(index){
       this.$refs.imageView.setImage(index)

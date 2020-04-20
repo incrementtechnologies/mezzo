@@ -7,48 +7,70 @@
       <form 
         @submit="checkForm"
         :action="common.booking_link"
+        id="check-form"
         method="post">
+        <!-- 
+        <input type="date" name="arrival_date" id="arrival_date" v-model="checkInDate" class="form-control">
+
+        <input type="date" name="departure_date" id="departure_date" v-model="checkOutDate" class="form-control"> -->
+        <!-- <label for="arrival_date"></label> -->
         <date-picker
           type="date"
           v-model="checkInDate"
           :disabled-date="beforeToday"
           placeholder="Check in"
           value-type="format"
+          :input-attr="{
+            name: 'arrival_date',
+            id: 'arrival_date'
+          }"
           :default-value="new Date()"></date-picker>
 
+
+          <!-- <label for="departure_date"></label> -->
           <date-picker
           type="date"
           :disabled-date="beforeToday"
           placeholder="Check out"
           value-type="format"
           v-model="checkOutDate"
+          :input-attr="{
+            name: 'departure_date',
+            id: 'departure_date'
+          }"
           :default-value="new Date()"></date-picker>
 
-          <select class="form-control" placeholder="Select Adult" v-model="adult">
-            <option value="" selected="selected">Select Adult</option>
-            <option v-for="(item, index) in 20" :key="index" :value="item">{{item}}</option>
-          </select>
 
-
-          <select class="form-control" placeholder="Select Adult" v-model="children">
-            <option value="" selected="selected">Select Children</option>
-            <option v-for="(item, index) in 20" :key="index" :value="item">{{item}}</option>
-          </select>
-
-          <button type="submit" class="btn btn-warning" @click="openExternal(common.booking_link)">BOOK A ROOM</button>
+          <input type="text" name="coupon_code" id="coupon_code" v-model="couponCode" class="form-control" placeholder="Coupon Code">
+          <input type="submit" value="BOOK A ROOM" class="btn btn-warning" />
       </form>
+      <span class="text-center group-booking">
+        <button class="btn btn-white" id="group-booking" @click="onGroupBooking()">
+          Group booking? Click here.
+        </button>
+      </span>
     </div>
-    <img :src="common.APP_HEADER_BACKGROUND" align="right">
+    <img :src="common.APP_HEADER_BACKGROUND">
   </div>
 </template>
 <style scoped lang="scss">
 @import "~assets/style/colors.scss";
+
+  .text-primary{
+    color: $primary !important;
+  }
   .incre-container{
     min-height: 73vh;
     float: left;
     width: 100%;
     position: relative;
     overflow: hidden;
+  }
+
+  .btn-white{
+    background: rgba(255, 255, 255, 0.5);
+    color: $primary !important;
+    border-radius: 0px !important;
   }
 
   img{
@@ -77,6 +99,12 @@
     width: 14% !important;
     float: left !important;
     margin-left: 1% !important;
+    border-radius: 3px !important;
+    font-size: 14px !important;
+  }
+
+  #grop-booking{
+    width: 14% !important;
   }
 
   .btn{
@@ -86,9 +114,21 @@
   }
 
   .margin-div{
-    width: 9%;
+    width: 16%;
     float: left;
     height: 10vh;
+  }
+
+  .group-booking{
+    width: 100%;
+    float: left;
+    color: $primary;
+    text-decoration: underline;
+  }
+
+  .group-booking:hover{
+    cursor: pointer;
+    color: $warning;
   }
 
 @media screen and (max-width: 992px){
@@ -99,6 +139,8 @@
   img{
     width: auto;
     height: 100%;
+    position: relative;
+    left: -400px !important;
   }
 
   .form-control{
@@ -106,12 +148,24 @@
   }
 
   .btn{
-    width: 98% !important;
-    margin-bottom: 25px !important;
+    width: 48% !important;
   }
 
   .margin-div{
     width: 0px;
+  }
+
+  #group-booking{
+    width: 96% !important;
+  }
+}
+
+@media screen and (max-width: 400px){
+  img{
+    width: auto;
+    height: 100%;
+    position: relative;
+    left: -800px !important;
   }
 }
 </style>
@@ -128,6 +182,7 @@ export default {
       common: COMMON,
       checkInDate: null,
       checkOutDate: null,
+      couponCode: null,
       adult: '',
       children: ''
     }
@@ -142,6 +197,22 @@ export default {
     },
     openExternal(url){
       window.open(url, '_BLANK')
+    },
+    onGroupBooking(){
+      this.$parent.onGroupBooking()
+    },
+    checkForm(e){
+      console.log(e)
+      if(this.checkInDate && this.checkOutDate){
+        return
+      }
+      if(this.checkInDate === null){
+        //
+      }
+      if(this.checkOutDate === null){
+        //
+      }
+      e.preventDefault()
     }
   }
 }

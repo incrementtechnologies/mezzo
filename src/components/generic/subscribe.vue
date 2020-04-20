@@ -22,7 +22,7 @@
   background: rgba(255, 255, 255, 0.5);
   z-index: 1000;
   position: absolute;
-  bottom: 16vh;
+  bottom: 30vh;
   margin-left: 30%;
 }
 
