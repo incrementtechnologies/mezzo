@@ -203,9 +203,17 @@ export default {
               case 'address':
                 COMMON.address = entries[i + 1].content.$t
                 break
-              case 'app_hearder_background':
-                COMMON.APP_HEADER_BACKGROUND = entries[i + 1].content.$t
+              case 'app_header_background': {
+                let image = entries[i + 1].content.$t
+                let tempImages = image !== null ? image.split(',') : null
+                let imagesArray = tempImages.map((item) => {
+                  return {
+                    url: COMMON.host + 'img/' + item
+                  }
+                })
+                COMMON.APP_HEADER_BACKGROUND = imagesArray
                 break
+              }
             }
           }
         }
@@ -238,13 +246,14 @@ export default {
       })
       Jquery.get('https://spreadsheets.google.com/feeds/cells/1luFOWuvQh7PlT5Jy6xY0181qdWsJhhoQt_kQ9YnpKKk/8/public/values?alt=json', response => {
         let entries = response.feed.entry
-        for (var i = 0; i < entries.length; i += 4) {
-          if(i > 3){
+        for (var i = 0; i < entries.length; i += 5) {
+          if(i > 4){
             let object = {
               message: entries[i].content.$t,
               name: entries[i + 1].content.$t,
               country: entries[i + 2].content.$t,
-              position: entries[i + 3].content.$t
+              position: entries[i + 3].content.$t,
+              country_code: entries[i + 4].content.$t
             }
             COMMON.testimonials.push(object)
           }

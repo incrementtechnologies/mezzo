@@ -50,7 +50,24 @@
         </button>
       </span>
     </div>
-    <img :src="common.APP_HEADER_BACKGROUND">
+    <div class="large-screen">
+      <span class="image-holder">
+        <div class="carousel slide" data-ride="carousel" id="imageCarousel">
+          <div class="carousel-inner">
+            <div class="carousel-item" v-for="(item, index) in common.APP_HEADER_BACKGROUND.length" :key="index" :class="{'active': index === 0}">
+              <img :src="common.APP_HEADER_BACKGROUND[index].url">
+            </div>
+          </div>
+        </div>
+      </span>
+    </div>
+
+    <div class="prevnext-icon">
+      <label>
+        <font-awesome-icon :icon="faChevronLeft" class="left" @click="prev()"></font-awesome-icon>
+        <font-awesome-icon :icon="faChevronRight" class="right" @click="next()"></font-awesome-icon>
+      </label>
+    </div>
   </div>
 </template>
 <style scoped lang="scss">
@@ -60,7 +77,7 @@
     color: $primary !important;
   }
   .incre-container{
-    min-height: 73vh;
+    height: 73vh;
     float: left;
     width: 100%;
     position: relative;
@@ -75,17 +92,14 @@
 
   img{
     height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1;
     width: 100%;
+    float: left;
   }
   .form-container{
     width: 100%;
     float: left;
     min-height: $height;
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.3);
     z-index: 1000;
     padding-top: 2vh;
     padding-bottom: 2vh;
@@ -131,16 +145,72 @@
     color: $warning;
   }
 
+  .large-screen-image{
+    display: block;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+  }
+
+  .image-holder{
+    position: relative;
+    height: 100%;
+    float: left;
+    width: 100%;
+  }
+
+  .carousel-indicators .active{
+    color: $warning;
+  }
+
+  .carousel-indicators{
+    margin-top: 5px;
+    position: relative;
+  }
+
+  .circle-icon-inActive:hover{
+    cursor: pointer;
+  }
+
+  .prevnext-icon{
+    position: absolute;
+    top: 50%;
+    z-index: 1001;
+    width: 100%;
+    height: 50px;
+  }
+
+  .prevnext-icon label{
+    width: 100%;
+    height: 50px;
+    top: 0px;
+  }
+
+  .prevnext-icon .left{
+    float: left;
+    font-size: 50px;
+    margin-left: 25px;
+    color: $white;
+  }
+
+  .prevnext-icon .right{
+    float: right;
+    margin-right: 25px;
+    font-size: 50px;
+    color: $white;
+  }
+
+  .prevnext-icon .right:hover, .prevnext-icon .left:hover{
+    cursor: pointer;
+    color: $warning;
+  }
+
 @media screen and (max-width: 992px){
   .subscribe{
     display: none;
-  }
-
-  img{
-    width: 100%;
-    height: 100%;
-    position: relative;
-    left: -400px !important;
   }
 
   .form-control{
@@ -158,14 +228,16 @@
   #group-booking{
     width: 96% !important;
   }
+
+  .large-screen-image{
+    display: none;
+  }
 }
 
 @media screen and (max-width: 400px){
-  img{
-    width: auto;
-    height: 100%;
-    position: relative;
-    left: -800px !important;
+
+  .large-screen-image{
+    display: none;
   }
 }
 </style>
@@ -174,8 +246,11 @@ import DatePicker from 'vue2-datepicker'
 import COMMON from 'src/common.js'
 import 'vue2-datepicker/index.css'
 import Subscribe from 'src/components/generic/subscribe.vue'
+import Jquery from 'jquery'
+import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons'
 export default {
   mounted(){
+    Jquery("#imageCarousel").carousel({interval: 6000});
   },
   data(){
     return{
@@ -184,7 +259,11 @@ export default {
       checkOutDate: null,
       couponCode: null,
       adult: '',
-      children: ''
+      children: '',
+      activeImage: 0,
+      faChevronRight: faChevronRight,
+      faChevronLeft: faChevronLeft,
+      activeIcon: 0
     }
   },
   components: {
@@ -192,6 +271,25 @@ export default {
     Subscribe
   },
   methods: {
+    setActive(index){
+      Jquery("#imageCarousel").carousel(index);
+    },
+    prev(){
+      if(this.activeIcon > 0){
+        this.activeIcon--
+      }else{
+        this.activeIcon = COMMON.APP_HEADER_BACKGROUND.length - 1
+      }
+      this.setActive(this.activeIcon)
+    },
+    next(){
+      if(this.activeIcon < COMMON.APP_HEADER_BACKGROUND.length - 1){
+        this.activeIcon++
+      }else{
+        this.activeIcon = 0
+      }
+      this.setActive(this.activeIcon)
+    },
     beforeToday(date){
       return date < new Date()
     },

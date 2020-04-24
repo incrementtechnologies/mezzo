@@ -7,11 +7,14 @@
           <div class="carousel-item" v-for="(item, carouselIndex) in dotCirleCount" :key="carouselIndex" :class="{'active': carouselIndex===0}">
             <div v-for="(item, index) in common.testimonials" :key="index">
               <span v-if="index >= carouselIndex * 3 && index <= (carouselIndex * 3) + 2" v-bind:class="{'text-center message-holder':((index + 1) % 3 != 1), 'text-center message-holder1':((index + 1) % 3 == 1)}">
-                <h1><font-awesome-icon :icon="faQuoteLeft" class="text-warning qoute-left-icon"></font-awesome-icon></h1>
+                <font-awesome-icon :icon="faQuoteLeft" class="text-warning qoute-left-icon"></font-awesome-icon>
                 <p><i>{{item.message}}</i></p>
                 <label class="gray"><b>{{item.name}}</b></label>
                 <label v-show = "item.position != quote" class="gray">{{item.position}}</label>
-                <label v-show = "item.country != quote" class="gray">{{item.country}}</label>
+                <label v-show = "item.country != quote" class="gray" style="margin-bottom: 25px;">
+                  <img :src="'https://www.countryflags.io/' + item.country_code + '/flat/24.png'">
+                  {{item.country}}
+                </label>
               </span>
             </div>
           </div>
@@ -28,7 +31,7 @@
 <style lang="scss" scoped>
 @import "~assets/style/colors.scss";
 .holder{
-  min-height: 100vh;
+  min-height: 20vh;
   overflow: hidden;
   width: 100%;
   float: left;
@@ -53,7 +56,7 @@
 
 .carousel-indicators{
   margin-top: 5px;
-  margin-bottom: 10px;
+  margin-bottom: 25px;
   position: relative;
 }
 
@@ -62,7 +65,7 @@
 }
 .message-holder, .message-holder1{
   float: left;
-  min-height: 35vh;
+  min-height: 15vh;
   border-radius: 20px;
   border: solid 1px $primary;
   width: 40%;
@@ -98,6 +101,11 @@
 
 .gray{
   color: $warning;
+}
+
+.qoute-left-icon{
+  font-size: 20px;
+  margin-top: 25px;
 }
 @media (max-width: 992px) {
   .platform-container{
