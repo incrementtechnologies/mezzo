@@ -35,6 +35,14 @@
           </span>
         </li>
       </ul>
+      <span class="menus">
+        <span class="menu-holder" v-for="(item, index) in menus" :key="index">
+          <span class="title">{{item.title}}</span>
+          <span class="item action-link" v-for="(sItem, sIndex) in item.subMenu" :key="sIndex" @click="redirect(sItem)">
+            {{sItem.title}}
+          </span>
+        </span>
+      </span>
       <span class="copyright">
         <label>
           <font-awesome-icon :icon="faCopyright" class="social-icons"></font-awesome-icon>
@@ -49,7 +57,7 @@
 @import "~assets/style/colors.scss";
 footer {
   width:100%;
-  height: 75vh;
+  min-height: 75vh;
   float: left;
   overflow-y: hidden;
   background: $primary;
@@ -111,6 +119,31 @@ b:hover, a:hover{
   float: left;
   margin-bottom: 50px;
 }
+
+.menus{
+  width: 80%;
+  float: left;
+  color: $white;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 50px;
+}
+
+.menu-holder{
+  float: left;
+  width: 25%;
+}
+
+.menu-holder span{
+  width: 100%;
+  float: left;
+}
+
+.menu-holder .title{
+  font-weight: bold;
+}
+
+
 @media screen and (max-width: 992px){
   .footer-widget{
     width: 100%;
@@ -131,6 +164,26 @@ b:hover, a:hover{
   .logo{
     margin-bottom: 0px;
   }
+
+
+  .menus{
+    margin-top: 25px;
+    margin-bottom: 200px;
+    width: 100%;
+    margin-left: 0%;
+    margin-right: 0%;
+  }
+  .menu-holder{
+    width: 100%;
+  }
+
+  .menu-holder span{
+    text-align: center;
+    margin-top: 25px;
+  }
+
+  .copyright{
+  }
 }
 </style>
 <script>
@@ -138,6 +191,7 @@ import COMMON from 'src/common.js'
 import Logo from 'src/components/generic/logo.vue'
 import { faCopyright, faEnvelope, faMapMarker, faPhoneAlt } from '@fortawesome/free-solid-svg-icons'
 import GoogleMapModal from 'src/components/increment/generic/map/ModalGeneric.vue'
+import Jquery from 'jquery'
 export default {
   mounted(){
   },
@@ -157,7 +211,22 @@ export default {
       }],
       propStyle: {
         'margin-top': '10vh !important;'
-      }
+      },
+      menus: [{
+        title: 'About Mezzo',
+        subMenu: [{
+          title: 'Home',
+          type: 'scroll',
+          route: '#top-view'
+        }]
+      }, {
+        title: 'Links',
+        subMenu: [{
+          title: 'Privacy Notice',
+          type: 'modal',
+          route: '#privacyModal'
+        }]
+      }]
     }
   },
   components: {
@@ -167,6 +236,16 @@ export default {
   methods: {
     openExternal(url){
       window.open(url, '_BLANK')
+    },
+    redirect(item){
+      switch(item.type){
+        case 'scroll':
+          this.$parent.scrollTo()
+          break
+        case 'modal':
+          Jquery(item.route).modal('show')
+          break
+      }
     }
   }
 }

@@ -14,6 +14,7 @@
       <font-awesome-icon :icon="faChevronUp" style="font-size: 24px;" class="icon"></font-awesome-icon>
     </span>
     <image-view ref="imageView" :propStyle="{width: '800px'}" :data="common.gallery"></image-view>
+    <privacy></privacy>
   </div>
 </template>
 <style lang="scss" scoped>
@@ -66,6 +67,7 @@ import { faChevronUp } from '@fortawesome/free-solid-svg-icons'
 import Jquery from 'jquery'
 import COMMON from 'src/common.js'
 import ImageView from 'src/components/increment/generic/modal/ImageCarousel.vue'
+import Privacy from 'src/components/pages/privacy.vue'
 export default {
   name: 'HelloWorld',
   mounted(){
@@ -95,7 +97,8 @@ export default {
     Testimonials,
     Faq,
     Gallery,
-    ImageView
+    ImageView,
+    Privacy
     // HeaderSticky
   },
   methods: {
@@ -212,6 +215,17 @@ export default {
                   }
                 })
                 COMMON.APP_HEADER_BACKGROUND = imagesArray
+                break
+              }
+              case 'app_header_mobile_background': {
+                let image = entries[i + 1].content.$t
+                let tempImages = image !== null ? image.split(',') : null
+                let imagesArray = tempImages.map((item) => {
+                  return {
+                    url: COMMON.host + 'img/' + item
+                  }
+                })
+                COMMON.APP_HEADER_MOBILE_BACKGROUND = imagesArray
                 break
               }
             }

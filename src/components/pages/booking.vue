@@ -50,12 +50,24 @@
         </button>
       </span>
     </div>
-    <div class="large-screen">
-      <span class="image-holder">
+    <div class="large-screen-image">
+      <span class="image-holder-large">
         <div class="carousel slide" data-ride="carousel" id="imageCarousel">
           <div class="carousel-inner">
             <div class="carousel-item" v-for="(item, index) in common.APP_HEADER_BACKGROUND.length" :key="index" :class="{'active': index === 0}">
               <img :src="common.APP_HEADER_BACKGROUND[index].url">
+            </div>
+          </div>
+        </div>
+      </span>
+    </div>
+
+    <div class="mobile-screen-image">
+      <span class="image-holder">
+        <div class="carousel slide" data-ride="carousel" id="imageCarousel">
+          <div class="carousel-inner">
+            <div class="carousel-item" v-for="(item, index) in common.APP_HEADER_MOBILE_BACKGROUND.length" :key="index" :class="{'active': index === 0}">
+              <img :src="common.APP_HEADER_MOBILE_BACKGROUND[index].url">
             </div>
           </div>
         </div>
@@ -160,6 +172,14 @@
     height: 100%;
     float: left;
     width: 100%;
+    top: 10vh;
+  }
+
+  .image-holder-large{
+    position: relative;
+    height: 100%;
+    float: left;
+    width: 100%;
   }
 
   .carousel-indicators .active{
@@ -181,6 +201,7 @@
     z-index: 1001;
     width: 100%;
     height: 50px;
+    display: block;
   }
 
   .prevnext-icon label{
@@ -208,7 +229,21 @@
     color: $warning;
   }
 
+  .mobile-screen-image{
+    display: none;
+  }
+
 @media screen and (max-width: 992px){
+  img{
+    height: 100%;
+    width: 100%;
+    float: left;
+  }
+
+  .incre-container{
+    height: 90vh;
+  }
+
   .subscribe{
     display: none;
   }
@@ -229,15 +264,36 @@
     width: 96% !important;
   }
 
-  .large-screen-image{
+  .large-screen-image, .prevnext-icon{
     display: none;
   }
+
+
+  .mobile-screen-image{
+    display: block;
+  }
+
+
 }
 
 @media screen and (max-width: 400px){
+  img{
+    height: 100%;
+    width: 100%;
+    float: left;
+  }
 
-  .large-screen-image{
+  .incre-container{
+    height: 90vh;
+  }
+
+  .large-screen-image, .prevnext-icon{
     display: none;
+  }
+
+
+  .mobile-screen-image{
+    display: block;
   }
 }
 </style>

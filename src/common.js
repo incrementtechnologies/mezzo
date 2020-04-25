@@ -10,6 +10,9 @@ export default{
   APP_HEADER_BACKGROUND: [{
     url: require('assets/img/mezzolobby.jpg')
   }],
+  APP_HEADER_MOBILE_BACKGROUND: [{
+    url: 'http://revamp.mezzohotel.com/img/mainm1.png'
+  }],
   address: 'F. Cabahug, Pres. Quezon St, Cebu City, 6000 Cebu',
   api: 'http://revamp.mezzohotel.com/img/',
   host: 'http://revamp.mezzohotel.com/',
