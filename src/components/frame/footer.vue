@@ -225,6 +225,10 @@ export default {
           title: 'Privacy Notice',
           type: 'modal',
           route: '#privacyModal'
+        }, {
+          title: 'Make an inquiry',
+          type: 'scroll',
+          route: '#packages'
         }]
       }]
     }
@@ -240,7 +244,7 @@ export default {
     redirect(item){
       switch(item.type){
         case 'scroll':
-          this.$parent.scrollTo()
+          this.$parent.scrollToByParams(item.route)
           break
         case 'modal':
           Jquery(item.route).modal('show')

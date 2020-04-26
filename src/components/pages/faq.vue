@@ -63,7 +63,7 @@
   width: 100% !important;
   border-radius: 5px !important;
   font-size: 100% !important;
-  padding-left: 30px !important;
+  padding-left: 40px !important;
 }
 ul{
   width: 90%;

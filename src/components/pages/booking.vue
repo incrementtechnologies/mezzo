@@ -16,6 +16,7 @@
         <!-- <label for="arrival_date"></label> -->
         <date-picker
           type="date"
+          id="arrival"
           v-model="checkInDate"
           :disabled-date="beforeToday"
           placeholder="Check in"
@@ -30,6 +31,7 @@
           <!-- <label for="departure_date"></label> -->
           <date-picker
           type="date"
+          id="departure"
           :disabled-date="beforeToday"
           placeholder="Check out"
           value-type="format"
@@ -241,7 +243,7 @@
   }
 
   .incre-container{
-    height: 90vh;
+    height: 93vh;
   }
 
   .subscribe{
@@ -250,10 +252,16 @@
 
   .form-control{
     width: 48% !important;
+    height: 45px !important;
+    min-height: 45px !important;
+    margin-top: 0px !important;
   }
 
   .btn{
     width: 48% !important;
+    height: 45px !important;
+    min-height: 45px !important;
+    margin-top: 0px !important;
   }
 
   .margin-div{
@@ -262,6 +270,7 @@
 
   #group-booking{
     width: 96% !important;
+    margin-top: 0px !important;
   }
 
   .large-screen-image, .prevnext-icon{
@@ -273,7 +282,10 @@
     display: block;
   }
 
-
+  .form-container{
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
 }
 
 @media screen and (max-width: 400px){
@@ -284,16 +296,35 @@
   }
 
   .incre-container{
-    height: 90vh;
+    height: 93vh;
   }
 
   .large-screen-image, .prevnext-icon{
     display: none;
   }
 
+  .form-control{
+    width: 48% !important;
+    height: 45px !important;
+    min-height: 45px !important;
+    margin-top: 0px !important;
+  }
+
+  .btn{
+    width: 48% !important;
+    height: 45px !important;
+    min-height: 45px !important;
+    margin-top: 0px !important;
+  }
 
   .mobile-screen-image{
     display: block;
+  }
+
+
+  .form-container{
+    padding-top: 10px;
+    padding-bottom: 10px;
   }
 }
 </style>

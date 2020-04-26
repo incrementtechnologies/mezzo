@@ -144,6 +144,9 @@ export default {
         })
       }
     },
+    scrollToByParams(id){
+      this.$refs.header.scrollTo(id)
+    },
     onGroupBooking(){
       this.mode = 'group'
       this.$refs.inquire.activeStep = 1

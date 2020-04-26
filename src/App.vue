@@ -75,10 +75,33 @@ ul{
   padding: 0;
   list-style: none;
 }
+.mx-datepicker svg{
+  vertical-align: -1em !important;
+}
 
 @media screen and (max-width: 992px){
   .mx-datepicker{
     width: 48% !important;
+    // min-height: 45px !important;
+    // height: 45px !important;
+  }
+  // .mx-input-wrapper, .mx-input-wrapper input{
+  //   height: 45px !important;
+  //   min-height: 45px !important;
+
+  // }
+  .mx-input-wrapper{
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+  }
+  #arrival svg, #departure svg{
+    vertical-align: 1em !important;
+  }
+  #arrival_date, #departure_date{
+    height: 45px !important;
+    min-height: 45px !important;
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
   }
 }
 </style>

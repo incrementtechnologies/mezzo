@@ -295,6 +295,10 @@ ul li:hover{
   #address{
     margin-right: 0% !important;
   }
+
+  .mx-datepicker svg{
+    vertical-align: -1em !important;
+  }
 }
 
 </style>
