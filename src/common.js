@@ -38,5 +38,6 @@ export default{
   faq: [],
   gallery: [],
   addOns: [],
+  announcements: [],
   activeMenu: '#top-view'
 }

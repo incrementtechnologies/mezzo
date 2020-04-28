@@ -8,7 +8,7 @@
             <!-- <img :src="'http://localhost/php/mezzo_api/img/DSC_0365.jpg'"  v-if="imageIndex === activeImage"> -->
           </span>
           <span class="circle-icon">
-            <span v-for="(imageItem, imageIndex) in activeItem.images" :key="imageIndex" class="image-menu-holder" @click="activeImage = imageIndex">
+            <span v-for="(imageItem, imageIndex) in activeItem.images" :key="imageIndex" class="image-menu-holder" @click="setActiveImage(imageIndex)">
               <img :src="imageItem.url" :class="{'active-image': activeImage === imageIndex}">
             </span>
           </span>
@@ -218,10 +218,12 @@ import { faCheck, faCircle } from '@fortawesome/free-solid-svg-icons'
 export default {
   mounted(){
     setInterval(() => {
-      if(this.active < COMMON.rooms.length - 1){
-        this.active++
-      }else{
-        this.active = 0
+      if(this.clickFlag === null){
+        if(this.active < COMMON.restaurants.length - 1){
+          this.active++
+        }else{
+          this.active = 0
+        }
       }
     }, 6000)
   },
@@ -231,7 +233,8 @@ export default {
       faCheck: faCheck,
       faCircle: faCircle,
       active: 0,
-      activeImage: 0
+      activeImage: 0,
+      clickFlag: null
     }
   },
   computed: {
@@ -242,6 +245,10 @@ export default {
   methods: {
     openExternal(url){
       window.open(url, '_BLANK')
+    },
+    setActiveImage(index){
+      this.activeImage = index
+      this.clickFlag = index
     },
     setActive(index){
       this.active = index

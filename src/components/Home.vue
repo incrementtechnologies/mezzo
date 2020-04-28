@@ -13,7 +13,8 @@
     <span class="return-to-top" @click="scrollTo()">
       <font-awesome-icon :icon="faChevronUp" style="font-size: 24px;" class="icon"></font-awesome-icon>
     </span>
-    <image-view ref="imageView" :propStyle="{width: '800px'}" :data="common.gallery"></image-view>
+    <image-view ref="imageView" :propStyle="{width: '700px'}" :data="common.gallery" :customId="'galleryViewer'"></image-view>
+    <image-view ref="imageViewAnnouncements" :propStyle="{width: '700px'}" :data="common.announcements" v-if="common.announcements.length > 0" :customId="'announcementViewer'"></image-view>
     <privacy></privacy>
   </div>
 </template>
@@ -164,6 +165,7 @@ export default {
       COMMON.restaurants = []
       COMMON.gallery = []
       COMMON.addOns = []
+      COMMON.announcements = []
       Jquery.get('https://spreadsheets.google.com/feeds/cells/1luFOWuvQh7PlT5Jy6xY0181qdWsJhhoQt_kQ9YnpKKk/1/public/values?alt=json', response => {
         let entries = response.feed.entry
         for (var i = 0; i < entries.length; i += 2) {
@@ -361,6 +363,23 @@ export default {
               flag: false
             }
             COMMON.addOns.push(object)
+          }
+        }
+      })
+
+      Jquery.get('https://spreadsheets.google.com/feeds/cells/1luFOWuvQh7PlT5Jy6xY0181qdWsJhhoQt_kQ9YnpKKk/10/public/values?alt=json', response => {
+        let entries = response.feed.entry
+        for (var i = 0; i < entries.length; i += 3) {
+          if(i > 2){
+            let object = {
+              type: entries[i].content.$t,
+              text: entries[i + 1].content.$t,
+              url: COMMON.host + 'img/' + entries[i + 2].content.$t
+            }
+            COMMON.announcements.push(object)
+            setTimeout(() => {
+              this.$refs.imageViewAnnouncements.setImage(0)  
+            }, 1000)
           }
         }
       })
