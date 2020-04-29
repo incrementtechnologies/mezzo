@@ -350,7 +350,8 @@ export default {
       activeImage: 0,
       faChevronRight: faChevronRight,
       faChevronLeft: faChevronLeft,
-      activeIcon: 0
+      activeIcon: 0,
+      carouselFlag: true
     }
   },
   components: {
@@ -362,6 +363,11 @@ export default {
       Jquery("#imageCarousel").carousel(index);
     },
     prev(){
+      Jquery("#imageCarousel").carousel({
+        pause: true,
+        interval: false
+      })
+      this.activeIcon = Jquery('.carousel-item.active').index()
       if(this.activeIcon > 0){
         this.activeIcon--
       }else{
@@ -370,6 +376,11 @@ export default {
       this.setActive(this.activeIcon)
     },
     next(){
+      Jquery("#imageCarousel").carousel({
+        pause: true,
+        interval: false
+      })
+      this.activeIcon = Jquery('.carousel-item.active').index()
       if(this.activeIcon < COMMON.APP_HEADER_BACKGROUND.length - 1){
         this.activeIcon++
       }else{
