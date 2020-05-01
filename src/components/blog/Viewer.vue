@@ -8,7 +8,7 @@
       <div class="blog-tiles">
         <p>
           <button class="btn btn-warning" @click="redirect('/')">Home</button>
-          <button class="btn btn-warning" @click="redirect('/press-room')" style="margin-left: 10px; margin-right: 10px;">Blog</button>
+          <button class="btn btn-warning" @click="redirect('/press-room')" style="margin-left: 10px; margin-right: 10px;">Press Room</button>
           {{selected.title}}
         </p>
         <span class="blog-item">
