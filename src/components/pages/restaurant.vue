@@ -291,6 +291,7 @@ export default {
     setActive(index){
       this.active = index
       this.activeImage = 0
+      this.clickFlag = index
     }
   }
 }

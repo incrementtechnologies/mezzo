@@ -3,6 +3,7 @@
     <div class="holder" id="gallery">
       <span v-for="(item, index) in common.gallery" :key="index" class="item" @click="showImage(index)">
         <img :src="item.url">
+        <label class="text-center"><b>{{item.caption}}</b></label>
         <div class="hover-holder">
           <font-awesome-icon :icon="faPlusCircle" class="plus-icon"></font-awesome-icon>
         </div>
@@ -39,6 +40,17 @@
 img{
   height: auto;
   width: 100%;
+}
+
+label{
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  padding: 20px 10px 20px 10px;
+  background: rgba(0, 0, 0, 0.3);
+  margin-bottom: 0px;
+  color: $white;
 }
 
 .hover-holder{

@@ -18,12 +18,11 @@
         <span v-if="activeStep === 2">
           <h3 class="text-primary">Choose addon services</h3>
           <span class="form-group custom-form-control">
-            <label>Package Type</label>
+            <label>Event Type</label>
             <select class="form-control" @change="setPackage()" v-model="selectedIndex">
               <option v-for="(item, index) in common.packages.types" :key="index" :value="index">{{item.title}}</option>
             </select>
           </span>
-          <p>Package Add-ons</p>
           <ul>
             <li v-for="(item, index) in filteredData" :key="index" @click="item.flag = !item.flag">
               <h5>
@@ -36,7 +35,7 @@
               <p>{{item.description}}</p>
             </li>
           </ul>
-          <span class="form-group" style="width: 100%; float: left;">
+          <span class="form-group" style="width: 100%; float: left; margin-top: 10px;">
             <label style="width: 100%; float: left;">Add other addons</label>
             <label class="text-danger" style="width: 100%; float: left;" v-if="errorMessage !== null"><b>{{errorMessage}}</b></label>
             <span class="width: 100%; float: left;">
@@ -208,10 +207,11 @@ ul{
 }
 
 ul li{
-  min-height: 100px;
+  min-height: 20px;
   width: 32%;
   margin-right: 1%;
   float: left;
+  margin-bottom: 15px;
 }
 
 ul li:hover{

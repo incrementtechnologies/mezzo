@@ -97,11 +97,11 @@ ul li span{
   padding-top: 5px;
   padding-bottom: 5px;
   text-align: center;
-  margin-top: 45px;
   color: #6f6f6f !important;
   bottom: 25px;
   left: 0;
-  position: absolute;
+  position: relative;
+  margin-top: 200px;
 }
 
 b:hover, a:hover{
@@ -188,6 +188,7 @@ b:hover, a:hover{
 </style>
 <script>
 import COMMON from 'src/common.js'
+import ROUTER from 'src/router'
 import Logo from 'src/components/generic/logo.vue'
 import { faCopyright, faEnvelope, faMapMarker, faPhoneAlt } from '@fortawesome/free-solid-svg-icons'
 import GoogleMapModal from 'src/components/increment/generic/map/ModalGeneric.vue'
@@ -226,9 +227,13 @@ export default {
           type: 'modal',
           route: '#privacyModal'
         }, {
-          title: 'Make an inquiry',
+          title: 'Inquiry Form',
           type: 'scroll',
           route: '#packages'
+        }, {
+          title: 'Blog',
+          type: 'redirect',
+          route: 'blogs'
         }]
       }]
     }
@@ -237,6 +242,7 @@ export default {
     Logo,
     GoogleMapModal
   },
+  props: ['property'],
   methods: {
     openExternal(url){
       window.open(url, '_BLANK')
@@ -244,10 +250,21 @@ export default {
     redirect(item){
       switch(item.type){
         case 'scroll':
-          this.$parent.scrollToByParams(item.route)
+          if(this.property === 'scroll'){
+            this.$parent.scrollToByParams(item.route)
+          }else{
+            ROUTER.push('/')
+          }
           break
         case 'modal':
-          Jquery(item.route).modal('show')
+          if(this.property === 'scroll'){
+            Jquery(item.route).modal('show')
+          }else{
+            ROUTER.push('/')
+          }
+          break
+        case 'redirect':
+          ROUTER.push(item.route)
           break
       }
     }

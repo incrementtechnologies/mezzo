@@ -9,7 +9,7 @@
     <testimonials></testimonials>
     <gallery></gallery>
     <faq></faq>
-    <Footer></Footer>
+    <Footer :property="'scroll'"></Footer>
     <span class="return-to-top" @click="scrollTo()">
       <font-awesome-icon :icon="faChevronUp" style="font-size: 24px;" class="icon"></font-awesome-icon>
     </span>
@@ -73,6 +73,7 @@ export default {
   name: 'HelloWorld',
   mounted(){
     this.retrieve()
+    COMMON.getBasic()
     // window.document.body.onscroll = function() {
     // }
     window.addEventListener('scroll', this.onScroll)
@@ -191,52 +192,6 @@ export default {
           }
         }
       })
-      Jquery.get('https://spreadsheets.google.com/feeds/cells/1luFOWuvQh7PlT5Jy6xY0181qdWsJhhoQt_kQ9YnpKKk/3/public/values?alt=json', response => {
-        let entries = response.feed.entry
-        for (var i = 0; i < entries.length; i += 2) {
-          if(i > 1){
-            switch(entries[i].content.$t){
-              case 'app_name':
-                COMMON.APP_NAME = entries[i + 1].content.$t
-                break
-              case 'app_tagline':
-                COMMON.APP_TAGLINE = entries[i + 1].content.$t
-                break
-              case 'app_email':
-                COMMON.APP_EMAIL = entries[i + 1].content.$t
-                break
-              case 'app_phone_number':
-                COMMON.APP_PHONE_NUMBER = entries[i + 1].content.$t
-                break
-              case 'address':
-                COMMON.address = entries[i + 1].content.$t
-                break
-              case 'app_header_background': {
-                let image = entries[i + 1].content.$t
-                let tempImages = image !== null ? image.split(',') : null
-                let imagesArray = tempImages.map((item) => {
-                  return {
-                    url: COMMON.host + 'img/' + item
-                  }
-                })
-                COMMON.APP_HEADER_BACKGROUND = imagesArray
-                break
-              }
-              case 'app_header_mobile_background': {
-                let image = entries[i + 1].content.$t
-                let tempImages = image !== null ? image.split(',') : null
-                let imagesArray = tempImages.map((item) => {
-                  return {
-                    url: COMMON.host + 'img/' + item
-                  }
-                })
-                COMMON.APP_HEADER_MOBILE_BACKGROUND = imagesArray
-                break
-              }
-            }
-          }
-        }
-      })
       Jquery.get('https://spreadsheets.google.com/feeds/cells/1luFOWuvQh7PlT5Jy6xY0181qdWsJhhoQt_kQ9YnpKKk/4/public/values?alt=json', response => {
         let entries = response.feed.entry
         for (var i = 0; i < entries.length; i += 2) {
@@ -280,11 +235,11 @@ export default {
       })
       Jquery.get('https://spreadsheets.google.com/feeds/cells/1luFOWuvQh7PlT5Jy6xY0181qdWsJhhoQt_kQ9YnpKKk/5/public/values?alt=json', response => {
         let entries = response.feed.entry
-        for (var i = 0; i < entries.length; i += 7) {
-          if(i > 6){
+        for (var i = 0; i < entries.length; i += 8) {
+          if(i > 7){
             let inclusions = entries[i + 3].content.$t
             let tempInclusions = inclusions !== null ? inclusions.split(',') : null
-            let image = entries[i + 6].content.$t
+            let image = entries[i + 7].content.$t
             let tempImages = image !== null ? image.split(',') : null
             let imagesArray = tempImages.map((item) => {
               return {
@@ -302,7 +257,8 @@ export default {
               description: entries[i + 2].content.$t,
               inclusions: inclusionsArray,
               price: entries[i + 4].content.$t,
-              priceInclusions: entries[i + 5].content.$t,
+              priceType: entries[i + 5].content.$t,
+              priceInclusions: entries[i + 6].content.$t,
               images: imagesArray
             }
             COMMON.rooms.push(object)
@@ -340,11 +296,12 @@ export default {
       })
       Jquery.get('https://spreadsheets.google.com/feeds/cells/1luFOWuvQh7PlT5Jy6xY0181qdWsJhhoQt_kQ9YnpKKk/7/public/values?alt=json', response => {
         let entries = response.feed.entry
-        for (var i = 0; i < entries.length; i++) {
+        for (var i = 0; i < entries.length; i+= 2) {
           if(i > 1){
             let image = entries[i].content.$t
             let object = {
-              url: COMMON.host + 'img/' + image
+              url: COMMON.host + 'img/' + image,
+              caption: entries[i + 1].content.$t
             }
             COMMON.gallery.push(object)
           }

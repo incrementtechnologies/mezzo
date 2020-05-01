@@ -27,7 +27,7 @@
               <label>{{iItem.title}}</label>
             </li>
           </ul>
-          <h5><b class="text-warning price">{{activeItem.price}}</b> / Night</h5>
+          <h5><b class="text-warning price">{{activeItem.price}}</b> {{activeItem.priceType}}</h5>
           <p>{{activeItem.priceInclusions}}</p>
           <button class="btn btn-warning" @click="openExternal(common.booking_link)">BOOK A ROOM</button>
         </div>
@@ -253,6 +253,7 @@ export default {
     setActive(index){
       this.active = index
       this.activeImage = 0
+      this.clickFlag = index
     }
   }
 }
