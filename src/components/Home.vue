@@ -9,7 +9,7 @@
     <testimonials></testimonials>
     <gallery></gallery>
     <faq></faq>
-    <Footer :property="'scroll'"></Footer>
+    <MyFooter :property="'scroll'"></MyFooter>
     <span class="return-to-top" @click="scrollTo()">
       <font-awesome-icon :icon="faChevronUp" style="font-size: 24px;" class="icon"></font-awesome-icon>
     </span>
@@ -56,7 +56,7 @@
 <script>
 import Header from 'src/components/frame/header.vue'
 // import HeaderSticky from 'src/components/frame/headerSticky.vue'
-import Footer from 'src/components/frame/footer.vue'
+import MyFooter from 'src/components/frame/footer.vue'
 import Restaurant from 'src/components/pages/restaurant.vue'
 import Rooms from 'src/components/pages/rooms.vue'
 import Packages from 'src/components/pages/inquire.vue'
@@ -91,7 +91,7 @@ export default {
   },
   components: {
     Header,
-    Footer,
+    MyFooter,
     Restaurant,
     Rooms,
     Packages,
