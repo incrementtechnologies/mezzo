@@ -7,11 +7,11 @@ export default{
     name: 'Home',
     component: Home
   }, {
-    path: '/blogs',
-    name: 'Blogs',
+    path: '/press-room',
+    name: 'pressRoom',
     component: Blogs
   }, {
-    path: '/content-viewer/:title',
+    path: '/press-room/viewer/:title',
     name: 'ContentViewer',
     component: BlogViewer
   }]

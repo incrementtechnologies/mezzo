@@ -10,7 +10,10 @@
       </span>
     </span>
     <div class="blog-tiles">
-      <span class="blog-item" v-for="(item, index) in common.blogs" :key="index" @click="redirect('/content-viewer/' + item.title.split(' ').join('_'))">
+      <p>
+        <button class="btn btn-warning" @click="redirect('/')">Back to home</button>
+      </p>
+      <span class="blog-item" v-for="(item, index) in common.blogs" :key="index" @click="redirect('/press-room/viewer/' + item.title.split(' ').join('_'))">
         <span class="image-holder">
           <img :src="item.image">
         </span>
@@ -37,6 +40,12 @@
 .bg-primary{
 }
 
+
+.action-link:hover{
+  cursor: pointer;
+  color: $warning;
+}
+
 .page-holder{
   width: 100%;
   float: left;
@@ -47,7 +56,6 @@
 
 .page-details{
   float: left;
-  height: 300px;
   width: 100%;
 }
 

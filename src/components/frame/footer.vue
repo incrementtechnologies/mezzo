@@ -231,9 +231,9 @@ export default {
           type: 'scroll',
           route: '#packages'
         }, {
-          title: 'Blog',
+          title: 'Press Room',
           type: 'redirect',
-          route: 'blogs'
+          route: '/press-room'
         }]
       }]
     }

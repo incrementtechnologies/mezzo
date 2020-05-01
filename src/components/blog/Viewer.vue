@@ -7,7 +7,9 @@
     <span v-if="selected !== null">
       <div class="blog-tiles">
         <p>
-          <b @click="redirect('/blogs')" class="action-link">Blog</b> / {{selected.title}}
+          <button class="btn btn-warning" @click="redirect('/')">Home</button>
+          <button class="btn btn-warning" @click="redirect('/press-room')" style="margin-left: 10px; margin-right: 10px;">Blog</button>
+          {{selected.title}}
         </p>
         <span class="blog-item">
           <span class="image-holder">
