@@ -8,12 +8,12 @@
 </template>
 
 <script>
-import Home from 'src/components/Home.vue'
+// import Home from 'src/components/Home.vue'
 
 export default {
   name: 'App',
   components: {
-    Home
+    // Home
   }
 }
 </script>

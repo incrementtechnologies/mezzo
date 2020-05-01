@@ -24,7 +24,7 @@
         </span>
       </div>
     </span>
-    <Footer :property="'redirect'"></Footer>
+    <MyFooter :property="'redirect'"></MyFooter>
   </div>
 </template>
 <style scoped lang="scss">
@@ -79,7 +79,7 @@ p{
 }
 
 .image-holder{
-  min-height: 300px;
+  min-height: 100px;
   width: 100%;
   float: left;
   overflow: hidden;
@@ -112,13 +112,24 @@ p{
     width: 100%;
     float: left;
   }
+
+  .blog-tiles{
+    width: 90%;
+    margin-right: 5%;
+    margin-left: 5%;
+  }
+
+  .blog-item .details{
+    padding-left: 0px;
+    padding-right: 0px;
+  }
 }
 </style>
 <script>
 // import Header from 'src/components/frame/header.vue'
 import COMMON from 'src/common.js'
 import Logo from 'src/components/generic/logo.vue'
-import Footer from 'src/components/frame/footer.vue'
+import MyFooter from 'src/components/frame/footer.vue'
 import ROUTER from 'router'
 export default {
   mounted(){
@@ -144,7 +155,7 @@ export default {
   components: {
     // Header,
     Logo,
-    Footer
+    MyFooter
   },
   methods: {
     redirect(params){
