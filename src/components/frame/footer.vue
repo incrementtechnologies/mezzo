@@ -264,7 +264,10 @@ export default {
           }
           break
         case 'redirect':
+          // this.$parent.scrollToByParams('#top-view')
+          window.scrollTo(0, 0)
           ROUTER.push(item.route)
+          // ROUTER.go('/')
           break
       }
     }

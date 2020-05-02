@@ -1,17 +1,17 @@
 <template>
-  <div>
+  <div id="top-view">
     <!-- <Header id="header-menu" ref="header"></Header> -->
     <span class="page-holder">
       <logo class="hide-on-mobile"></logo>
       <span class="page-details text-center">
         <p class="text-white display-4">
-          Welcome to Mezzo Hotel Press Room
+          Press Room
         </p>
       </span>
     </span>
     <div class="blog-tiles">
       <p>
-        <button class="btn btn-warning" @click="redirect('/')">Back to home</button>
+        <button class="btn btn-warning" @click="redirect('/')">Home</button>
       </p>
       <span class="blog-item" v-for="(item, index) in common.blogs" :key="index" @click="redirect('/press-room/viewer/' + item.title.split(' ').join('_'))">
         <span class="image-holder">

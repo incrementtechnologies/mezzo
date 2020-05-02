@@ -349,9 +349,7 @@ export default {
       children: '',
       activeImage: 0,
       faChevronRight: faChevronRight,
-      faChevronLeft: faChevronLeft,
-      activeIcon: 0,
-      carouselFlag: true
+      faChevronLeft: faChevronLeft
     }
   },
   components: {
@@ -359,34 +357,14 @@ export default {
     Subscribe
   },
   methods: {
-    setActive(index){
-      Jquery("#imageCarousel").carousel(index);
+    setActive(command){
+      Jquery("#imageCarousel").carousel(command);
     },
     prev(){
-      Jquery("#imageCarousel").carousel({
-        pause: true,
-        interval: false
-      })
-      this.activeIcon = Jquery('.carousel-item.active').index()
-      if(this.activeIcon > 0){
-        this.activeIcon--
-      }else{
-        this.activeIcon = COMMON.APP_HEADER_BACKGROUND.length - 1
-      }
-      this.setActive(this.activeIcon)
+      this.setActive('prev')
     },
     next(){
-      Jquery("#imageCarousel").carousel({
-        pause: true,
-        interval: false
-      })
-      this.activeIcon = Jquery('.carousel-item.active').index()
-      if(this.activeIcon < COMMON.APP_HEADER_BACKGROUND.length - 1){
-        this.activeIcon++
-      }else{
-        this.activeIcon = 0
-      }
-      this.setActive(this.activeIcon)
+      this.setActive('next')
     },
     beforeToday(date){
       return date < new Date()
