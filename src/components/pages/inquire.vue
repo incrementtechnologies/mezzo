@@ -16,7 +16,6 @@
       </span>
       <div class="main-step" v-if="activeStep > 0">
         <span v-if="activeStep === 2">
-          <h3 class="text-primary">Choose addon services</h3>
           <span class="form-group custom-form-control">
             <label>Event Type</label>
             <select class="form-control" @change="setPackage()" v-model="selectedIndex">
@@ -36,7 +35,7 @@
             </li>
           </ul>
           <span class="form-group" style="width: 100%; float: left; margin-top: 10px;">
-            <label style="width: 100%; float: left;">Add other addons</label>
+            <label style="width: 100%; float: left;">Add </label>
             <label class="text-danger" style="width: 100%; float: left;" v-if="errorMessage !== null"><b>{{errorMessage}}</b></label>
             <span class="width: 100%; float: left;">
               <input type="tex" class="form-control" style="width: 40%;" placeholder="Title" v-model="title">
@@ -90,7 +89,7 @@
             <label style="width: 100%; float: left;">Date <b class="text-danger">*</b></label>
 
             <date-picker
-              type="date"
+              type="datetime"
               :disabled-date="beforeToday"
               placeholder="Start Date"
               value-type="format"
@@ -98,7 +97,7 @@
               :default-value="new Date()"></date-picker>
 
             <date-picker
-              type="date"
+              type="datetime"
               :disabled-date="beforeToday"
               placeholder="End Date"
               value-type="format"
@@ -385,7 +384,7 @@ export default {
       }else if (this.email !== null && this.validateEmail() === false) {
         this.errorMessage = 'Invalid e-mail address.'
         return false
-      }else if(this.contactNumber === null || this.contactNumber === '' || this.contactNumber.length < 8){
+      }else if(this.contactNumber === null || this.contactNumber === '' || this.contactNumber.length < 7){
         this.errorMessage = 'Invalid contact number.'
         return false
       }else if(this.completeName === null || this.completeName === ''){

@@ -15,6 +15,9 @@
     </ul> -->
     <div class="menu">
       <ul>
+        <li class="view-on-scroll" @click="scrollTo('#top-view')">
+          <img :src="common.api + 'logo.png'" style="height: 6vh; width: auto; left: 10px; top: 2vh"> 
+        </li>
         <li v-for="(item, index) in common.menus" :key="index" class="basic-menu" @click="scrollTo(item.redirect)" :class="{'active-menu': common.activeMenu === item.redirect}">{{item.title}}</li>
       </ul>
       <span class="social-icons-holder">
@@ -148,6 +151,14 @@ ul li{
 
 .hide-on-mobile{
   display: block;
+}
+
+.view-on-scroll{
+  display: none;
+}
+
+.view-on-scroll:hover{
+  cursor: pointer;
 }
 
 @media screen and (max-width: 992px){

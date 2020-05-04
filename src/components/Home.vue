@@ -120,12 +120,18 @@ export default {
           top: '0%',
           bottom: 'auto'
         })
+        Jquery('.view-on-scroll').css({
+          display: 'block'
+        })
       }else{
         Jquery('.menu').css({
           position: 'absolute',
           'z-index': 0,
           bottom: '0%',
           top: 'auto'
+        })
+        Jquery('.view-on-scroll').css({
+          display: 'none'
         })
       }
       this.setActiveOnScroll()

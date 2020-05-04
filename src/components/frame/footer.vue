@@ -42,11 +42,14 @@
             {{sItem.title}}
           </span>
         </span>
+        <span class="menu-holder subscribe">
+          <subscribe></subscribe>
+        </span>
       </span>
       <span class="copyright">
         <label>
           <font-awesome-icon :icon="faCopyright" class="social-icons"></font-awesome-icon>
-          {{common.APP_COPYRIGHT}}. All rights reserved. This site was made by <b @click="openExternal(common.APP_DEVELOPER_URL)">{{common.APP_DEVELOPER}}</b>
+          {{common.APP_COPYRIGHT}}. All rights reserved. <!-- This site was made by <b @click="openExternal(common.APP_DEVELOPER_URL)">{{common.APP_DEVELOPER}}</b> -->
         </label>
       </span>
     </div>
@@ -134,6 +137,10 @@ b:hover, a:hover{
   width: 25%;
 }
 
+.subscribe{
+  width: 50%;
+}
+
 .menu-holder span{
   width: 100%;
   float: left;
@@ -184,12 +191,17 @@ b:hover, a:hover{
 
   .copyright{
   }
+  .subscribe{
+    width: 100%;
+    margin-top: 25px;
+  }
 }
 </style>
 <script>
 import COMMON from 'src/common.js'
 import ROUTER from 'src/router'
 import Logo from 'src/components/generic/logo.vue'
+import Subscribe from 'src/components/generic/subscribeStandard.vue'
 import { faCopyright, faEnvelope, faMapMarker, faPhoneAlt } from '@fortawesome/free-solid-svg-icons'
 import GoogleMapModal from 'src/components/increment/generic/map/ModalGeneric.vue'
 import Jquery from 'jquery'
@@ -240,7 +252,8 @@ export default {
   },
   components: {
     Logo,
-    GoogleMapModal
+    GoogleMapModal,
+    Subscribe
   },
   props: ['property'],
   methods: {
