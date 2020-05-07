@@ -26,8 +26,8 @@
   float: left;
   overflow: hidden;
   position: relative;
-  margin-top: 10px;
-  margin-bottom: 50px;
+  margin-top: 25px;
+  margin-bottom: 25px;
 }
 
 .search{
