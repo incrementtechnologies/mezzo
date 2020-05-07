@@ -137,7 +137,14 @@ import Jquery from 'jquery'
 
 export default {
   mounted(){
-    Jquery("#testimonialsCarousel").carousel({interval: 6000});
+    var width = Jquery(window).width()
+    console.log('width', width)
+    if(width < 992){
+      // mobile 
+      Jquery("#testimonialsCarousel").carousel({interval: false});
+    }else{
+      Jquery("#testimonialsCarousel").carousel({interval: 6000});
+    }
   },
   data () {
     return {
