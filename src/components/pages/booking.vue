@@ -20,27 +20,27 @@
           v-model="checkInDate"
           :disabled-date="beforeToday"
           placeholder="Check in"
-          value-type="format"
+          :value-type="'YYYY-MM-DD'"
+          :format="'MMM, D, YYYY'"
           :input-attr="{
             name: 'arrival_date',
             id: 'arrival_date'
-          }"
-          :default-value="new Date()"></date-picker>
+          }"></date-picker>
 
 
           <!-- <label for="departure_date"></label> -->
           <date-picker
           type="date"
           id="departure"
-          :disabled-date="beforeToday"
+          :disabled-date="afterCheckIn"
           placeholder="Check out"
-          value-type="format"
+          :value-type="'YYYY-MM-DD'"
+          :format="'MMM, D, YYYY'"
           v-model="checkOutDate"
           :input-attr="{
             name: 'departure_date',
             id: 'departure_date'
-          }"
-          :default-value="new Date()"></date-picker>
+          }"></date-picker>
 
 
           <input type="text" name="coupon_code" id="coupon_code" v-model="couponCode" class="form-control" placeholder="Coupon Code">
@@ -368,6 +368,9 @@ export default {
     },
     beforeToday(date){
       return date < new Date()
+    },
+    afterCheckIn(date){
+      return date < new Date(this.checkInDate)
     },
     openExternal(url){
       window.open(url, '_BLANK')

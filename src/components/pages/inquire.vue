@@ -76,7 +76,7 @@
           </span>
 
           <span class="form-group form-control-half">
-            <label style="width: 100%; float: left;">Number of Attendees <b class="text-danger">*</b></label>
+            <label style="width: 100%; float: left;">Number of heads <b class="text-danger">*</b></label>
             <input type="number" class="form-control" placeholder="Type total number of attendees" v-model="attendees">
           </span>
 
@@ -89,20 +89,23 @@
             <label style="width: 100%; float: left;">Date <b class="text-danger">*</b></label>
 
             <date-picker
-              type="datetime"
+              type="date"
               :disabled-date="beforeToday"
               placeholder="Start Date"
-              value-type="format"
+              :value-type="'YYYY-MM-DD'"
+              :format="'MMM, D, YYYY'"
               v-model="start"
-              :default-value="new Date()"></date-picker>
+              ></date-picker>
 
             <date-picker
-              type="datetime"
-              :disabled-date="beforeToday"
+              type="date"
+              :disabled-date="afterStart"
               placeholder="End Date"
-              value-type="format"
+              :value-type="'YYYY-MM-DD'"
               v-model="end"
-              :default-value="new Date()"></date-picker>
+              :format="'MMM, D, YYYY'"
+              v-if="start !== null"
+              ></date-picker>
           </span>
 
           <span class="form-group" style="width: 100%; float: left;">
@@ -326,7 +329,7 @@ export default {
       start: null,
       end: null,
       attendees: 1,
-      rooms: 1,
+      rooms: 0,
       activeStep: 0,
       selectedIndex: null,
       filteredData: []
@@ -393,8 +396,8 @@ export default {
       }else if(this.attendees < 1){
         this.errorMessage = 'Attendees must be greater than 0'
         return false
-      }else if(this.rooms < 1){
-        this.errorMessage = 'Rooms must be greater than 0'
+      }else if(this.rooms < 0){
+        this.errorMessage = 'Rooms must be greater than or equal to 0'
         return false
       }else if(this.start === null || this.start === ''){
         this.errorMessage = 'Start date is required.'
@@ -418,6 +421,9 @@ export default {
     beforeToday(date){
       return date < new Date()
     },
+    afterStart(date){
+      return date <= new Date(this.start)
+    },
     initInput(){
       this.email = null
       this.completeName = null
@@ -427,7 +433,7 @@ export default {
       this.start = null
       this.end = null
       this.attendees = 1
-      this.rooms = 1
+      this.rooms = 0
       this.activeStep = 0
       this.selectedIndex = null
       this.filteredData = []

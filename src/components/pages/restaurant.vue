@@ -6,7 +6,7 @@
           <span v-for="(imageItem, imageIndex) in activeItem.images" :key="imageIndex">
             <img :src="imageItem.url"  v-if="imageIndex === activeImage">
           </span>
-          <span class="circle-icon">
+          <span class="circle-icon" v-if="activeItem.images.length > 1">
             <span v-for="(imageItem, imageIndex) in activeItem.images" :key="imageIndex" class="image-menu-holder" @click="setActiveImage(imageIndex)">
               <img :src="imageItem.url" :class="{'active-image': activeImage === imageIndex}">
             </span>
@@ -44,7 +44,7 @@
           <span v-for="(imageItem, imageIndex) in activeItem.images" :key="imageIndex">
             <img :src="imageItem.url"  v-if="imageIndex === activeImage">
           </span>
-          <span class="circle-icon">
+          <span class="circle-icon" v-if="activeItem.images.length > 1">
             <span v-for="(imageItem, imageIndex) in activeItem.images" :key="imageIndex" class="image-menu-holder" @click="setActiveImage(imageIndex)">
               <img :src="imageItem.url" :class="{'active-image': activeImage === imageIndex}">
             </span>
@@ -194,7 +194,7 @@ h5{
 .image-menu-holder img{
   max-height: 100px;
   max-width: 100px;
-  opacity: 0.5;
+  opacity: 0.7;
 }
 
 .image-menu-holder img:hover{
