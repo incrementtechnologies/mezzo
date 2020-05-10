@@ -36,6 +36,9 @@
           <p v-if="active === 2">
             For inquiries, please dial <b>"0"</b> from your hotel room.
           </p>
+          <div class="text-center" style="margin-top: 25px;">
+            <font-awesome-icon :icon="faCircle" v-for="(item, iconIndex) in common.restaurants" :key="iconIndex" :class="{'text-warning': iconIndex === active}" @click="setActive(iconIndex)" class="circle-icon-inActive"></font-awesome-icon>
+          </div>
         </div>
         <div class="image-holder image-holder-lg" v-if="activeItem.images !== null">
           <span v-for="(imageItem, imageIndex) in activeItem.images" :key="imageIndex">
@@ -56,6 +59,11 @@
 
 .text-primary{
   color: $primary !important;
+}
+
+
+.text-warning{
+  color: $warning !important;
 }
 
 .item, .item-content{
@@ -203,6 +211,24 @@ h5{
 }
 
 .circle-item:hover{
+  cursor: pointer;
+}
+
+.circle-icon-inActive{
+  margin-left: 5px;
+  margin-right: 5px;
+}
+.carousel-indicators .active{
+  color: $warning;
+}
+
+.carousel-indicators{
+  margin-top: 5px;
+  margin-bottom: 25px;
+  position: relative;
+}
+
+.circle-icon-inActive:hover{
   cursor: pointer;
 }
 

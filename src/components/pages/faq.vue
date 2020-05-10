@@ -6,28 +6,41 @@
         <input type="text" class="form-control bg-warning text-white" style="font-size: 24px;" v-model="searchValue" placeholder="Type your question" results="0"/>
       </div>
     <ul>
-      <li v-for="(item, index) in filteredQuestions" :key="index">
+      <li v-for="(item, index) in (limitFlag ? 5 : filteredQuestions.length)" :key="index">
         <label class="title" @click="setSelectedIndex(index)">
-          <b>{{item.question}}</b>
-          <font-awesome-icon :icon="item.flag === true ? faChevronUp : faChevronDown" class="text-primary icon"></font-awesome-icon>
+          <b>{{filteredQuestions[index].question}}</b>
+          <font-awesome-icon :icon="filteredQuestions[index].flag === true ? faChevronUp : faChevronDown" class="text-primary icon"></font-awesome-icon>
         </label>
-        <p v-if="item.flag === true" v-html="item.answer">
+        <p v-if="filteredQuestions[index].flag === true" v-html="filteredQuestions[index].answer">
         </p>
       </li>  
     </ul>
-
+    <p class="text-center">
+      <font-awesome-icon class="more-less-icon" :icon="limitFlag === true ? faChevronDown : faChevronUp" @click="setLimitFlag()"></font-awesome-icon>
+    </p>
   </div>
 </template>
 <style lang="scss" scoped>
 @import "~assets/style/colors.scss";
 .holder{
-  min-height: 100vh;
+  min-height: 30vh;
   width: 100%;
   float: left;
   overflow: hidden;
   position: relative;
   margin-top: 25px;
   margin-bottom: 25px;
+}
+
+.more-less-icon{
+  margin-top: 25px;
+  font-size: 32px;
+  color: $warning;
+}
+
+.more-less-icon:hover{
+  cursor: pointer;
+  color: $primary;
 }
 
 .search{
@@ -70,6 +83,7 @@ ul{
   margin-right: 5%;
   margin-left: 5%;
   margin-top: 25px;
+  float: left;
 }
 ul li{
   width: 100% !important;
@@ -133,7 +147,8 @@ export default {
       faChevronUp: faChevronUp,
       faChevronDown: faChevronDown,
       faSearch: faSearch,
-      selectedIndex: null
+      selectedIndex: null,
+      limitFlag: true
     }
   },
   computed: {
@@ -150,6 +165,12 @@ export default {
   methods: {
     setSelectedIndex(index){
       this.filteredQuestions[index].flag = !this.filteredQuestions[index].flag
+    },
+    setLimitFlag(){
+      this.limitFlag = !this.limitFlag
+      if(this.limitFlag === true){
+        this.$parent.scrollToByParams('#faq')
+      }
     }
   }
 }
