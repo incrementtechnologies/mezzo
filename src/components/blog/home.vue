@@ -13,7 +13,7 @@
       <p>
         <button class="btn btn-warning" @click="redirect('/')">Home</button>
       </p>
-      <span class="blog-item" v-for="(item, index) in common.blogs" :key="index" @click="redirect('/press-room/viewer/' + item.title.split(' ').join('_'))">
+      <span class="blog-item" v-for="(item, index) in common.blogs" :key="index" @click="checkRoute(item)">
         <span class="image-holder">
           <img :src="item.image">
         </span>
@@ -70,7 +70,7 @@ p{
   margin-bottom: 100px;
   margin-left: 5%;
   margin-right: 5%;
-  margin-top: 100px;
+  margin-top: 25px;
 }
 
 .blog-item{
@@ -171,6 +171,13 @@ export default {
     retrieve(){
       COMMON.getBlog()
       COMMON.getBasic()
+    },
+    checkRoute(item){
+      if(item.type === 'external'){
+        window.open(item.content)
+      }else{
+        this.redirect('/press-room/viewer/' + item.title.split(' ').join('_'))
+      }
     }
   }
 }

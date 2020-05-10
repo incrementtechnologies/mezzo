@@ -46,15 +46,16 @@ export default{
     this.blogs = []
     Jquery.get('https://spreadsheets.google.com/feeds/cells/1luFOWuvQh7PlT5Jy6xY0181qdWsJhhoQt_kQ9YnpKKk/11/public/values?alt=json', response => {
       let entries = response.feed.entry
-      for (var i = 0; i < entries.length; i += 6) {
-        if(i > 5){
+      for (var i = 0; i < entries.length; i += 7) {
+        if(i > 6){
           let object = {
-            title: entries[i].content.$t,
-            image: this.host + 'img/' + entries[i + 1].content.$t,
-            date: entries[i + 2].content.$t,
-            author: entries[i + 3].content.$t,
-            introduction: entries[i + 4].content.$t,
-            content: entries[i + 5].content.$t,
+            type: entries[i].content.$t,
+            title: entries[i + 1].content.$t,
+            image: this.host + 'img/' + entries[i + 2].content.$t,
+            date: entries[i + 3].content.$t,
+            author: entries[i + 4].content.$t,
+            introduction: entries[i + 5].content.$t,
+            content: entries[i + 6].content.$t,
           }
           this.blogs.push(object)
         }
