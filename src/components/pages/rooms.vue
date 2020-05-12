@@ -29,7 +29,9 @@
           </ul>
           <h5><b class="text-warning price">{{activeItem.price}}</b> {{activeItem.priceType}}</h5>
           <p>{{activeItem.priceInclusions}}</p>
-          <button class="btn btn-warning" @click="openExternal(common.booking_link)">BOOK A ROOM</button>
+          <button class="btn btn-warning" @click="openExternal(common.booking_link)" v-if="activeItem.type === 'book'">BOOK A ROOM</button>
+
+          <button class="btn btn-warning" @click="makeAnInquiry(activeItem.title)" v-if="activeItem.type === 'inquiry'">MAKE AN INQUIRY</button>
         </div>
       </div>
     </div>
@@ -254,6 +256,9 @@ export default {
       this.active = index
       this.activeImage = 0
       this.clickFlag = index
+    },
+    makeAnInquiry(title){
+      this.$parent.onGroupBooking('group', title)
     }
   }
 }

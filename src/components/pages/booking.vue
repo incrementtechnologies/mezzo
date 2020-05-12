@@ -376,7 +376,7 @@ export default {
       window.open(url, '_BLANK')
     },
     onGroupBooking(){
-      this.$parent.onGroupBooking()
+      this.$parent.onGroupBooking('group', 'rooms')
     },
     checkForm(e){
       console.log(e)

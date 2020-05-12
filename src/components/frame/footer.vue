@@ -240,7 +240,7 @@ export default {
           route: '#privacyModal'
         }, {
           title: 'Inquiry Form',
-          type: 'scroll',
+          type: 'inquire',
           route: '#packages'
         }, {
           title: 'Press Room',
@@ -275,6 +275,9 @@ export default {
           }else{
             ROUTER.push('/')
           }
+          break
+        case 'inquire':
+          this.$parent.onGroupBooking('general', 'General Inquiry')
           break
         case 'redirect':
           // this.$parent.scrollToByParams('#top-view')

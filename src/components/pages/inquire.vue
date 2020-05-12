@@ -11,7 +11,7 @@
             Are you planning an event?
           </label>
           <br>
-          <button class="btn btn-warning" @click="activeStep = 1">MAKE AN INQUIRY</button>
+          <button class="btn btn-warning" @click="activeStep = 1, mode = 'event'">MAKE AN INQUIRY</button>
         </span>
       </span>
       <div class="main-step" v-if="activeStep > 0">
@@ -65,27 +65,27 @@
             <input type="text" class="form-control" placeholder="Type contact number" v-model="contactNumber">
           </span>
 
-          <span class="form-group form-control-half">
+          <span class="form-group form-control-half" v-if="mode !== 'group' && mode !== 'general'">
             <label style="width: 100%; float: left;">Organization / Business Name</label>
             <input type="text" class="form-control" placeholder="Optional" v-model="businessName">
           </span>
 
-          <span class="form-group form-control-half" id="address">
+          <span class="form-group form-control-half" id="address" v-if="mode !== 'group' && mode !== 'general'">
             <label style="width: 100%; float: left;">Organization / Business Address</label>
             <input type="text" class="form-control" placeholder="Optional" v-model="address">
           </span>
 
-          <span class="form-group form-control-half">
+          <span class="form-group form-control-half" v-if="mode !== 'general'">
             <label style="width: 100%; float: left;">Number of heads <b class="text-danger">*</b></label>
             <input type="number" class="form-control" placeholder="Type total number of attendees" v-model="attendees">
           </span>
 
-          <span class="form-group form-control-half">
+          <span class="form-group form-control-half"  v-if="mode !== 'general'">
             <label style="width: 100%; float: left;">Number of Rooms</label>
             <input type="number" class="form-control" placeholder="Type number of rooms needed and kindly add more details below" v-model="rooms">
           </span>
 
-          <span class="form-group form-control-half">
+          <span class="form-group form-control-half"  v-if="mode !== 'general'">
             <label style="width: 100%; float: left;">Date <b class="text-danger">*</b></label>
 
             <date-picker
@@ -120,11 +120,11 @@
             Back
           </button>
 
-          <button class="btn btn-primary pull-right" style="float: right;" @click="next()" v-if="activeStep === 1 && mode !== 'group'">
+          <button class="btn btn-primary pull-right" style="float: right;" @click="next()" v-if="activeStep === 1 && mode !== 'group' && mode !== 'general'">
             Next
           </button>
 
-          <button class="btn btn-primary pull-right" style="float: right;" @click="submit()" v-if="activeStep === 1 && mode === 'group'">
+          <button class="btn btn-primary pull-right" style="float: right;" @click="submit()" v-if="activeStep === 1 && (mode === 'group' || mode === 'general')">
             Submit
           </button>
 
@@ -332,10 +332,12 @@ export default {
       rooms: 0,
       activeStep: 0,
       selectedIndex: null,
-      filteredData: []
+      filteredData: [],
+      type: null,
+      mode: null
     }
   },
-  props: ['data', 'mode'],
+  props: ['data'],
   components: {
     DatePicker
   },
@@ -366,6 +368,7 @@ export default {
         return
       }else{
         let selectedPackage = COMMON.packages.types[this.selectedIndex]
+        this.type = COMMON.packages.types[this.selectedIndex].title
         this.filteredData = COMMON.addOns.filter((item) => {
           return item.type.includes(selectedPackage.title)
         })
@@ -399,10 +402,10 @@ export default {
       }else if(this.rooms < 0){
         this.errorMessage = 'Rooms must be greater than or equal to 0'
         return false
-      }else if(this.start === null || this.start === ''){
+      }else if((this.mode === 'group' || this.mode === 'event') && (this.start === null || this.start === '')){
         this.errorMessage = 'Start date is required.'
         return false
-      }else if(this.end === null || this.end === ''){
+      }else if((this.mode === 'group' || this.mode === 'event') && (this.end === null || this.end === '')){
         this.errorMessage = 'End date is required.'
         return false
       }
@@ -437,15 +440,15 @@ export default {
       this.activeStep = 0
       this.selectedIndex = null
       this.filteredData = []
+      this.contactNumber = null
+      this.type = null
     },
     create () {
       // send to email
       let addons = ''
-      let type = ''
       for (var i = 0; i < this.filteredData.length; i++) {
         let item = this.filteredData[i]
         if(item.flag === true){
-          type = item.type
           addons += item.title + ', ' + item.description + '\n'
         }
       }
@@ -454,7 +457,7 @@ export default {
       '&complete_name=' + this.completeName +
       '&contact_number=' + this.contactNumber +
       '&business=' + this.businessName +
-      '&type=' + (this.mode !== 'group' ? type : 'Group Bookings') +
+      '&type=' + ((this.mode !== 'group' && this.mode !== 'general') ? this.type : this.type) +
       '&start=' + this.start +
       '&end=' + this.end +
       '&contact_number=' + this.contactNumber +

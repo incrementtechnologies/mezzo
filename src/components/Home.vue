@@ -4,7 +4,7 @@
     <!-- <HeaderSticky id="sticky-header-menu"></HeaderSticky> -->
     <booking></booking>
     <Rooms></Rooms>
-    <Packages :mode="mode" ref="inquire"></Packages>
+    <Packages ref="inquire"></Packages>
     <Restaurant></Restaurant>
     <testimonials></testimonials>
     <gallery></gallery>
@@ -155,9 +155,10 @@ export default {
     scrollToByParams(id){
       this.$refs.header.scrollTo(id)
     },
-    onGroupBooking(){
-      this.mode = 'group'
+    onGroupBooking(mode, type = null){
+      this.$refs.inquire.mode = mode
       this.$refs.inquire.activeStep = 1
+      this.$refs.inquire.type = type
       this.$refs.header.scrollTo('#packages')
     },
     showImage(index){
@@ -241,8 +242,8 @@ export default {
       })
       Jquery.get('https://spreadsheets.google.com/feeds/cells/1luFOWuvQh7PlT5Jy6xY0181qdWsJhhoQt_kQ9YnpKKk/5/public/values?alt=json', response => {
         let entries = response.feed.entry
-        for (var i = 0; i < entries.length; i += 8) {
-          if(i > 7){
+        for (var i = 0; i < entries.length; i += 9) {
+          if(i > 8){
             let inclusions = entries[i + 3].content.$t
             let tempInclusions = inclusions !== null ? inclusions.split(',') : null
             let image = entries[i + 7].content.$t
@@ -265,7 +266,8 @@ export default {
               price: entries[i + 4].content.$t,
               priceType: entries[i + 5].content.$t,
               priceInclusions: entries[i + 6].content.$t,
-              images: imagesArray
+              images: imagesArray,
+              type: entries[i + 8].content.$t
             }
             COMMON.rooms.push(object)
           }
