@@ -11,7 +11,7 @@
             Are you planning an event?
           </label>
           <br>
-          <button class="btn btn-warning" @click="activeStep = 1, mode = 'event'">MAKE AN INQUIRY</button>
+          <button class="btn btn-warning" @click="activeStep = 1, mode = 'event', type = 'Event'">MAKE AN INQUIRY</button>
         </span>
       </span>
       <div class="main-step" v-if="activeStep > 0">
@@ -50,6 +50,19 @@
           <h3 class="text-primary">Please fill in the necessary information</h3>
           <p v-if="errorMessage" class="text-danger">{{errorMessage}}</p>
 
+          <span class="form-group">
+            <div class="dropdown">
+              <button class="btn btn-warning dropdown-toggle text-uppercase" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-bottom: 15px;">
+                {{mode}}
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <span class="dropdown-item" @click="mode = 'event', type = 'Event'">Event</span>
+                <span class="dropdown-item" @click="mode = 'room', type = 'Room'">Room</span>
+                <span class="dropdown-item" @click="mode = 'others', type = 'Others'">Others</span>
+              </div>
+            </div>
+          </span>
+
           <span class="form-group form-control-half">
             <label style="width: 100%; float: left;">Complete Name <b class="text-danger">*</b></label>
             <input type="text" class="form-control" placeholder="Type full name" v-model="completeName">
@@ -65,27 +78,27 @@
             <input type="text" class="form-control" placeholder="Type contact number" v-model="contactNumber">
           </span>
 
-          <span class="form-group form-control-half" v-if="mode !== 'group' && mode !== 'general'">
+          <span class="form-group form-control-half" v-if="mode !== 'room' && mode !== 'others'">
             <label style="width: 100%; float: left;">Organization / Business Name</label>
             <input type="text" class="form-control" placeholder="Optional" v-model="businessName">
           </span>
 
-          <span class="form-group form-control-half" id="address" v-if="mode !== 'group' && mode !== 'general'">
+          <span class="form-group form-control-half" id="address" v-if="mode !== 'room' && mode !== 'others'">
             <label style="width: 100%; float: left;">Organization / Business Address</label>
             <input type="text" class="form-control" placeholder="Optional" v-model="address">
           </span>
 
-          <span class="form-group form-control-half" v-if="mode !== 'general'">
-            <label style="width: 100%; float: left;">Number of heads <b class="text-danger">*</b></label>
+          <span class="form-group form-control-half" v-if="mode !== 'others'">
+            <label style="width: 100%; float: left;">Number of Heads <b class="text-danger">*</b></label>
             <input type="number" class="form-control" placeholder="Type total number of attendees" v-model="attendees">
           </span>
 
-          <span class="form-group form-control-half"  v-if="mode !== 'general'">
+          <span class="form-group form-control-half"  v-if="mode !== 'others'">
             <label style="width: 100%; float: left;">Number of Rooms</label>
             <input type="number" class="form-control" placeholder="Type number of rooms needed and kindly add more details below" v-model="rooms">
           </span>
 
-          <span class="form-group form-control-half"  v-if="mode !== 'general'">
+          <span class="form-group form-control-half"  v-if="mode !== 'others'">
             <label style="width: 100%; float: left;">Date <b class="text-danger">*</b></label>
 
             <date-picker
@@ -120,11 +133,11 @@
             Back
           </button>
 
-          <button class="btn btn-primary pull-right" style="float: right;" @click="next()" v-if="activeStep === 1 && mode !== 'group' && mode !== 'general'">
+          <button class="btn btn-primary pull-right" style="float: right;" @click="next()" v-if="activeStep === 1 && mode !== 'room' && mode !== 'others'">
             Next
           </button>
 
-          <button class="btn btn-primary pull-right" style="float: right;" @click="submit()" v-if="activeStep === 1 && (mode === 'group' || mode === 'general')">
+          <button class="btn btn-primary pull-right" style="float: right;" @click="submit()" v-if="activeStep === 1 && (mode === 'room' || mode === 'others')">
             Submit
           </button>
 
@@ -138,6 +151,20 @@
 </template>
 <style scoped lang="scss">
 @import "~assets/style/colors.scss";
+
+.dropdown-menu{
+  padding: 0px !important;
+}
+.dropdown-item{
+  height: 50px !important;
+  line-height: 50px !important;
+}
+.dropdown-item:hover{
+  cursor: pointer;
+  background: $primary !important;
+  color: $white !important;
+}
+
 .custom-container{
   width: 100%;
   min-height: 10vh;
@@ -402,10 +429,10 @@ export default {
       }else if(this.rooms < 0){
         this.errorMessage = 'Rooms must be greater than or equal to 0'
         return false
-      }else if((this.mode === 'group' || this.mode === 'event') && (this.start === null || this.start === '')){
+      }else if((this.mode === 'room' || this.mode === 'event') && (this.start === null || this.start === '')){
         this.errorMessage = 'Start date is required.'
         return false
-      }else if((this.mode === 'group' || this.mode === 'event') && (this.end === null || this.end === '')){
+      }else if((this.mode === 'room' || this.mode === 'event') && (this.end === null || this.end === '')){
         this.errorMessage = 'End date is required.'
         return false
       }
@@ -457,7 +484,7 @@ export default {
       '&complete_name=' + this.completeName +
       '&contact_number=' + this.contactNumber +
       '&business=' + this.businessName +
-      '&type=' + ((this.mode !== 'group' && this.mode !== 'general') ? this.type : this.type) +
+      '&type=' + ((this.mode !== 'room' && this.mode !== 'others') ? this.type : this.type) +
       '&start=' + this.start +
       '&end=' + this.end +
       '&contact_number=' + this.contactNumber +

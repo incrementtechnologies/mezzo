@@ -161,6 +161,56 @@ ul li{
   cursor: pointer;
 }
 
+
+@media screen and (max-width: 1024px){
+  .header{
+    min-height: 10vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10000;
+  }
+  .navbar-header{
+    display: block;
+  }
+  .menu{
+    display: none;
+  }
+
+  .btn{
+    width: 90% !important;
+    margin-left: 5%;
+    display: none;
+  }
+  ul{
+    padding-top: 60px;
+  }
+  .mobile-menu-icon{
+    display: block;
+    color: white;
+    font-size: 5vh;
+    position: absolute;
+    right: 25px;
+    top: 2vh;
+    z-index: 10000;
+  }
+
+  .social-icons{
+    margin: 0px;
+    margin-top: 10px;
+    color: $primary;
+    float: none;
+  }
+
+  .mobile-social-icon{
+    display: block;
+  }
+
+  .hide-on-mobile{
+    display: none;
+  }
+}
+
 @media screen and (max-width: 992px){
   .header{
     min-height: 10vh;

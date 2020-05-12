@@ -277,7 +277,7 @@ export default {
           }
           break
         case 'inquire':
-          this.$parent.onGroupBooking('general', 'General Inquiry')
+          this.$parent.onGroupBooking('others', 'General Inquiry')
           break
         case 'redirect':
           // this.$parent.scrollToByParams('#top-view')

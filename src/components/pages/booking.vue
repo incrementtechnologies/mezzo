@@ -141,6 +141,10 @@
     margin-left: 1% !important;
   }
 
+  .btn-white{
+    width: auto !important;
+  }
+
   .margin-div{
     width: 16%;
     float: left;
@@ -235,11 +239,29 @@
     display: none;
   }
 
+@media screen and (max-width: 1024px){
+  .carousel{
+    margin-top: $height;
+    height: 100% !important;
+  }
+  img{
+    height: 100%;
+    width: auto;
+    margin-left: -200px;
+    float: left;
+  }
+}
 @media screen and (max-width: 992px){
   img{
     height: 100%;
     width: 100%;
+    margin-left: 0px;
     float: left;
+  }
+
+  .carousel{
+    margin-top: auto !important;
+    height: auto !important;
   }
 
   .incre-container{
@@ -376,7 +398,7 @@ export default {
       window.open(url, '_BLANK')
     },
     onGroupBooking(){
-      this.$parent.onGroupBooking('group', 'rooms')
+      this.$parent.onGroupBooking('room', 'rooms')
     },
     checkForm(e){
       console.log(e)

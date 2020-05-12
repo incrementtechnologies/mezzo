@@ -258,7 +258,7 @@ export default {
       this.clickFlag = index
     },
     makeAnInquiry(title){
-      this.$parent.onGroupBooking('group', title)
+      this.$parent.onGroupBooking('room', title)
     }
   }
 }
