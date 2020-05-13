@@ -31,15 +31,13 @@
                 ></font-awesome-icon>
                 <label style="padding-left: 10px;">{{item.title}}</label>
               </h5>
-              <p>{{item.description}}</p>
             </li>
           </ul>
           <span class="form-group" style="width: 100%; float: left; margin-top: 10px;">
             <label style="width: 100%; float: left;">Add </label>
             <label class="text-danger" style="width: 100%; float: left;" v-if="errorMessage !== null"><b>{{errorMessage}}</b></label>
             <span class="width: 100%; float: left;">
-              <input type="tex" class="form-control" style="width: 40%;" placeholder="Title" v-model="title">
-              <input type="tex" class="form-control" style="width: 40%" placeholder="Description" v-model="description">
+              <input type="tex" class="form-control" style="width: 50%;" placeholder="Other details" v-model="title">
               <button class="btn btn-primary" @click="newAddOn()">
                 Add
               </button>
@@ -345,7 +343,6 @@ export default {
       faChevronLeft: faChevronLeft,
       faSquare: faSquare,
       title: null,
-      description: null,
       errorMessage: null,
       email: null,
       contactNumber: null,
@@ -375,19 +372,13 @@ export default {
         this.errorMessage = 'Title is required.'
         return
       }
-      if(this.description === null || this.description === ''){
-        this.errorMessage = 'Description is required.'
-        return
-      }
       let object = {
-        description: this.description,
         title: this.title,
         flag: true,
         id: this.filteredData.length
       }
       this.filteredData.push(object)
       this.title = null
-      this.description = null
     },
     setPackage(){
       if(this.selectedIndex === null){
@@ -476,7 +467,7 @@ export default {
       for (var i = 0; i < this.filteredData.length; i++) {
         let item = this.filteredData[i]
         if(item.flag === true){
-          addons += item.title + ', ' + item.description + '\n'
+          addons += item.title + ','
         }
       }
       console.log('hello')

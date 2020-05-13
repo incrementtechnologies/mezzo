@@ -59,7 +59,7 @@
 }
 
 p{
-  margin-top: 25px;
+  margin-top: 20px;
 }
 
 .blog-tiles{
@@ -69,7 +69,7 @@ p{
   margin-bottom: 100px;
   margin-left: 15%;
   margin-right: 15%;
-  margin-top: 25px;
+  margin-top: 0px;
 }
 
 .blog-item{

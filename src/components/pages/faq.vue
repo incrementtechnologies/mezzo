@@ -5,7 +5,7 @@
         <font-awesome-icon :icon="faSearch" class="searchIcon"></font-awesome-icon>
         <input type="text" class="form-control bg-warning text-white" style="font-size: 24px;" v-model="searchValue" placeholder="Type your question" results="0"/>
       </div>
-    <ul>
+    <ul v-if="filteredQuestions.length > 0">
       <li v-for="(item, index) in (limitFlag ? 5 : filteredQuestions.length)" :key="index">
         <label class="title" @click="setSelectedIndex(index)">
           <b>{{filteredQuestions[index].question}}</b>

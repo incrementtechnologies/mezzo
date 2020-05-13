@@ -60,7 +60,7 @@
 }
 
 p{
-  margin-top: 25px;
+  margin-top: 20px;
 }
 
 .blog-tiles{
@@ -70,7 +70,7 @@ p{
   margin-bottom: 100px;
   margin-left: 5%;
   margin-right: 5%;
-  margin-top: 25px;
+  margin-top: 0px;
 }
 
 .blog-item{
@@ -150,6 +150,7 @@ import COMMON from 'src/common.js'
 import Logo from 'src/components/generic/logo.vue'
 import ROUTER from 'router'
 import MyFooter from 'src/components/frame/footer.vue'
+import Jquery from 'jquery'
 export default {
   mounted(){
     this.retrieve()
@@ -166,6 +167,9 @@ export default {
   },
   methods: {
     redirect(route){
+      Jquery('html, body').animate({
+        scrollTop: Jquery('#top-view').offset().top
+      }, 500)
       ROUTER.push(route)
     },
     retrieve(){

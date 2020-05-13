@@ -318,12 +318,11 @@ export default {
       Jquery.get('https://spreadsheets.google.com/feeds/cells/1luFOWuvQh7PlT5Jy6xY0181qdWsJhhoQt_kQ9YnpKKk/9/public/values?alt=json', response => {
         let entries = response.feed.entry
         let j = 0;
-        for (var i = 0; i < entries.length; i += 3) {
-          if(i > 2){
+        for (var i = 0; i < entries.length; i += 2) {
+          if(i > 1){
             let object = {
               type: entries[i].content.$t,
               title: entries[i + 1].content.$t,
-              description: entries[i + 2].content.$t,
               id: j++,
               flag: false
             }
