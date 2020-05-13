@@ -16,6 +16,7 @@
     <image-view ref="imageView" :propStyle="{width: '700px'}" :data="common.gallery" :customId="'galleryViewer'"></image-view>
     <image-view ref="imageViewAnnouncements" :propStyle="{width: '700px'}" :data="common.announcements" v-if="common.announcements.length > 0" :customId="'announcementViewer'"></image-view>
     <privacy></privacy>
+    <about-page></about-page>
   </div>
 </template>
 <style lang="scss" scoped>
@@ -69,6 +70,7 @@ import Jquery from 'jquery'
 import COMMON from 'src/common.js'
 import ImageView from 'src/components/increment/generic/modal/ImageCarousel.vue'
 import Privacy from 'src/components/pages/privacy.vue'
+import AboutPage from 'src/components/pages/about.vue'
 export default {
   name: 'HelloWorld',
   mounted(){
@@ -100,7 +102,8 @@ export default {
     Faq,
     Gallery,
     ImageView,
-    Privacy
+    Privacy,
+    AboutPage
     // HeaderSticky
   },
   methods: {

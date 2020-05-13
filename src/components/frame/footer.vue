@@ -226,11 +226,15 @@ export default {
         'margin-top': '10vh !important;'
       },
       menus: [{
-        title: 'About Mezzo',
+        title: 'Mezzo',
         subMenu: [{
           title: 'Home',
           type: 'scroll',
           route: '#top-view'
+        }, {
+          title: 'About',
+          type: 'modal',
+          route: '#aboutModal'
         }]
       }, {
         title: 'Links',
