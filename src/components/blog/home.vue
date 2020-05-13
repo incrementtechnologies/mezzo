@@ -49,7 +49,7 @@
 .page-holder{
   width: 100%;
   float: left;
-  min-height: 300px;
+  min-height: 100px;
   overflow: hidden;
   background: $primary !important;
 }

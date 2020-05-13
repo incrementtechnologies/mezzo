@@ -231,10 +231,6 @@ export default {
           title: 'Home',
           type: 'scroll',
           route: '#top-view'
-        }, {
-          title: 'About',
-          type: 'modal',
-          route: '#aboutModal'
         }]
       }, {
         title: 'Links',

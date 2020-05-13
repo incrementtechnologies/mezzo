@@ -3,6 +3,7 @@
     <Header id="header-menu" ref="header"></Header>
     <!-- <HeaderSticky id="sticky-header-menu"></HeaderSticky> -->
     <booking></booking>
+    <about-page></about-page>
     <Rooms></Rooms>
     <Packages ref="inquire"></Packages>
     <Restaurant></Restaurant>
@@ -16,7 +17,6 @@
     <image-view ref="imageView" :propStyle="{width: '700px'}" :data="common.gallery" :customId="'galleryViewer'"></image-view>
     <image-view ref="imageViewAnnouncements" :propStyle="{width: '700px'}" :data="common.announcements" v-if="common.announcements.length > 0" :customId="'announcementViewer'"></image-view>
     <privacy></privacy>
-    <about-page></about-page>
   </div>
 </template>
 <style lang="scss" scoped>
