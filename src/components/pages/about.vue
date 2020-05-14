@@ -3,7 +3,7 @@
     <div class="item">
       <div class="item-content">
         <div class="image-holder">
-          <img :src="common.host + 'img/main2.png'">
+          <img :src="common.host + 'img/about.png'">
         </div>
         <div class="details">
           <div class="content">
@@ -20,7 +20,7 @@
               <p>
                 As you explore Cebu’s rich culture and heritage, may you fall in love and find yourself coming back to a new place to call home. Come make memories with us.
               </p>
-              <p>
+              <p style="padding-bottom: 0px; margin-bottom: 0px;">
                 Equipped with Cebuano warmth, Mezzo Hotel welcomes you to the Queen City of the South.
               </p>
               <!-- <p class="text-center">
@@ -64,7 +64,7 @@
   width: 50%;
   height: 100%;
   position: absolute;
-  left: 50%;
+  left: 25%;
   top: 0;
   display: table;
 }
@@ -90,8 +90,8 @@
 }
 
 img{
-  width: auto;
-  height: 100%;
+  width: 100%;
+  height: auto;
 }
 
 .social-icons{
@@ -106,7 +106,9 @@ img{
 }
 
 .text-holder{
-  background: rgba(255, 255, 255, 0.9);
+  // background: rgba(203, 171, 88, 0.5);
+  // background: rgba(0, 0, 51, 1);
+  background: rgba(255, 255, 255, 0.8);
   padding: 25px;
 }
 
