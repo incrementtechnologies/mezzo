@@ -8,9 +8,6 @@
         <div class="details">
           <div class="content">
             <div class="text-holder">
-              <h1 class="text-primary text-center">
-                About our Hotel
-              </h1>
               <p>
                 Located right in the heart of the island of Cebu, 4-star Mezzo Hotel sets its very own  standard of luxury and minimalism by offering a haven for comfort and relaxation. At Mezzo, we have dedicated ourselves to provide excellent service, delightful cuisines, and a fully-customized experience -- nothing short of true Filipino hospitality.
               </p>
@@ -61,10 +58,10 @@
 }
 
 .details{
-  width: 50%;
+  width: 60%;
   height: 100%;
   position: absolute;
-  left: 25%;
+  left: 20%;
   top: 0;
   display: table;
 }
@@ -74,8 +71,8 @@
   vertical-align: middle;
   padding-left: 50px;
   padding-right: 50px;
-  padding-top: 25px;
-  padding-bottom: 25px;
+  padding-top: 50px;
+  padding-bottom: 50px;
   text-align: justify;
   width: 100%;
   height: 100%;
@@ -106,10 +103,11 @@ img{
 }
 
 .text-holder{
-  // background: rgba(203, 171, 88, 0.5);
+  // background: rgba(203, 171, 88, 0.7);
   // background: rgba(0, 0, 51, 1);
   background: rgba(255, 255, 255, 0.8);
   padding: 25px;
+  color: $primary;
 }
 
 @media (max-width: 992px) {
@@ -119,22 +117,28 @@ img{
     width: 100%;
   }
 
-
   .image-holder{
     width: 100%;
   }
 
   img{
-    width: 100%;
-    height: auto;
+    width: auto;
+    height: 100%;
   }
 
   .details{
     min-height: 70vh;
     width: 100%;
     margin-top: 0px;
-    padding-left: 25px;
-    padding-right: 25px;
+    padding-left: 5px;
+    padding-right: 5px;
+    left: 0%;
+    overflow-y: hidden;
+  }
+
+  .details .content{
+    padding-left: 5px;
+    padding-right: 5px;
   }
 }
 </style>
