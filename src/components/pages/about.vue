@@ -2,9 +2,6 @@
   <div class="holder" id="about" >
     <div class="item">
       <div class="item-content">
-        <div class="image-holder">
-          <img :src="common.host + 'img/about.png'">
-        </div>
         <div class="details">
           <div class="content">
             <div class="text-holder">
@@ -25,6 +22,9 @@
               </p> -->
             </div>
           </div>
+        </div>
+        <div class="image-holder">
+          <img :src="common.host + 'img/about.png'">
         </div>
       </div>
     </div>
@@ -55,15 +55,15 @@
   float: left;
   background: white;
   position: relative;
+  overflow-y: hidden;
 }
 
 .details{
-  width: 60%;
+  width: 50%;
   height: 100%;
-  position: absolute;
-  left: 20%;
-  top: 0;
+  float: left;
   display: table;
+  background: $warning;
 }
 
 .details .content{
@@ -75,20 +75,24 @@
   padding-bottom: 50px;
   text-align: justify;
   width: 100%;
-  height: 100%;
+  min-height: 100%;
+  overflow-y: hidden;
 }
 
 .image-holder{
   float: left;
   height: 100%;
-  width: 100%;
+  width: 50%;
   overflow: hidden;
   position: relative;
+  display: block;
 }
 
 img{
+  max-width: 100%;
+  max-height: 100%;
   width: 100%;
-  height: auto;
+  height: 100%;
 }
 
 .social-icons{
@@ -103,11 +107,11 @@ img{
 }
 
 .text-holder{
-  // background: rgba(203, 171, 88, 0.7);
+  // background: rgba(203, 171, 88, 1);
   // background: rgba(0, 0, 51, 1);
-  background: rgba(255, 255, 255, 0.8);
+  // background: rgba(255, 255, 255, 0.8);
   padding: 25px;
-  color: $primary;
+  color: white;
 }
 
 @media (max-width: 992px) {
@@ -119,6 +123,7 @@ img{
 
   .image-holder{
     width: 100%;
+    display: none;
   }
 
   img{
@@ -126,8 +131,15 @@ img{
     height: 100%;
   }
 
+  .item-content, .item{
+    min-height: 93vh;
+    overflow-y: hidden;
+    height: inherit;
+  }
+
+
   .details{
-    min-height: 70vh;
+    min-height: 100%;
     width: 100%;
     margin-top: 0px;
     padding-left: 5px;
@@ -139,6 +151,8 @@ img{
   .details .content{
     padding-left: 5px;
     padding-right: 5px;
+    padding-top: 25px;
+    padding-bottom: 25px;
   }
 }
 </style>
