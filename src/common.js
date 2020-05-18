@@ -12,11 +12,11 @@ export default{
     url: require('assets/img/mezzolobby.jpg')
   }],
   APP_HEADER_MOBILE_BACKGROUND: [{
-    url: 'http://revamp.mezzohotel.com/img/mainm1.png'
+    url: 'https://mezzohotel.com/img/mainm1.png'
   }],
   address: 'F. Cabahug, Pres. Quezon St, Cebu City, 6000 Cebu',
-  api: 'http://revamp.mezzohotel.com/img/',
-  host: 'http://revamp.mezzohotel.com/',
+  api: 'https://mezzohotel.com/img/',
+  host: 'https://mezzohotel.com/',
   booking_link: 'https://mezzohotel.com/managebooking.php',
   socialMedia: {
     facebook: 'https://www.facebook.com/mezzohotelcebu'
