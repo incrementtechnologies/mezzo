@@ -20,7 +20,8 @@
           v-model="checkInDate"
           :disabled-date="beforeToday"
           placeholder="Check in"
-          value-type="format"
+          :value-type="'YYYY-MM-DD'"
+          :format="'MMM D, YYYY'"
           :input-attr="{
             name: 'arrival_date',
             id: 'arrival_date'
@@ -34,16 +35,18 @@
           id="departure"
           :disabled-date="afterCheckInDate"
           placeholder="Check out"
-          value-type="format"
+          :value-type="'YYYY-MM-DD'"
+          :format="'MMM D, YYYY'"
           v-model="checkOutDate"
           :input-attr="{
             name: 'departure_date',
             id: 'departure_date'
           }"
-          :default-value="new Date()"></date-picker>
+          :open="checkInDate && checkOutDate === null ? true : false"
+          :default-value="checkInDate"></date-picker>
 
 
-          <input type="text" name="coupon_code" id="coupon_code" v-model="couponCode" class="form-control" placeholder="Coupon Code">
+          <input type="text" name="promo_code" id="promo_code" v-model="couponCode" class="form-control" placeholder="Coupon Code">
           <input type="submit" value="BOOK A ROOM" class="btn btn-warning" />
       </form>
       <span class="text-center group-booking">
