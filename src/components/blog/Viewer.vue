@@ -1,10 +1,10 @@
 <template>
-  <div>
+  <div v-if="selected !== null && selected !== undefined">
     <!-- <Header id="header-menu" ref="header"></Header> -->
     <span class="page-holder">
       <logo class="hide-on-mobile"></logo>
     </span>
-    <span v-if="selected !== null">
+    <span>
       <div class="blog-tiles">
         <p>
           <button class="btn btn-warning" @click="redirect('/')">Home</button>
@@ -28,6 +28,7 @@
     </span>
     <MyFooter :property="'redirect'"></MyFooter>
   </div>
+  <NotFound v-else></NotFound>
 </template>
 <style scoped lang="scss">
 @import "~assets/style/colors.scss";
@@ -132,6 +133,7 @@ p{
 import COMMON from 'src/common.js'
 import Logo from 'src/components/generic/logo.vue'
 import MyFooter from 'src/components/frame/footer.vue'
+import NotFound from 'src/components/error/404.vue'
 import ROUTER from 'router'
 export default {
   mounted(){
@@ -157,7 +159,8 @@ export default {
   components: {
     // Header,
     Logo,
-    MyFooter
+    MyFooter,
+    NotFound
   },
   methods: {
     redirect(params){

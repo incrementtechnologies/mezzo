@@ -5,27 +5,19 @@
       <logo class="hide-on-mobile"></logo>
       <span class="page-details text-center">
         <p class="text-white display-4">
-          Press Room
+          Error 404
         </p>
       </span>
     </span>
     <div class="blog-tiles">
-      <p>
-        <button class="btn btn-warning" @click="redirect('/')">Home</button>
-      </p>
-      <span class="blog-item" v-for="(item, index) in common.blogs" :key="index" @click="checkRoute(item)">
-        <span class="image-holder">
-          <img :src="item.image">
-        </span>
-        <span class="details">
-          <h3>
-            {{item.title}}
-          </h3>
-          Published by <b>{{item.author}}</b> on {{item.date}}
-          <br>
-          <label v-html="item.introduction"></label>
-        </span>
-      </span>
+      <div class="content">
+        <h1 class="text-center text-danger">
+          <font-awesome-icon :icon="faSadTear" class="plus-icon"></font-awesome-icon>
+        </h1>
+        <h1 class="text-center">
+          Page not found.
+        </h1>
+      </div>
     </div>
     <MyFooter :property="'redirect'"></MyFooter>
   </div>
@@ -66,11 +58,17 @@ p{
 .blog-tiles{
   width: 90%;
   float: left;
-  min-height: 200px;
+  min-height: 60vh;
   margin-bottom: 100px;
   margin-left: 5%;
   margin-right: 5%;
   margin-top: 0px;
+  display: table;
+}
+
+.blog-tiles .content{
+  display: table-cell;
+  vertical-align: middle;
 }
 
 .blog-item{
@@ -81,42 +79,8 @@ p{
   margin-bottom: 25px;
 }
 
-.blog-item:hover{
-  cursor: pointer;
-  border-bottom: solid 1px $warning;
-  img{
-    opacity: 0.5;
-    background: #000;
-  }
-}
-
-.image-holder{
-  min-height: 100px;
-  width: 40%;
-  float: left;
-  overflow: hidden;
-}
-
-.image-holder img{
-  height: auto;
-  width: 100%;
-  float: left;
-}
-
-.blog-item .details{
-  padding-left: 25px;
-  padding-bottom: 25px;
-  padding-right: 25px;
-  float: left;
-  width: 60%;
-  height: 300px;
-  overflow: hidden;
-  text-align: justify;
-}
-
-.details label{
-  width: 100%;
-  margin-top: 25px;
+.plus-icon{
+  font-size: 100px;
 }
 
 @media screen and (max-width: 992px){
@@ -131,17 +95,6 @@ p{
     margin-left: 5%;
     margin-right: 5%;
   }
-
-  .image-holder{
-    width: 100%;
-  }
-
-  .blog-item .details{
-    padding-left: 0px;
-    padding-right: 0px;
-    width: 100%;
-    margin-top: 25px;
-  }
 }
 </style>
 <script>
@@ -151,13 +104,15 @@ import Logo from 'src/components/generic/logo.vue'
 import ROUTER from 'router'
 import MyFooter from 'src/components/frame/footer.vue'
 import Jquery from 'jquery'
+import { faSadTear } from '@fortawesome/free-solid-svg-icons'
 export default {
   mounted(){
     this.retrieve()
   },
   data(){
     return{
-      common: COMMON
+      common: COMMON,
+      faSadTear: faSadTear
     }
   },
   components: {
@@ -173,15 +128,7 @@ export default {
       ROUTER.push(route)
     },
     retrieve(){
-      COMMON.getBlog()
       COMMON.getBasic()
-    },
-    checkRoute(item){
-      if(item.type === 'external'){
-        window.open(item.content)
-      }else{
-        this.redirect('/press-room/page/' + item.title.split(' ').join('_'))
-      }
     }
   }
 }

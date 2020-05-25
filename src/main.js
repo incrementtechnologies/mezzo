@@ -15,6 +15,5 @@ Vue.component('font-awesome-icon', FontAwesomeIcon)
 Vue.config.productionTip = false
 new Vue({
   router,
-  mode: 'history',
   render: h => h(App),
 }).$mount('#app')
