@@ -334,14 +334,15 @@ export default {
         }
       })
 
-      Jquery.get('https://spreadsheets.google.com/feeds/cells/1luFOWuvQh7PlT5Jy6xY0181qdWsJhhoQt_kQ9YnpKKk/10/public/values?alt=json', response => {
+      Jquery.get('https://spreadsheets.google.com/feeds/cells/1luFOWuvQh7PlT5Jy6xY0181qdWsJhhoQt_kQ9YnpKKk/12/public/values?alt=json', response => {
         let entries = response.feed.entry
-        for (var i = 0; i < entries.length; i += 3) {
-          if(i > 2){
+        for (var i = 0; i < entries.length; i += 4) {
+          if(i > 3){
             let object = {
               type: entries[i].content.$t,
               text: entries[i + 1].content.$t,
-              url: COMMON.host + 'img/' + entries[i + 2].content.$t
+              url: COMMON.host + 'img/' + entries[i + 2].content.$t,
+              link: entries[i + 3].content.$t
             }
             COMMON.announcements.push(object)
             setTimeout(() => {
