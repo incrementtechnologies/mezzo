@@ -28,6 +28,9 @@
     </span>
     <MyFooter :property="'redirect'"></MyFooter>
   </div>
+  <span class="loading text-center" v-else-if="loading === true">
+    <font-awesome-icon :icon="faCircleNotch" class="fa-spin"></font-awesome-icon>
+  </span>
   <NotFound v-else></NotFound>
 </template>
 <style scoped lang="scss">
@@ -109,6 +112,20 @@ p{
   margin-top: 25px;
 }
 
+.loading{
+  font-size: 75px;
+  width: 100%;
+  color: $warning;
+  text-align: center;
+  height: 100vh;
+  float: left;
+}
+
+.fa-spin{
+  animation-duration: 0.50s;
+  margin-top: 40vh;
+}
+
 @media screen and (max-width: 992px){
   img{
     height: 100%;
@@ -134,26 +151,20 @@ import COMMON from 'src/common.js'
 import Logo from 'src/components/generic/logo.vue'
 import MyFooter from 'src/components/frame/footer.vue'
 import NotFound from 'src/components/error/404.vue'
+import { faCircleNotch } from '@fortawesome/free-solid-svg-icons'
 import ROUTER from 'router'
+import Jquery from 'jquery'
 export default {
   mounted(){
     COMMON.getBasic()
-    COMMON.getBlog()
-  },
-  computed: {
-    selected(){
-      let result = COMMON.blogs
-      if(COMMON.blogs.length > 0){
-        result = COMMON.blogs.filter(item => 
-          item.title.includes(this.$route.params.title.split('_').join(' '))
-        )
-      }
-      return result ? result[0] : null
-    }
+    this.getBlog()
   },
   data(){
     return{
-      common: COMMON
+      common: COMMON,
+      loading: false,
+      faCircleNotch: faCircleNotch,
+      selected: null
     }
   },
   components: {
@@ -165,6 +176,44 @@ export default {
   methods: {
     redirect(params){
       ROUTER.push(params)
+    },
+    getBlog(){
+      this.loading = true
+      this.$analytics.fbq.event('ViewContent', {
+        content_name: this.$route.params.title.split('_').join(' ')
+      })
+      Jquery.get('https://spreadsheets.google.com/feeds/cells/1luFOWuvQh7PlT5Jy6xY0181qdWsJhhoQt_kQ9YnpKKk/11/public/values?alt=json', response => {
+        let entries = response.feed.entry
+        for (var i = 0; i < entries.length; i += 7) {
+          if(i > 6){
+            let object = {
+              type: entries[i].content.$t,
+              title: entries[i + 1].content.$t,
+              image: this.common.host + 'img/' + entries[i + 2].content.$t,
+              date: entries[i + 3].content.$t,
+              author: entries[i + 4].content.$t,
+              introduction: entries[i + 5].content.$t,
+              content: entries[i + 6].content.$t,
+            }
+            if(object.title.includes(this.$route.params.title.split('_').join(' '))){
+              this.selected = object
+              this.loading = false
+              break  
+            }
+          }
+        }
+        this.loading = false
+      })
+    },
+    manageSearch(){
+      let result = COMMON.blogs
+      if(COMMON.blogs.length > 0){
+        result = COMMON.blogs.filter(item => 
+          item.title.includes(this.$route.params.title.split('_').join(' '))
+        )
+      }
+      this.selected = result ? result[0] : null
+      this.loading = false
     }
   }
 }

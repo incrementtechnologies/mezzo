@@ -109,6 +109,9 @@ export default {
         }
       })
       Jquery.get(this.common.host + 'php/mailchimp.php?email=' + this.email, () => {
+        this.$analytics.fbq.event('Subscribe', {
+          content_name: this.email + ' is subscribing'
+        })
         this.email = null
         this.errorMessage = null
         this.successFlag = true

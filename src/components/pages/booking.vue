@@ -386,9 +386,15 @@ export default {
       Jquery("#imageCarousel").carousel(command);
     },
     prev(){
+      this.$analytics.fbq.event('ViewContent', {
+        content_name: 'View Banner Image'
+      })
       this.setActive('prev')
     },
     next(){
+      this.$analytics.fbq.event('ViewContent', {
+        content_name: 'View Banner Image'
+      })
       this.setActive('next')
     },
     beforeToday(date){
@@ -398,9 +404,15 @@ export default {
       return date < new Date(this.checkInDate)
     },
     openExternal(url){
+      this.$analytics.fbq.event('InitialCheckout', {
+        content_name: 'Direct to booking'
+      })
       window.open(url, '_BLANK')
     },
     onGroupBooking(){
+      this.$analytics.fbq.event('InitialCheckout', {
+        content_name: 'Group booking'
+      })
       this.$parent.onGroupBooking('room', 'rooms')
     },
     checkForm(e){

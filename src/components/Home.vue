@@ -79,6 +79,9 @@ export default {
     // window.document.body.onscroll = function() {
     // }
     window.addEventListener('scroll', this.onScroll)
+    this.$analytics.fbq.event('ViewContent', {
+      content_name: 'Home Page'
+    })
   },
   data(){
     return {

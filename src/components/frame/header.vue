@@ -291,6 +291,9 @@ export default {
   },
   methods: {
     scrollTo (div) {
+      this.$analytics.fbq.event('ViewContent', {
+        content_name: div
+      })
       this.common.activeMenu = div
       var height = Jquery(window).height()
       Jquery('html, body').animate({

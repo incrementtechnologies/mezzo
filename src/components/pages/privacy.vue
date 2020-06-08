@@ -525,6 +525,9 @@ p, li{
 import Jquery from 'jquery'
 export default {
   mounted(){
+    this.$analytics.fbq.event('ViewContent', {
+      content_name: 'Privacy Notice'
+    })
   },
   data(){
     return {

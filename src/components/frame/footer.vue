@@ -6,7 +6,7 @@
         <li>
           <!-- <span>Phone</span> -->
           <b>
-            <a :href="'tel:' + common.APP_PHONE_NUMBER" style="color: #fff;">
+            <a :href="'tel:' + common.APP_PHONE_NUMBER" style="color: #fff;" @click="contact('Click phone number')">
               <font-awesome-icon :icon="faPhoneAlt" class="social-icons"></font-awesome-icon>
               {{common.APP_PHONE_NUMBER}}
             </a>
@@ -15,7 +15,7 @@
 
         <li>
           <!-- <span>Address</span> -->
-          <span @click="$refs.mapModal.showModal()" class="action-link">
+          <span @click="showModal()" class="action-link">
             <b>
               <font-awesome-icon :icon="faMapMarker" class="social-icons"></font-awesome-icon>
               {{common.address}}
@@ -27,7 +27,7 @@
           <!-- <span>E-mail</span> -->
           <span>
             <b>
-              <a :href="'mailto:' + common.APP_EMAIL + '?Subject=INQUIRE'" target="_top" style="color: #fff;">
+              <a :href="'mailto:' + common.APP_EMAIL + '?Subject=INQUIRE'" target="_top" style="color: #fff;" @click="contact('Click email')">
                 <font-awesome-icon :icon="faEnvelope" class="social-icons"></font-awesome-icon>
                 {{common.APP_EMAIL}}
               </a>
@@ -260,6 +260,17 @@ export default {
     openExternal(url){
       window.open(url, '_BLANK')
     },
+    showModal(){
+      this.$analytics.fbq.event('FindLocation', {
+        content_name: 'Checking location'
+      })
+      this.$refs.mapModal.showModal()
+    },
+    contact(params){
+      this.$analytics.fbq.event('Contact', {
+        content_name: params
+      })
+    },
     redirect(item){
       switch(item.type){
         case 'scroll':
@@ -277,6 +288,9 @@ export default {
           }
           break
         case 'inquire':
+          this.$analytics.fbq.event('ViewContent', {
+            content_name: 'General Inquiry'
+          })
           this.$parent.onGroupBooking('others', 'General Inquiry')
           break
         case 'redirect':

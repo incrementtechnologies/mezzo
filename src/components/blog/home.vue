@@ -178,6 +178,9 @@ export default {
     },
     checkRoute(item){
       if(item.type === 'external'){
+        this.$analytics.fbq.event('ViewContent', {
+          content_name: item.title
+        })
         window.open(item.content)
       }else{
         this.redirect('/press-room/page/' + item.title.split(' ').join('_'))

@@ -7,10 +7,16 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { faUserSecret } from '@fortawesome/free-solid-svg-icons'
 import { faFontAwesome } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-
+import VueFacebookPixel from 'vue-analytics-facebook-pixel'
+ 
 library.add(faUserSecret)
 library.add(faFontAwesome)
 
+Vue.use(VueFacebookPixel)
+
+Vue.analytics.fbq.init('662586500741018', {
+  em: 'kennettecanales@gmail.com'
+})
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 Vue.config.productionTip = false
 new Vue({

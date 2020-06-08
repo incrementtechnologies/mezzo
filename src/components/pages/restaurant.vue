@@ -315,6 +315,9 @@ export default {
       this.clickFlag = index
     },
     setActive(index){
+      this.$analytics.fbq.event('ViewContent', {
+        content_name: COMMON.restaurants[index].title
+      })
       this.active = index
       this.activeImage = 0
       this.clickFlag = index

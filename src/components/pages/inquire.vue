@@ -463,6 +463,9 @@ export default {
     },
     create () {
       // send to email
+      this.$analytics.fbq.event('Contact', {
+        content_name: this.email + ' is contacting'
+      })
       let addons = ''
       for (var i = 0; i < this.filteredData.length; i++) {
         let item = this.filteredData[i]

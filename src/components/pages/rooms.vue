@@ -256,6 +256,9 @@ export default {
       this.active = index
       this.activeImage = 0
       this.clickFlag = index
+      this.$analytics.fbq.event('InitialCheckout', {
+        content_name: COMMON.rooms[index].title
+      })
     },
     makeAnInquiry(title){
       this.$parent.onGroupBooking('room', title)

@@ -110,6 +110,9 @@ export default {
   },
   methods: {
     showImage(index){
+      this.$analytics.fbq.event('ViewContent', {
+        content_name: this.common.gallery[index].caption
+      })
       this.$parent.showImage(index)
     }
   }

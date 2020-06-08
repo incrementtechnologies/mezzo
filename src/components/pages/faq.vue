@@ -165,6 +165,9 @@ export default {
   methods: {
     setSelectedIndex(index){
       this.filteredQuestions[index].flag = !this.filteredQuestions[index].flag
+      this.$analytics.fbq.event('ViewContent', {
+        content_name: this.filteredQuestions[index].question
+      })
     },
     setLimitFlag(){
       this.limitFlag = !this.limitFlag
