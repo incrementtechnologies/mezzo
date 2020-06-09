@@ -7,7 +7,7 @@
       <button class="btn btn-primary" @click="subscribe()">SUBSCRIBE</button>
     </div>
     <div class="form-container" v-else>
-      <h2 class="text-primary" style="margin-bottom: 25px;">Thank you for subscribing!</h2>
+      <h2 class="text-primary" style="margin-bottom: 25px; line-height: 50px;">Thank you for subscribing!</h2>
     </div>
   </div>
 </template>

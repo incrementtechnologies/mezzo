@@ -31,6 +31,7 @@ export default{
     icon: faInstagram,
     url: 'https://www.instagram.com/mezzohotelcebu'
   }],
+  delay: 15000,
   menus: [],
   packages: null,
   testimonials: [],

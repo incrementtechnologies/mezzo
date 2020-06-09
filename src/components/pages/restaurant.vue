@@ -286,7 +286,7 @@ export default {
           this.active = 0
         }
       }
-    }, 6000)
+    }, COMMON.delay)
   },
   data(){
     return {

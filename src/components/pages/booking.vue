@@ -362,7 +362,7 @@ import Jquery from 'jquery'
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons'
 export default {
   mounted(){
-    Jquery("#imageCarousel").carousel({interval: 6000});
+    Jquery("#imageCarousel").carousel({interval: COMMON.delay});
   },
   data(){
     return{
