@@ -4,12 +4,12 @@
     <!-- <HeaderSticky id="sticky-header-menu"></HeaderSticky> -->
     <booking></booking>
     <about-page></about-page>
-    <Rooms></Rooms>
-    <Packages ref="inquire"></Packages>
-    <Restaurant></Restaurant>
-    <testimonials></testimonials>
-    <gallery></gallery>
-    <faq></faq>
+    <Rooms v-if="common.load.rooms === true"></Rooms>
+    <Packages ref="inquire" v-if="common.load.inquire === true"></Packages>
+    <Restaurant v-if="common.load.restaurants === true"></Restaurant>
+    <testimonials v-if="common.load.testimonials === true"></testimonials>
+    <gallery v-if="common.load.gallery === true"></gallery>
+    <faq v-if="common.load.faq === true"></faq>
     <MyFooter :property="'scroll'"></MyFooter>
     <span class="return-to-top" @click="scrollTo()">
       <font-awesome-icon :icon="faChevronUp" style="font-size: 24px;" class="icon"></font-awesome-icon>
@@ -115,9 +115,27 @@ export default {
         scrollTop: Jquery('#top-view').offset().top
       }, 500)
     },
+    loadPage(height, top){
+      let dev = top / height
+      console.log(height + '/' + top + '/' + dev)
+      if(dev > 5.75){
+        COMMON.setLoad('#faq')
+      }else if(dev > 4.75){
+        COMMON.setLoad('#gallery')
+      }else if(dev > 3.75){
+        COMMON.setLoad('#testimonials')
+      }else if(dev > 2.75){
+        COMMON.setLoad('#restaurants')
+      }else if(dev > 1.75){
+        COMMON.setLoad('#packages')
+      }else if(dev > .75){
+        COMMON.setLoad('#rooms')
+      }
+    },
     onScroll(){
       var height = Jquery(window).height()
       var scrollTop = Jquery(window).scrollTop()
+      this.loadPage(height, scrollTop)
       var vScroll = parseInt((scrollTop / height) * 100)
       if(vScroll >= 20){
         Jquery('.menu').css({

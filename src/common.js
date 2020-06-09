@@ -42,6 +42,52 @@ export default{
   announcements: [],
   blogs: [],
   activeMenu: '#top-view',
+  load: {
+    rooms: false,
+    inquire: false,
+    restaurants: false,
+    testimonials: false,
+    gallery: false,
+    faq: false,
+    footer: false
+  },
+  setLoad(div){
+    switch(div){
+      case '#faq':
+        this.load.faq = true
+        this.load.gallery = true
+        this.load.testimonials = true
+        this.load.restaurants = true
+        this.load.inquire = true
+        this.load.rooms = true
+        break
+      case '#gallery':
+        this.load.gallery = true
+        this.load.testimonials = true
+        this.load.restaurants = true
+        this.load.inquire = true
+        this.load.rooms = true
+        break
+      case '#testimonials':
+        this.load.testimonials = true
+        this.load.restaurants = true
+        this.load.inquire = true
+        this.load.rooms = true
+        break
+      case '#restaurants':
+        this.load.restaurants = true
+        this.load.inquire = true
+        this.load.rooms = true
+        break
+      case '#packages':
+        this.load.inquire = true
+        this.load.rooms = true
+        break
+      case '#rooms':
+        this.load.rooms = true
+        break
+    }
+  },
   getBlog(){
     this.blogs = []
     Jquery.get('https://spreadsheets.google.com/feeds/cells/1luFOWuvQh7PlT5Jy6xY0181qdWsJhhoQt_kQ9YnpKKk/11/public/values?alt=json', response => {

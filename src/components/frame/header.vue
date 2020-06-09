@@ -21,7 +21,7 @@
         <li v-for="(item, index) in common.menus" :key="index" class="basic-menu" @click="scrollTo(item.redirect)" :class="{'active-menu': common.activeMenu === item.redirect}">{{item.title}}</li>
       </ul>
       <span class="social-icons-holder">
-        <font-awesome-icon :icon="item.icon" class="social-icons" v-for="(item, index) in common.socialIcons" :key="index" @click="openExternal(item.url)"></font-awesome-icon>
+        <font-awesome-icon :icon="item.icon" class="social-icons" v-for="(item, index) in common.socialIcons" :key="index" @click="openExternalSites(item.url)"></font-awesome-icon>
       </span>
       <button class="btn btn-warning" @click="openExternal(common.booking_link)">BOOK A ROOM</button>
     </div>
@@ -294,15 +294,27 @@ export default {
       this.$analytics.fbq.event('ViewContent', {
         content_name: div
       })
+      COMMON.setLoad(div)
       this.common.activeMenu = div
-      var height = Jquery(window).height()
-      Jquery('html, body').animate({
-        scrollTop: Jquery(div).offset().top - parseInt(height * 0.07)
-      }, 500)
+      setTimeout(() => {
+        var height = Jquery(window).height()
+        Jquery('html, body').animate({
+          scrollTop: Jquery(div).offset().top - parseInt(height * 0.07)
+        }, 400)
+      }, 100)
       this.flag = false
       Jquery('.mobile-menu').css({display: 'none'})
     },
     openExternal(url){
+      this.$analytics.fbq.event('InitialCheckout', {
+        content_name: 'Direct Booking'
+      })
+      window.open(url, '_BLANK')
+    },
+    openExternalSites(url){
+      this.$analytics.fbq.event('ViewContent', {
+        content_name: url
+      })
       window.open(url, '_BLANK')
     },
     toggle(){

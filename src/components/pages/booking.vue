@@ -410,10 +410,13 @@ export default {
       window.open(url, '_BLANK')
     },
     onGroupBooking(){
+      COMMON.setLoad('#packages')
       this.$analytics.fbq.event('InitialCheckout', {
         content_name: 'Group booking'
       })
-      this.$parent.onGroupBooking('room', 'rooms')
+      setTimeout(() => {
+        this.$parent.onGroupBooking('room', 'rooms')
+      }, 100)
     },
     checkForm(e){
       console.log(e)
