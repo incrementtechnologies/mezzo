@@ -14,7 +14,7 @@ library.add(faFontAwesome)
 
 Vue.use(VueFacebookPixel)
 
-Vue.analytics.fbq.init('662586500741018', {
+Vue.analytics.fbq.init('510542799813313', {
   em: 'kennettecanales@gmail.com'
 })
 Vue.component('font-awesome-icon', FontAwesomeIcon)
