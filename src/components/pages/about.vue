@@ -24,7 +24,7 @@
           </div>
         </div>
         <div class="image-holder">
-          <img :src="common.host + 'img/about.png'">
+          <img :src="common.host + 'img/about_72.jpg'">
         </div>
       </div>
     </div>

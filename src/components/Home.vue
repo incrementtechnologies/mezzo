@@ -4,7 +4,7 @@
     <!-- <HeaderSticky id="sticky-header-menu"></HeaderSticky> -->
     <booking></booking>
     <about-page></about-page>
-    <Rooms v-if="common.load.rooms === true"></Rooms>
+    <Rooms></Rooms>
     <Packages ref="inquire" v-if="common.load.inquire === true"></Packages>
     <Restaurant v-if="common.load.restaurants === true"></Restaurant>
     <testimonials v-if="common.load.testimonials === true"></testimonials>
@@ -118,17 +118,17 @@ export default {
     loadPage(height, top){
       let dev = top / height
       console.log(height + '/' + top + '/' + dev)
-      if(dev > 5.75){
+      if(dev > 5.5){
         COMMON.setLoad('#faq')
-      }else if(dev > 4.75){
+      }else if(dev > 4.5){
         COMMON.setLoad('#gallery')
-      }else if(dev > 3.75){
+      }else if(dev > 3.5){
         COMMON.setLoad('#testimonials')
-      }else if(dev > 2.75){
+      }else if(dev > 2.5){
         COMMON.setLoad('#restaurants')
-      }else if(dev > 1.75){
+      }else if(dev > 1.5){
         COMMON.setLoad('#packages')
-      }else if(dev > .75){
+      }else if(dev > .5){
         COMMON.setLoad('#rooms')
       }
     },
