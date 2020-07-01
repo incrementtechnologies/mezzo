@@ -89,12 +89,12 @@ p{
   width: 100%;
   float: left;
   overflow: hidden;
+  text-align: center;
 }
 
 .image-holder img{
-  height: auto;
-  width: 100%;
-  float: left;
+  height: 100%;
+  width: auto;
 }
 
 .blog-item .details{
