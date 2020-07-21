@@ -340,6 +340,7 @@ export default {
  mounted(){
   this.type = this.$route.params.type
   this.mode = this.$route.params.type != null ? this.$route.params.type.toLowerCase() : ''
+  this.setPackage()
   Jquery.get('https://spreadsheets.google.com/feeds/cells/1luFOWuvQh7PlT5Jy6xY0181qdWsJhhoQt_kQ9YnpKKk/4/public/values?alt=json', response => {
     let entries = response.feed.entry
     for (var i = 0; i < entries.length; i += 2) {
@@ -491,7 +492,9 @@ export default {
       this.selectedIndex = null
       this.filteredData = []
       this.contactNumber = null
-      this.type = null
+      this.type = this.$route.params.type
+      this.mode = this.$route.params.type != null ? this.$route.params.type.toLowerCase() : ''
+      this.setPackage()
     },
     create () {
       // send to email
