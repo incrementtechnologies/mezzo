@@ -338,8 +338,9 @@ import Logo from 'src/components/generic/logo.vue'
 import Jquery from 'jquery'
 export default {
  mounted(){
-  this.type = this.$route.params.type
+  this.type = this.$route.params.type === 'other' ? 'others' : this.$route.params.type
   this.mode = this.$route.params.type != null ? this.$route.params.type.toLowerCase() : ''
+  this.mode = this.mode === 'other' ? 'others' : this.mode
   this.setPackage()
   Jquery.get('https://spreadsheets.google.com/feeds/cells/1luFOWuvQh7PlT5Jy6xY0181qdWsJhhoQt_kQ9YnpKKk/4/public/values?alt=json', response => {
     let entries = response.feed.entry
