@@ -5,7 +5,7 @@
     <booking></booking>
     <about-page></about-page>
     <Rooms></Rooms>
-    <Packages ref="inquire" v-if="common.load.inquire === true"></Packages>
+    <Packages ref="inquire"></Packages>
     <Restaurant v-if="common.load.restaurants === true"></Restaurant>
     <testimonials v-if="common.load.testimonials === true"></testimonials>
     <gallery v-if="common.load.gallery === true"></gallery>

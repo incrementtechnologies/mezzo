@@ -29,7 +29,7 @@
           </ul>
           <h5><b class="text-warning price">{{activeItem.price}}</b> {{activeItem.priceType}}</h5>
           <p>{{activeItem.priceInclusions}}</p>
-          <button class="btn btn-warning" @click="openExternal(common.booking_link)" v-if="activeItem.type === 'book'">BOOK A ROOM</button>
+          <button class="btn btn-warning" @click="openExternal(common.booking_link, false, activeItem.abbreviation)" v-if="activeItem.type === 'book'">BOOK A ROOM</button>
 
           <button class="btn btn-warning" @click="makeAnInquiry(activeItem.title)" v-if="activeItem.type === 'inquiry'">MAKE AN INQUIRY</button>
         </div>
@@ -217,6 +217,7 @@ h5{
 <script>
 import COMMON from 'src/common.js'
 import { faCheck, faCircle } from '@fortawesome/free-solid-svg-icons'
+import Packages from 'src/components/pages/inquire.vue'
 export default {
   mounted(){
     setInterval(() => {
@@ -245,8 +246,12 @@ export default {
     }
   },
   methods: {
-    openExternal(url){
-      window.open(url, '_BLANK')
+    openExternal(url, flag, item){
+      if(flag == false){
+        Packages.methods.inquireRoom(item);
+      }else{
+        window.open(url, '_BLANK')
+      }
     },
     setActiveImage(index){
       this.activeImage = index

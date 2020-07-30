@@ -23,7 +23,7 @@
       <span class="social-icons-holder">
         <font-awesome-icon :icon="item.icon" class="social-icons" v-for="(item, index) in common.socialIcons" :key="index" @click="openExternalSites(item.url)"></font-awesome-icon>
       </span>
-      <button class="btn btn-warning" @click="openExternal(common.booking_link)">BOOK A ROOM</button>
+      <button class="btn btn-warning" @click="openExternal(common.booking_link, false)">BOOK A ROOM</button>
     </div>
   </div>
 </template>
@@ -265,6 +265,7 @@ import COMMON from 'src/common.js'
 import Jquery from 'jquery'
 import Logo from 'src/components/generic/logo.vue'
 import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons'
+import Packages from 'src/components/pages/inquire.vue'
 export default {
   mounted(){
     // window.document.body.onscroll = function() {
@@ -305,11 +306,15 @@ export default {
       this.flag = false
       Jquery('.mobile-menu').css({display: 'none'})
     },
-    openExternal(url){
-      this.$analytics.fbq.event('InitialCheckout', {
-        content_name: 'Direct Booking'
-      })
-      window.open(url, '_BLANK')
+    openExternal(url, flag){
+      if(flag == false){
+        Packages.methods.inquireRoom(null);
+      }else{
+        this.$analytics.fbq.event('InitialCheckout', {
+          content_name: 'Direct Booking'
+        })
+        window.open(url, '_BLANK')
+      }
     },
     openExternalSites(url){
       this.$analytics.fbq.event('ViewContent', {
