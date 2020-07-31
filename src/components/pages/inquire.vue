@@ -12,6 +12,7 @@
           </label>
           <br>
           <button class="btn btn-warning" @click="activeStep = 1, mode = 'event', type = 'Event'">MAKE AN INQUIRY</button>
+          <button id="room" style="display:none;" @click="activeStep = 1, mode = 'room', type = 'Room'"></button>
         </span>
       </span>
       <div class="main-step" v-if="activeStep > 0">
@@ -117,6 +118,13 @@
               :format="'MMM, D, YYYY'"
               v-if="start !== null"
               ></date-picker>
+          </span>
+
+          <span id="room-choice" class="form-group form-control-half" v-if="mode == 'room'">
+            <label style="width: 100%; float: left;">Type of Room</label>
+            <select id="room-choice-option" class="form-control">
+              <option v-for="(counter, counterIndex) in common.rooms" :key="counterIndex" :value="counter.abbreviation">{{counter.title}}</option>
+            </select>
           </span>
 
           <span class="form-group" style="width: 100%; float: left;">
@@ -366,6 +374,22 @@ export default {
     DatePicker
   },
   methods: {
+    inquireRoom(room){
+      Jquery('#room').trigger("click");
+      let height = Jquery(window).height()
+      Jquery('html, body').animate({
+        scrollTop: Jquery('#packages').offset().top - parseInt(height * 0.1)
+      }, 500)
+      Jquery(document).ready(function() {
+        if(room!=null){
+          Jquery('#room-choice').hide();
+          Jquery('#room-choice-option').val(room).change();
+        }else{
+          Jquery('#room-choice').show();
+          Jquery('#room-choice-option').val("SUP").change();
+        }
+      });
+    },
     newAddOn(){
       this.errorMessage = null
       if(this.title === null || this.title === ''){
@@ -474,6 +498,14 @@ export default {
         }
       }
       console.log('hello')
+      var room, price;
+      for(var ctr = 0; ctr < this.common.rooms.length; ctr++){
+        if(Jquery('#room-choice-option').children('option:selected').val() == this.common.rooms[ctr].abbreviation){
+          room = this.common.rooms[ctr].title;
+          price = this.common.rooms[ctr].price;
+        }
+      }
+      console.log(room + ' ' + price);
       let data = 'email=' + this.email +
       '&complete_name=' + this.completeName +
       '&contact_number=' + this.contactNumber +
@@ -484,8 +516,9 @@ export default {
       '&contact_number=' + this.contactNumber +
       '&attendees=' + this.attendees +
       '&rooms=' + this.rooms +
-      '&additional_information=' + this.additionalInformation +
+      '&additional_information=' + this.additionalInformation + ((this.mode == 'room') ? ', room: ' + room + ', price: ' + price  : '') +
       '&addons=' + addons
+      alert(data);
       Jquery.ajaxSetup({
         headers: {
           'Access-Control-Allow-Origin': '*'
