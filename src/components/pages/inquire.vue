@@ -352,11 +352,9 @@ export default {
   },
   methods: {
     getStart(){
-      alert("start");
       this.start = Jquery('#checkInDate input').val();
     },
     getEnd(){
-      alert("end");
       this.end = Jquery('#checkOutDate input').val();
     },
     inquireRoom(room, checkInDate, checkOutDate){
@@ -509,7 +507,6 @@ export default {
       '&rooms=' + this.rooms +
       '&additional_information=' + this.additionalInformation + ((this.mode == 'room') ? ', room: ' + room + ', price: ' + price  : '') +
       '&addons=' + addons
-      alert(data);
       Jquery.ajaxSetup({
         headers: {
           'Access-Control-Allow-Origin': '*'
