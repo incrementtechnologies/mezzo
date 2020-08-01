@@ -8,8 +8,8 @@
     <Packages ref="inquire"></Packages>
     <Restaurant v-if="common.load.restaurants === true"></Restaurant>
     <testimonials v-if="common.load.testimonials === true"></testimonials>
-    <gallery v-if="common.load.gallery === true"></gallery>
-    <faq v-if="common.load.faq === true"></faq>
+    <gallery></gallery>
+    <faq></faq>
     <MyFooter :property="'scroll'"></MyFooter>
     <span class="return-to-top" @click="scrollTo()">
       <font-awesome-icon :icon="faChevronUp" style="font-size: 24px;" class="icon"></font-awesome-icon>
