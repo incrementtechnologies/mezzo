@@ -6,9 +6,7 @@
       </span>
       <form 
         @submit="checkForm"
-        :action="common.booking_link"
-        id="check-form"
-        method="post">
+        >
         <!-- 
         <input type="date" name="arrival_date" id="arrival_date" v-model="checkInDate" class="form-control">
 
@@ -360,6 +358,7 @@ import 'vue2-datepicker/index.css'
 import Subscribe from 'src/components/generic/subscribe.vue'
 import Jquery from 'jquery'
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons'
+import Packages from 'src/components/pages/inquire.vue'
 export default {
   mounted(){
     Jquery("#imageCarousel").carousel({interval: COMMON.delay});
@@ -421,7 +420,8 @@ export default {
     checkForm(e){
       console.log(e)
       if(this.checkInDate && this.checkOutDate){
-        return
+        Packages.methods.inquireRoom(null, this.checkInDate, this.checkOutDate);
+        //return
       }
       if(this.checkInDate === null){
         //

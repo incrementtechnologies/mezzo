@@ -101,6 +101,7 @@
             <label style="width: 100%; float: left;">Date <b class="text-danger">*</b></label>
 
             <date-picker
+              id="checkInDate"
               type="date"
               :disabled-date="beforeToday"
               placeholder="Start Date"
@@ -108,16 +109,20 @@
               :format="'MMM, D, YYYY'"
               v-model="start"
               ></date-picker>
+            
+            <button id="checkInDateButton" style="display:none;" @click="getStart()"></button>
 
             <date-picker
+              id="checkOutDate"
               type="date"
               :disabled-date="afterStart"
               placeholder="End Date"
               :value-type="'YYYY-MM-DD'"
               v-model="end"
               :format="'MMM, D, YYYY'"
-              v-if="start !== null"
               ></date-picker>
+
+              <button id="checkOutDateButton" style="display:none;" @click="getEnd()"></button>
           </span>
 
           <span id="room-choice" class="form-group form-control-half" v-if="mode == 'room'">
@@ -157,7 +162,6 @@
 </template>
 <style scoped lang="scss">
 @import "~assets/style/colors.scss";
-
 .dropdown-menu{
   padding: 0px !important;
 }
@@ -170,7 +174,6 @@
   background: $primary !important;
   color: $white !important;
 }
-
 .custom-container{
   width: 100%;
   min-height: 10vh;
@@ -182,18 +185,15 @@
 .holder{
   width: 100%;
 }
-
 .step1{
   position: relative;
   width: 100%;
   float: left;
 }
-
 .step1 label{
   font-size: 42px;
   padding: 10px;
 }
-
 .custom-form-control{
   width: 20% !important;
   margin-right: 80% !important;
@@ -204,13 +204,11 @@
   width: 100%;
   position: relative;
 }
-
 .image-holder img{
   height: auto;
   width: 25%;
   float: left;
 }
-
 .step1-action{
   position: absolute;
   top: 50%;
@@ -218,11 +216,9 @@
   left: 0;
   width: 100%;
 }
-
 .step1-action .btn{
   width: 20% !important;
 }
-
 .main-step{
   margin-top: 50px;
   width: 100%;
@@ -231,7 +227,6 @@
   padding-left: 25px;
   padding-right: 25px;
 }
-
 ul{
   list-style: none;
   margin: 0px;
@@ -240,7 +235,6 @@ ul{
   float: left;
   margin-top: 25px;
 }
-
 ul li{
   min-height: 20px;
   width: 32%;
@@ -248,18 +242,15 @@ ul li{
   float: left;
   margin-bottom: 15px;
 }
-
 ul li:hover{
   cursor: pointer;
 }
 .text-primary{
   color: $primary !important;
 }
-
 .text-warning{
   color: $warning !important;
 }
-
 .form-control{
   float: left !important;
   margin-right: 1% !important;
@@ -270,20 +261,17 @@ ul li:hover{
   float: left;
   margin-top: 25px;
 }
-
 .form-control-half{
   float: left;
   width: 32% !important;
   margin-right: 1% !important;
 }
-
 .mx-datepicker{
   width: 49% !important;
   margin-right: 1% !important;
   margin-left: 0% !important;
   margin-top: -16px !important;
 }
-
 .mx-input-wrapper, .mx-input-wrapper input{
   border: 1px solid $gray !important;
 }
@@ -295,47 +283,36 @@ ul li:hover{
     left: 0%;
     width: 100%;
   }
-
   .image-holder img{
     height: auto;
     width: 50%;
     float: left;
   }
-
   .step1-action .btn{
     width: 90% !important;
     margin-left: 5%;
   }
-
-
   .step1-action{
     top: 30%;    
   }
-
   .custom-form-control{
     width: 100% !important;
   }
-
   ul li{
     width: 100%;
     margin-right: 0%;
   }
-
-
   .form-control-half{
     width: 100% !important;
     margin-right: 0% !important;
   }
-
   #address{
     margin-right: 0% !important;
   }
-
   .mx-datepicker svg{
     vertical-align: -1em !important;
   }
 }
-
 </style>
 <script>
 import COMMON from 'src/common.js'
@@ -374,7 +351,15 @@ export default {
     DatePicker
   },
   methods: {
-    inquireRoom(room){
+    getStart(){
+      alert("start");
+      this.start = Jquery('#checkInDate input').val();
+    },
+    getEnd(){
+      alert("end");
+      this.end = Jquery('#checkOutDate input').val();
+    },
+    inquireRoom(room, checkInDate, checkOutDate){
       Jquery('#room').trigger("click");
       let height = Jquery(window).height()
       Jquery('html, body').animate({
@@ -387,6 +372,12 @@ export default {
         }else{
           Jquery('#room-choice').show();
           Jquery('#room-choice-option').val("SUP").change();
+        }
+        if(checkInDate != null){
+          Jquery('#checkInDate input').val(checkInDate).change();
+          Jquery('#checkInDateButton').trigger("click");
+          Jquery('#checkOutDate input').val(checkOutDate).change();
+          Jquery('#checkOutDateButton').trigger("click");
         }
       });
     },
