@@ -12,8 +12,10 @@
           {{selected.title}}
         </p>
         <span class="blog-item">
-          <span class="image-holder">
+          <span class="image-holder" v-if="selected.type === 'internal'">
             <img :src="selected.image">
+          </span>
+          <span class="video-holder" v-if="selected.type === 'internal_video'" v-html="selected.image">
           </span>
           <span class="details">
             <h3 style="margin-top: 25px;">
@@ -90,6 +92,27 @@ p{
   float: left;
   overflow: hidden;
   text-align: center;
+}
+
+.yt-video{
+  width:  100vw;
+  height: 60vw; /* 90*9/16 */
+}
+
+.video-holder{
+  position: relative;
+  padding-bottom: 56.25%;
+  padding-top: 30px;
+  height: 60vh;
+  overflow: hidden;
+}
+
+.video-holder iframe, .video-holder object, .video-holder embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .image-holder img{
@@ -189,7 +212,7 @@ export default {
             let object = {
               type: entries[i].content.$t,
               title: entries[i + 1].content.$t,
-              image: this.common.host + 'img/' + entries[i + 2].content.$t,
+              image: entries[i].content.$t === 'internal_video'? entries[i + 2].content.$t : this.common.host + 'img/' + entries[i + 2].content.$t,
               date: entries[i + 3].content.$t,
               author: entries[i + 4].content.$t,
               introduction: entries[i + 5].content.$t,

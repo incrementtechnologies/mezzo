@@ -14,8 +14,12 @@
         <button class="btn btn-warning" @click="redirect('/')">Home</button>
       </p>
       <span class="blog-item" v-for="(item, index) in common.blogs" :key="index" @click="checkRoute(item)">
-        <span class="image-holder">
+        <span class="image-holder" v-if="item.type !== 'internal_video'">
           <img :src="item.image">
+        </span>
+        <span class="image-holder" v-if="item.type === 'internal_video'">
+          <span v-html="item.image">
+          </span>
         </span>
         <span class="details">
           <h3>

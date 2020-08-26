@@ -98,7 +98,7 @@ export default{
           let object = {
             type: entries[i].content.$t,
             title: entries[i + 1].content.$t,
-            image: this.host + 'img/' + entries[i + 2].content.$t,
+            image: entries[i].content.$t === 'internal_video' ? entries[i + 2].content.$t : this.host + 'img/' + entries[i + 2].content.$t ,
             date: entries[i + 3].content.$t,
             author: entries[i + 4].content.$t,
             introduction: entries[i + 5].content.$t,

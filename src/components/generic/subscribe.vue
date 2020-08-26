@@ -2,7 +2,7 @@
   <div>
     <div class="form-container" v-if="successFlag === false">
       <h4 class="text-primary">Want to know more about our latest offers?</h4>
-      <label class="text-danger" style="width: 100%; padding-left: 10px;" v-if="errorMessage !== null"><b>Opps! {{errorMessage}}</b></label>
+      <label class="text-danger" style="width: 100%; padding-left: 10px;" v-if="errorMessage !== null"><b>{{errorMessage}}</b></label>
       <input type="email" class="form-control" placeholder="Enter your e-mail" v-model="email">
       <button class="btn btn-primary" @click="subscribe()">SUBSCRIBE</button>
     </div>
