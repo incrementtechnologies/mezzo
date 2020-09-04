@@ -351,6 +351,9 @@ h5{
  <label>
  <b class="title">HERB CRUMBED CHICKEN</b>
  <b class="text-right price">Php 248.00</b>
+</label>
+ <label>
+  Mustard-marinated chicken coated in parmesan and herbed crumbs; served with greens and roasted potatoes
  </label>
  </li>
 
@@ -358,6 +361,9 @@ h5{
  <label>
  <b class="title">BABY BACK RIBS</b>
  <b class="text-right price">Php 438.00</b>
+</label>
+ <label>
+  Grilled back ribs with pineapple salsa; corn on the cob, salad, and roasted potatoes on the side
  </label>
  </li>
 
@@ -365,6 +371,9 @@ h5{
  <label>
  <b class="title">SHRIMP TEMPURA</b>
  <b class="text-right price">Php 398.00</b>
+</label>
+ <label>
+   Japanese-style crispy fried shrimp served with tempura sauce and greens in orange garlic vinaigrette
  </label>
  </li>
 
@@ -372,6 +381,9 @@ h5{
  <label>
  <b class="title">FISH AND CHIPS</b>
  <b class="text-right price">Php 348.00</b>
+</label>
+ <label>
+  Beer-butter coated marlin fillet served with cajun potatoes and greens
  </label>
  </li>
 
@@ -379,6 +391,9 @@ h5{
  <label>
  <b class="title">BRAISED BEEF ROULADE</b>
  <b class="text-right price">Php 428.00</b>
+</label>
+ <label>
+  Beef tenderloin stuffed with spinach, walnuts, and cheese braised in brown sauce; served with parsley potatoes and steamed vegetables.
  </label>
  </li>
 
@@ -386,6 +401,9 @@ h5{
  <label>
  <b class="title">CHEESE TONKATSU</b>
  <b class="text-right price">Php 348.00</b>
+</label>
+ <label>
+  Breaded pork tenderloin stuffed with two kinds of cheese drizzled with tonkatsu sauce; paired with Japanese pizza and greens
  </label>
  </li>
 
@@ -393,6 +411,9 @@ h5{
  <label>
  <b class="title">CHICKEN TERIYAKI</b>
  <b class="text-right price">Php 298.00</b>
+</label>
+ <label>
+  Grilled lemongrass-marinated chicken thigh drizzled in rich teriyaki sauce and sesame seeds; served with thinly sliced coleslaw and potato wedges
  </label>
  </li>
 
