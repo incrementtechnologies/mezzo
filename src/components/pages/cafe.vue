@@ -20,7 +20,7 @@
  width: 100%;
  float: left;
  color: #003;
- height: 50px;
+ height: auto;
 }
 
 .menu-images li .description{
@@ -32,15 +32,15 @@
 }
 
 .menu-images li label .title{
- padding-top: 10px;
- padding-bottom: 10px;
+ padding-top: 25px;
+ padding-bottom: 25px;
  width: 70%;
  float: left;
 }
 
 .menu-images li label .price{
- padding-top: 10px;
- padding-bottom: 10px;
+ padding-top: 25px;
+ padding-bottom: 25px;
  width: 30%;
  float: left;
  color: #cbab58;
@@ -352,7 +352,7 @@ h5{
  <b class="title">HERB CRUMBED CHICKEN</b>
  <b class="text-right price">Php 248.00</b>
 </label>
- <label>
+ <label class="description">
   Mustard-marinated chicken coated in parmesan and herbed crumbs; served with greens and roasted potatoes
  </label>
  </li>
@@ -362,7 +362,7 @@ h5{
  <b class="title">BABY BACK RIBS</b>
  <b class="text-right price">Php 438.00</b>
 </label>
- <label>
+ <label class="description">
   Grilled back ribs with pineapple salsa; corn on the cob, salad, and roasted potatoes on the side
  </label>
  </li>
@@ -372,7 +372,7 @@ h5{
  <b class="title">SHRIMP TEMPURA</b>
  <b class="text-right price">Php 398.00</b>
 </label>
- <label>
+ <label class="description">
    Japanese-style crispy fried shrimp served with tempura sauce and greens in orange garlic vinaigrette
  </label>
  </li>
@@ -382,7 +382,7 @@ h5{
  <b class="title">FISH AND CHIPS</b>
  <b class="text-right price">Php 348.00</b>
 </label>
- <label>
+ <label class="description">
   Beer-butter coated marlin fillet served with cajun potatoes and greens
  </label>
  </li>
@@ -392,7 +392,7 @@ h5{
  <b class="title">BRAISED BEEF ROULADE</b>
  <b class="text-right price">Php 428.00</b>
 </label>
- <label>
+ <label class="description">
   Beef tenderloin stuffed with spinach, walnuts, and cheese braised in brown sauce; served with parsley potatoes and steamed vegetables.
  </label>
  </li>
@@ -402,7 +402,7 @@ h5{
  <b class="title">CHEESE TONKATSU</b>
  <b class="text-right price">Php 348.00</b>
 </label>
- <label>
+ <label class="description">
   Breaded pork tenderloin stuffed with two kinds of cheese drizzled with tonkatsu sauce; paired with Japanese pizza and greens
  </label>
  </li>
@@ -412,7 +412,7 @@ h5{
  <b class="title">CHICKEN TERIYAKI</b>
  <b class="text-right price">Php 298.00</b>
 </label>
- <label>
+ <label class="description">
   Grilled lemongrass-marinated chicken thigh drizzled in rich teriyaki sauce and sesame seeds; served with thinly sliced coleslaw and potato wedges
  </label>
  </li>
@@ -423,7 +423,7 @@ h5{
  <b class="text-right price">Php 788.00</b>
  </label>
  <label class="description">
- Good for sharing. Perfec for 4-5 persons
+ Good for sharing. Perfect for 4-5 persons
  </label>
  </li>
 
