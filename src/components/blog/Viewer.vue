@@ -151,8 +151,8 @@ p{
 
 @media screen and (max-width: 992px){
   img{
-    height: 100%;
-    width: 100%;
+    height: 100% !important;
+    width: 100% !important;
     float: left;
   }
 
