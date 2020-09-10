@@ -2,6 +2,9 @@
   <div id="top-view">
     <Header id="header-menu" ref="header"></Header>
     <!-- <HeaderSticky id="sticky-header-menu"></HeaderSticky> -->
+    <span class="banner-bottom" @click="redirect('/press-room/page/Mezzo_Hotel_Health_and_Safety_Protocols')">
+      Check our Health and Safety Protocol
+    </span>
     <booking></booking>
     <about-page></about-page>
     <Rooms></Rooms>
@@ -37,6 +40,26 @@
   text-align: center;
   z-index: 2000;
 }
+
+.banner-bottom{
+  position: fixed;
+  bottom: 0px;
+  width: 40%;
+  left: 30%;
+  background: $primary;
+  height: 70px;
+  line-height: 70px;
+  z-index: 100000;
+  text-align: center;
+  color: $white;
+  font-size: 24px;
+}
+
+.banner-bottom:hover{
+  cursor: pointer;
+  background: $warning;
+}
+
 .icon{
   padding-top: 5px;
 }
@@ -71,6 +94,7 @@ import COMMON from 'src/common.js'
 import ImageView from 'src/components/increment/generic/modal/ImageCarousel.vue'
 import Privacy from 'src/components/pages/privacy.vue'
 import AboutPage from 'src/components/pages/about.vue'
+import ROUTER from 'router'
 export default {
   name: 'HelloWorld',
   mounted(){
@@ -110,6 +134,12 @@ export default {
     // HeaderSticky
   },
   methods: {
+    redirect(route){
+      Jquery('html, body').animate({
+        scrollTop: Jquery('#top-view').offset().top
+      }, 500)
+      ROUTER.push(route)
+    },
     scrollTo () {
       Jquery('html, body').animate({
         scrollTop: Jquery('#top-view').offset().top
