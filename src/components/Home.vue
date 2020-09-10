@@ -76,6 +76,14 @@
 #sticky-header-menu{
   display: none;
 }
+
+
+@media screen and (max-width: 992px){
+  .banner-bottom{
+    width: 100%;
+    left: 0%;
+  }
+}
 </style>
 <script>
 import Header from 'src/components/frame/header.vue'
