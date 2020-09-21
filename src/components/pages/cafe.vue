@@ -156,7 +156,7 @@ h5{
  <b class="title">THAI HOT AND SOUR SOUP</b>
  <b class="text-right price">PHP 178</b>
  </label>
- <label class="description">
+ <label class="description">  
  Savoury spicy shrimp with Kaffir Lime Leaf
  </label>
  </li>
@@ -217,7 +217,7 @@ h5{
  <li>
  <label>
  <b class="title">SHRIMP CAESAR</b>
- <b class="text-right price">PHP 258</b>
+ <b class="text-right price">PHP 308</b>
  </label>
  <label class="description">
  Japanese-inspired tempura served with assortment of lettuce in Caesar salad dressing
@@ -254,16 +254,6 @@ h5{
  </label>
  <label class="description">
  Fragrant marinated chicken quarters served with Asian Napa slaw
- </label>
- </li>
-
- <li>
- <label>
- <b class="title">WOK-SEARED BABY PRAWNS</b>
- <b class="text-right price">PHP 258</b>
- </label>
- <label class="description">
- Baby prawns infused with herb butter sauce
  </label>
  </li>
 
@@ -346,6 +336,16 @@ h5{
  Grilled beef tenderloin glazed with red wine served with assorted vegetable of the day
  </label>
  </li>
+ <!-- 
+ <li>
+ <label>
+ <b class="title">WOK-SEARED BABY PRAWNS</b>
+ <b class="text-right price">PHP 258</b>
+ </label>
+ <label class="description">
+ Baby prawns infused with herb butter sauce
+ </label>
+ </li>
 
  <li>
  <label>
@@ -415,8 +415,8 @@ h5{
  <label class="description">
   Grilled lemongrass-marinated chicken thigh drizzled in rich teriyaki sauce and sesame seeds; served with thinly sliced coleslaw and potato wedges
  </label>
- </li>
-
+ </li> -->
+<!-- 
  <li>
  <label>
  <b class="title">MEZZO FESTIVAL</b>
@@ -425,7 +425,7 @@ h5{
  <label class="description">
  Good for sharing. Perfect for 4-5 persons
  </label>
- </li>
+ </li> 
 
  <li>
  <label>
@@ -454,7 +454,7 @@ h5{
  </label>
  </li>
 </ul>
-
+-->
 <h5>PIZZA</h5>
 <ul class="menu-images">
  <li>
@@ -599,7 +599,7 @@ h5{
  <li>
  <label>
  <b class="title">MEZZO CLUBHOUSE</b>
- <b class="text-right price">PHP 208</b>
+ <b class="text-right price">PHP 258</b>
  </label>
  <label class="description">
  Layered sandwich with ham, cheese and egg
@@ -608,7 +608,7 @@ h5{
 
  <li>
  <label>
- <b class="title">MONGOLIAN BEEF ROLL</b>
+ <b class="title">TURKISH ROLL</b>
  <b class="text-right price">PHP 238</b>
  </label>
  <label class="description">
@@ -618,7 +618,7 @@ h5{
 
  <li>
  <label>
- <b class="title">CHEESE BURGER WITH BARBBEQUE SAUCE</b>
+ <b class="title">CHEESE BURGER WITH BARBEQUE SAUCE</b>
  <b class="text-right price">PHP 258</b>
  </label>
  <label class="description">
@@ -626,4 +626,9 @@ h5{
  </label>
  </li>
 </ul>
+</p>
+<br>
+<br>
+<p>
+  Dial <b>0</b> to order. Our in-Room dining will be available from 10 am to 6 pm only. 
 </p>
