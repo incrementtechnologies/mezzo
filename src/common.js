@@ -4,6 +4,7 @@ export default{
   APP_NAME: 'Mezzo Hotel',
   APP_TAGLINE: 'LUXURY HOTEL',
   APP_EMAIL: 'admin@mezzohotel.com',
+  APP_MESSENGER: 'https://m.me/cafemezzobymezzohotel',
   APP_COPYRIGHT: 'Mezzo Hotel ' + new Date().getFullYear(),
   APP_DEVELOPER: 'Increment Technologies',
   APP_DEVELOPER_URL: 'http://increment.ltd',
