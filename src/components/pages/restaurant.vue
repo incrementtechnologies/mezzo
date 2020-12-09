@@ -31,7 +31,7 @@
             </li>
           </ul>
           <p v-if="active < 2">
-            For inquiries, please contact us through <a :href="'tel:' + common.APP_PHONE_NUMBER" style="color: #fff;">{{common.APP_PHONE_NUMBER}}</a>, <a :href="'mailto:' + common.APP_EMAIL + '?Subject=INQUIRE'" target="_top" style="color: #fff;">{{common.APP_EMAIL}}</a> or, order now on <a :href="common.APP_MESSENGER" target="_blank" style="color: #fff;">Messenger</a>
+            For inquiries, please contact us through <a :href="'tel:' + common.APP_PHONE_NUMBER" style="color: #fff;">{{common.APP_PHONE_NUMBER}}</a>, <a :href="'mailto:' + common.APP_EMAIL + '?Subject=INQUIRE'" target="_top" style="color: #fff;">{{common.APP_EMAIL}}</a>, or order now on <a :href="common.APP_MESSENGER" target="_blank" style="color: #fff;">Messenger</a>
           </p>
           <p v-if="active === 2">
             For inquiries, please dial <b>"0"</b> from your hotel room.
