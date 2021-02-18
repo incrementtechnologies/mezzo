@@ -45,6 +45,9 @@
         <span class="menu-holder subscribe">
           <subscribe></subscribe>
         </span>
+        <span class="certificate">
+          <certificate></certificate>
+        </span>
       </span>
       <span class="copyright">
         <label>
@@ -188,12 +191,13 @@ b:hover, a:hover{
     text-align: center;
     margin-top: 25px;
   }
-
   .copyright{
   }
   .subscribe{
     width: 100%;
-    margin-top: 25px;
+    margin-top: 50px;
+  }
+  .certificate{
   }
 }
 </style>
@@ -201,6 +205,7 @@ b:hover, a:hover{
 import COMMON from 'src/common.js'
 import ROUTER from 'src/router'
 import Logo from 'src/components/generic/logo.vue'
+import Certificate from 'src/components/generic/certificate.vue'
 import Subscribe from 'src/components/generic/subscribeStandard.vue'
 import { faCopyright, faEnvelope, faMapMarker, faPhoneAlt } from '@fortawesome/free-solid-svg-icons'
 import GoogleMapModal from 'src/components/increment/generic/map/ModalGeneric.vue'
@@ -253,7 +258,8 @@ export default {
   components: {
     Logo,
     GoogleMapModal,
-    Subscribe
+    Subscribe,
+    Certificate
   },
   props: ['property'],
   methods: {
