@@ -1,18 +1,20 @@
 <template>
   <div>
-    <div>
-      <img :src="common.api + 'mezzo_iso_light.jpg'">
+    <div class="image-holder">
+      <img :src="common.certificate">
     </div>
   </div>
 </template>
 <style scoped lang="scss">
 @import "~assets/style/colors.scss";
 img{
-  width: auto;
-  height: 20vh;
-  margin-top: 15vh;
-  margin-left: 45vh;
-  // margin-bottom: 2vh;
+  width: 25%;
+  margin-top: 10vh;
+}
+.image-holder{
+  width: 100%;
+  float: left;
+  text-align: center;
 }
 </style>
 <script>

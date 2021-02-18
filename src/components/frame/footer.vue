@@ -45,9 +45,9 @@
         <span class="menu-holder subscribe">
           <subscribe></subscribe>
         </span>
-        <span class="certificate">
-          <certificate></certificate>
-        </span>
+      </span>
+      <span class="certificate">
+        <certificate></certificate>
       </span>
       <span class="copyright">
         <label>
@@ -198,6 +198,8 @@ b:hover, a:hover{
     margin-top: 50px;
   }
   .certificate{
+    width: 100%;
+    margin-top: 50px;
   }
 }
 </style>
