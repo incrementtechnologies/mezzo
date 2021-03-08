@@ -8,19 +8,19 @@
 <style scoped lang="scss">
 @import "~assets/style/colors.scss";
 img{
-  width: 25%;
-  margin-top: 10vh;
+  width: 20%;
   border-radius: 10px;
+  margin-top: 50px;
 }
 .image-holder{
   width: 100%;
   float: left;
-  text-align: center;
 }
 @media only screen and (max-width: 990px) {
   img {
-    width: 100%;
-    margin-top: -35vh;
+    width: 96%;
+    margin-left: 2%;
+    margin-top: 50px;
   }
 }
 </style>

@@ -46,8 +46,8 @@
           <subscribe></subscribe>
         </span>
       </span>
-      <span class="certificate">
-        <certificate></certificate>
+      <span class="footer-content">
+        <Certificate></Certificate>
       </span>
       <span class="copyright">
         <label>
@@ -135,6 +135,15 @@ b:hover, a:hover{
   margin-top: 50px;
 }
 
+
+.footer-content{
+  width: 80%;
+  float: left;
+  color: $white;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
 .menu-holder{
   float: left;
   width: 25%;
@@ -178,7 +187,6 @@ b:hover, a:hover{
 
   .menus{
     margin-top: 25px;
-    margin-bottom: 200px;
     width: 100%;
     margin-left: 0%;
     margin-right: 0%;
