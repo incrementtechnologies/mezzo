@@ -56,19 +56,22 @@
       We also want to celebrate women who have always been strong by making their big day more memorable one.
       Capture your precious moments with Photo Booth and an overnight stay in our Deluxe Room for two all on us.
     </p>
+    <p>
     We are sponsoring your dream wedding with:
-    <dl>
-    <dd>-An overnight stay in Deluxe Room with breakfast for two</dd>
-    <dd>-Photo Booth for 2 hours during the event</dd>
-    <dd>-LCD Projector with screen for 4 hours</dd>
-    <dd>-Complimentary 1 hour extension of function room usage</dd>
-    <dd>-Waived handling fee for dessert buffet</dd>
-    <dd>-Waived bar fine for 4 bottles of wine</dd>
-    </dl>Mechanics:
-    <dl>
-    <dd>-This offer is available for social events held within March to December 2021.</dd>
-    <dd>-Confirmation of booking only on the basis of contract signed by client with promo duration March 1-31, 2021.</dd>
-    </dl>
+    </p>
+    <ol style="list-style-type:square;">
+    <li>An overnight stay in Deluxe Room with breakfast for two</li>
+    <li>Photo Booth for 2 hours during the event</li>
+    <li>LCD Projector with screen for 4 hours</li>
+    <li>Complimentary 1 hour extension of function room usage</li>
+    <li>Waived handling fee for dessert buffet</li>
+    <li>Waived bar fine for 4 bottles of wine</li>
+    </ol>
+    <p>Mechanics:</p>
+    <ol style="list-style-type:square;">
+    <li>This offer is available for social events held within March to December 2021.</li>
+    <li>Confirmation of booking only on the basis of contract signed by client with promo duration March 1-31, 2021.</li>
+    </ol>
     <ul class="menu-images">
       <li>
         <img src="https://mezzohotel.com/img/women_month1_3.jpg" />
