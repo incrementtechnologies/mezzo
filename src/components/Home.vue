@@ -52,7 +52,7 @@
   z-index: 100000;
   text-align: center;
   color: $white;
-  font-size: 24px;
+  font-size: 20px;
 }
 
 .banner-bottom:hover{
@@ -82,6 +82,7 @@
   .banner-bottom{
     width: 100%;
     left: 0%;
+    font-size: 16px;
   }
 }
 </style>
