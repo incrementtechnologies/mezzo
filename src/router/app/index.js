@@ -2,6 +2,7 @@ import Home from 'src/components/Home.vue'
 import Blogs from 'src/components/blog/home.vue'
 import BlogViewer from 'src/components/blog/Viewer.vue'
 import Inquiry from 'src/components/pages/chatbotEnquiry.vue'
+import EasterEnquiry from 'src/components/pages/EasterEnquiry.vue'
 import NotFound from 'src/components/error/404.vue'
 export default{
   routes: [{
@@ -20,6 +21,10 @@ export default{
     path: '/inquiry/:type',
     name: 'inquiry',
     component: Inquiry
+  }, {
+    path: '/easter/inquiry',
+    name: 'easterInquiry',
+    component: EasterEnquiry
   }, {
     path: '*',
     name: 'notFound',
