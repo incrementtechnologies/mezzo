@@ -251,8 +251,8 @@ export default {
         title: 'Links',
         subMenu: [{
           title: 'Privacy Notice',
-          type: 'modal',
-          route: '#privacyModal'
+          type: 'redirect',
+          route: '/privacy-policy'
         }, {
           title: 'Inquiry Form',
           type: 'inquire',

@@ -4,6 +4,7 @@ import BlogViewer from 'src/components/blog/Viewer.vue'
 import Inquiry from 'src/components/pages/chatbotEnquiry.vue'
 import EasterEnquiry from 'src/components/pages/EasterEnquiry.vue'
 import NotFound from 'src/components/error/404.vue'
+import privacyPolicy from 'src/components/pages/privacyPolicy.vue'
 export default{
   routes: [{
     path: '/',
@@ -29,6 +30,10 @@ export default{
     path: '*',
     name: 'notFound',
     component: NotFound
+  }, {
+    path: '/privacy-policy',
+    name: 'privacyPolicy',
+    component: privacyPolicy
   }]
 }
 
