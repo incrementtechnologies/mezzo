@@ -31,20 +31,18 @@
 }
 
 </style>
-<template>
-<div>
 <p><b>Rediscovering a New Dimension of Luxury</b></p>
 <p>As we move forward to a new normal, Mezzo Hotel’s top priority is the health, safety, and security of our guests, associates, and partners. The recent pandemic, COVID-19 has completely changed the way we live, and we are adjusting our daily operations to fit within the new normal.</p>
 <p>Here at Mezzo Hotel, we have enhanced our cleaning protocols: surfaces are thoroughly disinfected and misting and cleaning are conducted at an increased frequency.</p>
 <p><b>Safe Together</b></p>
 <p>All guests and associates must strictly adhere to these guidelines:</p>
 <ol>
-<li>Face masks should be worn at all times.</li>
-<li>Before entering the Hotel, footwear and hands are sanitized, and temperature checks are performed at all entry points.</li>
-<li>Guests or associates with a temperature above 37.5°C or showing any symptoms of COVID-19 shall be isolated and assisted to the nearest hospital.</li>
-<li>Proper hand washing should be observed. Alcohol pumps are made available around the Hotel to encourage every guest and associate to sanitize regularly.</li>
-<li>Maintain a safe distance of at least 6 feet (about 2 arms’ length) from each other.</li>
-<li>Follow Social Distancing Stickers in the elevator where only four (4) can ride at a time.</li>
+  <li>Face masks should be worn at all times.</li>
+  <li>Before entering the Hotel, footwear and hands are sanitized, and temperature checks are performed at all entry points.</li>
+  <li>Guests or associates with a temperature above 37.5°C or showing any symptoms of COVID-19 shall be isolated and assisted to the nearest hospital.</li>
+  <li>Proper hand washing should be observed. Alcohol pumps are made available around the Hotel to encourage every guest and associate to sanitize regularly.</li>
+  <li>Maintain a safe distance of at least 6 feet (about 2 arms’ length) from each other.</li>
+  <li>Follow Social Distancing Stickers in the elevator where only four (4) can ride at a time.</li>
 </ol>
 <p><b>Guest Experience</b></p>
 <p><b>Safety Measures upon Arrival and Departure</b></p>
@@ -88,5 +86,3 @@
 <p>Our swimming pool is open from 7 AM to 6 PM and our gym is open from 6 AM to 6 PM.</p>
 <p><b>Health Concerns</b></p>
 <p>All Associates of Mezzo Hotel are presented with clear instructions on how to respond and report all presumed cases of COVID-19 on-property, and we are ready to provide support to our guests. Associates are instructed to stay at home if they are not feeling well.</p>
-</div>
-</template>
