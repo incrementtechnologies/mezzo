@@ -3,16 +3,16 @@
     <div>
     <span class="page-holder">
       <logo class="hide-on-mobile"></logo>
+      <h5 class="title">Privacy Notice</h5>
     </span>
     </div>
     <div class="privacy-body">
       <p>
-      <button class="btn btn-warning" @click="redirect('/')">Home</button>
+      <button class="btn btn-warning" style="margin-top: 10px;" @click="redirect('/')">Home</button>
       </p>
       <p>
         <b> Introduction </b>
       </p>
-
       <p>
         This Privacy Notice sets out the basis on which we collect and process
         your personal data through your use of our website(s), online profiles,
@@ -761,11 +761,6 @@
 </template>
 <style scoped lang="scss">
 @import "~assets/style/colors.scss";
-
-.modal{
-  z-index: 100000 !important;
-}
-
 .bg-warning{
   background: $warning !important;
   color: $white !important;
@@ -779,8 +774,14 @@ p, li{
   text-align: justify;
 }
 .privacy-body{
-  padding-left: 25px;
-  padding-right: 25px;
+  padding-left: 15%;
+  padding-right: 15%;
+}
+.title{
+  text-align: center;
+  weight: bold;
+  color: white;
+  font-size: 50px
 }
 .page-holder{
   width: 100%;
