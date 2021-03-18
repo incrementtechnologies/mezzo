@@ -6,7 +6,7 @@
       <h5 class="title">Privacy Notice</h5>
     </span>
     </div>
-    <div class="privacy-body">
+    <div class="privacy-body" style="margin-bottom: 100px;">
       <p>
       <button class="btn btn-warning" style="margin-top: 10px;" @click="redirect('/')">Home</button>
       </p>
