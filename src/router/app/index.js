@@ -3,6 +3,7 @@ import Blogs from 'src/components/blog/home.vue'
 import BlogViewer from 'src/components/blog/Viewer.vue'
 import Inquiry from 'src/components/pages/chatbotEnquiry.vue'
 import EasterEnquiry from 'src/components/pages/EasterEnquiry.vue'
+import anniversaryEnquiry from 'src/components/pages/anniversaryEnquiry.vue'
 import NotFound from 'src/components/error/404.vue'
 import privacyPolicy from 'src/components/pages/privacyPolicy.vue'
 export default{
@@ -34,6 +35,10 @@ export default{
     path: '/privacy-policy',
     name: 'privacyPolicy',
     component: privacyPolicy
+  }, {
+    path: '/e-voucher',
+    name: 'anniversaryEnquiry',
+    component: anniversaryEnquiry
   }]
 }
 

@@ -5,49 +5,9 @@
     </span>
     <div class="holder">
       <div class="main-step" v-if="activeStep > 0">
-        <span v-if="activeStep === 2">
-          <span class="form-group custom-form-control">
-            <label>Event Type</label>
-            <select class="form-control" @change="setPackage()" v-model="selectedIndex">
-              <option v-for="(item, index) in common.packages.types" :key="index" :value="index">{{item.title}}</option>
-            </select>
-          </span>
-          <ul>
-            <li v-for="(item, index) in filteredData" :key="index" @click="item.flag = !item.flag">
-              <h5>
-                <font-awesome-icon
-                  :icon="faSquare"
-                  :class="{'text-primary': item.flag === true, 'text-warning': item.flag === false}"
-                ></font-awesome-icon>
-                <label style="padding-left: 10px;">{{item.title}}</label>
-              </h5>
-            </li>
-          </ul>
-          <span class="form-group" style="width: 100%; float: left; margin-top: 10px;">
-            <label style="width: 100%; float: left;">Add </label>
-            <label class="text-danger" style="width: 100%; float: left;" v-if="errorMessage !== null"><b>{{errorMessage}}</b></label>
-            <span class="width: 100%; float: left;">
-              <input type="tex" class="form-control" style="width: 50%;" placeholder="Other details" v-model="title">
-              <button class="btn btn-primary" @click="newAddOn()">
-                Add
-              </button>
-            </span>
-          </span>
-        </span>
         <span v-if="activeStep === 1">
           <h3 class="text-primary">Please fill in the necessary information</h3>
           <p v-if="errorMessage" class="text-danger">{{errorMessage}}</p>
-
-          <span class="form-group">
-            <div class="dropdown">
-              <button class="btn btn-warning dropdown-toggle text-uppercase" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-bottom: 15px;">
-                {{mode}}
-              </button>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <span class="dropdown-item" @click="mode = 'Anniversay E-Vouchers', type = 'Anniversary E-Vouchers'">Anniversary E-Vouchers</span>
-              </div>
-            </div>
-          </span>
 
           <span class="form-group form-control-half">
             <label style="width: 100%; float: left;">Complete Name <b class="text-danger">*</b></label>
@@ -64,11 +24,6 @@
             <input type="text" class="form-control" placeholder="Type contact number" v-model="contactNumber">
           </span>
 
-          <span class="form-group form-control-half">
-            <label style="width: 100%; float: left;">Address</label>
-            <input type="text" class="form-control" placeholder="Type address" v-model="address">
-          </span>
-
           <span class="form-group form-control-half" v-if="mode !== 'others'">
             <label style="width: 100%; float: left;">Number of Vouchers to Buy <b class="text-danger">*</b></label>
             <input type="number" class="form-control" placeholder="Type total number of vouchers to buy" v-model="vouchers">
@@ -77,12 +32,12 @@
           <span class="form-group form-control-half">
             <label style="width: 100%; float: left;">Mode of Payment<b class="text-danger">*</b></label>
             <select v-model="selected" class="form-control">
-            <option disabled value="">Please select one</option>
-            <option>Cash</option>
-            <option>Credit Cards</option>
-            <option>Bank Tranfers</option>
-            <option>Direct Deposit</option>
-            <option>Prepaid Cards</option>
+              <option disabled value="">Please select one</option>
+              <option>Cash</option>
+              <option>Credit Cards</option>
+              <option>Bank Tranfers</option>
+              <option>Direct Deposit</option>
+              <option>Prepaid Cards</option>
             </select>
           </span>
 
@@ -93,19 +48,7 @@
           </span>
         </span>
         <span class="action">
-          <button class="btn btn-primary" v-if="activeStep > 0" @click="activeStep--">
-            Back
-          </button>
-
-          <button class="btn btn-primary pull-right" style="float: right;" @click="next()" v-if="activeStep === 1 && mode !== 'room' && mode !== 'others'">
-            Next
-          </button>
-
-          <button class="btn btn-primary pull-right" style="float: right;" @click="submit()" v-if="activeStep === 1 && (mode === 'room' || mode === 'others')">
-            Submit
-          </button>
-
-          <button class="btn btn-primary pull-right" style="float: right;" @click="submit()" v-if="activeStep === 2">
+          <button class="btn btn-primary pull-right" style="float: right;" @click="submit()">
             Submit
           </button>
         </span>
@@ -410,9 +353,6 @@ export default {
       }else if(this.completeName === null || this.completeName === ''){
         this.errorMessage = 'Complete Name is required.'
         return false
-      }else if(this.address === null || this.address === ''){
-        this.errorMessage = 'Address is required.'
-        return false
       }else if(this.vouchers < 1){
         this.errorMessage = 'Vouchers must be greater than 0'
         return false
@@ -462,24 +402,18 @@ export default {
       this.$analytics.fbq.event('Contact', {
         content_name: this.email + ' is contacting'
       })
-      let addons = ''
-      for (var i = 0; i < this.filteredData.length; i++) {
-        let item = this.filteredData[i]
-        if(item.flag === true){
-          addons += item.title + ','
-        }
-      }
       console.log('hello')
       let data = 'email=' + this.email +
       '&complete_name=' + this.completeName +
       '&contact_number=' + this.contactNumber +
-      '&address=' + this.address +
-      '&type=' + this.type +
-      '&contact_number=' + this.contactNumber +
-      '&vouchers=' + this.vouchers +
-      '&selected=' + this.selected +
+      '&business=' + null +
+      '&type=E-Vouchers' +
+      '&start=' + null +
+      '&end=' + null +
+      '&attendees=' + this.vouchers +
+      '&rooms=' + null +
       '&additional_information=' + this.additionalInformation +
-      '&addons=' + addons
+      '&addons=' + this.selected
       Jquery.ajaxSetup({
         headers: {
           'Access-Control-Allow-Origin': '*'
