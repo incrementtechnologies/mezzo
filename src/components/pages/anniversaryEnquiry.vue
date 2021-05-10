@@ -47,7 +47,11 @@
             </textarea>
           </span>
         </span>
-        <span class="action">
+        <span class="text-center incre-holder" v-if="activeStep === 2">
+          <h1 class="text-primary" style="margin-top: 25px;">Thanks for making it Mezzo!</h1>
+          <h3 style="margin-top: 75px;">Our reservations officer will reach out to you within 24-48 hours. Thank you for making it Mezzo!</h3>
+        </span>
+        <span class="action" v-if="activeStep === 1">
           <button class="btn btn-primary pull-right" style="float: right;" @click="submit()">
             Submit
           </button>
@@ -423,6 +427,7 @@ export default {
       })
       setTimeout(() => {
         this.initInput()
+        this.activeStep = 2
       }, 1000)
     }
   }
