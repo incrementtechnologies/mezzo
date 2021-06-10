@@ -39,6 +39,10 @@ export default{
     path: '/e-voucher',
     name: 'anniversaryEnquiry',
     component: anniversaryEnquiry
+  }, {
+    path: '/booking-inquiry',
+    name: 'anniversaryEnquiry',
+    component: anniversaryEnquiry
   }]
 }
 
