@@ -5,9 +5,26 @@
     </span>
     <div class="holder">
       <div class="main-step" v-if="activeStep > 0">
+        <span v-if="activeStep === 2" class="text-center incre-holder">
+          <h1 class="text-primary success-message" style="margin-top: 25px;">Thanks for making it Mezzo!</h1>
+          <h3 style="margin-top: 75px;" class="success-message">We have received your booking inquiry, allow our Reservations to send you the confirmation number within 24 hours. For urgent requests, you may call us at (032) 231-0777 or 0917-139-7204.</h3>
+        </span>
         <span v-if="activeStep === 1">
           <h3 class="text-primary">Please fill in the necessary information</h3>
           <p v-if="errorMessage" class="text-danger">{{errorMessage}}</p>
+
+          <span class="form-group">
+            <div class="dropdown">
+              <button class="btn btn-warning dropdown-toggle text-uppercase" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-bottom: 15px;">
+                {{mode}}
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <span class="dropdown-item" @click="mode = 'event', type = 'Event'">Event</span>
+                <span class="dropdown-item" @click="mode = 'room', type = 'Room'">Room</span>
+                <span class="dropdown-item" @click="mode = 'others', type = 'Others'">Others</span>
+              </div>
+            </div>
+          </span>
 
           <span class="form-group form-control-half">
             <label style="width: 100%; float: left;">Complete Name <b class="text-danger">*</b></label>
@@ -24,35 +41,58 @@
             <input type="text" class="form-control" placeholder="Type contact number" v-model="contactNumber">
           </span>
 
-          <span class="form-group form-control-half" v-if="mode !== 'others'">
-            <label style="width: 100%; float: left;">Number of Vouchers to Buy <b class="text-danger">*</b></label>
-            <input type="number" class="form-control" placeholder="Type total number of vouchers to buy" v-model="vouchers">
+          <span class="form-group form-control-half" v-if="mode !== 'room' && mode !== 'others'">
+            <label style="width: 100%; float: left;">Organization / Business Name</label>
+            <input type="text" class="form-control" placeholder="Optional" v-model="businessName">
           </span>
 
-          <span class="form-group form-control-half">
-            <label style="width: 100%; float: left;">Mode of Payment<b class="text-danger">*</b></label>
-            <select v-model="selected" class="form-control">
-              <option disabled value="">Please select one</option>
-              <option>Cash</option>
-              <option>Credit Cards</option>
-              <option>Bank Tranfers</option>
-              <option>Direct Deposit</option>
-              <option>Prepaid Cards</option>
-            </select>
+          <span class="form-group form-control-half" id="address" v-if="mode !== 'room' && mode !== 'others'">
+            <label style="width: 100%; float: left;">Organization / Business Address</label>
+            <input type="text" class="form-control" placeholder="Optional" v-model="address">
+          </span>
+
+          <span class="form-group form-control-half" v-if="mode !== 'others'">
+            <label style="width: 100%; float: left;">Number of Heads <b class="text-danger">*</b></label>
+            <input type="number" class="form-control" placeholder="Type total number of attendees" v-model="attendees">
+          </span>
+
+          <span class="form-group form-control-half"  v-if="mode !== 'others'">
+            <label style="width: 100%; float: left;">Number of Rooms</label>
+            <input type="number" class="form-control" placeholder="Type number of rooms needed and kindly add more details below" v-model="rooms">
+          </span>
+
+          <span class="form-group form-control-half"  v-if="mode !== 'others'">
+            <label style="width: 100%; float: left;">Date <b class="text-danger">*</b></label>
+
+            <date-picker
+              type="date"
+              :disabled-date="beforeToday"
+              placeholder="Start Date"
+              :value-type="'YYYY-MM-DD'"
+              :format="'MMM, D, YYYY'"
+              v-model="start"
+              ></date-picker>
+
+            <date-picker
+              type="date"
+              :disabled-date="afterStart"
+              placeholder="End Date"
+              :value-type="'YYYY-MM-DD'"
+              v-model="end"
+              :format="'MMM, D, YYYY'"
+              v-if="start !== null"
+              ></date-picker>
           </span>
 
           <span class="form-group" style="width: 100%; float: left;">
             <label>Additional information</label>
             <textarea rows="5" style="width: 100%; float: left; padding: 10px;" placeholder="Enter additional information" v-model="additionalInformation">
+              
             </textarea>
           </span>
         </span>
-        <span class="text-center incre-holder" v-if="activeStep === 2">
-          <h1 class="text-primary" style="margin-top: 25px;">Thanks for making it Mezzo!</h1>
-          <h3 style="margin-top: 75px;">We have received your booking inquiry, allow our Reservations to send you the confirmation number within 24 hours. For urgent requests, you may call us at (032) 231-0777 or 0917-139-7204.</h3>
-        </span>
-        <span class="action" v-if="activeStep === 1">
-          <button class="btn btn-primary pull-right" style="float: right;" @click="submit()">
+        <span class="action">
+          <button class="btn btn-primary pull-right" style="float: right;" @click="submit()" v-if="activeStep === 1">
             Submit
           </button>
         </span>
@@ -192,13 +232,28 @@ ul li:hover{
   margin-right: 1% !important;
 }
 
+.mx-datepicker{
+  width: 49% !important;
+  margin-right: 1% !important;
+  margin-left: 0% !important;
+  margin-top: -16px !important;
+}
+
 .mx-input-wrapper, .mx-input-wrapper input{
   border: 1px solid $gray !important;
 }
 #address{
   margin-right: 33% !important;
 }
+.success-message{
+  padding-right: 20%;
+  padding-left: 20%;
+}
 @media (max-width: 992px) {
+  .success-message{
+    padding-right: 0%;
+    padding-left: 0%;
+  }
   .custom-container{
     left: 0%;
     width: 100%;
@@ -238,18 +293,24 @@ ul li:hover{
   #address{
     margin-right: 0% !important;
   }
+
+  .mx-datepicker svg{
+    vertical-align: -1em !important;
+  }
 }
 
 </style>
 <script>
 import COMMON from 'src/common.js'
 import { faChevronLeft, faSquare } from '@fortawesome/free-solid-svg-icons'
+import DatePicker from 'vue2-datepicker'
+import 'vue2-datepicker/index.css'
 import Logo from 'src/components/generic/logo.vue'
 import Jquery from 'jquery'
 export default {
  mounted(){
   this.type = this.$route.params.type === 'other' ? 'others' : this.$route.params.type
-  this.mode = this.$route.params.type != null ? this.$route.params.type.toLowerCase() : ''
+  this.mode = this.$route.params.type != null ? this.$route.params.type.toLowerCase() : 'room'
   this.mode = this.mode === 'other' ? 'others' : this.mode
   this.setPackage()
   Jquery.get('https://spreadsheets.google.com/feeds/cells/1luFOWuvQh7PlT5Jy6xY0181qdWsJhhoQt_kQ9YnpKKk/4/public/values?alt=json', response => {
@@ -290,22 +351,23 @@ export default {
       email: null,
       contactNumber: null,
       completeName: null,
+      businessName: null,
       address: null,
-      selected: '',
       additionalInformation: null,
       start: null,
       end: null,
-      vouchers: 1,
+      attendees: 1,
       rooms: 0,
-      activeStep: 2,
+      activeStep: 1,
       selectedIndex: null,
       filteredData: [],
-      type: 'Anniversary E-Vouchers',
-      mode: 'Anniversary E-Vouchers'
+      type: null,
+      mode: null
     }
   },
   props: ['data'],
   components: {
+    DatePicker,
     Logo
   },
   methods: {
@@ -357,11 +419,17 @@ export default {
       }else if(this.completeName === null || this.completeName === ''){
         this.errorMessage = 'Complete Name is required.'
         return false
-      }else if(this.vouchers < 1){
-        this.errorMessage = 'Vouchers must be greater than 0'
+      }else if(this.attendees < 1){
+        this.errorMessage = 'Attendees must be greater than 0'
         return false
-      } else if(this.selected === null || this.selected === ''){
-        this.errorMessage = 'Please select one mode of payment'
+      }else if(this.rooms < 0){
+        this.errorMessage = 'Rooms must be greater than or equal to 0'
+        return false
+      }else if((this.mode === 'room' || this.mode === 'event') && (this.start === null || this.start === '')){
+        this.errorMessage = 'Start date is required.'
+        return false
+      }else if((this.mode === 'room' || this.mode === 'event') && (this.end === null || this.end === '')){
+        this.errorMessage = 'End date is required.'
         return false
       }
       return true
@@ -385,13 +453,12 @@ export default {
     initInput(){
       this.email = null
       this.completeName = null
+      this.businessName = null
       this.address = null
-      this.address = null
-      this.selected = null
       this.additionalInformation = null
       this.start = null
       this.end = null
-      this.vouchers = 1
+      this.attendees = 1
       this.rooms = 0
       this.activeStep = 0
       this.selectedIndex = null
@@ -406,18 +473,26 @@ export default {
       this.$analytics.fbq.event('Contact', {
         content_name: this.email + ' is contacting'
       })
+      let addons = ''
+      for (var i = 0; i < this.filteredData.length; i++) {
+        let item = this.filteredData[i]
+        if(item.flag === true){
+          addons += item.title + ','
+        }
+      }
       console.log('hello')
       let data = 'email=' + this.email +
       '&complete_name=' + this.completeName +
       '&contact_number=' + this.contactNumber +
-      '&business=' + null +
-      '&type=E-Vouchers' +
-      '&start=' + null +
-      '&end=' + null +
-      '&attendees=' + this.vouchers +
-      '&rooms=' + null +
+      '&business=' + this.businessName +
+      '&type=' + ((this.mode !== 'room' && this.mode !== 'others') ? this.type : this.type) +
+      '&start=' + this.start +
+      '&end=' + this.end +
+      '&contact_number=' + this.contactNumber +
+      '&attendees=' + this.attendees +
+      '&rooms=' + this.rooms +
       '&additional_information=' + this.additionalInformation +
-      '&addons=' + this.selected
+      '&addons=' + addons
       Jquery.ajaxSetup({
         headers: {
           'Access-Control-Allow-Origin': '*'

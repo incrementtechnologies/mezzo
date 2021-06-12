@@ -2,6 +2,7 @@ import Home from 'src/components/Home.vue'
 import Blogs from 'src/components/blog/home.vue'
 import BlogViewer from 'src/components/blog/Viewer.vue'
 import Inquiry from 'src/components/pages/chatbotEnquiry.vue'
+import bookingInquiry from 'src/components/pages/bookingInquiry.vue'
 import EasterEnquiry from 'src/components/pages/EasterEnquiry.vue'
 import anniversaryEnquiry from 'src/components/pages/anniversaryEnquiry.vue'
 import NotFound from 'src/components/error/404.vue'
@@ -41,8 +42,8 @@ export default{
     component: anniversaryEnquiry
   }, {
     path: '/booking-inquiry',
-    name: 'anniversaryEnquiry',
-    component: anniversaryEnquiry
+    name: 'BookingInquiry',
+    component: bookingInquiry
   }]
 }
 
