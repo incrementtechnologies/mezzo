@@ -1,6 +1,6 @@
 <template>
   <div class="incre-container">
-    <subscribe class="subscribe"></subscribe>
+    <!-- <subscribe class="subscribe"></subscribe> -->
     <div class="form-container">
       <span class="margin-div">
       </span>
@@ -355,7 +355,7 @@
 import DatePicker from 'vue2-datepicker'
 import COMMON from 'src/common.js'
 import 'vue2-datepicker/index.css'
-import Subscribe from 'src/components/generic/subscribe.vue'
+// import Subscribe from 'src/components/generic/subscribe.vue'
 import Jquery from 'jquery'
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons'
 import Packages from 'src/components/pages/inquire.vue'
@@ -377,8 +377,8 @@ export default {
     }
   },
   components: {
-    DatePicker,
-    Subscribe
+    DatePicker
+    // Subscribe
   },
   methods: {
     setActive(command){
