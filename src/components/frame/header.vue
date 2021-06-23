@@ -7,6 +7,9 @@
       <li v-for="(item, index) in common.menus" :key="index" :class="{'active-menu': common.activeMenu === item.redirect}" @click="scrollTo(item.redirect)" data-toggle="collapse" data-target="#myNavbar">
         <a data-toggle="collapse" data-target="#myNavbar">{{item.title}}</a>
       </li>
+      <li @click="redirect('/press-room/page/Mezzo_Hotel_Health_and_Safety_Protocols')" class="safe-menu" data-toggle="collapse" data-target="#myNavbar">
+        <a data-toggle="collapse" data-target="#myNavbar">Safety Protocol</a>
+      </li>
     </ul>
     <!-- <ul class="mobile-social-icon">
       <li v-for="(item, index) in common.socialIcons" :key="index" @click="openExternal(item.url)">
@@ -19,6 +22,7 @@
           <img :src="common.api + 'logo.png'" style="height: 6vh; width: auto; left: 10px; top: 2vh"> 
         </li>
         <li v-for="(item, index) in common.menus" :key="index" class="basic-menu" @click="scrollTo(item.redirect)" :class="{'active-menu': common.activeMenu === item.redirect}">{{item.title}}</li>
+        <li @click="redirect('/press-room/page/Mezzo_Hotel_Health_and_Safety_Protocols')" data-toggle="collapse" data-target="#myNavbar">Safety Protocol</li>
       </ul>
       <span class="social-icons-holder">
         <font-awesome-icon :icon="item.icon" class="social-icons" v-for="(item, index) in common.socialIcons" :key="index" @click="openExternalSites(item.url)"></font-awesome-icon>
@@ -262,6 +266,7 @@ ul li{
 </style>
 <script>
 import COMMON from 'src/common.js'
+import ROUTER from 'router'
 import Jquery from 'jquery'
 import Logo from 'src/components/generic/logo.vue'
 import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons'
@@ -291,6 +296,9 @@ export default {
     Logo
   },
   methods: {
+    redirect(route){
+      ROUTER.push(route)
+    },
     scrollTo (div) {
       this.$analytics.fbq.event('ViewContent', {
         content_name: div
