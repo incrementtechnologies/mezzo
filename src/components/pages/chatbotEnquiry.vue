@@ -5,6 +5,10 @@
     </span>
     <div class="holder">
       <div class="main-step" v-if="activeStep > 0">
+        <span v-if="activeStep === 3" class="text-center incre-holder">
+          <h1 class="text-primary success-message" style="margin-top: 25px;">Thanks for making it Mezzo!</h1>
+          <h3 style="margin-top: 75px;" class="success-message">We have received your booking inquiry, allow our Reservations to send you the confirmation number within 24 hours. For urgent requests, you may call us at (032) 231-0777 or 0917-139-7204.</h3>
+        </span>
         <span v-if="activeStep === 2">
           <span class="form-group custom-form-control">
             <label>Event Type</label>
@@ -529,8 +533,9 @@ export default {
       })
       Jquery.get(this.common.host + 'php/gsheet.php?' + data, () => {
       })
-      setTimeout(() => {
+       setTimeout(() => {
         this.initInput()
+        this.activeStep = 3
       }, 1000)
     }
   }
