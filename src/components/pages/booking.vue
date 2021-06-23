@@ -48,7 +48,7 @@
           <input type="submit" value="BOOK A ROOM" class="btn btn-warning" />
       </form>
       <span class="text-center group-booking">
-        <button class="btn btn-white" id="group-booking" @click="onGroupBooking()">
+        <button class="btn btn-warning" id="group-booking" @click="onGroupBooking()">
           Group booking? Click here.
         </button>
       </span>
