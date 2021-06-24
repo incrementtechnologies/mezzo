@@ -22,7 +22,7 @@
           <img :src="common.api + 'logo.png'" style="height: 6vh; width: auto; left: 10px; top: 2vh"> 
         </li>
         <li v-for="(item, index) in common.menus" :key="index" class="basic-menu" @click="scrollTo(item.redirect)" :class="{'active-menu': common.activeMenu === item.redirect}">{{item.title}}</li>
-        <li @click="redirect('/press-room/page/Mezzo_Hotel_Health_and_Safety_Protocols')" data-toggle="collapse" data-target="#myNavbar">Safety Protocol</li>
+        <li @click="redirect('/press-room/page/Mezzo_Hotel_Health_and_Safety_Protocols')">Safety Protocol</li>
       </ul>
       <span class="social-icons-holder">
         <font-awesome-icon :icon="item.icon" class="social-icons" v-for="(item, index) in common.socialIcons" :key="index" @click="openExternalSites(item.url)"></font-awesome-icon>
