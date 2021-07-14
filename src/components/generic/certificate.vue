@@ -1,11 +1,11 @@
 <template>
   <div>
     <div class="image-holder">
+      <img id="rec" :src="require('assets/img/tuvrheinland.png')">
       <img :src="require('assets/img/recognition-excellence-2019.png')">
       <img :src="require('assets/img/sluurpy-2020.png')">
-      <img id="rec" :src="require('assets/img/tuvrheinland.png')">
       <img :src="require('assets/img/travellers-choice-2021.png')">
-      <img :src="require('assets/img/safety-seal-covid.png')">
+      <img id="safe" :src="require('assets/img/safety-seal-covid.png')">
     </div>
   </div>
 </template>
@@ -18,6 +18,9 @@ img{
   margin-bottom: 5%;
   margin-left: 1%;
   margin-right: 1%;
+}
+#safe{
+  border: 3px solid white;
 }
 .image-holder{
   width: 100%;
