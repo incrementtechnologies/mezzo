@@ -3,7 +3,7 @@
     <div class="image-holder">
       <img :src="require('assets/img/recognition-excellence-2019.png')">
       <img :src="require('assets/img/sluurpy-2020.png')">
-      <img :src="require('assets/img/tuvrheinland.png')">
+      <img id="rec" :src="require('assets/img/tuvrheinland.png')">
       <img :src="require('assets/img/travellers-choice-2021.png')">
       <img :src="require('assets/img/safety-seal-covid.png')">
     </div>
@@ -13,19 +13,33 @@
 @import "~assets/style/colors.scss";
 img{
   border-radius: 10px;
-  width: 20%;
-  padding: 2%;
+  height: 150px;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  margin-left: 1%;
+  margin-right: 1%;
 }
 .image-holder{
   width: 100%;
   float: left;
+  text-align: center;
 }
 @media only screen and (max-width: 990px) {
   img {
-    width: 60%;
-    margin-left: 20%;
-    margin-right: 20%;
+    height: 150px;
+    width: auto;
     margin-top: 50px;
+  }
+}
+@media only screen and (max-width: 600px) {
+  #rec {
+    width: 90%;
+  }
+}
+@media only screen and (max-width: 380px) {
+  #rec {
+    width: 70%;
+    height: auto;
   }
 }
 </style>
