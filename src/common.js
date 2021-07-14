@@ -52,10 +52,20 @@ export default{
     testimonials: false,
     gallery: false,
     faq: false,
+    protocol: false,
     footer: false
   },
   setLoad(div){
     switch(div){
+      case '/press-room/page/Mezzo_Hotel_Health_and_Safety_Protocols':
+        this.load.protocol = true
+        this.load.faq = true
+        this.load.gallery = true
+        this.load.testimonials = true
+        this.load.restaurants = true
+        this.load.inquire = true
+        this.load.rooms = true
+        break
       case '#faq':
         this.load.faq = true
         this.load.gallery = true

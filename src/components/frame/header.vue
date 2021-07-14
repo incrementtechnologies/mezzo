@@ -7,9 +7,9 @@
       <li v-for="(item, index) in common.menus" :key="index" :class="{'active-menu': common.activeMenu === item.redirect}" @click="scrollTo(item.redirect)" data-toggle="collapse" data-target="#myNavbar">
         <a data-toggle="collapse" data-target="#myNavbar">{{item.title}}</a>
       </li>
-      <li @click="redirect('/press-room/page/Mezzo_Hotel_Health_and_Safety_Protocols')" class="safe-menu" data-toggle="collapse" data-target="#myNavbar">
+      <!-- <li @click="redirect('/press-room/page/Mezzo_Hotel_Health_and_Safety_Protocols')" class="safe-menu" data-toggle="collapse" data-target="#myNavbar">
         <a data-toggle="collapse" data-target="#myNavbar">Safety Protocol</a>
-      </li>
+      </li> -->
     </ul>
     <!-- <ul class="mobile-social-icon">
       <li v-for="(item, index) in common.socialIcons" :key="index" @click="openExternal(item.url)">
@@ -22,7 +22,7 @@
           <img :src="common.api + 'logo.png'" style="height: 6vh; width: auto; left: 10px; top: 2vh"> 
         </li>
         <li v-for="(item, index) in common.menus" :key="index" class="basic-menu" @click="scrollTo(item.redirect)" :class="{'active-menu': common.activeMenu === item.redirect}">{{item.title}}</li>
-        <li @click="redirect('/press-room/page/Mezzo_Hotel_Health_and_Safety_Protocols')">Safety Protocol</li>
+        <!-- <li @click="redirect('/press-room/page/Mezzo_Hotel_Health_and_Safety_Protocols')">Safety Protocol</li> -->
       </ul>
       <span class="social-icons-holder">
         <font-awesome-icon :icon="item.icon" class="social-icons" v-for="(item, index) in common.socialIcons" :key="index" @click="openExternalSites(item.url)"></font-awesome-icon>
@@ -306,10 +306,14 @@ export default {
       COMMON.setLoad(div)
       this.common.activeMenu = div
       setTimeout(() => {
-        var height = Jquery(window).height()
-        Jquery('html, body').animate({
-          scrollTop: Jquery(div).offset().top - parseInt(height * 0.07)
-        }, 400)
+        if(div.charAt(0) === '/'){
+          this.redirect(div)
+        }else{
+          var height = Jquery(window).height()
+          Jquery('html, body').animate({
+            scrollTop: Jquery(div).offset().top - parseInt(height * 0.07)
+          }, 400)
+        }
       }, 100)
       this.flag = false
       Jquery('.mobile-menu').css({display: 'none'})
