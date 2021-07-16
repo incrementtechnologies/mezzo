@@ -27,20 +27,13 @@ img{
 }
 @media only screen and (max-width: 990px) {
   img {
-    height: 150px;
-    width: auto;
-    margin-top: 50px;
+    height: 100px;
   }
 }
-@media only screen and (max-width: 600px) {
-  #rec {
-    width: 90%;
-  }
-}
+
 @media only screen and (max-width: 380px) {
-  #rec {
-    width: 70%;
-    height: auto;
+   img {
+    height: 80px;
   }
 }
 </style>
