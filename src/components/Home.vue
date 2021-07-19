@@ -6,7 +6,7 @@
       Check our Health and Safety Protocol
       <span>
         <img src="../assets/img/TC-Winner-2021.gif" height="70px" width="auto">
-        <img src="../assets/img/safe-travels.png" height="60px" width="60px">
+        <img src="../assets/img/safe-travels.png" height="70px" width="auto">
       </span>
     </span>
     <booking></booking>
@@ -48,18 +48,19 @@
 .banner-bottom{
   position: fixed;
   bottom: 0px;
-  width: 40%;
-  left: 30%;
+  width: 30%;
+  left: 35%;
   background: $primary;
-  height: 70px;
   line-height: 70px;
   z-index: 100000;
   color: $white;
   display: flex;
   justify-content: space-between;
   font-size: 20px;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
 .banner-bottom:hover{
