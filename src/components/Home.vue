@@ -3,7 +3,10 @@
     <Header id="header-menu" ref="header"></Header>
     <!-- <HeaderSticky id="sticky-header-menu"></HeaderSticky> -->
     <span class="banner-bottom" @click="redirect('/press-room/page/Mezzo_Hotel_Health_and_Safety_Protocols')">
+
+      <img src="../assets/img/TC-Winner-2021.gif" height="60px" width="auto" style="margin-top: 5px;">
       Check our Health and Safety Protocol
+      <img src="../assets/img/safe-travels.png" height="60px" width="auto" style="margin-top: 5px;">
     </span>
     <booking></booking>
     <about-page></about-page>
@@ -50,9 +53,12 @@
   height: 70px;
   line-height: 70px;
   z-index: 100000;
-  text-align: center;
   color: $white;
+  display: flex;
+  justify-content: space-between;
   font-size: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .banner-bottom:hover{
