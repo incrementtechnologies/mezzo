@@ -14,7 +14,7 @@
 @import "~assets/style/colors.scss";
 img{
   border-radius: 10px;
-  height: 150px;
+  height: 140px;
   margin-top: 5%;
   margin-bottom: 5%;
   margin-left: 1%;
@@ -25,15 +25,39 @@ img{
   float: left;
   text-align: center;
 }
-@media only screen and (max-width: 990px) {
+@media only screen and (max-width: 1487px) {
   img {
+    height: 120px;
+  }
+}
+
+@media only screen and (max-width: 1274px) {
+   img {
     height: 100px;
   }
 }
 
-@media only screen and (max-width: 380px) {
+@media only screen and (max-width: 1062px) {
    img {
-    height: 80px;
+    height: 95px;
+  }
+}
+
+@media only screen and (max-width: 1009px) {
+   img {
+    height: 90px;
+  }
+}
+
+@media only screen and (max-width: 956px) {
+   img {
+    height: 85px;
+  }
+}
+
+@media only screen and (max-width: 850px) {
+   img {
+    height: 100px;
   }
 }
 </style>
