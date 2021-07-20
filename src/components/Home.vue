@@ -85,6 +85,22 @@
   display: none;
 }
 
+@media screen and (max-width: 1720px){
+  .banner-bottom{
+    width: 40%;
+    left: 30%;
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 1100px){
+  .banner-bottom{
+    width: 60%;
+    left: 20%;
+    font-size: 16px;
+  }
+}
+
 
 @media screen and (max-width: 992px){
   .banner-bottom{
