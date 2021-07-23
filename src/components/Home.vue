@@ -5,8 +5,8 @@
     <span class="banner-bottom" @click="redirect('/press-room/page/Mezzo_Hotel_Health_and_Safety_Protocols')">
       Check our Health and Safety Protocol
       <span>
-        <img src="../assets/img/TC-Winner-2021.gif" height="70px" width="auto">
-        <img src="../assets/img/safe-travels.png" height="70px" width="auto">
+        <img src="../assets/img/TC-Winner-2021.gif" height="60px" width="auto">
+        <img src="../assets/img/safe-travels.png" height="60px" width="auto">
       </span>
     </span>
     <booking></booking>
@@ -107,6 +107,83 @@
     width: 100%;
     left: 0%;
     font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 460px){
+  .banner-bottom{
+    width: 100%;
+    left: 0%;
+    font-size: 15.5px;
+  }
+  span img {
+    height: 50px !important;
+  }
+}
+
+@media screen and (max-width: 410px){
+  .banner-bottom{
+    width: 100%;
+    left: 0%;
+    font-size: 15px;
+  }
+  span img {
+    height: 45px !important;
+  }
+}
+
+@media screen and (max-width: 390px){
+  .banner-bottom{
+    width: 100%;
+    left: 0%;
+    font-size: 14.5px;
+  }
+  span img {
+    height: 40px !important;
+  }
+}
+
+@media screen and (max-width: 370px){
+  .banner-bottom{
+    width: 100%;
+    left: 0%;
+    font-size: 14px;
+  }
+  span img {
+    height: 35px !important;
+  }
+}
+
+@media screen and (max-width: 347px){
+  .banner-bottom{
+    width: 100%;
+    left: 0%;
+    font-size: 13.5px;
+  }
+  span img {
+    height: 30px !important;
+  }
+}
+
+@media screen and (max-width: 330px){
+  .banner-bottom{
+    width: 100%;
+    left: 0%;
+    font-size: 13px;
+  }
+  span img {
+    height: 30px !important;
+  }
+}
+
+@media screen and (max-width: 320px){
+  .banner-bottom{
+    width: 100%;
+    left: 0%;
+    font-size: 12.5px;
+  }
+  span img {
+    height: 25px !important;
   }
 }
 </style>
