@@ -101,7 +101,6 @@
   }
 }
 
-
 @media screen and (max-width: 992px){
   .banner-bottom{
     width: 100%;
