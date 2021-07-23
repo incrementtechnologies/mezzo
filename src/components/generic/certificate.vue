@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="image-holder">
-      <img id="rec" :src="require('assets/img/tuvrheinland.png')">
+      <a href="https://m.certipedia.com/?id=9000010741" target="_blank"><img id="rec" :src="require('assets/img/tuvrheinland.png')"></a>
       <img :src="require('assets/img/recognition-excellence-2019.png')">
       <img :src="require('assets/img/sluurpy-2020.png')">
       <img :src="require('assets/img/travellers-choice-2021.png')">
