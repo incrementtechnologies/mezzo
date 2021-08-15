@@ -368,7 +368,28 @@ export default {
 
       const packagesSheet = this.doc.sheetsByIndex[3]
       let packagesRows = await packagesSheet.getRows()
-      COMMON.packages = null
+      for (var i = 0; i < packagesRows.length; i++) {
+        let item = packagesRows[i]
+        let types = item.types
+        let tempTypes = types !== null ? types.split(',') : null
+        let image = item.image
+        let tempImages = image !== null ? image.split(',') : null
+        let imagesArray = tempImages.map((item) => {
+          return {
+            url: COMMON.host + 'img/' + item
+          }
+        })
+        let typesArray = tempTypes.map(item => {
+          return {
+            title: item
+          }
+        })
+        let object = {
+          types: typesArray,
+          images: imagesArray
+        }
+        COMMON.packages = object
+      }
 
 
       const testimonials = this.doc.sheetsByIndex[7]

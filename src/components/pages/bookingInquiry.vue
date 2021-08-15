@@ -307,38 +307,14 @@ import DatePicker from 'vue2-datepicker'
 import 'vue2-datepicker/index.css'
 import Logo from 'src/components/generic/logo.vue'
 import Jquery from 'jquery'
+import Config from 'src/config.js'
 export default {
  mounted(){
   this.type = this.$route.params.type === 'other' ? 'others' : this.$route.params.type
   this.mode = this.$route.params.type != null ? this.$route.params.type.toLowerCase() : 'room'
   this.mode = this.mode === 'other' ? 'others' : this.mode
   this.setPackage()
-  Jquery.get('https://spreadsheets.google.com/feeds/cells/1luFOWuvQh7PlT5Jy6xY0181qdWsJhhoQt_kQ9YnpKKk/4/public/values?alt=json', response => {
-    let entries = response.feed.entry
-    for (var i = 0; i < entries.length; i += 2) {
-      if(i > 1){
-        let types = entries[i].content.$t
-        let tempTypes = types !== null ? types.split(',') : null
-        let image = entries[i + 1].content.$t
-        let tempImages = image !== null ? image.split(',') : null
-        let imagesArray = tempImages.map((item) => {
-          return {
-            url: COMMON.host + 'img/' + item
-          }
-        })
-        let typesArray = tempTypes.map(item => {
-          return {
-            title: item
-          }
-        })
-        let object = {
-          types: typesArray,
-          images: imagesArray
-        }
-        COMMON.packages = object
-      }
-    }
-  })
+  this.retrieve()
  },
  data(){
     return {
@@ -362,7 +338,8 @@ export default {
       selectedIndex: null,
       filteredData: [],
       type: null,
-      mode: null
+      mode: null,
+      doc: null
     }
   },
   props: ['data'],
@@ -371,6 +348,39 @@ export default {
     Logo
   },
   methods: {
+    async retrieve(){
+      const { GoogleSpreadsheet } = require('google-spreadsheet')
+      this.doc = new GoogleSpreadsheet(Config.googleSheetId)
+      await this.doc.useServiceAccountAuth({
+        client_email: Config.google.client_email,
+        private_key: Config.google.private_key,
+      })
+      await this.doc.loadInfo()
+      const packagesSheet = this.doc.sheetsByIndex[3]
+      let packagesRows = await packagesSheet.getRows()
+      for (var i = 0; i < packagesRows.length; i++) {
+        let item = packagesRows[i]
+        let types = item.types
+        let tempTypes = types !== null ? types.split(',') : null
+        let image = item.images
+        let tempImages = image !== null ? image.split(',') : null
+        let imagesArray = tempImages.map((item) => {
+          return {
+            url: COMMON.host + 'img/' + item
+          }
+        })
+        let typesArray = tempTypes.map(itemI => {
+          return {
+            title: itemI
+          }
+        })
+        let object = {
+          types: typesArray,
+          images: imagesArray
+        }
+        COMMON.packages = object
+      }
+    },
     newAddOn(){
       this.errorMessage = null
       if(this.title === null || this.title === ''){
