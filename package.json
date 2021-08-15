@@ -20,6 +20,7 @@
     "express": "^4.17.1",
     "filter": "^0.1.1",
     "filters": "^1.0.6",
+    "google-spreadsheet": "^3.1.15",
     "jquery": "^3.5.1",
     "node-sass": "^4.14.1",
     "popper.js": "^1.16.1",
@@ -52,7 +53,9 @@
     "parserOptions": {
       "parser": "babel-eslint"
     },
-    "rules": {}
+    "rules": {
+      "no-unused-vars": 0
+    }
   },
   "browserslist": [
     "> 1%",

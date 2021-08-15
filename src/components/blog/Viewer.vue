@@ -177,6 +177,7 @@ import NotFound from 'src/components/error/404.vue'
 import { faCircleNotch } from '@fortawesome/free-solid-svg-icons'
 import ROUTER from 'router'
 import Jquery from 'jquery'
+import Config from 'src/config.js'
 export default {
   mounted(){
     COMMON.getBasic()
@@ -200,33 +201,62 @@ export default {
     redirect(params){
       ROUTER.push(params)
     },
-    getBlog(){
+    async getBlog(){
       this.loading = true
       this.$analytics.fbq.event('ViewContent', {
         content_name: this.$route.params.title.split('_').join(' ')
       })
-      Jquery.get('https://spreadsheets.google.com/feeds/cells/1luFOWuvQh7PlT5Jy6xY0181qdWsJhhoQt_kQ9YnpKKk/11/public/values?alt=json', response => {
-        let entries = response.feed.entry
-        for (var i = 0; i < entries.length; i += 7) {
-          if(i > 6){
-            let object = {
-              type: entries[i].content.$t,
-              title: entries[i + 1].content.$t,
-              image: entries[i].content.$t === 'internal_video'? entries[i + 2].content.$t : this.common.host + 'img/' + entries[i + 2].content.$t,
-              date: entries[i + 3].content.$t,
-              author: entries[i + 4].content.$t,
-              introduction: entries[i + 5].content.$t,
-              content: entries[i + 6].content.$t,
-            }
-            if(object.title.includes(this.$route.params.title.split('_').join(' '))){
-              this.selected = object
-              this.loading = false
-              break  
-            }
-          }
-        }
-        this.loading = false
+      const { GoogleSpreadsheet } = require('google-spreadsheet')
+      const doc = new GoogleSpreadsheet(Config.googleSheetId)
+      await doc.useServiceAccountAuth({
+        client_email: Config.google.client_email,
+        private_key: Config.google.private_key,
       })
+      await doc.loadInfo()
+      const blogs = doc.sheetsByIndex[10]
+      let blogsRows = await blogs.getRows()
+      for (var i = 0; i < blogsRows.length; i++) {
+        let item = blogsRows[i]
+        let object = {
+          type: item.type,
+          title: item.title,
+          image: item.type === 'internal_video' ? item.featured_image : this.host + 'img/' + item.featured_image,
+          date: item.date,
+          author: item.author,
+          introduction: item.introduction,
+          content: item.content,
+        }
+        if(object.title.includes(this.$route.params.title.split('_').join(' '))){
+          this.selected = object
+          this.loading = false
+          break
+        }
+      }
+      if(this.selected == null){
+        this.loading = false  
+      }
+      // Jquery.get('https://spreadsheets.google.com/feeds/cells/1luFOWuvQh7PlT5Jy6xY0181qdWsJhhoQt_kQ9YnpKKk/11/public/values?alt=json', response => {
+      //   let entries = response.feed.entry
+      //   for (var i = 0; i < entries.length; i += 7) {
+      //     if(i > 6){
+      //       let object = {
+      //         type: entries[i].content.$t,
+      //         title: entries[i + 1].content.$t,
+      //         image: entries[i].content.$t === 'internal_video'? entries[i + 2].content.$t : this.common.host + 'img/' + entries[i + 2].content.$t,
+      //         date: entries[i + 3].content.$t,
+      //         author: entries[i + 4].content.$t,
+      //         introduction: entries[i + 5].content.$t,
+      //         content: entries[i + 6].content.$t,
+      //       }
+      //       if(object.title.includes(this.$route.params.title.split('_').join(' '))){
+      //         this.selected = object
+      //         this.loading = false
+      //         break  
+      //       }
+      //     }
+      //   }
+      //   this.loading = false
+      // })
     },
     manageSearch(){
       let result = COMMON.blogs

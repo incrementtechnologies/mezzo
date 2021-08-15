@@ -204,10 +204,10 @@ import ImageView from 'src/components/increment/generic/modal/ImageCarousel.vue'
 import Privacy from 'src/components/pages/privacy.vue'
 import AboutPage from 'src/components/pages/about.vue'
 import ROUTER from 'router'
+import Config from 'src/config.js'
 export default {
   name: 'HelloWorld',
   mounted(){
-    this.retrieve()
     COMMON.getBasic()
     // window.document.body.onscroll = function() {
     // }
@@ -215,13 +215,15 @@ export default {
     this.$analytics.fbq.event('ViewContent', {
       content_name: 'Home Page'
     })
+    this.retreiveApiV4()
   },
   data(){
     return {
       faChevronUp: faChevronUp,
       scrollValue: 0,
       common: COMMON,
-      mode: 'package'
+      mode: 'package',
+      doc: null
     }
   },
   props: {
@@ -256,7 +258,7 @@ export default {
     },
     loadPage(height, top){
       let dev = top / height
-      console.log(height + '/' + top + '/' + dev)
+      // console.log(height + '/' + top + '/' + dev)
       if(dev > 5.5){
         COMMON.setLoad('#faq')
       }else if(dev > 4.5){
@@ -326,6 +328,160 @@ export default {
     },
     showImage(index){
       this.$refs.imageView.setImage(index)
+    },
+    async retreiveApiV4(){
+      COMMON.faq = []
+      COMMON.menus = []
+      COMMON.packages = null
+      COMMON.testimonials = []
+      COMMON.rooms = []
+      COMMON.restaurants = []
+      COMMON.gallery = []
+      COMMON.addOns = []
+      COMMON.announcements = []
+      const { GoogleSpreadsheet } = require('google-spreadsheet')
+      this.doc = new GoogleSpreadsheet(Config.googleSheetId)
+      await this.doc.useServiceAccountAuth({
+        client_email: Config.google.client_email,
+        private_key: Config.google.private_key,
+      })
+      await this.doc.loadInfo()
+      const faqSheet = this.doc.sheetsByIndex[0]
+      let faqRows = await faqSheet.getRows()
+      COMMON.faq = faqRows.map((item) => {
+        return {
+          question: item.question,
+          answer: item.answer,
+          flag: false
+        }
+      })
+
+      const menuSheet = this.doc.sheetsByIndex[1]
+      let menuRows = await menuSheet.getRows()
+      COMMON.menus = menuRows.map((item) => {
+        return {
+          title: item.title,
+          redirect: item.redirect
+        }
+      })
+
+
+      const packagesSheet = this.doc.sheetsByIndex[3]
+      let packagesRows = await packagesSheet.getRows()
+      COMMON.packages = null
+
+
+      const testimonials = this.doc.sheetsByIndex[7]
+      let testimonialsRows = await testimonials.getRows()
+      COMMON.testimonials = testimonialsRows.map((item) => {
+        return {
+          message: item.message,
+          name: item.name,
+          country: item.country,
+          position: item.position,
+          country_code: item.country_code
+        }
+      })
+
+
+      const rooms = this.doc.sheetsByIndex[4]
+      let roomsRows = await rooms.getRows()
+      // console.log({roomsRows})
+      COMMON.rooms = roomsRows.map((item) => {
+        let inclusions = item.inclusions
+        let tempInclusions = inclusions !== null ? inclusions.split(',') : null
+        let image = item.image
+        let tempImages = image !== null ? image.split(',') : null
+        let imagesArray = tempImages.map((item) => {
+          return {
+            url: COMMON.host + 'img/' + item
+          }
+        })
+        let inclusionsArray = tempInclusions.map(item => {
+          return {
+            title: item
+          }
+        })
+        let object = {
+          abbreviation: item.abbreviation,
+          title: item.title,
+          description: item.description,
+          inclusions: inclusionsArray,
+          price: item.price,
+          priceType: item.type,
+          priceInclusions: item.price_inclusions,
+          images: imagesArray,
+          type: item.redirect_type
+        }
+        return object
+      })
+
+
+      const restaurants = this.doc.sheetsByIndex[5]
+      let restaurantsRows = await restaurants.getRows()
+      COMMON.restaurants = restaurantsRows.map((item) => {
+        let inclusions = item.inclusions
+        let tempInclusions = inclusions !== null ? inclusions.split(',') : null
+        let image = item.images
+        let tempImages = image !== null ? image.split(',') : null
+        let imagesArray = tempImages.map((item) => {
+          return {
+            url: COMMON.host + 'img/' + item
+          }
+        })
+        let inclusionsArray = tempInclusions.map(item => {
+          return {
+            title: item
+          }
+        })
+        let object = {
+          abbreviation: item.abbreviation,
+          title: item.title,
+          description: item.description,
+          inclusions: inclusionsArray,
+          images: imagesArray
+        }
+        return object
+      })
+
+      const gallery = this.doc.sheetsByIndex[6]
+      let galleryRows = await gallery.getRows()
+      COMMON.gallery = galleryRows.map((item) => {
+        let image = item.filename
+        let object = {
+          url: COMMON.host + 'img/' + image,
+          caption: item.caption
+        }
+        return object
+      })
+
+
+      const addOns = this.doc.sheetsByIndex[8]
+      let addOnsRows = await addOns.getRows()
+      COMMON.addOns = addOnsRows.map((item, index) => {
+        return {
+          type: item.type,
+          title: item.title,
+          id: index,
+          flag: false
+        }
+      })
+
+
+      const announcements = this.doc.sheetsByIndex[11]
+      let announcementsRows = await announcements.getRows()
+      COMMON.announcements = announcementsRows.map((item) => {
+        let object = {
+          type: item.type,
+          text: item.caption,
+          url: COMMON.host + 'img/' + item.image,
+          link: item.link
+        }
+        return object
+      })
+      setTimeout(() => {
+        this.$refs.imageViewAnnouncements.setImage(0)  
+      }, 1000)
     },
     retrieve(){
       COMMON.faq = []

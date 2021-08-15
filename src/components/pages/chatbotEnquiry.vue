@@ -458,10 +458,10 @@ export default {
       }else if(this.rooms < 0){
         this.errorMessage = 'Rooms must be greater than or equal to 0'
         return false
-      }else if((this.mode === 'room' || this.mode === 'event') && (this.start === null || this.start === '')){
+      }else if((this.mode === 'room' || this.mode === 'event' || this.mode === 'events') && (this.start === null || this.start === '')){
         this.errorMessage = 'Start date is required.'
         return false
-      }else if((this.mode === 'room' || this.mode === 'event') && (this.end === null || this.end === '')){
+      }else if((this.mode === 'room' || this.mode === 'event' || this.mode === 'events') && (this.end === null || this.end === '')){
         this.errorMessage = 'End date is required.'
         return false
       }
