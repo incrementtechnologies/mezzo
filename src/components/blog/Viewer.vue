@@ -220,7 +220,7 @@ export default {
         let object = {
           type: item.type,
           title: item.title,
-          image: item.type === 'internal_video' ? item.featured_image : this.host + 'img/' + item.featured_image,
+          image: item.type === 'internal_video' ? item.featured_image : this.common.host + 'img/' + item.featured_image,
           date: item.date,
           author: item.author,
           introduction: item.introduction,

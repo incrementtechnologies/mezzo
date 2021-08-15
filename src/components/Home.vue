@@ -372,7 +372,7 @@ export default {
         let item = packagesRows[i]
         let types = item.types
         let tempTypes = types !== null ? types.split(',') : null
-        let image = item.image
+        let image = item.images
         let tempImages = image !== null ? image.split(',') : null
         let imagesArray = tempImages.map((item) => {
           return {
