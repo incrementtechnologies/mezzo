@@ -6,7 +6,6 @@
       <img :src="require('assets/img/agoda.png')">
       <img :src="require('assets/img/travellers-choice-2021.png')">
       <img :src="require('assets/img/safety-seal-covid.png')">
-      <img :src="require('assets/img/safe-travels.png')">
     </div>
   </div>
 </template>
