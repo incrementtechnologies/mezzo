@@ -1,5 +1,6 @@
 import Home from 'src/components/Home.vue'
 import Blogs from 'src/components/blog/home.vue'
+import Promos from 'src/components/pages/promos.vue'
 import BlogViewer from 'src/components/blog/Viewer.vue'
 import Inquiry from 'src/components/pages/chatbotEnquiry.vue'
 import bookingInquiry from 'src/components/pages/bookingInquiry.vue'
@@ -13,6 +14,10 @@ export default{
     name: 'Home',
     component: Home
   }, {
+    path: '/promos',
+    name: 'promos',
+    component: Promos
+  },{
     path: '/press-room',
     name: 'pressRoom',
     component: Blogs
