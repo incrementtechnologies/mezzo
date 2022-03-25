@@ -4,7 +4,7 @@ import Config from 'src/config.js'
 export default{
   APP_NAME: 'Mezzo Hotel',
   APP_TAGLINE: 'LUXURY HOTEL',
-  APP_EMAIL: 'admin@mezzohotel.com',
+  APP_EMAIL: 'info@mezzohotel.com',
   APP_MESSENGER: 'https://m.me/cafemezzobymezzohotel',
   APP_COPYRIGHT: 'Mezzo Hotel ' + new Date().getFullYear(),
   APP_DEVELOPER: 'Increment Technologies',
