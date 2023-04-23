@@ -20,7 +20,7 @@ export default{
   api: 'https://mezzohotel.com/img/',
   certificate: 'https://mezzohotel.com/img/mezzo_iso_light.jpg',
   host: 'https://mezzohotel.com/',
-  booking_link: 'https://mezzohotel.com/managebooking.php',
+  booking_link: '/booking',
   socialMedia: {
     facebook: 'https://www.facebook.com/mezzohotelcebu'
   },

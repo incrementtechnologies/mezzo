@@ -1,17 +1,17 @@
 <template>
   <div class="incre-container">
     <!-- <subscribe class="subscribe"></subscribe> -->
-    <div class="form-container">
+<!--    <div class="form-container">
       <span class="margin-div">
       </span>
-      <form 
+      <form
         @submit="checkForm"
         >
-        <!-- 
+        &lt;!&ndash;
         <input type="date" name="arrival_date" id="arrival_date" v-model="checkInDate" class="form-control">
 
-        <input type="date" name="departure_date" id="departure_date" v-model="checkOutDate" class="form-control"> -->
-        <!-- <label for="arrival_date"></label> -->
+        <input type="date" name="departure_date" id="departure_date" v-model="checkOutDate" class="form-control"> &ndash;&gt;
+        &lt;!&ndash; <label for="arrival_date"></label> &ndash;&gt;
         <date-picker
           type="date"
           id="arrival"
@@ -27,7 +27,7 @@
           :default-value="new Date()"></date-picker>
 
 
-          <!-- <label for="departure_date"></label> -->
+          &lt;!&ndash; <label for="departure_date"></label> &ndash;&gt;
           <date-picker
           type="date"
           id="departure"
@@ -52,7 +52,7 @@
           Group booking? Click here.
         </button>
       </span>
-    </div>
+    </div>-->
     <div class="large-screen-image">
       <span class="image-holder-large">
         <div class="carousel slide" data-ride="carousel" id="imageCarousel">
@@ -92,8 +92,8 @@
     color: $primary !important;
   }
   .incre-container{
-    height: 73vh;
-    float: left;
+    /*height: 73vh;
+    float: left;*/
     width: 100%;
     position: relative;
     overflow: hidden;
@@ -167,7 +167,8 @@
   .large-screen-image{
     display: block;
     height: 100%;
-    position: absolute;
+    /*position: absolute;*/
+    position: relative;
     top: 0;
     left: 0;
     z-index: 1;
@@ -239,7 +240,6 @@
   .mobile-screen-image{
     display: none;
   }
-
 @media screen and (max-width: 1024px){
   .carousel{
     margin-top: $height;
@@ -265,9 +265,9 @@
     height: auto !important;
   }
 
-  .incre-container{
+  /*.incre-container{
     height: 93vh;
-  }
+  }*/
 
   .subscribe{
     display: none;
@@ -318,9 +318,9 @@
     float: left;
   }
 
-  .incre-container{
+  /*.incre-container{
     height: 93vh;
-  }
+  }*/
 
   .large-screen-image, .prevnext-icon{
     display: none;

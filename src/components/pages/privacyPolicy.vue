@@ -5,6 +5,7 @@
       <logo class="hide-on-mobile"></logo>
       <h5 class="title">Privacy Notice</h5>
     </span>
+      <tlSearchFormInner></tlSearchFormInner>
     </div>
     <div class="privacy-body" style="margin-bottom: 100px;">
       <p>
@@ -796,6 +797,7 @@ import Logo from 'src/components/generic/logo.vue'
 import MyFooter from 'src/components/frame/footer.vue'
 import COMMON from 'src/common.js'
 import ROUTER from 'router'
+import tlSearchFormInner from "src/components/tlForms/tlSearchFormInner/tlSearchFormInner.vue";
 export default {
    mounted(){
     COMMON.getBasic()
@@ -808,7 +810,8 @@ export default {
   },
   components: {
     Logo,
-    MyFooter
+    MyFooter,
+    tlSearchFormInner
   },
   methods: {
     redirect(params){

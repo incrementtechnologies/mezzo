@@ -23,7 +23,7 @@
       <span class="social-icons-holder">
         <font-awesome-icon :icon="item.icon" class="social-icons" v-for="(item, index) in common.socialIcons" :key="index" @click="openExternalSites(item.url)"></font-awesome-icon>
       </span>
-      <button class="btn btn-warning" @click="openExternal(common.booking_link, false)">BOOK A ROOM</button>
+      <button class="btn btn-warning" @click="openExternal(common.booking_link, true)">BOOK A ROOM</button>
     </div>
   </div>
 </template>
@@ -321,7 +321,7 @@ export default {
         this.$analytics.fbq.event('InitialCheckout', {
           content_name: 'Direct Booking'
         })
-        window.open(url, '_BLANK')
+        window.open(url, '_self')
       }
     },
     openExternalSites(url){

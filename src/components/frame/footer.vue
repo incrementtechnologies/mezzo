@@ -1,6 +1,6 @@
 <template>
   <footer>
-    <div class="footer">
+    <div class="footer" >
       <logo class="logo"></logo>
       <ul>
         <li>
@@ -255,8 +255,8 @@ export default {
           route: '/privacy-policy'
         }, {
           title: 'Inquiry Form',
-          type: 'inquire',
-          route: '#packages'
+          type: 'redirect',
+          route: '/booking'
         }, {
           title: 'Press Room',
           type: 'redirect',
