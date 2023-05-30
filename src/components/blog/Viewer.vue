@@ -4,6 +4,7 @@
     <span class="page-holder">
       <logo class="hide-on-mobile"></logo>
     </span>
+    <tlSearchFormInner></tlSearchFormInner>
     <span>
       <div class="blog-tiles">
         <p>
@@ -178,6 +179,7 @@ import { faCircleNotch } from '@fortawesome/free-solid-svg-icons'
 import ROUTER from 'router'
 import Jquery from 'jquery'
 import Config from 'src/config.js'
+import tlSearchFormInner from "src/components/tlForms/tlSearchFormInner/tlSearchFormInner.vue";
 export default {
   mounted(){
     COMMON.getBasic()
@@ -195,7 +197,8 @@ export default {
     // Header,
     Logo,
     MyFooter,
-    NotFound
+    NotFound,
+    tlSearchFormInner
   },
   methods: {
     redirect(params){

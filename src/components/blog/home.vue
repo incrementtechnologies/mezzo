@@ -7,6 +7,7 @@
         <p class="text-white display-4">Press Room</p>
       </span>
     </span>
+    <tlSearchFormInner></tlSearchFormInner>
     <div class="blog-tiles">
       <p>
         <button class="btn btn-warning" @click="redirect('/')">Home</button>
@@ -156,6 +157,7 @@ import Logo from "src/components/generic/logo.vue";
 import ROUTER from "router";
 import MyFooter from "src/components/frame/footer.vue";
 import Jquery from "jquery";
+import tlSearchFormInner from "src/components/tlForms/tlSearchFormInner/tlSearchFormInner.vue";
 export default {
   mounted() {
     this.retrieve();
@@ -169,6 +171,7 @@ export default {
     // Header,
     Logo,
     MyFooter,
+    tlSearchFormInner
   },
   methods: {
     redirect(route) {
