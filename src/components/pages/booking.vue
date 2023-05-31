@@ -352,14 +352,17 @@
 }
 </style>
 <script>
-import DatePicker from 'vue2-datepicker'
+// import DatePicker from 'vue2-datepicker';
 import COMMON from 'src/common.js'
-import 'vue2-datepicker/index.css'
+// import 'vue2-datepicker/index.css'
 // import Subscribe from 'src/components/generic/subscribe.vue'
 import Jquery from 'jquery'
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons'
 import Packages from 'src/components/pages/inquire.vue'
 export default {
+  components: {
+    // DatePicker,
+  },
   mounted(){
     Jquery("#imageCarousel").carousel({interval: COMMON.delay});
   },
@@ -375,10 +378,6 @@ export default {
       faChevronRight: faChevronRight,
       faChevronLeft: faChevronLeft
     }
-  },
-  components: {
-    DatePicker
-    // Subscribe
   },
   methods: {
     setActive(command){
