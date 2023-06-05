@@ -8,7 +8,7 @@ import EasterEnquiry from 'src/components/pages/EasterEnquiry.vue'
 import anniversaryEnquiry from 'src/components/pages/anniversaryEnquiry.vue'
 import NotFound from 'src/components/error/404.vue'
 import privacyPolicy from 'src/components/pages/privacyPolicy.vue'
-import bookingPage from "../../components/pages/bookingPage";
+import bookingPage from "src/components/pages/bookingPage";
 export default{
   routes: [{
     path: '/',

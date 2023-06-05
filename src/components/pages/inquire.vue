@@ -12,7 +12,7 @@
           </label>
           <br>
           <button class="btn btn-warning" @click="activeStep = 1, mode = 'event', type = 'Event'">MAKE AN INQUIRY</button>
-          <button id="room" style="display:none;" @click="activeStep = 1, mode = 'room', type = 'Room'"></button>
+<!--          <button id="room" style="display:none;" @click="activeStep = 1, mode = 'room', type = 'Room'"></button>-->
         </span>
       </span>
       <div class="main-step" v-if="activeStep > 0">
@@ -56,7 +56,7 @@
               </button>
               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <span class="dropdown-item" @click="mode = 'event', type = 'Event'">Event</span>
-                <span class="dropdown-item" @click="mode = 'room', type = 'Room'">Room</span>
+<!--                <span class="dropdown-item" @click="mode = 'room', type = 'Room'">Room</span>-->
                 <span class="dropdown-item" @click="mode = 'others', type = 'Others'">Others</span>
               </div>
             </div>

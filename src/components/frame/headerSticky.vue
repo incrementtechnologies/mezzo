@@ -26,7 +26,7 @@
       <span class="social-icons-holder">
         <font-awesome-icon :icon="item.icon" class="social-icons" v-for="(item, index) in common.socialIcons" :key="index" @click="openExternal(item.url)"></font-awesome-icon>
       </span>
-      <button class="btn btn-warning" @click="openExternal(common.booking_link)">Book Your Room Now</button>
+      <button class="btn btn-warning" @click="redirect('/booking')">Book Your Room Now</button>
     </div>
   </div>
 </template>
@@ -191,6 +191,7 @@ ul li{
 </style>
 <script>
 import COMMON from 'src/common.js'
+import ROUTER from 'router'
 import Jquery from 'jquery'
 import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons'
 export default {
@@ -207,6 +208,9 @@ export default {
   components: {
   },
   methods: {
+    redirect(route){
+      ROUTER.push(route)
+    },
     scrollTo (div) {
       var height = Jquery(window).height()
       Jquery('html, body').animate({

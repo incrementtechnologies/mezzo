@@ -42,11 +42,12 @@
             {{sItem.title}}
           </span>
         </span>
-        <span class="menu-holder subscribe">
+
+        <span v-if="this.$route.path != '/booking'" class="menu-holder subscribe">
           <subscribe></subscribe>
         </span>
       </span>
-      <span class="footer-content">
+      <span v-if="this.$route.path != '/booking'" class="footer-content">
         <Certificate></Certificate>
       </span>
       <span class="copyright">
