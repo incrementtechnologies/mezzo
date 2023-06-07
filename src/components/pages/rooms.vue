@@ -29,9 +29,11 @@
           </ul>
           <h5><b class="text-warning price">{{activeItem.price}}</b> {{activeItem.priceType}}</h5>
           <p>{{activeItem.priceInclusions}}</p>
-          <button class="btn btn-warning" @click="openExternal(common.booking_link, false, activeItem.abbreviation)" v-if="activeItem.type === 'book'">BOOK A ROOM</button>
+<!--          <button class="btn btn-warning" @click="openExternal(common.booking_link, false, activeItem.abbreviation)" v-if="activeItem.type === 'book'">BOOK A ROOM</button>-->
+          <button class="btn btn-warning" @click="redirect('/booking')" v-if="activeItem.type === 'book'">BOOK A ROOM</button>
 
-          <button class="btn btn-warning" @click="makeAnInquiry(activeItem.title)" v-if="activeItem.type === 'inquiry'">MAKE AN INQUIRY</button>
+<!--          <button class="btn btn-warning" @click="makeAnInquiry(activeItem.title)" v-if="activeItem.type === 'inquiry'">MAKE AN INQUIRY</button>-->
+          <button class="btn btn-warning" @click="redirect('/booking')" v-if="activeItem.type === 'inquiry'">MAKE AN INQUIRY</button>
         </div>
       </div>
     </div>
@@ -216,6 +218,7 @@ h5{
 </style>
 <script>
 import COMMON from 'src/common.js'
+import ROUTER from 'router'
 import { faCheck, faCircle } from '@fortawesome/free-solid-svg-icons'
 import Packages from 'src/components/pages/inquire.vue'
 export default {
@@ -246,6 +249,9 @@ export default {
     }
   },
   methods: {
+    redirect(route){
+      ROUTER.push(route)
+    },
     openExternal(url, flag, item){
       if(flag == false){
         Packages.methods.inquireRoom(item);
