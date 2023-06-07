@@ -10,6 +10,7 @@
 @import "~assets/style/travelline-style.css";
 </style>
 <script>
+import ROUTER from 'router'
 export default {
   created() {
     setTimeout(() => {
@@ -18,10 +19,16 @@ export default {
   },
   methods: {
     loadTlScript(w) {
+      function submit(){
+        var url = new URL (arguments[1]);
+        ROUTER.push(url.pathname + url.search)
+        return false;
+      }
       var q = [
         ['setContext', 'TL-INT-mezzohotel_2023-03-20', 'en'],
         ['embed', 'search-form', {
-          container: 'tl-search-form'
+          container: 'tl-search-form',
+          onsubmit: submit
         }]
       ];
       var h=["ph-ibe.tlintegration-as.com","ibe.tlintegration-as.com","ibe.tlintegrationfb-as.com"];

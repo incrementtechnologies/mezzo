@@ -5,9 +5,6 @@
 </template>
 <style scoped lang="scss">
 @import "~assets/style/travelline-style.css";
-#fb-root {
-  display: none;
-}
 </style>
 <script>
 export default {
