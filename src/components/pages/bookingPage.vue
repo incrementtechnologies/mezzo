@@ -23,6 +23,13 @@
   margin-bottom: 100px;
 }
 
+@media screen and (max-width: 480px) {
+  .booking-body{
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
 .page-holder{
   width: 100%;
   float: left;
@@ -33,6 +40,10 @@
 
 .btn-warning {
   margin-top: 10px;
+}
+
+#fb-root {
+  display: none;
 }
 </style>
 <script>
