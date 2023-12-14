@@ -379,7 +379,7 @@ export default {
         let tempImages = image !== null ? image.split(',') : null
         let imagesArray = tempImages.map((item) => {
           return {
-            url: COMMON.host + 'img/' + item
+            url: COMMON.api + item
           }
         })
         let typesArray = tempTypes.map(item => {
@@ -418,7 +418,7 @@ export default {
         let tempImages = image !== null ? image.split(',') : null
         let imagesArray = tempImages.map((item) => {
           return {
-            url: COMMON.host + 'img/' + item
+            url: COMMON.api + item
           }
         })
         let inclusionsArray = tempInclusions.map(item => {
@@ -450,7 +450,7 @@ export default {
         let tempImages = image !== null ? image.split(',') : null
         let imagesArray = tempImages.map((item) => {
           return {
-            url: COMMON.host + 'img/' + item
+            url: COMMON.api + item
           }
         })
         let inclusionsArray = tempInclusions.map(item => {
@@ -471,9 +471,12 @@ export default {
       const gallery = this.doc.sheetsByIndex[6]
       let galleryRows = await gallery.getRows()
       COMMON.gallery = galleryRows.map((item) => {
+        console.log({
+          item
+        })
         let image = item.filename
         let object = {
-          url: COMMON.host + 'img/' + image,
+          url: COMMON.api + image,
           caption: item.caption
         }
         return object
@@ -498,7 +501,7 @@ export default {
         let object = {
           type: item.type,
           text: item.caption,
-          url: COMMON.host + 'img/' + item.image,
+          url: COMMON.api + item.image,
           link: item.link
         }
         return object
@@ -552,7 +555,7 @@ export default {
             let tempImages = image !== null ? image.split(',') : null
             let imagesArray = tempImages.map((item) => {
               return {
-                url: COMMON.host + 'img/' + item
+                url: COMMON.api + item
               }
             })
             let typesArray = tempTypes.map(item => {
@@ -593,7 +596,7 @@ export default {
             let tempImages = image !== null ? image.split(',') : null
             let imagesArray = tempImages.map((item) => {
               return {
-                url: COMMON.host + 'img/' + item
+                url: COMMON.api + item
               }
             })
             let inclusionsArray = tempInclusions.map(item => {
@@ -626,7 +629,7 @@ export default {
             let tempImages = image !== null ? image.split(',') : null
             let imagesArray = tempImages.map((item) => {
               return {
-                url: COMMON.host + 'img/' + item
+                url: COMMON.api + item
               }
             })
             let inclusionsArray = tempInclusions.map(item => {
@@ -651,7 +654,7 @@ export default {
           if(i > 1){
             let image = entries[i].content.$t
             let object = {
-              url: COMMON.host + 'img/' + image,
+              url: COMMON.api + image,
               caption: entries[i + 1].content.$t
             }
             COMMON.gallery.push(object)
@@ -681,7 +684,7 @@ export default {
             let object = {
               type: entries[i].content.$t,
               text: entries[i + 1].content.$t,
-              url: COMMON.host + 'img/' + entries[i + 2].content.$t,
+              url: COMMON.api + entries[i + 2].content.$t,
               link: entries[i + 3].content.$t
             }
             COMMON.announcements.push(object)

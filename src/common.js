@@ -11,14 +11,14 @@ export default{
   APP_DEVELOPER_URL: 'http://increment.ltd',
   APP_PHONE_NUMBER: '0912345678',
   APP_HEADER_BACKGROUND: [{
-    url: require('assets/img/mezzolobby.jpg')
+    url: 'https://mezzowebsitefiles.s3.ap-southeast-1.amazonaws.com/mezzolobby.76a4fb8d.jpg'
   }],
   APP_HEADER_MOBILE_BACKGROUND: [{
-    url: 'https://mezzohotel.com/img/mainm1.png'
+    url: 'https://mezzowebsitefiles.s3.ap-southeast-1.amazonaws.com/mainm1.png'
   }],
   address: 'F. Cabahug, Pres. Quezon St, Cebu City, 6000 Cebu',
-  api: 'https://mezzohotel.com/img/',
-  certificate: 'https://mezzohotel.com/img/mezzo_iso_light.jpg',
+  api: 'https://mezzowebsitefiles.s3.ap-southeast-1.amazonaws.com/',
+  certificate: 'https://mezzowebsitefiles.s3.ap-southeast-1.amazonaws.com/mezzo_iso_light.jpg',
   host: 'https://mezzohotel.com/',
   booking_link: 'https://mezzohotel.com/managebooking.php',
   socialMedia: {
@@ -117,7 +117,7 @@ export default{
       return {
         type: item.type,
         title: item.title,
-        image: item.type === 'internal_video' ? item.featured_image : this.host + 'img/' + item.featured_image,
+        image: item.type === 'internal_video' ? item.featured_image : this.api + item.featured_image,
         date: item.date,
         author: item.author,
         introduction: item.introduction,
@@ -131,7 +131,7 @@ export default{
     //       let object = {
     //         type: entries[i].content.$t,
     //         title: entries[i + 1].content.$t,
-    //         image: entries[i].content.$t === 'internal_video' ? entries[i + 2].content.$t : this.host + 'img/' + entries[i + 2].content.$t ,
+    //         image: entries[i].content.$t === 'internal_video' ? entries[i + 2].content.$t : this.api + entries[i + 2].content.$t ,
     //         date: entries[i + 3].content.$t,
     //         author: entries[i + 4].content.$t,
     //         introduction: entries[i + 5].content.$t,
@@ -171,7 +171,7 @@ export default{
           let tempImages = image !== null ? image.split(',') : null
           let imagesArray = tempImages.map((item) => {
             return {
-              url: this.host + 'img/' + item
+              url: this.api + item
             }
           })
           this.APP_HEADER_BACKGROUND = imagesArray
@@ -182,7 +182,7 @@ export default{
           let tempImages = image !== null ? image.split(',') : null
           let imagesArray = tempImages.map((item) => {
             return {
-              url: this.host + 'img/' + item
+              url: this.api + + item
             }
           })
           this.APP_HEADER_MOBILE_BACKGROUND = imagesArray
@@ -215,7 +215,7 @@ export default{
     //           let tempImages = image !== null ? image.split(',') : null
     //           let imagesArray = tempImages.map((item) => {
     //             return {
-    //               url: this.host + 'img/' + item
+    //               url: this.api + + item
     //             }
     //           })
     //           this.APP_HEADER_BACKGROUND = imagesArray
@@ -226,7 +226,7 @@ export default{
     //           let tempImages = image !== null ? image.split(',') : null
     //           let imagesArray = tempImages.map((item) => {
     //             return {
-    //               url: this.host + 'img/' + item
+    //               url: this.api + item
     //             }
     //           })
     //           this.APP_HEADER_MOBILE_BACKGROUND = imagesArray
