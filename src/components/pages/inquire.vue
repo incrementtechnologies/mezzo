@@ -8,7 +8,7 @@
         </span>
         <span class="step1-action">
           <label class="text-white" style="background: rgba(0,0,0,.5)">
-            For events inquiry, send us an email through: info@mezzohotel.com.
+            For event inquiries, send us an email through: info@mezzohotel.com.
           </label>
           <br>
           <!-- <button class="btn btn-warning" @click="activeStep = 1, mode = 'event', type = 'Event'">MAKE AN INQUIRY</button> -->
