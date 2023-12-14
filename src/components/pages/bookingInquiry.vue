@@ -366,7 +366,7 @@ export default {
         let tempImages = image !== null ? image.split(',') : null
         let imagesArray = tempImages.map((item) => {
           return {
-            url: COMMON.host + 'img/' + item
+            url: COMMON.api + item
           }
         })
         let typesArray = tempTypes.map(itemI => {
