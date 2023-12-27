@@ -508,7 +508,7 @@ export default {
           'Access-Control-Allow-Origin': '*'
         }
       })
-      Jquery.get(this.common.host + 'php/gsheet.php?' + data, () => {
+      Jquery.get(this.common.inquiry_host + data, () => {
       })
       setTimeout(() => {
         this.initInput()

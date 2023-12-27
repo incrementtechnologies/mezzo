@@ -21,6 +21,7 @@ export default{
   certificate: 'https://mezzowebsitefiles.s3.ap-southeast-1.amazonaws.com/mezzo_iso_light.jpg',
   host: 'https://mezzohotel.com/',
   booking_link: 'https://mezzohotel.com/managebooking.php',
+  inquiry_host: 'http://localhost:3000/?',
   socialMedia: {
     facebook: 'https://www.facebook.com/mezzohotelcebu'
   },

@@ -8,10 +8,10 @@
         </span>
         <span class="step1-action">
           <label class="text-white" style="background: rgba(0,0,0,.5)">
-            For event inquiries, send us an email through: info@mezzohotel.com.
+            Are you planning an event?
           </label>
           <br>
-          <!-- <button class="btn btn-warning" @click="activeStep = 1, mode = 'event', type = 'Event'">MAKE AN INQUIRY</button> -->
+          <button class="btn btn-warning" @click="activeStep = 1, mode = 'event', type = 'Event'">MAKE AN INQUIRY</button>
 <!--          <button id="room" style="display:none;" @click="activeStep = 1, mode = 'room', type = 'Room'"></button>-->
         </span>
       </span>
@@ -502,7 +502,6 @@ export default {
       '&type=' + ((this.mode !== 'room' && this.mode !== 'others') ? this.type : this.type) +
       '&start=' + this.start +
       '&end=' + this.end +
-      '&contact_number=' + this.contactNumber +
       '&attendees=' + this.attendees +
       '&rooms=' + this.rooms +
       '&additional_information=' + this.additionalInformation + ((this.mode == 'room') ? ', room: ' + room + ', price: ' + price  : '') +
@@ -512,7 +511,7 @@ export default {
           'Access-Control-Allow-Origin': '*'
         }
       })
-      Jquery.get(this.common.host + 'php/gsheet.php?' + data, () => {
+      Jquery.get(this.common.inquiry_host + data, () => {
       })
       setTimeout(() => {
         this.initInput()
