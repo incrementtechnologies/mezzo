@@ -9,7 +9,7 @@
       <p>
         <button class="btn btn-warning" @click="redirect('/')">Home</button>
       </p>
-      <tlBookingForm></tlBookingForm>
+      <beBookingForm></beBookingForm>
     </div>
     <MyFooter :property="'redirect'"></MyFooter>
   </div>
@@ -49,13 +49,13 @@
 <script>
 import Logo from 'src/components/generic/logo.vue';
 import MyFooter from 'src/components/frame/footer.vue';
-import tlBookingForm from 'src/components/tlForms/tlBookingForm/tlBookingForm.vue';
+import beBookingForm from 'src/components/beForms/beBookingForm/beBookingForm.vue';
 import ROUTER from 'router';
 export default {
   components: {
     Logo,
     MyFooter,
-    tlBookingForm
+    beBookingForm
   },
   methods: {
     redirect(params){

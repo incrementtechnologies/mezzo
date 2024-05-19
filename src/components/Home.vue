@@ -10,7 +10,7 @@
       </span>
     </span>
     <booking></booking>
-    <tlSearchFormMain></tlSearchFormMain>
+    <beSearchFormMain></beSearchFormMain>
     <about-page></about-page>
     <Rooms></Rooms>
     <Packages ref="inquire"></Packages>
@@ -206,7 +206,7 @@ import Privacy from 'src/components/pages/privacy.vue'
 import AboutPage from 'src/components/pages/about.vue'
 import ROUTER from 'router'
 import Config from 'src/config.js'
-import tlSearchFormMain from "src/components/tlForms/tlSearchFormMain/tlSearchFormMain.vue";
+import beSearchFormMain from "src/components/beForms/beSearchFormMain/beSearchFormMain.vue";
 export default {
   name: 'HelloWorld',
   mounted(){
@@ -244,7 +244,7 @@ export default {
     ImageView,
     Privacy,
     AboutPage,
-    tlSearchFormMain
+    beSearchFormMain
     // HeaderSticky
   },
   methods: {

@@ -16,7 +16,7 @@
     background: rgba(255, 255, 255, 0.8);
   }
 
-  #block-search.main .tl-container {
+  #block-search.main .be-container {
     padding: 0 60px;
   }
 
@@ -26,12 +26,12 @@
   }
 }
 
-.tl-container {
+.be-container {
   max-width: 1403px;
   margin: 0 auto;
   padding: 0 30px;
 }
 
-#tl-booking-form {
+#be-booking-form {
   z-index: 1;
 }
