@@ -43,11 +43,11 @@
           </span>
         </span>
 
-        <span v-if="this.$route.path != '/booking'" class="menu-holder subscribe">
+        <span v-if="this.$route.path != '/booking' && this.$route.path != '/booking-service'" class="menu-holder subscribe">
           <subscribe></subscribe>
         </span>
       </span>
-      <span v-if="this.$route.path != '/booking'" class="footer-content">
+      <span v-if="this.$route.path != '/booking' && this.$route.path != '/booking-service'" class="footer-content">
         <Certificate></Certificate>
       </span>
       <span class="copyright">

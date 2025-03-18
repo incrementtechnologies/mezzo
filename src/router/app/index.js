@@ -9,6 +9,7 @@ import anniversaryEnquiry from 'src/components/pages/anniversaryEnquiry.vue'
 import NotFound from 'src/components/error/404.vue'
 import privacyPolicy from 'src/components/pages/privacyPolicy.vue'
 import bookingPage from 'src/components/pages/bookingPage.vue'
+import bookingServicePage from "@/components/pages/bookingServicePage.vue";
 export default{
   routes: [{
     path: '/',
@@ -54,6 +55,11 @@ export default{
     path: '/booking',
     name: 'BookingPage',
     component: bookingPage
-  }]
+  },
+    {
+      path: '/booking-service',
+      name: 'BookingServicePage',
+      component: bookingServicePage
+    }]
 }
 

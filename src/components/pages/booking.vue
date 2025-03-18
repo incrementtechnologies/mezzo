@@ -1,5 +1,6 @@
 <template>
   <div class="incre-container">
+    <a href="/booking-service" class="be-link">Book a service</a>
     <!-- <subscribe class="subscribe"></subscribe> -->
 <!--    <div class="form-container">
       <span class="margin-div">
