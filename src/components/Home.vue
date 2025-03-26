@@ -10,6 +10,7 @@
       </span>
     </span>
     <booking></booking>
+    <a href="/booking-service" class="be-link be-link--mobile">Book a service</a>
     <beSearchFormMain></beSearchFormMain>
     <about-page></about-page>
     <Rooms></Rooms>
